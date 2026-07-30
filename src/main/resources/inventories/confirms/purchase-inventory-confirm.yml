@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Bulk Purchase Confirmation Inventory
+#   RavenAuction V4 - Bulk Purchase Confirmation Inventory
 #
 #   This inventory confirms purchase of multiple items (bulk sales).
 #   Shows all items in the sale with a preview before purchase.
@@ -14,7 +14,7 @@
 #   - Automatically opens when clicking a bulk item to buy
 #   - Bulk items are indicated by a chest icon in the auction house
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -35,7 +35,7 @@ size: 54
 
 patterns:
   # Decorative glass pane borders.
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
 
 #=============================================================================
 # ITEMS
@@ -51,7 +51,7 @@ items:
 
   item-content:
     # Button type - displays all items in the sale.
-    type: ZAUCTIONHOUSE_ITEM_CONTENT
+    type: RAVENAUCTION_ITEM_CONTENT
 
     # Slots for displaying items (4 rows × 9 columns = 36 slots).
     slots:
@@ -63,7 +63,7 @@ items:
   # Completes the purchase of all items.
 
   confirm:
-    type: ZAUCTIONHOUSE_CONFIRM_PURCHASE
+    type: RAVENAUCTION_CONFIRM_PURCHASE
 
     item:
       material: GREEN_STAINED_GLASS_PANE
@@ -103,7 +103,7 @@ items:
   # Opens the shulker content viewer.
 
   shulker:
-    type: ZAUCTIONHOUSE_SHULKER_OPEN
+    type: RAVENAUCTION_SHULKER_OPEN
 
     # Center of bottom row.
     slot: 49

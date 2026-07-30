@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Pattern de Pagination
+#   RavenAuction V4 - Pattern de Pagination
 #
 #   Ce pattern fournit les boutons page précédente/suivante pour les inventaires paginés.
 #   Utilisé dans tout inventaire qui affiche plusieurs pages d'items.
@@ -13,15 +13,15 @@
 #   UTILISATION:
 #   Incluez ce pattern dans les fichiers d'inventaire paginés:
 #     patterns:
-#       - 'zauctionhouse-pagination'
+#       - 'ravenauction-pagination'
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
 
 # Nom du pattern - référencé dans les autres fichiers d'inventaire.
-name: "zauctionhouse-pagination"
+name: "ravenauction-pagination"
 
 # Taille de l'inventaire (doit correspondre aux inventaires utilisant ce pattern).
 # Conçu pour les inventaires à 6 rangées (54 slots).

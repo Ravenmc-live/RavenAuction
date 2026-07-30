@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 /**
- * Interface for reading data from zAuctionHouse V3 storage.
+ * Interface for reading data from RavenAuction V3 storage.
  */
 public interface V3DataReader {
 

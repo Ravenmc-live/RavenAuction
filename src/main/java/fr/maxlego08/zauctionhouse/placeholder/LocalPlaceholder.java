@@ -19,7 +19,7 @@ public class LocalPlaceholder implements Placeholder {
     private final Pattern pattern = Pattern.compile("[%]([^%]+)[%]");
     private final List<AutoPlaceholder> autoPlaceholders = new ArrayList<>();
     private final AuctionPlugin plugin;
-    private final String prefix = "zauctionhouse";
+    private final String prefix = "ravenauction";
 
     public LocalPlaceholder(AuctionPlugin plugin) {
         this.plugin = plugin;

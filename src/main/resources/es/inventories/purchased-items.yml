@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Inventario de Objetos Comprados
+#   RavenAuction V4 - Inventario de Objetos Comprados
 #
 #   Este inventario muestra los objetos que el jugador ha comprado en la casa de subastas.
 #   Los jugadores pueden retirar los objetos comprados a su inventario.
@@ -14,7 +14,7 @@
 #   - /ah purchased
 #   - Clic en el boton "Objetos comprados" en la casa de subastas principal
 #
-#   Documentacion: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentacion: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -35,11 +35,11 @@ size: 54
 
 patterns:
   # Bordes decorativos de vidrio.
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
   # Botones pagina anterior/siguiente.
-  - 'zauctionhouse-pagination'
+  - 'ravenauction-pagination'
   # Boton volver para regresar a la casa de subastas.
-  - 'zauctionhouse-back'
+  - 'ravenauction-back'
 
 #=============================================================================
 # OBJETOS
@@ -55,7 +55,7 @@ items:
 
   items:
     # Tipo de boton - visualiza y gestiona los objetos comprados.
-    type: ZAUCTIONHOUSE_PURCHASED_ITEMS
+    type: RAVENAUCTION_PURCHASED_ITEMS
 
     # Slot para el placeholder de estado vacio.
     empty-slot: 22
@@ -73,7 +73,7 @@ items:
       name: '#ff0000&nNingun objeto encontrado'
 
   remove-all:
-    type: ZAUCTIONHOUSE_REMOVE_ALL_PURCHASED
+    type: RAVENAUCTION_REMOVE_ALL_PURCHASED
     is-permanent: true
     slot: 47
     item:

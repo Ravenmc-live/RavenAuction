@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Configuration des Webhooks Discord
+#   RavenAuction V4 - Configuration des Webhooks Discord
 #
 #   Ce fichier configure les notifications par webhook Discord pour les événements d'enchères.
 #   Envoyez des notifications à votre serveur Discord quand des items sont listés ou achetés.
@@ -14,7 +14,7 @@
 #   FORMAT DE L'URL WEBHOOK:
 #   https://discord.com/api/webhooks/WEBHOOK_ID/WEBHOOK_TOKEN
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -62,7 +62,6 @@ default-color: "#5865F2"
 # IMAGES PERSONNALISÉES PAR ITEM
 #=============================================================================
 # Remplace l'image (%item_image_url%) pour des items spécifiques.
-# Parfait pour les items custom (ItemsAdder, Oraxen, Nexo, MMOItems, ...) dont
 # l'image basée sur le matériau ci-dessus ne représente pas le vrai item.
 #
 # Chaque entrée associe une 'rule' (comment reconnaître l'item) à une 'image' (URL).
@@ -75,15 +74,10 @@ default-color: "#5865F2"
 #   type: name               ->  mode: CONTAINS|EQUALS   values: ["Excalibur"]
 #   type: lore               ->  mode: CONTAINS|EQUALS   values: ["Légendaire"]
 #   type: custom-model-data  ->  values: [10001]   (ou ranges: [{min: 10000, max: 10999}])
-#   type: oraxen             ->  items: [ruby_sword]
-#   type: itemsadder         ->  items: ["mynamespace:ruby_sword"]
-#   type: nexo               ->  items: [ruby_sword]
-#   type: mmoitems           ->  items: ["SWORD:EXCALIBUR"]
 #
 # Laissez la liste vide ([]) pour désactiver cette fonctionnalité.
 custom-images: []
 #  - rule:
-#      type: oraxen
 #      items:
 #        - ruby_sword
 #    image: "https://example.com/images/ruby_sword.png"
@@ -121,7 +115,7 @@ webhooks:
     # Nom d'utilisateur personnalisé pour le bot webhook.
     # Ceci remplace le nom par défaut défini dans les paramètres webhook Discord.
     # Laisser vide pour utiliser le défaut Discord.
-    username: "zAuctionHouse"
+    username: "RavenAuction"
 
     # URL d'avatar personnalisée pour le bot webhook.
     # Doit être une URL d'image valide (PNG, JPG, GIF).
@@ -213,7 +207,7 @@ webhooks:
     url: "https://discord.com/api/webhooks/VOTRE_WEBHOOK_ID/VOTRE_WEBHOOK_TOKEN"
 
     # Nom d'utilisateur personnalisé pour le bot webhook.
-    username: "zAuctionHouse"
+    username: "RavenAuction"
 
     # URL d'avatar personnalisée pour le bot webhook.
     avatar-url: ""

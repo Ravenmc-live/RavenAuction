@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Main Auction Inventory
+#   RavenAuction V4 - Main Auction Inventory
 #
 #   This is the main auction house inventory that displays all items for sale.
 #   Players access this via /ah or by clicking the auction house NPC.
@@ -11,7 +11,7 @@
 #   - Sorting options
 #   - Pagination for browsing multiple pages
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -25,8 +25,8 @@
 # Available placeholders:
 #   %page%                        - Current page number
 #   %max-page%                    - Total number of pages
-#   %zauctionhouse_category_name% - Current category name
-name: "%zauctionhouse_category_name% (%page%/%max-page%)"
+#   %ravenauction_category_name% - Current category name
+name: "%ravenauction_category_name% (%page%/%max-page%)"
 
 # Inventory size in slots (must be multiple of 9).
 # Options: 9, 18, 27, 36, 45, 54 (1-6 rows)
@@ -41,9 +41,9 @@ size: 54
 
 patterns:
   # Adds decorative glass pane borders (top and bottom rows)
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
   # Adds pagination buttons (previous/next page)
-  - 'zauctionhouse-pagination'
+  - 'ravenauction-pagination'
 
 #=============================================================================
 # ITEMS
@@ -60,13 +60,13 @@ items:
   # Items are paginated and can be filtered by category.
 
   display-items:
-    # Button type - ZAUCTIONHOUSE_LISTED_ITEMS is a plugin-specific type.
+    # Button type - RAVENAUCTION_LISTED_ITEMS is a plugin-specific type.
     # It automatically handles:
     # - Loading and displaying auction items
     # - Category filtering
     # - Sorting
     # - Click actions (buy/remove)
-    type: ZAUCTIONHOUSE_LISTED_ITEMS
+    type: RAVENAUCTION_LISTED_ITEMS
 
     # Slot to display the "empty" item when no items are found.
     # This slot is used when the auction house has no items.
@@ -101,7 +101,7 @@ items:
     type: inventory
 
     # Plugin that owns the target inventory.
-    plugin: "zAuctionHouse"
+    plugin: "RavenAuction"
 
     # Inventory file to open (inventories/categories.yml).
     inventory: "categories"
@@ -123,7 +123,7 @@ items:
 
   expired-items:
     # Button type - opens the expired items inventory if items exist.
-    type: ZAUCTIONHOUSE_EXPIRED_INVENTORY
+    type: RAVENAUCTION_EXPIRED_INVENTORY
 
     # Slot position - far left of bottom row.
     slot: 45
@@ -155,7 +155,7 @@ items:
 
   purchased-items:
     # Button type - opens the purchased items inventory if items exist.
-    type: ZAUCTIONHOUSE_PURCHASED_INVENTORY
+    type: RAVENAUCTION_PURCHASED_INVENTORY
 
     # Slot position - second from left in bottom row.
     slot: 46
@@ -185,7 +185,7 @@ items:
 
   selling-items:
     # Button type - opens the selling items inventory if items exist.
-    type: ZAUCTIONHOUSE_SELLING_INVENTORY
+    type: RAVENAUCTION_SELLING_INVENTORY
 
     # Slot position - far right of bottom row.
     slot: 53
@@ -214,7 +214,7 @@ items:
   # Opens the chat search input for filtering items.
 
   search:
-    type: ZAUCTIONHOUSE_SEARCH
+    type: RAVENAUCTION_SEARCH
     slot: 47
     is-permanent: true
     # Value shown in %search_query% when no search is active.
@@ -250,8 +250,8 @@ items:
   # Displays auction house information and refreshes the item list.
 
   refresh:
-    # Button type - ZAUCTIONHOUSE_REFRESH handles async refresh.
-    type: ZAUCTIONHOUSE_REFRESH
+    # Button type - RAVENAUCTION_REFRESH handles async refresh.
+    type: RAVENAUCTION_REFRESH
 
     # Slot position - center of bottom row.
     slot: 49
@@ -275,8 +275,8 @@ items:
         - "#2CCED2/ah sell #92ffff<price> [<amount>]"
         - ""
         # PlaceholderAPI placeholders for dynamic stats.
-        - "#92ffffNumber of items#8c8c8c: #2CCED2%zauctionhouse_listed_items%"
-        - "#92ffffSort type#8c8c8c: #2CCED2%zauctionhouse_sorting_name%"
+        - "#92ffffNumber of items#8c8c8c: #2CCED2%ravenauction_listed_items%"
+        - "#92ffffSort type#8c8c8c: #2CCED2%ravenauction_sorting_name%"
         - ""
         - "#8c8c8c• #2CCED2Click #92ffffto refresh the items"
 
@@ -287,7 +287,7 @@ items:
 
   change-sort:
     # Button type - handles sort cycling.
-    type: ZAUCTIONHOUSE_CHANGE_SORT
+    type: RAVENAUCTION_CHANGE_SORT
 
     # Available sort options (cycled in this order).
     # Options: DECREASING_DATE, DECREASING_PRICE, ASCENDING_DATE, ASCENDING_PRICE

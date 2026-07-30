@@ -1,41 +1,40 @@
 <p align="center">
-  <img src="https://img.groupez.dev/zauctionhouse/v3/house.png" width="100" alt="zAuctionHouse Banner" width="800">
+  <img src="https://img.groupez.dev/ravenauction/v3/house.png" width="100" alt="RavenAuction Banner" width="800">
 </p>
 
-<h1 align="center">zAuctionHouse V4</h1>
+<h1 align="center">RavenAuction V4</h1>
 
 <p align="center">
   <strong>The most powerful and customizable auction house plugin for Minecraft servers</strong>
 </p>
 
 <p align="center">
-  <a href="https://www.spigotmc.org/resources/zauctionhouse.63010/"><img src="https://img.shields.io/badge/Spigot-1.21-orange.svg" alt="Spigot"></a>
+  <a href="https://www.spigotmc.org/resources/ravenauction.63010/"><img src="https://img.shields.io/badge/Spigot-1.21-orange.svg" alt="Spigot"></a>
   <a href="https://discord.groupez.dev/"><img src="https://img.shields.io/discord/511516467615760405?label=Discord&logo=discord" alt="Discord"></a>
-  <a href="https://zauctionhouse.groupez.dev/"><img src="https://img.shields.io/badge/Docs-Wiki-blue.svg" alt="Documentation"></a>
+  <a href="https://ravenauction.groupez.dev/"><img src="https://img.shields.io/badge/Docs-Wiki-blue.svg" alt="Documentation"></a>
   <img src="https://img.shields.io/badge/Java-21-red.svg" alt="Java 21">
   <img src="https://img.shields.io/badge/License-Premium-green.svg" alt="License">
 </p>
 
 <p align="center">
-  <a href="https://zauctionhouse.groupez.dev/">Documentation</a> •
+  <a href="https://ravenauction.groupez.dev/">Documentation</a> •
   <a href="https://discord.groupez.dev/">Discord</a> •
-  <a href="https://www.spigotmc.org/resources/zauctionhouse.63010/">Spigot</a>
+  <a href="https://www.spigotmc.org/resources/ravenauction.63010/">Spigot</a>
 </p>
 
 ---
 
-## 📖 About zAuctionHouse
+## 📖 About RavenAuction
 
-**zAuctionHouse** is a premium auction house plugin that allows players to buy and sell items on your Minecraft server. Built with performance, customization, and user experience in mind, it provides a complete trading solution for any server type - from small survival servers to large network infrastructures.
+**RavenAuction** is a premium auction house plugin that allows players to buy and sell items on your Minecraft server. Built with performance, customization, and user experience in mind, it provides a complete trading solution for any server type - from small survival servers to large network infrastructures.
 
-After nearly 5 years since the release of V3 (February 2021), **zAuctionHouse V4** represents a complete rewrite from the ground up, leveraging modern Java features, a new architecture, and years of community feedback to deliver the ultimate auction house experience.
+After nearly 5 years since the release of V3 (February 2021), **RavenAuction V4** represents a complete rewrite from the ground up, leveraging modern Java features, a new architecture, and years of community feedback to deliver the ultimate auction house experience.
 
 ### 🎯 Perfect For
 
 - **Survival/SMP Servers** - Let players trade items naturally
 - **Skyblock Servers** - Essential for island economies
 - **Factions/Towny** - Facilitate inter-faction commerce
-- **RPG Servers** - Custom item trading with MMOItems, Oraxen, etc.
 - **Network Servers** - Multi-server synchronization with Redis addon
 
 ---
@@ -109,25 +108,15 @@ After nearly 5 years since the release of V3 (February 2021), **zAuctionHouse V4
 ### Custom Item Plugins
 | Plugin | Status |
 |--------|--------|
-| ItemsAdder | ✅ Full Support |
-| Oraxen | ✅ Full Support |
-| Nexo | ✅ Full Support |
-| MMOItems | ✅ Full Support |
-| ExecutableItems | ✅ Full Support |
 | EcoItems | ✅ Full Support |
 | MythicCrucible | ✅ Full Support |
-| Slimefun | ✅ Full Support |
-| HeadDatabase | ✅ Full Support |
 | Nova | ✅ Full Support |
-| Denizen | ✅ Full Support |
 | AdvancedItems | ✅ Full Support |
 | CustomCrafting | ✅ Full Support |
 | zHead | ✅ Full Support |
 | MagicCosmetics | ✅ Full Support |
 | HMCCosmetics | ✅ Full Support |
 | zItems | ✅ Full Support |
-| CraftEngine | ✅ Full Support |
-| ExecutableBlocks | ✅ Full Support |
 
 ### Required Dependencies
 | Plugin | Purpose |
@@ -139,7 +128,7 @@ After nearly 5 years since the release of V3 (February 2021), **zAuctionHouse V4
 | Plugin | Purpose |
 |--------|---------|
 | [LuckPerms](https://luckperms.net/) | Offline permission checks |
-| zAuctionHouse Redis | Multi-server synchronization |
+| RavenAuction Redis | Multi-server synchronization |
 
 ---
 
@@ -177,7 +166,7 @@ After nearly 5 years since the release of V3 (February 2021), **zAuctionHouse V4
 
 V4 includes a built-in migration system to import your V3 data:
 ```
-/ah admin migrate zauctionhousev3 confirm
+/ah admin migrate ravenauctionv3 confirm
 ```
 
 Supports migration from:
@@ -187,11 +176,11 @@ Supports migration from:
 
 ---
 
-## 🏆 Why Choose zAuctionHouse?
+## 🏆 Why Choose RavenAuction?
 
 ### vs. Other Auction Plugins
 
-| Feature | zAuctionHouse V4 | Competitors |
+| Feature | RavenAuction V4 | Competitors |
 |---------|------------------|-------------|
 | **GUI Customization** | 100% via YAML (zMenu) | Limited or hardcoded |
 | **Custom Item Support** | 20+ plugins | Few or none |
@@ -238,11 +227,11 @@ Supports migration from:
 ## 📥 Installation
 
 1. Download [zMenu](https://www.spigotmc.org/resources/zmenu.110402/) and [PlaceholderAPI](https://www.spigotmc.org/resources/placeholderapi.6245/)
-2. Download zAuctionHouse from [Spigot](https://www.spigotmc.org/resources/zauctionhouse-1-8-1-21.81494/)
+2. Download RavenAuction from [Spigot](https://www.spigotmc.org/resources/ravenauction-1-8-1-21.81494/)
 3. Place all JARs in your `plugins` folder
 4. Restart your server
-5. Configure in `plugins/zAuctionHouse/config.yml`
-6. Customize GUIs in `plugins/zAuctionHouse/inventories/`
+5. Configure in `plugins/RavenAuction/config.yml`
+6. Customize GUIs in `plugins/RavenAuction/inventories/`
 
 ---
 
@@ -274,16 +263,16 @@ Supports migration from:
 
 ## 🔗 Links
 
-- 📖 **Documentation**: [zauctionhouse.groupez.dev](https://zauctionhouse.groupez.dev/)
+- 📖 **Documentation**: [ravenauction.groupez.dev](https://ravenauction.groupez.dev/)
 - 💬 **Discord**: [discord.groupez.dev](https://discord.groupez.dev/)
-- 🛒 **Spigot**: [spigotmc.org/resources/zauctionhouse](https://www.spigotmc.org/resources/zauctionhouse-1-8-1-21.81494/)
-- 🐛 **Issues**: [GitHub Issues](https://github.com/Starter-zMenu/zAuctionHouseV4/issues)
+- 🛒 **Spigot**: [spigotmc.org/resources/ravenauction](https://www.spigotmc.org/resources/ravenauction-1-8-1-21.81494/)
+- 🐛 **Issues**: [GitHub Issues](https://github.com/Starter-zMenu/RavenAuctionV4/issues)
 
 ---
 
 ## 💝 Support the Development
 
-zAuctionHouse is a premium plugin developed with passion. Your purchase supports:
+RavenAuction is a premium plugin developed with passion. Your purchase supports:
 - Continuous development and new features
 - Bug fixes and compatibility updates
 - Documentation and support
@@ -293,7 +282,7 @@ zAuctionHouse is a premium plugin developed with passion. Your purchase supports
 
 ## 📜 License
 
-zAuctionHouse is a premium plugin. Purchase includes:
+RavenAuction is a premium plugin. Purchase includes:
 - Lifetime updates
 - Discord support
 - Access to all addons
@@ -358,7 +347,7 @@ zAuctionHouse is a premium plugin. Purchase includes:
 
 ---
 
-## zAuctionHouse Discord Bot (Planned)
+## RavenAuction Discord Bot (Planned)
 
 - [ ] Private message notifications for sales
 - [ ] Listing notifications

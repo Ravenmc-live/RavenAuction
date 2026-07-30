@@ -42,7 +42,7 @@ public class RedisSubscriber {
         if (this.running) return;
 
         this.running = true;
-        this.thread = new Thread(this::listen, "zAuctionHouse-Redis-Subscriber");
+        this.thread = new Thread(this::listen, "RavenAuction-Redis-Subscriber");
         this.thread.setDaemon(true);
         this.thread.start();
     }

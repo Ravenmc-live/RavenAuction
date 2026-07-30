@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Categories Configuration
+#   RavenAuction V4 - Categories Configuration
 #
 #   This file defines item categories for organizing the auction house.
 #   Categories help players browse items more easily by filtering by type.
@@ -24,7 +24,6 @@
 #   - lore            : Match by item lore content
 #   - custom-model-data: Match by CustomModelData value
 #   - and/or          : Combine multiple rules
-#   - Custom item plugin rules (itemsadder, oraxen, mmoitems, etc.)
 #
 #   BANNED RULES (EXCLUSION):
 #   - You can add a "banned-rules" list to any category
@@ -33,7 +32,7 @@
 #   - Uses the same rule types as regular rules
 #   - Useful for excluding custom items (e.g., items with specific CustomModelData)
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -268,11 +267,9 @@ misc:
 #
 # EXAMPLES:
 #
-# # Custom category for ItemsAdder items
 # custom-items:
 #   display-name: "#ffd700Custom Items"
 #   rules:
-#     - type: itemsadder
 #       items:
 #         - "mynamespace:*"  # All items from your namespace
 #

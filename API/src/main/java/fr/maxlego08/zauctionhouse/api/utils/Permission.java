@@ -33,7 +33,7 @@ public enum Permission {
      * @return The permission string.
      */
     public String asPermission() {
-        return name().toLowerCase().replace("_", ".");
+        return name().toLowerCase().replace("_", ".").replaceFirst("^zauctionhouse", "ravenauction");
     }
 
     public String toPermission() {

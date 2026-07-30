@@ -14,7 +14,7 @@ public class RefreshLoader extends ButtonLoader {
     private final InventoryManager inventoryManager;
 
     public RefreshLoader(AuctionPlugin plugin, InventoryManager inventoryManager) {
-        super(plugin, "ZAUCTIONHOUSE_REFRESH");
+        super(plugin, "RAVENAUCTION_REFRESH");
         this.plugin = plugin;
         this.inventoryManager = inventoryManager;
     }

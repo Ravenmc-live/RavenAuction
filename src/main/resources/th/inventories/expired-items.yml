@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Expired Items Inventory
+#   RavenAuction V4 - Expired Items Inventory
 #
 #   Inventory นี้ใช้แสดงไอเทมที่หมดอายุโดยไม่ได้ถูกขาย
 #   ผู้เล่นสามารถกดรับไอเทมเหล่านี้กลับเข้ากระเป๋าของตัวเองได้
@@ -14,7 +14,7 @@
 #   - /ah expired
 #   - คลิกปุ่ม "Expired Items" ในหน้า auction หลัก
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -36,11 +36,11 @@ size: 54
 
 patterns:
   # กรอบกระจกตกแต่งรอบ ๆ
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
   # ปุ่มย้อนหน้า / หน้าถัดไป
-  - 'zauctionhouse-pagination'
+  - 'ravenauction-pagination'
   # ปุ่มกลับไปหน้า auction หลัก
-  - 'zauctionhouse-back'
+  - 'ravenauction-back'
 
 #=============================================================================
 # ITEMS
@@ -56,7 +56,7 @@ items:
 
   items:
     # ประเภทปุ่ม - แสดงและจัดการไอเทมหมดอายุ
-    type: ZAUCTIONHOUSE_EXPIRED_ITEMS
+    type: RAVENAUCTION_EXPIRED_ITEMS
 
     # ช่องสำหรับแสดงไอเทม placeholder เมื่อไม่มีไอเทมหมดอายุ
     empty-slot: 22
@@ -74,7 +74,7 @@ items:
       name: '#ff0000&nไม่พบไอเทมหมดอายุ'
 
   remove-all:
-    type: ZAUCTIONHOUSE_REMOVE_ALL_EXPIRED
+    type: RAVENAUCTION_REMOVE_ALL_EXPIRED
     is-permanent: true
     slot: 47
     item:

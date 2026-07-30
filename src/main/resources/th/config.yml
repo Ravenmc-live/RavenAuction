@@ -1,9 +1,9 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Main Configuration (ไฟล์ตั้งค่าหลัก)
+#   RavenAuction V4 - Main Configuration (ไฟล์ตั้งค่าหลัก)
 #
 #   Sponsor: https://minestrator.com/a/GROUPEZ
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -123,7 +123,7 @@ database-configuration:
   # prefix ของชื่อ table ที่ปลั๊กอินสร้าง
   # มีประโยชน์เมื่อใช้ฐานข้อมูลร่วมกับปลั๊กอินอื่น ป้องกันชื่อชนกัน
   # คำเตือน: ห้ามเปลี่ยนหลังมีข้อมูลแล้ว ไม่งั้นปลั๊กอินจะมองไม่เห็นข้อมูลเดิม
-  table-prefix: zauctionhousev4_
+  table-prefix: ravenauctionv4_
 
   # IP หรือ hostname ของ database server
   # ถ้า DB อยู่เครื่องเดียวกันใช้ 'localhost' หรือ '127.0.0.1'
@@ -142,7 +142,7 @@ database-configuration:
 
   # ชื่อฐานข้อมูลที่จะเก็บข้อมูล auction
   # DB ต้องถูกสร้างไว้ก่อนแล้ว ปลั๊กอินจะสร้าง table เอง
-  database: zauctionhouse
+  database: ravenauction
 
   # เปิด debug SQL หรือไม่
   # ถ้าเปิด จะ log query ทั้งหมดลงคอนโซล
@@ -181,9 +181,9 @@ message-colors:
 # สำคัญ: เปลี่ยนส่วนนี้แล้วต้อง "รีสตาร์ทเซิร์ฟเวอร์" เท่านั้น /ah admin reload ไม่พอ
 
 commands:
-  # คำสั่งหลัก: /zauctionhouse (เปิด auction house)
+  # คำสั่งหลัก: /ravenauction (เปิด auction house)
   main-command:
-    # ชื่อคำสั่งอื่นที่ใช้แทน /zauctionhouse ได้
+    # ชื่อคำสั่งอื่นที่ใช้แทน /ravenauction ได้
     # ผู้เล่นสามารถใช้ alias ไหนก็ได้เพื่อเปิด auction
     aliases:
       - ah           # สั้นและฮิต
@@ -191,7 +191,7 @@ commands:
       - auction      # ชื่อเต็มภาษาอังกฤษ
       - zauction     # เวอร์ชันมีชื่อปลั๊กอินนำหน้า
 
-  # คำสั่งขาย: /zauctionhouse sell <price> [amount] [economy]
+  # คำสั่งขาย: /ravenauction sell <price> [amount] [economy]
   # ใช้โดยผู้เล่นในการลงขายไอเท็ม
   sell:
     # ถ้าเปิด: พิมพ์ /ah sell เฉย ๆ จะเปิด GUI ให้เลือกไอเท็ม/ตั้งราคา/เลือก economy
@@ -235,7 +235,7 @@ commands:
         auto-completion:
           - vault
 
-  # คำสั่งรับเงิน: /zauctionhouse claim
+  # คำสั่งรับเงิน: /ravenauction claim
   # ใช้รับเงินที่ค้างอยู่เมื่อปิด auto-claim
   claim:
     aliases:
@@ -243,7 +243,7 @@ commands:
       - c
       - recuperer    # ฝรั่งเศส: "กู้คืน"
 
-  # คำสั่งค้นหา: /zauctionhouse search <query>
+  # คำสั่งค้นหา: /ravenauction search <query>
   # ค้นหาไอเทมใน auction house ด้วยข้อความ
   search:
     aliases:
@@ -255,7 +255,7 @@ commands:
         required: true
         auto-completion: []
 
-  # คำสั่งเปิดหน้า: /zauctionhouse page <number>
+  # คำสั่งเปิดหน้า: /ravenauction page <number>
   # เปิด auction ที่หน้าที่กำหนดโดยตรง
   page:
     aliases:
@@ -277,7 +277,7 @@ commands:
   inventories:
     # /ah selling - เปิดหน้าของที่เรากำลังลงขายอยู่
     - enable: true
-      permission: "zauctionhouse.selling"
+      permission: "ravenauction.selling"
       description: "Open selling items"
       aliases:
         - 'selling'
@@ -287,7 +287,7 @@ commands:
 
     # /ah expired - เปิดหน้าของที่หมดอายุ
     - enable: true
-      permission: "zauctionhouse.expired"
+      permission: "ravenauction.expired"
       description: "Open expired items"
       aliases:
         - 'expired'
@@ -295,7 +295,7 @@ commands:
 
     # /ah purchased - เปิดหน้าของที่เราซื้อมาแล้ว
     - enable: true
-      permission: "zauctionhouse.purchased"
+      permission: "ravenauction.purchased"
       description: "Open purchased items"
       aliases:
         - 'purchased'
@@ -303,7 +303,7 @@ commands:
 
     # /ah history - เปิดหน้าประวัติการขายของเรา
     - enable: true
-      permission: "zauctionhouse.history"
+      permission: "ravenauction.history"
       description: "Open history"
       aliases:
         - 'history'
@@ -320,7 +320,7 @@ commands:
     default-cooldown: 100
 
     # สิทธิ์ที่อนุญาตให้ผู้เล่นข้าม cooldown ของคำสั่ง
-    bypass-permission: "zauctionhouse.cooldown.command.bypass"
+    bypass-permission: "ravenauction.cooldown.command.bypass"
 
     # Cooldown เฉพาะคำสั่ง (ในหน่วยมิลลิวินาที)
     # ใช้ alias แรกของคำสั่งเป็น key
@@ -401,11 +401,11 @@ expiration:
       enable: false
       # ตรวจตามลำดับ ด้านบนลงล่าง เจออันแรกที่ตรงก็ใช้ตัวนั้น
       permissions:
-        - permission: zauctionhouse.expiration.vip
+        - permission: ravenauction.expiration.vip
           expiration: 3600       # 1 ชั่วโมง
-        - permission: zauctionhouse.expiration.elite
+        - permission: ravenauction.expiration.elite
           expiration: 7200       # 2 ชั่วโมง
-        - permission: zauctionhouse.expiration.legend
+        - permission: ravenauction.expiration.legend
           expiration: 259200     # 3 วัน
 
   # เวลาหมดอายุของ bid listings (ระบบ bid ในอนาคต)
@@ -414,11 +414,11 @@ expiration:
     permission:
       enable: false
       permissions:
-        - permission: zauctionhouse.expiration.vip
+        - permission: ravenauction.expiration.vip
           expiration: 3600
-        - permission: zauctionhouse.expiration.elite
+        - permission: ravenauction.expiration.elite
           expiration: 7200
-        - permission: zauctionhouse.expiration.legend
+        - permission: ravenauction.expiration.legend
           expiration: 259200
 
   # เวลาหมดอายุของ rent listings (ระบบเช่าในอนาคต)
@@ -427,11 +427,11 @@ expiration:
     permission:
       enable: false
       permissions:
-        - permission: zauctionhouse.expiration.vip
+        - permission: ravenauction.expiration.vip
           expiration: 3600
-        - permission: zauctionhouse.expiration.elite
+        - permission: ravenauction.expiration.elite
           expiration: 7200
-        - permission: zauctionhouse.expiration.legend
+        - permission: ravenauction.expiration.legend
           expiration: 259200
 
   # ระยะเวลาที่เก็บไอเท็ม "หมดอายุ" ไว้ก่อนลบถาวร
@@ -460,29 +460,29 @@ expiration:
 permissions:
   # จำกัดจำนวนสำหรับประกาศขายแบบปกติ (auction)
   auction:
-    - permission: zauctionhouse.max.5
+    - permission: ravenauction.max.5
       limit: 5
-    - permission: zauctionhouse.max.10
+    - permission: ravenauction.max.10
       limit: 10
-    - permission: zauctionhouse.max.15
+    - permission: ravenauction.max.15
       limit: 15
 
   # จำกัดจำนวนสำหรับ rent (ในอนาคต)
   rent:
-    - permission: zauctionhouse.max.5
+    - permission: ravenauction.max.5
       limit: 5
-    - permission: zauctionhouse.max.10
+    - permission: ravenauction.max.10
       limit: 10
-    - permission: zauctionhouse.max.15
+    - permission: ravenauction.max.15
       limit: 15
 
   # จำกัดจำนวนสำหรับ bid (ในอนาคต)
   bid:
-    - permission: zauctionhouse.max.5
+    - permission: ravenauction.max.5
       limit: 5
-    - permission: zauctionhouse.max.10
+    - permission: ravenauction.max.10
       limit: 10
-    - permission: zauctionhouse.max.15
+    - permission: ravenauction.max.15
       limit: 15
 
 #=============================================================================
@@ -988,7 +988,7 @@ redis:
   # prefix ที่ใช้กับ pub/sub channel และทุก lock key
   # ทุกเซิร์ฟเวอร์ในเครือ "เดียวกัน" ต้องใช้ prefix "เดียวกัน"
   # ถ้าคนละเครือแต่แชร์ Redis ตัวเดียวกัน ต้องใช้ prefix ต่างกัน
-  channel-prefix: "zauctionhouse"
+  channel-prefix: "ravenauction"
 
   # อายุของ lock บนไอเท็ม หน่วยเป็นมิลลิวินาที
   # ปกติ lock จะถูกปลดทันทีที่ทำงานเสร็จ ค่านี้มีผลเฉพาะกรณีเซิร์ฟเวอร์ดับกลางการซื้อ
@@ -1052,50 +1052,50 @@ search-filters:
 ################################################################################################################################
 # MIGRATION FROM OTHER PLUGINS (ย้ายข้อมูลจากปลั๊กอินอื่น)
 ################################################################################################################################
-# ส่วนนี้ใช้สำหรับย้ายข้อมูลจากปลั๊กอิน auction ตัวอื่นมายัง zAuctionHouse V4
+# ส่วนนี้ใช้สำหรับย้ายข้อมูลจากปลั๊กอิน auction ตัวอื่นมายัง RavenAuction V4
 #
 # วิธี migrate:
 # 1. ตั้งค่าหมวด source ด้านล่างด้วยการตั้งค่า DB ของปลั๊กอินเก่า
 # 2. ปิดเซิร์ฟเวอร์แล้ว backup ข้อมูลทุกอย่าง (สำคัญมาก!)
-# 3. เปิดเซิร์ฟเวอร์พร้อม zAuctionHouse V4
+# 3. เปิดเซิร์ฟเวอร์พร้อม RavenAuction V4
 # 4. รัน: /ah admin migrate <source> confirm
 #
 # ปลั๊กอินที่รองรับตอนนี้:
-#   - zauctionhousev3 (aliases: zah, zahv3, v3)
+#   - ravenauctionv3 (aliases: zah, zahv3, v3)
 #
 # คำเตือน: ต้อง backup ก่อนทุกครั้ง การ migrate ไม่สามารถ undo ได้ง่าย ๆ
 
 migration:
 
   #============================================================
-  # zAuctionHouse V3 Migration
+  # RavenAuction V3 Migration
   #============================================================
-  # ย้ายข้อมูลจาก zAuctionHouse V3 มายัง V4
-  # คำสั่ง: /ah admin migrate zauctionhousev3 confirm
-  zauctionhouse-v3:
+  # ย้ายข้อมูลจาก RavenAuction V3 มายัง V4
+  # คำสั่ง: /ah admin migrate ravenauctionv3 confirm
+  ravenauction-v3:
     # ประเภท storage ของ V3
     # ตัวเลือก: MYSQL, MARIADB, SQLITE, หรือ JSON
     source-type: SQLITE
 
     # table prefix ที่ใช้ใน V3
-    # ถ้าไม่แน่ใจให้ดูที่ config.yml ของ V3 (ดีฟอลต์คือ "zauctionhouse_")
-    table-prefix: "zauctionhouse_"
+    # ถ้าไม่แน่ใจให้ดูที่ config.yml ของ V3 (ดีฟอลต์คือ "ravenauction_")
+    table-prefix: "ravenauction_"
 
     # === การตั้งค่า SQLite ของ V3 ===
     # path ของไฟล์ SQLite (relative จากโฟลเดอร์เซิร์ฟเวอร์)
-    sqlite-path: "plugins/zAuctionHousev3/database.db"
+    sqlite-path: "plugins/RavenAuctionv3/database.db"
 
     # === การตั้งค่า MySQL/MariaDB ของ V3 ===
     # ใช้เฉพาะเมื่อ source-type เป็น MYSQL/MARIADB
     host: "localhost"
     port: 3306
-    database: "zauctionhouse"
+    database: "ravenauction"
     user: "root"
     password: ""
 
     # === การตั้งค่า JSON ของ V3 ===
     # path โฟลเดอร์ที่เก็บไฟล์ JSON ของ V3
-    json-folder: "plugins/zAuctionHouseV3"
+    json-folder: "plugins/RavenAuctionV3"
 
   #============================================================
   # แหล่งย้ายข้อมูลอื่น (อนาคต)

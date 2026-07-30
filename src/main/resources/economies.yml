@@ -1,11 +1,11 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Economy Configuration
+#   RavenAuction V4 - Economy Configuration
 #
 #   This file configures economy providers for the auction house.
 #   You can enable multiple economies to allow players to trade with different currencies.
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -78,14 +78,14 @@ economies:
 
     # Optional permission required to use this economy.
     # Leave commented out to allow everyone to use it.
-    # permission: "zauctionhouse.economy.vault"
+    # permission: "ravenauction.economy.vault"
 
     # Reason string for economy withdrawals (shown in economy logs).
     # Available placeholder: %items% (displays item names)
-    withdraw-reason: "Purchase of %items% (zAuctionHouse)"
+    withdraw-reason: "Purchase of %items% (RavenAuction)"
 
     # Reason string for economy deposits (shown in economy logs).
-    deposit-reason: "Sale of %items% (zAuctionHouse)"
+    deposit-reason: "Sale of %items% (RavenAuction)"
 
     # Price number formatting mode.
     # Options:
@@ -146,18 +146,18 @@ economies:
 
       # Permission to completely bypass all taxes
       # Players with this permission pay no tax on any transaction.
-      bypass-permission: "zauctionhouse.tax.bypass"
+      bypass-permission: "ravenauction.tax.bypass"
 
       # Permission-based tax reductions.
       # Players with these permissions get reduced tax rates.
       # Checked in order - first matching permission is applied.
       # Reduction is a percentage OFF the normal tax rate.
       reductions:
-        - permission: "zauctionhouse.tax.vip"
+        - permission: "ravenauction.tax.vip"
           percentage: 50  # 50% reduction (5% tax → 2.5% effective)
-        - permission: "zauctionhouse.tax.premium"
+        - permission: "ravenauction.tax.premium"
           percentage: 25  # 25% reduction (5% tax → 3.75% effective)
-        - permission: "zauctionhouse.tax.member"
+        - permission: "ravenauction.tax.member"
           percentage: 10  # 10% reduction (5% tax → 4.5% effective)
 
       #-----------------------------------------------------------------------

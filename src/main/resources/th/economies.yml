@@ -1,11 +1,11 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - การตั้งค่าเศรษฐกิจ (Economy Configuration)
+#   RavenAuction V4 - การตั้งค่าเศรษฐกิจ (Economy Configuration)
 #
 #   ไฟล์นี้ใช้กำหนดผู้ให้บริการเศรษฐกิจ (economy providers) สำหรับ auction house
 #   คุณสามารถเปิดใช้หลายเศรษฐกิจพร้อมกัน เพื่อให้ผู้เล่นเทรดด้วยสกุลเงินที่ต่างกันได้
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -77,14 +77,14 @@ economies:
 
     # Permission ที่จำเป็นสำหรับการใช้ economy นี้ (ถ้ามี)
     # ถ้าคอมเมนต์ทิ้งไว้ ทุกคนจะสามารถใช้ economy นี้ได้
-    # permission: "zauctionhouse.economy.vault"
+    # permission: "ravenauction.economy.vault"
 
     # ข้อความเหตุผลที่ใช้ใน log ของ economy เมื่อมีการหักเงิน
     # placeholder ที่ใช้ได้: %items% (จะแสดงชื่อไอเท็ม)
-    withdraw-reason: "Purchase of %items% (zAuctionHouse)"
+    withdraw-reason: "Purchase of %items% (RavenAuction)"
 
     # ข้อความเหตุผลที่ใช้ใน log ของ economy เมื่อมีการเพิ่มเงิน
-    deposit-reason: "Sale of %items% (zAuctionHouse)"
+    deposit-reason: "Sale of %items% (RavenAuction)"
 
     # โหมดการจัดรูปแบบตัวเลขราคา
     # ตัวเลือก:
@@ -145,18 +145,18 @@ economies:
 
       # Permission สำหรับยกเว้นภาษีทั้งหมด
       # ผู้เล่นที่มี permission นี้จะไม่ถูกเก็บภาษีเลย
-      bypass-permission: "zauctionhouse.tax.bypass"
+      bypass-permission: "ravenauction.tax.bypass"
 
       # การลดภาษีตาม permission
       # ผู้เล่นที่มี permission เหล่านี้จะได้อัตราภาษีที่ลดลง
       # จะตรวจตามลำดับบนลงล่าง เจออันแรกที่ตรงก็ใช้ตัวนั้น
       # percentage คือเปอร์เซ็นต์ "ที่ลดออกไป" จากอัตราปกติ
       reductions:
-        - permission: "zauctionhouse.tax.vip"
+        - permission: "ravenauction.tax.vip"
           percentage: 50  # ลด 50% (ภาษี 5% → เหลือ 2.5%)
-        - permission: "zauctionhouse.tax.premium"
+        - permission: "ravenauction.tax.premium"
           percentage: 25  # ลด 25% (ภาษี 5% → เหลือ 3.75%)
-        - permission: "zauctionhouse.tax.member"
+        - permission: "ravenauction.tax.member"
           percentage: 10  # ลด 10% (ภาษี 5% → เหลือ 4.5%)
 
       #-----------------------------------------------------------------------

@@ -47,7 +47,7 @@ allprojects {
 
     tasks.shadowJar {
 
-        archiveBaseName.set("zAuctionHouse")
+        archiveBaseName.set("RavenAuction")
         archiveAppendix.set(if (project.path == ":") "" else project.name)
         archiveClassifier.set("")
     }

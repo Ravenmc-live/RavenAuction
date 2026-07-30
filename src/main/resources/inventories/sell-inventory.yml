@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Sell Inventory
+#   RavenAuction V4 - Sell Inventory
 #
 #   This inventory allows players to list items for sale through a GUI.
 #   Opened via /ah sell (when enable-sell-inventory is true in config.yml).
@@ -11,7 +11,7 @@
 #   - Choose economy type (if multiple economies are enabled)
 #   - Confirm or cancel the listing
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -32,7 +32,7 @@ size: 54
 
 patterns:
   # Decorative glass pane borders.
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
 
 #=============================================================================
 # ITEMS
@@ -48,7 +48,7 @@ items:
 
   show-item:
     # Button type - handles item selection and display.
-    type: ZAUCTIONHOUSE_SELL_SHOW_ITEM
+    type: RAVENAUCTION_SELL_SHOW_ITEM
 
     # Slots for displaying selected items.
     # Covers the entire middle area (36 slots).
@@ -74,7 +74,7 @@ items:
 
   cancel:
     # Button type - handles cancellation and item return.
-    type: ZAUCTIONHOUSE_SELL_CANCEL
+    type: RAVENAUCTION_SELL_CANCEL
 
     # Slot position - far left of bottom row.
     slot: 45
@@ -94,7 +94,7 @@ items:
 
   private-decrease:
     # Button type - handles price modification.
-    type: ZAUCTIONHOUSE_SELL_PRICE
+    type: RAVENAUCTION_SELL_PRICE
 
     # Slot position.
     slot: 48
@@ -129,7 +129,7 @@ items:
 
   select-economy:
     # Button type - handles economy cycling.
-    type: ZAUCTIONHOUSE_SELL_ECONOMY
+    type: RAVENAUCTION_SELL_ECONOMY
 
     # Slot position - center of bottom row.
     slot: 49
@@ -153,7 +153,7 @@ items:
 
   price-increase:
     # Button type - handles price modification.
-    type: ZAUCTIONHOUSE_SELL_PRICE
+    type: RAVENAUCTION_SELL_PRICE
 
     # Price change amounts for different click types.
     # Positive values increase the price.
@@ -185,7 +185,7 @@ items:
 
   confirm:
     # Button type - handles sale confirmation.
-    type: ZAUCTIONHOUSE_SELL_CONFIRM
+    type: RAVENAUCTION_SELL_CONFIRM
 
     # Slot position - far right of bottom row.
     slot: 53

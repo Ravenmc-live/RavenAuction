@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Admin Logs Inventory
+#   RavenAuction V4 - Admin Logs Inventory
 #
 #   This inventory displays all action logs for a player.
 #   Logs record every auction action: listing, purchasing, and removing items.
@@ -21,7 +21,7 @@
 #   ACCESS:
 #   - From admin history main menu → Logs button
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -42,11 +42,11 @@ size: 54
 
 patterns:
   # Decorative glass pane borders.
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
   # Previous/next page buttons.
-  - 'zauctionhouse-pagination'
+  - 'ravenauction-pagination'
   # Back button to return to admin history main.
-  - 'zauctionhouse-back'
+  - 'ravenauction-back'
 
 #=============================================================================
 # ITEMS
@@ -62,7 +62,7 @@ items:
 
   items:
     # Button type - displays log entries.
-    type: ZAUCTIONHOUSE_ADMIN_LOGS
+    type: RAVENAUCTION_ADMIN_LOGS
 
     # Slot for loading indicator.
     loading-slot: 22
@@ -97,7 +97,7 @@ items:
 
   filter-type:
     # Button type - handles type filtering.
-    type: ZAUCTIONHOUSE_ADMIN_LOGS_FILTER_TYPE
+    type: RAVENAUCTION_ADMIN_LOGS_FILTER_TYPE
 
     # Slot position.
     slot: 47
@@ -152,7 +152,7 @@ items:
 
   filter-date:
     # Button type - handles date filtering.
-    type: ZAUCTIONHOUSE_ADMIN_LOGS_FILTER_DATE
+    type: RAVENAUCTION_ADMIN_LOGS_FILTER_DATE
 
     slot: 51
 

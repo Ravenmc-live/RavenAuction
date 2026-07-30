@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Inventaire des Items Achetés
+#   RavenAuction V4 - Inventaire des Items Achetés
 #
 #   Cet inventaire affiche les items que le joueur a achetés dans l'hôtel des ventes.
 #   Les joueurs peuvent récupérer les items achetés dans leur inventaire.
@@ -14,7 +14,7 @@
 #   - /ah purchased
 #   - Cliquez sur le bouton "Items achetés" dans l'hôtel des ventes principal
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -35,11 +35,11 @@ size: 54
 
 patterns:
   # Bordures décoratives en vitres.
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
   # Boutons page précédente/suivante.
-  - 'zauctionhouse-pagination'
+  - 'ravenauction-pagination'
   # Bouton retour pour revenir à l'hôtel des ventes.
-  - 'zauctionhouse-back'
+  - 'ravenauction-back'
 
 #=============================================================================
 # ITEMS
@@ -55,7 +55,7 @@ items:
 
   items:
     # Type de bouton - affiche et gère les items achetés.
-    type: ZAUCTIONHOUSE_PURCHASED_ITEMS
+    type: RAVENAUCTION_PURCHASED_ITEMS
 
     # Slot pour le placeholder d'état vide.
     empty-slot: 22
@@ -77,7 +77,7 @@ items:
   #---------------------------------------------------------------------------
 
   remove-all:
-    type: ZAUCTIONHOUSE_REMOVE_ALL_PURCHASED
+    type: RAVENAUCTION_REMOVE_ALL_PURCHASED
     is-permanent: true
     slot: 47
     item:

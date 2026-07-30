@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Purchase Confirmation Inventory
+#   RavenAuction V4 - Purchase Confirmation Inventory
 #
 #   inventory นี้ใช้สำหรับให้ผู้เล่น "ยืนยัน" การซื้อ ก่อนที่จะทำการซื้อจริง
 #   จะแสดงไอเทมที่จะซื้อ พร้อมปุ่มยืนยัน / ยกเลิก
@@ -13,7 +13,7 @@
 #   การเปิดใช้งาน:
 #   - เปิดขึ้นมาอัตโนมัติเมื่อผู้เล่นคลิกซื้อไอเทมในตลาด (auction house)
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -41,7 +41,7 @@ items:
 
   confirm:
     # ประเภทปุ่ม - จัดการการยืนยันการซื้อให้โดยอัตโนมัติ
-    type: ZAUCTIONHOUSE_CONFIRM_PURCHASE
+    type: RAVENAUCTION_CONFIRM_PURCHASE
 
     item:
       # กระจกสีเขียว ใช้แทนปุ่มยืนยันการซื้อ
@@ -107,7 +107,7 @@ items:
 
   show:
     # ประเภทปุ่ม - ใช้สำหรับแสดงไอเทมจากตลาด
-    type: ZAUCTIONHOUSE_SHOW
+    type: RAVENAUCTION_SHOW
 
     # ช่องตรงกลาง inventory
     slot: 13
@@ -120,7 +120,7 @@ items:
   shulker:
     # ประเภทปุ่ม - เปิดดูของด้านใน shulker
     # จะแสดงเฉพาะเมื่อไอเทมมี shulker อยู่ด้านใน
-    type: ZAUCTIONHOUSE_SHULKER_OPEN
+    type: RAVENAUCTION_SHULKER_OPEN
 
     # ตำแหน่งช่อง
     slot: 4

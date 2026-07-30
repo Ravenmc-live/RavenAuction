@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Inventario Principal Historial Admin
+#   RavenAuction V4 - Inventario Principal Historial Admin
 #
 #   Este es el hub admin para ver el historial de subastas de un jugador.
 #   Desde aqui, los administradores pueden acceder a todos los aspectos de la actividad de subasta de un jugador.
@@ -16,7 +16,7 @@
 #   - /ah admin history <jugador>
 #   - Requiere permisos de admin
 #
-#   Documentacion: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentacion: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -45,7 +45,7 @@ items:
 
   target:
     # Tipo de boton - visualiza informacion del jugador objetivo.
-    type: ZAUCTIONHOUSE_ADMIN_HISTORY_MAIN
+    type: RAVENAUCTION_ADMIN_HISTORY_MAIN
 
     # Posicion del slot - centro arriba.
     slot: 13
@@ -63,7 +63,7 @@ items:
 
   expired:
     # Tipo de boton - abre la vista objetos caducados admin.
-    type: ZAUCTIONHOUSE_ADMIN_HISTORY_EXPIRED
+    type: RAVENAUCTION_ADMIN_HISTORY_EXPIRED
 
     # Posicion del slot.
     slot: 28
@@ -86,7 +86,7 @@ items:
 
   purchased:
     # Tipo de boton - abre la vista objetos comprados admin.
-    type: ZAUCTIONHOUSE_ADMIN_HISTORY_PURCHASED
+    type: RAVENAUCTION_ADMIN_HISTORY_PURCHASED
 
     slot: 29
 
@@ -107,7 +107,7 @@ items:
 
   selling:
     # Tipo de boton - abre la vista objetos en venta admin.
-    type: ZAUCTIONHOUSE_ADMIN_HISTORY_SELLING
+    type: RAVENAUCTION_ADMIN_HISTORY_SELLING
 
     slot: 30
 
@@ -129,7 +129,7 @@ items:
 
   logs:
     # Tipo de boton - abre la vista registros admin.
-    type: ZAUCTIONHOUSE_ADMIN_HISTORY_LOGS
+    type: RAVENAUCTION_ADMIN_HISTORY_LOGS
 
     slot: 33
 
@@ -148,7 +148,7 @@ items:
 
   transactions:
     # Tipo de boton - abre la vista transacciones admin.
-    type: ZAUCTIONHOUSE_ADMIN_HISTORY_TRANSACTIONS
+    type: RAVENAUCTION_ADMIN_HISTORY_TRANSACTIONS
 
     slot: 34
 

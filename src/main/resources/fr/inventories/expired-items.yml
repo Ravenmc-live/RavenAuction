@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Inventaire des Items Expirés
+#   RavenAuction V4 - Inventaire des Items Expirés
 #
 #   Cet inventaire affiche les items qui ont expiré sans être vendus.
 #   Les joueurs peuvent récupérer ces items dans leur inventaire.
@@ -14,7 +14,7 @@
 #   - /ah expired
 #   - Cliquez sur le bouton "Items expirés" dans l'hôtel des ventes principal
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -36,11 +36,11 @@ size: 54
 
 patterns:
   # Bordures décoratives en vitres.
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
   # Boutons page précédente/suivante.
-  - 'zauctionhouse-pagination'
+  - 'ravenauction-pagination'
   # Bouton retour pour revenir à l'hôtel des ventes.
-  - 'zauctionhouse-back'
+  - 'ravenauction-back'
 
 #=============================================================================
 # ITEMS
@@ -56,7 +56,7 @@ items:
 
   items:
     # Type de bouton - affiche et gère les items expirés.
-    type: ZAUCTIONHOUSE_EXPIRED_ITEMS
+    type: RAVENAUCTION_EXPIRED_ITEMS
 
     # Slot pour le placeholder d'état vide.
     empty-slot: 22
@@ -78,7 +78,7 @@ items:
   #---------------------------------------------------------------------------
 
   remove-all:
-    type: ZAUCTIONHOUSE_REMOVE_ALL_EXPIRED
+    type: RAVENAUCTION_REMOVE_ALL_EXPIRED
     is-permanent: true
     slot: 47
     item:

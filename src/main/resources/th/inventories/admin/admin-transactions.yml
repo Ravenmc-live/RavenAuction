@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Admin Transactions Inventory
+#   RavenAuction V4 - Admin Transactions Inventory
 #
 #   Inventory นี้ใช้แสดงประวัติธุรกรรม (transaction history) ของผู้เล่น
 #   แต่ละธุรกรรมคือดีลการขายที่เสร็จสมบูรณ์ พร้อมรายละเอียดด้านการเงิน
@@ -18,7 +18,7 @@
 #   ACCESS:
 #   - เปิดจากหน้า admin history main → ปุ่ม Transactions
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -39,11 +39,11 @@ size: 54
 
 patterns:
   # กรอบกระจกตกแต่งรอบ ๆ
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
   # ปุ่มย้อนหน้า / หน้าถัดไป
-  - 'zauctionhouse-pagination'
+  - 'ravenauction-pagination'
   # ปุ่มกลับไปหน้า admin history main
-  - 'zauctionhouse-back'
+  - 'ravenauction-back'
 
 #=============================================================================
 # ITEMS
@@ -58,7 +58,7 @@ items:
 
   items:
     # ประเภทปุ่ม - ใช้แสดง transaction entries
-    type: ZAUCTIONHOUSE_ADMIN_TRANSACTIONS
+    type: RAVENAUCTION_ADMIN_TRANSACTIONS
 
     # ช่องสำหรับแสดงสถานะกำลังโหลด
     loading-slot: 22
@@ -93,7 +93,7 @@ items:
 
   filter-status:
     # ประเภทปุ่ม - จัดการการกรองตามสถานะธุรกรรม
-    type: ZAUCTIONHOUSE_ADMIN_TRANSACTIONS_FILTER_STATUS
+    type: RAVENAUCTION_ADMIN_TRANSACTIONS_FILTER_STATUS
 
     slot: 47
 
@@ -134,7 +134,7 @@ items:
 
   filter-date:
     # ประเภทปุ่ม - จัดการการกรองตามวันที่
-    type: ZAUCTIONHOUSE_ADMIN_TRANSACTIONS_FILTER_DATE
+    type: RAVENAUCTION_ADMIN_TRANSACTIONS_FILTER_DATE
 
     slot: 51
 

@@ -8,7 +8,7 @@ import java.util.List;
  * Provides the contents of items that contain other items.
  * <p>
  * This abstraction allows plugins to register custom ways to extract
- * inner items from container items (vanilla shulker boxes, AxShulkers, etc.).
+ * inner items from container items such as vanilla shulker boxes.
  * Providers are queried in priority order; the first one that recognizes an item wins.
  */
 public interface ItemContentProvider {

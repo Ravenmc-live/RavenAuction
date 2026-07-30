@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Inventario de Venta
+#   RavenAuction V4 - Inventario de Venta
 #
 #   Este inventario permite a los jugadores poner objetos en venta mediante GUI.
 #   Se abre mediante /ah sell (cuando enable-sell-inventory es true en config.yml).
@@ -11,7 +11,7 @@
 #   - Elegir el tipo de economia (si hay varias economias activadas)
 #   - Confirmar o cancelar la venta
 #
-#   Documentacion: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentacion: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -32,7 +32,7 @@ size: 54
 
 patterns:
   # Bordes decorativos de vidrio.
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
 
 #=============================================================================
 # OBJETOS
@@ -48,7 +48,7 @@ items:
 
   show-item:
     # Tipo de boton - gestiona la seleccion y visualizacion de objetos.
-    type: ZAUCTIONHOUSE_SELL_SHOW_ITEM
+    type: RAVENAUCTION_SELL_SHOW_ITEM
 
     # Slots para mostrar los objetos seleccionados.
     # Cubre toda la zona central (36 slots).
@@ -74,7 +74,7 @@ items:
 
   cancel:
     # Tipo de boton - gestiona la cancelacion y devolucion de objetos.
-    type: ZAUCTIONHOUSE_SELL_CANCEL
+    type: RAVENAUCTION_SELL_CANCEL
 
     # Posicion del slot - extremo izquierdo de la fila inferior.
     slot: 45
@@ -94,7 +94,7 @@ items:
 
   private-decrease:
     # Tipo de boton - gestiona la modificacion del precio.
-    type: ZAUCTIONHOUSE_SELL_PRICE
+    type: RAVENAUCTION_SELL_PRICE
 
     # Posicion del slot.
     slot: 48
@@ -129,7 +129,7 @@ items:
 
   select-economy:
     # Tipo de boton - gestiona el ciclo de economias.
-    type: ZAUCTIONHOUSE_SELL_ECONOMY
+    type: RAVENAUCTION_SELL_ECONOMY
 
     # Posicion del slot - centro de la fila inferior.
     slot: 49
@@ -153,7 +153,7 @@ items:
 
   price-increase:
     # Tipo de boton - gestiona la modificacion del precio.
-    type: ZAUCTIONHOUSE_SELL_PRICE
+    type: RAVENAUCTION_SELL_PRICE
 
     # Cantidades de variacion del precio para diferentes tipos de clic.
     # Los valores positivos aumentan el precio.
@@ -185,7 +185,7 @@ items:
 
   confirm:
     # Tipo de boton - gestiona la confirmacion de la venta.
-    type: ZAUCTIONHOUSE_SELL_CONFIRM
+    type: RAVENAUCTION_SELL_CONFIRM
 
     # Posicion del slot - extremo derecho de la fila inferior.
     slot: 53

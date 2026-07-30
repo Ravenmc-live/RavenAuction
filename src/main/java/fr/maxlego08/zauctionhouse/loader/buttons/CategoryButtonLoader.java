@@ -12,7 +12,7 @@ public class CategoryButtonLoader extends ButtonLoader {
     private final AuctionPlugin plugin;
 
     public CategoryButtonLoader(AuctionPlugin plugin) {
-        super(plugin, "ZAUCTIONHOUSE_CATEGORY");
+        super(plugin, "RAVENAUCTION_CATEGORY");
         this.plugin = plugin;
     }
 

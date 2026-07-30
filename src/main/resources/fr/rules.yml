@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Configuration des Règles d'Items
+#   RavenAuction V4 - Configuration des Règles d'Items
 #
 #   Ce fichier définit quels items peuvent ou ne peuvent pas être vendus sur l'hôtel des ventes.
 #   Utilisez la liste noire pour bloquer des items spécifiques, ou la liste blanche pour autoriser uniquement des items spécifiques.
@@ -8,7 +8,7 @@
 #   ASTUCE: Vous pouvez sauvegarder des items en format Base64 avec /zmenu save <nom de l'item>
 #           Puis les référencer dans vos règles pour une correspondance exacte d'item.
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -86,33 +86,23 @@
 # Les items sont correspondus par leurs identifiants spécifiques au plugin.
 # Supporte les jokers (*) pour la correspondance par motif.
 #
-# ITEMSADDER:
-#   type: itemsadder
 #   items:
 #     - "namespace:item_id"      # Correspondance exacte
 #     - "namespace:*"            # Tous les items du namespace
 #
-# ORAXEN:
-#   type: oraxen
 #   items:
 #     - "epee_personnalisee"     # Correspondance exacte
 #     - "*_armure"               # Correspondance par motif
 #
-# NEXO:
-#   type: nexo
 #   items:
 #     - "lame_mythique"
 #     - "special_*"
 #
-# MMOITEMS:
-#   type: mmoitems
 #   items:
 #     - "SWORD:CUTLASS"          # Format TYPE:ID
 #     - "SWORD:*"                # Tous les items de type SWORD
 #     - "*:ITEM_LEGENDAIRE"      # N'importe quel type avec cet ID
 #
-# EXECUTABLEITEMS:
-#   type: executableitems
 #   items:
 #     - "baguette_personnalisee"
 #
@@ -126,23 +116,16 @@
 #   items:
 #     - "lame_mythique"
 #
-# SLIMEFUN:
-#   type: slimefun
 #   items:
 #     - "ELECTRIC_MOTOR"
 #
-# HEADDATABASE:
-#   type: headdatabase
 #   items:
 #     - "12345"
 #
 # NOVA:
-#   type: nova
 #   items:
 #     - "machines:four_electrique"
 #
-# DENIZEN:
-#   type: denizen
 #   items:
 #     - "mon_script_personnalise"
 #
@@ -176,13 +159,9 @@
 #   items:
 #     - "gemme_personnalisee"
 #
-# CRAFTENGINE:
-#   type: craftengine
 #   items:
 #     - "namespace:bloc_personnalise"
 #
-# EXECUTABLEBLOCKS:
-#   type: executableblocks
 #   items:
 #     - "coffre_magique"
 #
@@ -234,36 +213,28 @@ blacklist:
     # Chaque exemple montre le nom du plugin et les motifs de configuration courants.
 
     #-------------------------------------------------------------------------
-    # ItemsAdder - Bloquer des items ItemsAdder spécifiques
     #-------------------------------------------------------------------------
-    # - type: itemsadder
     #   items:
     #     - "namespace:item_id"       # Bloquer un item spécifique
     #     - "namespace:*"             # Bloquer TOUS les items de ce namespace
     #     - "monnamespace:rare_*"     # Bloquer les items commençant par "rare_"
 
     #-------------------------------------------------------------------------
-    # Oraxen - Bloquer des items Oraxen spécifiques
     #-------------------------------------------------------------------------
-    # - type: oraxen
     #   items:
     #     - "epee_personnalisee"      # Bloquer un item spécifique
     #     - "*_armure"                # Bloquer tous les items finissant par "_armure"
     #     - "event_*"                 # Bloquer tous les items d'événement
 
     #-------------------------------------------------------------------------
-    # Nexo - Bloquer des items Nexo spécifiques
     #-------------------------------------------------------------------------
-    # - type: nexo
     #   items:
     #     - "lame_mythique"
     #     - "special_*"               # Bloquer tous les items commençant par "special_"
     #     - "*_lieame"                # Bloquer tous les items liés à l'âme
 
     #-------------------------------------------------------------------------
-    # MMOItems - Bloquer des MMOItems spécifiques (format TYPE:ID)
     #-------------------------------------------------------------------------
-    # - type: mmoitems
     #   items:
     #     - "SWORD:CUTLASS"           # Bloquer une épée spécifique
     #     - "SWORD:*"                 # Bloquer TOUTES les épées
@@ -271,9 +242,7 @@ blacklist:
     #     - "TOOL:*"                  # Bloquer tous les outils
 
     #-------------------------------------------------------------------------
-    # ExecutableItems - Bloquer des ExecutableItems spécifiques
     #-------------------------------------------------------------------------
-    # - type: executableitems
     #   items:
     #     - "baguette_personnalisee"
     #     - "voucher_*"               # Bloquer tous les vouchers
@@ -296,18 +265,14 @@ blacklist:
     #     - "donjon_*"                # Bloquer le butin de donjon
 
     #-------------------------------------------------------------------------
-    # Slimefun - Bloquer des items Slimefun spécifiques
     #-------------------------------------------------------------------------
-    # - type: slimefun
     #   items:
     #     - "ELECTRIC_MOTOR"
     #     - "*_INGOT"                 # Bloquer tous les lingots personnalisés
     #     - "CARGO_*"                 # Bloquer les items cargo
 
     #-------------------------------------------------------------------------
-    # HeadDatabase - Bloquer des têtes HeadDatabase spécifiques
     #-------------------------------------------------------------------------
-    # - type: headdatabase
     #   items:
     #     - "12345"                   # Bloquer une tête spécifique par ID
     #     - "123*"                    # Bloquer les têtes avec des IDs commençant par 123
@@ -315,16 +280,13 @@ blacklist:
     #-------------------------------------------------------------------------
     # Nova - Bloquer des items Nova spécifiques
     #-------------------------------------------------------------------------
-    # - type: nova
     #   items:
     #     - "machines:four_electrique"
     #     - "machines:*"              # Bloquer tous les items de l'addon machines
     #     - "*:panneau_solaire"       # Bloquer les panneaux solaires de n'importe quel addon
 
     #-------------------------------------------------------------------------
-    # Denizen - Bloquer des items scriptés Denizen spécifiques
     #-------------------------------------------------------------------------
-    # - type: denizen
     #   items:
     #     - "mon_script_personnalise"
     #     - "*_arme"                  # Bloquer les scripts d'armes
@@ -378,17 +340,13 @@ blacklist:
     #     - "amelioration_*"          # Bloquer les items d'amélioration
 
     #-------------------------------------------------------------------------
-    # CraftEngine - Bloquer des items CraftEngine spécifiques
     #-------------------------------------------------------------------------
-    # - type: craftengine
     #   items:
     #     - "namespace:bloc_personnalise"
     #     - "namespace:*"             # Bloquer tout du namespace
 
     #-------------------------------------------------------------------------
-    # ExecutableBlocks - Bloquer des ExecutableBlocks spécifiques
     #-------------------------------------------------------------------------
-    # - type: executableblocks
     #   items:
     #     - "coffre_magique"
     #     - "teleporteur_*"           # Bloquer les blocs téléporteurs
@@ -447,8 +405,6 @@ whitelist:
     #   values:
     #     - "Échangeable"
 
-    # Autoriser des types MMOItems spécifiques
-    # - type: mmoitems
     #   items:
     #     - "WEAPON:*"
     #     - "ARMOR:*"

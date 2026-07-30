@@ -18,7 +18,7 @@ public class SellLimitLoader extends ButtonLoader {
     private final AuctionPlugin plugin;
 
     public SellLimitLoader(AuctionPlugin plugin) {
-        super(plugin, "ZAUCTIONHOUSE_SELL_LIMIT");
+        super(plugin, "RAVENAUCTION_SELL_LIMIT");
         this.plugin = plugin;
     }
 

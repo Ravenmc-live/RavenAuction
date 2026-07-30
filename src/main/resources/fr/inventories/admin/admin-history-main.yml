@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Inventaire principal de l'historique admin
+#   RavenAuction V4 - Inventaire principal de l'historique admin
 #
 #   C'est le hub admin pour voir l'historique des enchères d'un joueur.
 #   Depuis ici, les admins peuvent accéder à toutes les activités d'enchères d'un joueur.
@@ -16,7 +16,7 @@
 #   - /ah admin history <joueur>
 #   - Nécessite la permission admin
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -45,7 +45,7 @@ items:
 
   target:
     # Type de bouton - affiche les informations du joueur cible.
-    type: ZAUCTIONHOUSE_ADMIN_HISTORY_MAIN
+    type: RAVENAUCTION_ADMIN_HISTORY_MAIN
 
     # Position du slot - centre haut.
     slot: 13
@@ -63,7 +63,7 @@ items:
 
   expired:
     # Type de bouton - ouvre la vue admin des items expirés.
-    type: ZAUCTIONHOUSE_ADMIN_HISTORY_EXPIRED
+    type: RAVENAUCTION_ADMIN_HISTORY_EXPIRED
 
     # Position du slot.
     slot: 28
@@ -86,7 +86,7 @@ items:
 
   purchased:
     # Type de bouton - ouvre la vue admin des items achetés.
-    type: ZAUCTIONHOUSE_ADMIN_HISTORY_PURCHASED
+    type: RAVENAUCTION_ADMIN_HISTORY_PURCHASED
 
     slot: 29
 
@@ -107,7 +107,7 @@ items:
 
   selling:
     # Type de bouton - ouvre la vue admin des items en vente.
-    type: ZAUCTIONHOUSE_ADMIN_HISTORY_SELLING
+    type: RAVENAUCTION_ADMIN_HISTORY_SELLING
 
     slot: 30
 
@@ -129,7 +129,7 @@ items:
 
   logs:
     # Type de bouton - ouvre la vue admin des logs.
-    type: ZAUCTIONHOUSE_ADMIN_HISTORY_LOGS
+    type: RAVENAUCTION_ADMIN_HISTORY_LOGS
 
     slot: 33
 
@@ -148,7 +148,7 @@ items:
 
   transactions:
     # Type de bouton - ouvre la vue admin des transactions.
-    type: ZAUCTIONHOUSE_ADMIN_HISTORY_TRANSACTIONS
+    type: RAVENAUCTION_ADMIN_HISTORY_TRANSACTIONS
 
     slot: 34
 

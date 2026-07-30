@@ -29,7 +29,7 @@ public class SellPriceButtonLoader extends ButtonLoader {
     private final AuctionPlugin plugin;
 
     public SellPriceButtonLoader(AuctionPlugin plugin) {
-        super(plugin, "ZAUCTIONHOUSE_SELL_PRICE");
+        super(plugin, "RAVENAUCTION_SELL_PRICE");
         this.plugin = plugin;
     }
 

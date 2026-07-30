@@ -14,7 +14,7 @@ public class SellShowItemLoader extends ButtonLoader {
     private final AuctionPlugin plugin;
 
     public SellShowItemLoader(AuctionPlugin plugin) {
-        super(plugin, "ZAUCTIONHOUSE_SELL_SHOW_ITEM");
+        super(plugin, "RAVENAUCTION_SELL_SHOW_ITEM");
         this.plugin = plugin;
     }
 

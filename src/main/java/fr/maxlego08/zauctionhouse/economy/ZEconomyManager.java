@@ -285,13 +285,13 @@ public class ZEconomyManager implements EconomyManager {
 
         String permission = accessor.getString("permission", null);
 
-        String depositReason = accessor.getString("deposit-reason", "Sale of x%amount% %item% (zAuctionHouse)");
+        String depositReason = accessor.getString("deposit-reason", "Sale of x%amount% %item% (RavenAuction)");
         if (depositReason == null) {
             this.plugin.getLogger().severe("Economy '" + name + "' is active but doesn’t have a deposit reason, please correct that!");
             return;
         }
 
-        String withdrawReason = accessor.getString("withdraw-reason", "Purchase of x%amount% %item% (zAuctionHouse)");
+        String withdrawReason = accessor.getString("withdraw-reason", "Purchase of x%amount% %item% (RavenAuction)");
         if (withdrawReason == null) {
             this.plugin.getLogger().severe("Economy '" + name + "' is active but doesn’t have a withdraw reason, please correct that!");
             return;

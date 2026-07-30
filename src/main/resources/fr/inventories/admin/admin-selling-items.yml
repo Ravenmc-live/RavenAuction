@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Inventaire des items en vente admin
+#   RavenAuction V4 - Inventaire des items en vente admin
 #
 #   Cet inventaire permet aux admins de voir et gérer les ventes actives d'un joueur.
 #   Les admins peuvent retirer des items de la vente au nom des joueurs.
@@ -14,7 +14,7 @@
 #   - Depuis le menu principal historique admin → Bouton Items en Vente
 #   - /ah admin open selling <joueur>
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -36,11 +36,11 @@ size: 54
 
 patterns:
   # Bordures décoratives en vitres.
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
   # Boutons page précédente/suivante.
-  - 'zauctionhouse-pagination'
+  - 'ravenauction-pagination'
   # Bouton retour vers le menu principal admin.
-  - 'zauctionhouse-back'
+  - 'ravenauction-back'
 
 #=============================================================================
 # ITEMS
@@ -56,7 +56,7 @@ items:
 
   items:
     # Type de bouton - affiche les items en vente admin avec fonctionnalité de suppression.
-    type: ZAUCTIONHOUSE_ADMIN_SELLING_ITEMS
+    type: RAVENAUCTION_ADMIN_SELLING_ITEMS
 
     # Slots pour afficher les items en vente (4 lignes × 9 colonnes = 36 slots).
     slots:

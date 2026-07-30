@@ -13,7 +13,7 @@ import java.util.Optional;
  *
  * <h2>Usage:</h2>
  * <pre>{@code
- * // Get the registry from zAuctionHouse
+ * // Get the registry from RavenAuction
  * MigrationRegistry registry = auctionPlugin.getMigrationRegistry();
  *
  * // Register a custom provider

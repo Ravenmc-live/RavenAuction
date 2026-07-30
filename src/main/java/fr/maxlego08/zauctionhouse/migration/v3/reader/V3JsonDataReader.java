@@ -19,7 +19,7 @@ import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
 /**
- * Reads data from zAuctionHouse V3 JSON files.
+ * Reads data from RavenAuction V3 JSON files.
  */
 public class V3JsonDataReader implements V3DataReader {
 

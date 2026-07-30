@@ -1,4 +1,4 @@
-name: zAuctionHouse
+name: RavenAuction
 version: ${version}
 main: fr.maxlego08.zauctionhouse.ZAuctionPlugin
 api-version: '1.20'
@@ -10,10 +10,6 @@ depend:
   - zMenu
   - PlaceholderAPI
 softdepend:
-  - ItemsAdder
-  - Nexo
-  - Oraxen
   - LuckPerms
-  - AxShulkers
 libraries:
   - org.mariadb.jdbc:mariadb-java-client:3.5.6

@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Inventario Objetos Comprados Admin
+#   RavenAuction V4 - Inventario Objetos Comprados Admin
 #
 #   Este inventario permite a los administradores ver y gestionar los objetos comprados de un jugador.
 #   Los administradores pueden recuperar objetos en nombre de jugadores que podrian haber perdido acceso.
@@ -14,7 +14,7 @@
 #   - Desde el menu principal historial admin -> Boton Objetos Comprados
 #   - /ah admin open purchased <jugador>
 #
-#   Documentacion: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentacion: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -35,11 +35,11 @@ size: 54
 
 patterns:
   # Bordes decorativos de cristal.
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
   # Botones pagina anterior/siguiente.
-  - 'zauctionhouse-pagination'
+  - 'ravenauction-pagination'
   # Boton atras para volver al historial admin.
-  - 'zauctionhouse-back'
+  - 'ravenauction-back'
 
 #=============================================================================
 # OBJETOS
@@ -55,7 +55,7 @@ items:
 
   items:
     # Tipo de boton - visualiza objetos comprados admin con funcionalidad de recuperacion.
-    type: ZAUCTIONHOUSE_ADMIN_PURCHASED_ITEMS
+    type: RAVENAUCTION_ADMIN_PURCHASED_ITEMS
 
     # Slots para mostrar los objetos comprados (4 filas x 9 columnas = 36 slots).
     slots:

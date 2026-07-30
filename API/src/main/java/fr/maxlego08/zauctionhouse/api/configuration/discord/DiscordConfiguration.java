@@ -41,7 +41,7 @@ public record DiscordConfiguration(boolean enabled, String serverName, String it
      * Loads the per-item custom image rules from the {@code custom-images} section.
      * <p>
      * Each entry pairs a {@code rule} block (using the same format as category/blacklist
-     * rules, e.g. {@code type: material}, {@code type: oraxen}) with an {@code image} URL.
+     * rules, e.g. {@code type: material}) with an {@code image} URL.
      * When an auction item matches a rule, its image is used instead of the default
      * material-based {@code item-image-url} pattern.
      *

@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Pattern del Pulsante Indietro
+#   RavenAuction V4 - Pattern del Pulsante Indietro
 #
 #   Questo pattern fornisce un pulsante indietro per tornare all'inventario precedente.
 #   Usato nei sottomenu e nelle viste di dettaglio per navigare all'indietro.
@@ -13,15 +13,15 @@
 #   UTILIZZO:
 #   Includi questo pattern nei file di inventario che necessitano di un pulsante indietro:
 #     patterns:
-#       - 'zauctionhouse-back'
+#       - 'ravenauction-back'
 #
-#   Documentazione: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentazione: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
 
 # Nome del pattern - referenziato negli altri file di inventario.
-name: "zauctionhouse-back"
+name: "ravenauction-back"
 
 # Dimensione dell'inventario (deve corrispondere agli inventari che usano questo pattern).
 # Progettato per inventari a 6 righe (54 slot).

@@ -337,7 +337,7 @@ public class SellService extends ZUtils implements AuctionSellService {
             }
 
             // Withdraw the tax
-            auctionEconomy.withdraw(player.getUniqueId(), taxResult.taxAmount(), "Sell tax (zAuctionHouse)");
+            auctionEconomy.withdraw(player.getUniqueId(), taxResult.taxAmount(), "Sell tax (RavenAuction)");
 
             // Send appropriate messages on entity thread
             this.plugin.getScheduler().runAtEntity(player, task -> {

@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Sales History Inventory
+#   RavenAuction V4 - Sales History Inventory
 #
 #   This inventory displays the player's sales history - items they have sold.
 #   Shows completed transactions with buyer information and sale prices.
@@ -15,7 +15,7 @@
 #   - /ah history
 #   - Click notification message when logging in after offline sales
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -36,11 +36,11 @@ size: 54
 
 patterns:
   # Decorative glass pane borders.
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
   # Previous/next page buttons.
-  - 'zauctionhouse-pagination'
+  - 'ravenauction-pagination'
   # Back button to return to auction house.
-  - 'zauctionhouse-back'
+  - 'ravenauction-back'
 
 #=============================================================================
 # ITEMS
@@ -56,7 +56,7 @@ items:
 
   items:
     # Button type - displays historical sales.
-    type: ZAUCTIONHOUSE_HISTORY_ITEMS
+    type: RAVENAUCTION_HISTORY_ITEMS
 
     # Slot for loading indicator while fetching history.
     loading-slot: 22
@@ -91,7 +91,7 @@ items:
 
   sort:
     # Button type - handles sort cycling for history.
-    type: ZAUCTIONHOUSE_HISTORY_SORT
+    type: RAVENAUCTION_HISTORY_SORT
 
     # Slot position.
     slot: 51

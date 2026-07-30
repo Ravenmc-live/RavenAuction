@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Pagination Pattern
+#   RavenAuction V4 - Pagination Pattern
 #
 #   แพทเทิร์นนี้ใช้สำหรับทำปุ่มย้อนหน้า / หน้าถัดไป ใน inventory แบบแบ่งหน้า (paginated)
 #   ใช้ได้กับทุก inventory ที่มีการแสดง item หลายหน้า
@@ -13,15 +13,15 @@
 #   USAGE:
 #   ใส่แพทเทิร์นนี้ในไฟล์ inventory แบบแบ่งหน้า (paginated) ที่ต้องการ:
 #     patterns:
-#       - 'zauctionhouse-pagination'
+#       - 'ravenauction-pagination'
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
 
 # ชื่อ pattern - ใช้อ้างอิงจากไฟล์ inventory อื่น
-name: "zauctionhouse-pagination"
+name: "ravenauction-pagination"
 
 # ขนาด inventory (ต้องตรงกับ inventory ที่ใช้แพทเทิร์นนี้)
 # ออกแบบมาสำหรับ 6 แถว (54 slot)

@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Configuration des messages (Français)
+#   RavenAuction V4 - Configuration des messages (Français)
 #
 #   Ce fichier contient tous les messages affichés aux joueurs par le plugin.
 #   Personnalisez ces messages pour correspondre à la langue et au style de votre serveur.
@@ -15,7 +15,7 @@
 #   - Le style %placeholder% est utilisé pour les valeurs dynamiques
 #   - Les placeholders disponibles varient selon le message (documenté en ligne)
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -27,7 +27,7 @@
 # Préfixe ajouté avant tous les messages du plugin.
 # Définissez une chaîne vide "" pour désactiver le préfixe.
 # Placeholders disponibles: aucun
-prefix: "<primary>zAuctionHouse <secondary>• "
+prefix: "<primary>RavenAuction <secondary>• "
 
 #=============================================================================
 # MESSAGES DE VERSION ET MISE À JOUR
@@ -37,7 +37,7 @@ prefix: "<primary>zAuctionHouse <secondary>• "
 # Placeholders disponibles:
 #   %version% - Version actuellement installée
 #   %latest%  - Dernière version disponible
-version-available: "<#ff0000>Une nouvelle version de zAuctionHouse est disponible ! <gray>(<white>actuelle: <#ff9900>%version% <gray>| <white>dernière: <#00ff00>%latest%<gray>)"
+version-available: "<#ff0000>Une nouvelle version de RavenAuction est disponible ! <gray>(<white>actuelle: <#ff9900>%version% <gray>| <white>dernière: <#00ff00>%latest%<gray>)"
 
 #=============================================================================
 # MESSAGES DE COMMANDES
@@ -276,7 +276,7 @@ price-too-low: "<error>Vous ne pouvez pas vendre pour moins de <white>%min-price
 # Affiché lorsque le joueur a atteint sa limite d'annonces.
 # Placeholders disponibles:
 #   %max-items% - Nombre maximum d'items autorisés
-listed-items-limit: "<error>Vous ne pouvez pas vendre plus de <white>%max-items%<error> items<error>. &8(&7Avez-vous défini la permission zauctionhouse.<nombre dans config.yml> ?&8)"
+listed-items-limit: "<error>Vous ne pouvez pas vendre plus de <white>%max-items%<error> items<error>. &8(&7Avez-vous défini la permission ravenauction.<nombre dans config.yml> ?&8)"
 
 # Affiché lors d'une tentative de vente dans un monde interdit.
 # Placeholders disponibles: aucun
@@ -506,7 +506,7 @@ tax-insufficient-funds: "<error>Vous n'avez pas assez d'argent pour payer la tax
 #=============================================================================
 # Messages pour le système de migration de données (import depuis d'autres plugins).
 # Utilisation: /ah admin migrate <source> confirm
-# Sources supportées: zauctionhousev3
+# Sources supportées: ravenauctionv3
 
 # Affiché lorsque la migration n'est pas configurée.
 # Placeholders disponibles:

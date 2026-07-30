@@ -61,7 +61,7 @@ public record RedisConfiguration(
     /**
      * Default prefix used for channels and lock keys.
      */
-    public static final String DEFAULT_CHANNEL_PREFIX = "zauctionhouse";
+    public static final String DEFAULT_CHANNEL_PREFIX = "ravenauction";
 
     public static RedisConfiguration of(AuctionPlugin plugin, FileConfiguration configuration) {
 

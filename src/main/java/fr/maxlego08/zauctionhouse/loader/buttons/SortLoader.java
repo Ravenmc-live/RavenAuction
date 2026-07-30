@@ -17,7 +17,7 @@ public class SortLoader extends ButtonLoader {
     private final InventoryManager inventoryManager;
 
     public SortLoader(AuctionPlugin plugin, InventoryManager inventoryManager) {
-        super(plugin, "ZAUCTIONHOUSE_CHANGE_SORT");
+        super(plugin, "RAVENAUCTION_CHANGE_SORT");
         this.plugin = plugin;
         this.inventoryManager = inventoryManager;
     }

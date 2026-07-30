@@ -8,7 +8,7 @@
 # ╚══════╝╚═╝░░╚═╝░╚═════╝░░╚════╝░░░░╚═╝░░░╚═╝░╚════╝░╚═╝░░╚══╝╚═╝░░╚═╝░╚════╝░░╚═════╝░╚═════╝░╚══════╝░░░╚═╝░░░░░░░░╚═╝
 #
 #   Sponsor: https://minestrator.com/a/GROUPEZ
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -141,7 +141,7 @@ database-configuration:
   # Useful when sharing a database with other plugins to avoid table name conflicts.
   # WARNING: Do not change this after the plugin has stored data, or data will be lost.
   # Default tables created: {prefix}items, {prefix}auction_items, {prefix}players, etc.
-  table-prefix: zauctionhousev4_
+  table-prefix: ravenauctionv4_
 
   # IP address or hostname of the database server.
   # Use 'localhost' or '127.0.0.1' if the database is on the same machine.
@@ -164,7 +164,7 @@ database-configuration:
   # Name of the database where auction data will be stored.
   # The database must exist before the plugin starts.
   # The plugin will automatically create the required tables.
-  database: zauctionhouse
+  database: ravenauction
 
   # Enables SQL query debugging.
   # When enabled, all SQL queries will be logged to console.
@@ -207,9 +207,9 @@ message-colors:
 # Changes to commands are not applied with /ah admin reload.
 
 commands:
-  # Main command: /zauctionhouse (opens the auction house)
+  # Main command: /ravenauction (opens the auction house)
   main-command:
-    # Alternative command names that work identically to /zauctionhouse
+    # Alternative command names that work identically to /ravenauction
     # Players can use any of these to open the auction house.
     aliases:
       - ah           # Short and common
@@ -217,7 +217,7 @@ commands:
       - auction      # Full English name
       - zauction     # Plugin-prefixed version
 
-  # Sell command: /zauctionhouse sell <price> [amount] [economy]
+  # Sell command: /ravenauction sell <price> [amount] [economy]
   # Used by players to list items for sale on the auction house.
   sell:
     # When enabled, running /ah sell without arguments opens a GUI
@@ -263,7 +263,7 @@ commands:
         auto-completion:
           - vault
 
-  # Claim command: /zauctionhouse claim
+  # Claim command: /ravenauction claim
   # Used by players to claim pending money from sales (when auto-claim is disabled).
   claim:
     aliases:
@@ -271,7 +271,7 @@ commands:
       - c
       - recuperer    # French: "to recover"
 
-  # Search command: /zauctionhouse search <query>
+  # Search command: /ravenauction search <query>
   # Searches for items in the auction house by text.
   search:
     aliases:
@@ -284,7 +284,7 @@ commands:
         required: true
         auto-completion: []
 
-  # Page command: /zauctionhouse page <number>
+  # Page command: /ravenauction page <number>
   # Opens the auction house at a specific page directly.
   page:
     aliases:
@@ -303,12 +303,12 @@ commands:
 
   # Custom inventory commands
   # These commands provide quick access to specific auction house sections.
-  # Each entry creates a new subcommand under /zauctionhouse.
+  # Each entry creates a new subcommand under /ravenauction.
   inventories:
     # Command: /ah selling - Opens the player's currently listed items
     - enable: true
       # Permission required to use this command (leave empty for no permission)
-      permission: "zauctionhouse.selling"
+      permission: "ravenauction.selling"
       # Description shown in help and tab completion
       description: "Open selling items"
       aliases:
@@ -321,7 +321,7 @@ commands:
 
     # Command: /ah expired - Opens the player's expired items
     - enable: true
-      permission: "zauctionhouse.expired"
+      permission: "ravenauction.expired"
       description: "Open expired items"
       aliases:
         - 'expired'
@@ -329,7 +329,7 @@ commands:
 
     # Command: /ah purchased - Opens items the player has bought
     - enable: true
-      permission: "zauctionhouse.purchased"
+      permission: "ravenauction.purchased"
       description: "Open purchased items"
       aliases:
         - 'purchased'
@@ -337,7 +337,7 @@ commands:
 
     # Command: /ah history - Opens the player's sales history
     - enable: true
-      permission: "zauctionhouse.history"
+      permission: "ravenauction.history"
       description: "Open history"
       aliases:
         - 'history'
@@ -354,7 +354,7 @@ commands:
     default-cooldown: 100
 
     # Permission that allows a player to bypass the command cooldown.
-    bypass-permission: "zauctionhouse.cooldown.command.bypass"
+    bypass-permission: "ravenauction.cooldown.command.bypass"
 
     # Per-command cooldown overrides (in milliseconds).
     # Use the first alias of the command as the key.
@@ -438,11 +438,11 @@ expiration:
       # Permission list (checked in order, first match is used)
       # IMPORTANT: Order from lowest to highest priority (default should be smallest)
       permissions:
-        - permission: zauctionhouse.expiration.vip
+        - permission: ravenauction.expiration.vip
           expiration: 3600       # 1 hour
-        - permission: zauctionhouse.expiration.elite
+        - permission: ravenauction.expiration.elite
           expiration: 7200       # 2 hours
-        - permission: zauctionhouse.expiration.legend
+        - permission: ravenauction.expiration.legend
           expiration: 259200     # 3 days
 
   # How long bid listings remain active (for future bid feature).
@@ -451,11 +451,11 @@ expiration:
     permission:
       enable: false
       permissions:
-        - permission: zauctionhouse.expiration.vip
+        - permission: ravenauction.expiration.vip
           expiration: 3600
-        - permission: zauctionhouse.expiration.elite
+        - permission: ravenauction.expiration.elite
           expiration: 7200
-        - permission: zauctionhouse.expiration.legend
+        - permission: ravenauction.expiration.legend
           expiration: 259200
 
   # How long rent listings remain active (for future rent feature).
@@ -464,11 +464,11 @@ expiration:
     permission:
       enable: false
       permissions:
-        - permission: zauctionhouse.expiration.vip
+        - permission: ravenauction.expiration.vip
           expiration: 3600
-        - permission: zauctionhouse.expiration.elite
+        - permission: ravenauction.expiration.elite
           expiration: 7200
-        - permission: zauctionhouse.expiration.legend
+        - permission: ravenauction.expiration.legend
           expiration: 259200
 
   # How long expired items are kept before permanent deletion.
@@ -497,29 +497,29 @@ expiration:
 permissions:
   # Limits for regular auction listings
   auction:
-    - permission: zauctionhouse.max.5
+    - permission: ravenauction.max.5
       limit: 5
-    - permission: zauctionhouse.max.10
+    - permission: ravenauction.max.10
       limit: 10
-    - permission: zauctionhouse.max.15
+    - permission: ravenauction.max.15
       limit: 15
 
   # Limits for rent listings (future feature)
   rent:
-    - permission: zauctionhouse.max.5
+    - permission: ravenauction.max.5
       limit: 5
-    - permission: zauctionhouse.max.10
+    - permission: ravenauction.max.10
       limit: 10
-    - permission: zauctionhouse.max.15
+    - permission: ravenauction.max.15
       limit: 15
 
   # Limits for bid listings (future feature)
   bid:
-    - permission: zauctionhouse.max.5
+    - permission: ravenauction.max.5
       limit: 5
-    - permission: zauctionhouse.max.10
+    - permission: ravenauction.max.10
       limit: 10
-    - permission: zauctionhouse.max.15
+    - permission: ravenauction.max.15
       limit: 15
 
 #=============================================================================
@@ -1053,7 +1053,7 @@ redis:
   # Prefix applied to the pub/sub channel and to every lock key.
   # All servers of the SAME network must use the SAME prefix.
   # Two unrelated networks sharing one Redis server must use different prefixes.
-  channel-prefix: "zauctionhouse"
+  channel-prefix: "ravenauction"
 
   # How long a lock on an item survives, in milliseconds.
   # Locks are released as soon as the operation ends, so this expiry only matters when a
@@ -1121,51 +1121,50 @@ search-filters:
 ################################################################################################################################
 # MIGRATION FROM OTHER PLUGINS
 ################################################################################################################################
-# This section allows you to migrate data from other auction plugins to zAuctionHouse V4.
+# This section allows you to migrate data from other auction plugins to RavenAuction V4.
 #
 # HOW TO MIGRATE:
 # 1. Configure the appropriate source section below with your old plugin's database settings
 # 2. Stop your server and backup all data (CRITICAL!)
-# 3. Start the server with zAuctionHouse V4
+# 3. Start the server with RavenAuction V4
 # 4. Run: /ah admin migrate <source> confirm
 #
 # SUPPORTED SOURCES:
-#   - zauctionhousev3 (aliases: zah, zahv3, v3)
-#   - zelauction (aliases: zel, zelauctions) - requires ZelAuction plugin running + hook enabled
+#   - ravenauctionv3 (aliases: zah, zahv3, v3)
 #
 # WARNING: Always backup your data before migrating! Migration cannot be undone.
 
 migration:
 
   #============================================================
-  # zAuctionHouse V3 Migration
+  # RavenAuction V3 Migration
   #============================================================
-  # Migrates data from zAuctionHouse V3 to V4.
-  # Command: /ah admin migrate zauctionhousev3 confirm
-  zauctionhouse-v3:
+  # Migrates data from RavenAuction V3 to V4.
+  # Command: /ah admin migrate ravenauctionv3 confirm
+  ravenauction-v3:
     # Source storage type from V3
     # Options: MYSQL, MARIADB, SQLITE, or JSON
     source-type: SQLITE
 
     # Table prefix used in your V3 installation
-    # Check your V3 config.yml if unsure (default was "zauctionhouse_")
-    table-prefix: "zauctionhouse_"
+    # Check your V3 config.yml if unsure (default was "ravenauction_")
+    table-prefix: "ravenauction_"
 
     # === SQLite Configuration ===
     # Path to the V3 SQLite database file (relative to server root)
-    sqlite-path: "plugins/zAuctionHousev3/database.db"
+    sqlite-path: "plugins/RavenAuctionv3/database.db"
 
     # === MySQL/MariaDB Configuration ===
     # Only needed if source-type is MYSQL or MARIADB
     host: "localhost"
     port: 3306
-    database: "zauctionhouse"
+    database: "ravenauction"
     user: "root"
     password: ""
 
     # === JSON Configuration ===
     # Path to the V3 data folder containing JSON storage files
-    json-folder: "plugins/zAuctionHouseV3"
+    json-folder: "plugins/RavenAuctionV3"
 
   #============================================================
   # Future Migration Sources

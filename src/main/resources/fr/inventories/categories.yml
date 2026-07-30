@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Inventaire des Catégories
+#   RavenAuction V4 - Inventaire des Catégories
 #
 #   Cet inventaire affiche le menu de sélection des catégories.
 #   Les joueurs peuvent choisir une catégorie pour filtrer les items.
@@ -11,10 +11,10 @@
 #
 #   AJOUTER DE NOUVELLES CATÉGORIES:
 #   1. Ajoutez la définition de catégorie dans categories.yml (avec les règles)
-#   2. Ajoutez un bouton ici avec type: ZAUCTIONHOUSE_CATEGORY et category: <nom>
-#   3. Utilisez le placeholder %zauctionhouse_category_count_<nom>% pour les compteurs
+#   2. Ajoutez un bouton ici avec type: RAVENAUCTION_CATEGORY et category: <nom>
+#   3. Utilisez le placeholder %ravenauction_category_count_<nom>% pour les compteurs
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -35,15 +35,15 @@ size: 54
 
 patterns:
   # Bordures décoratives en vitres.
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
   # Bouton retour pour revenir à l'hôtel des ventes.
-  - 'zauctionhouse-back'
+  - 'ravenauction-back'
 
 #=============================================================================
 # BOUTONS DE CATÉGORIES
 #=============================================================================
 # Chaque bouton ouvre l'hôtel des ventes filtré par cette catégorie.
-# Les types de boutons utilisent ZAUCTIONHOUSE_CATEGORY avec un champ 'category'.
+# Les types de boutons utilisent RAVENAUCTION_CATEGORY avec un champ 'category'.
 # La valeur 'category' doit correspondre à une clé de categories.yml.
 
 items:
@@ -56,7 +56,7 @@ items:
 
   all-items:
     # Type de bouton pour la sélection de catégorie.
-    type: ZAUCTIONHOUSE_CATEGORY
+    type: RAVENAUCTION_CATEGORY
 
     # Identifiant de catégorie - 'all' est une catégorie spéciale montrant tout.
     category: all
@@ -70,8 +70,8 @@ items:
       lore:
         - "#92ffffVoir toutes les annonces"
         - ""
-        # %zauctionhouse_category_count_all% affiche le total d'items.
-        - "#92ffffTotal d'items#8c8c8c: #2CCED2%zauctionhouse_category_count_all%"
+        # %ravenauction_category_count_all% affiche le total d'items.
+        - "#92ffffTotal d'items#8c8c8c: #2CCED2%ravenauction_category_count_all%"
         - ""
         - "#8c8c8c• #2CCED2Cliquez #92ffffpour parcourir"
 
@@ -81,7 +81,7 @@ items:
   # Affiche uniquement les blocs plaçables.
 
   blocks:
-    type: ZAUCTIONHOUSE_CATEGORY
+    type: RAVENAUCTION_CATEGORY
     # Doit correspondre à la clé dans categories.yml
     category: blocks
     slot: 19
@@ -94,7 +94,7 @@ items:
         - "#92ffffTous les blocs de construction"
         - ""
         # Compteur dynamique d'items pour cette catégorie.
-        - "#92ffffItems#8c8c8c: #2CCED2%zauctionhouse_category_count_blocks%"
+        - "#92ffffItems#8c8c8c: #2CCED2%ravenauction_category_count_blocks%"
         - ""
         - "#8c8c8c• #2CCED2Cliquez #92ffffpour parcourir"
 
@@ -104,7 +104,7 @@ items:
   # Affiche les épées, arcs, arbalètes et autres armes.
 
   weapons:
-    type: ZAUCTIONHOUSE_CATEGORY
+    type: RAVENAUCTION_CATEGORY
     category: weapons
     slot: 20
 
@@ -115,7 +115,7 @@ items:
         - "#92ffffÉquipement de combat"
         - "#92ffffÉpées, arcs, arbalètes..."
         - ""
-        - "#92ffffItems#8c8c8c: #2CCED2%zauctionhouse_category_count_weapons%"
+        - "#92ffffItems#8c8c8c: #2CCED2%ravenauction_category_count_weapons%"
         - ""
         - "#8c8c8c• #2CCED2Cliquez #92ffffpour parcourir"
 
@@ -125,7 +125,7 @@ items:
   # Affiche les casques, plastrons, jambières, bottes et boucliers.
 
   armor:
-    type: ZAUCTIONHOUSE_CATEGORY
+    type: RAVENAUCTION_CATEGORY
     category: armor
     slot: 21
 
@@ -135,7 +135,7 @@ items:
       lore:
         - "#92ffffÉquipement de protection"
         - ""
-        - "#92ffffItems#8c8c8c: #2CCED2%zauctionhouse_category_count_armor%"
+        - "#92ffffItems#8c8c8c: #2CCED2%ravenauction_category_count_armor%"
         - ""
         - "#8c8c8c• #2CCED2Cliquez #92ffffpour parcourir"
 
@@ -145,7 +145,7 @@ items:
   # Affiche les pioches, haches, pelles, houes et autres outils.
 
   tools:
-    type: ZAUCTIONHOUSE_CATEGORY
+    type: RAVENAUCTION_CATEGORY
     category: tools
     slot: 22
 
@@ -155,7 +155,7 @@ items:
       lore:
         - "#92ffffOutils de minage et d'agriculture"
         - ""
-        - "#92ffffItems#8c8c8c: #2CCED2%zauctionhouse_category_count_tools%"
+        - "#92ffffItems#8c8c8c: #2CCED2%ravenauction_category_count_tools%"
         - ""
         - "#8c8c8c• #2CCED2Cliquez #92ffffpour parcourir"
 
@@ -165,7 +165,7 @@ items:
   # Affiche les potions, nourriture et autres items consommables.
 
   consumables:
-    type: ZAUCTIONHOUSE_CATEGORY
+    type: RAVENAUCTION_CATEGORY
     category: consumables
     slot: 23
 
@@ -175,7 +175,7 @@ items:
       lore:
         - "#92ffffNourriture et potions"
         - ""
-        - "#92ffffItems#8c8c8c: #2CCED2%zauctionhouse_category_count_consumables%"
+        - "#92ffffItems#8c8c8c: #2CCED2%ravenauction_category_count_consumables%"
         - ""
         - "#8c8c8c• #2CCED2Cliquez #92ffffpour parcourir"
 
@@ -185,7 +185,7 @@ items:
   # Affiche les minerais, lingots et matériaux d'artisanat.
 
   resources:
-    type: ZAUCTIONHOUSE_CATEGORY
+    type: RAVENAUCTION_CATEGORY
     category: resources
     slot: 24
 
@@ -195,7 +195,7 @@ items:
       lore:
         - "#92ffffMinerais et matériaux"
         - ""
-        - "#92ffffItems#8c8c8c: #2CCED2%zauctionhouse_category_count_resources%"
+        - "#92ffffItems#8c8c8c: #2CCED2%ravenauction_category_count_resources%"
         - ""
         - "#8c8c8c• #2CCED2Cliquez #92ffffpour parcourir"
 
@@ -205,7 +205,7 @@ items:
   # Affiche uniquement les livres enchantés.
 
   enchanted-books:
-    type: ZAUCTIONHOUSE_CATEGORY
+    type: RAVENAUCTION_CATEGORY
     category: enchanted-books
     slot: 25
 
@@ -215,7 +215,7 @@ items:
       lore:
         - "#92ffffLivres avec enchantements"
         - ""
-        - "#92ffffItems#8c8c8c: #2CCED2%zauctionhouse_category_count_enchanted-books%"
+        - "#92ffffItems#8c8c8c: #2CCED2%ravenauction_category_count_enchanted-books%"
         - ""
         - "#8c8c8c• #2CCED2Cliquez #92ffffpour parcourir"
 
@@ -225,7 +225,7 @@ items:
   # Affiche les items qui ne rentrent pas dans les autres catégories.
 
   misc:
-    type: ZAUCTIONHOUSE_CATEGORY
+    type: RAVENAUCTION_CATEGORY
     category: misc
     slot: 31
 
@@ -235,6 +235,6 @@ items:
       lore:
         - "#92ffffAutres items"
         - ""
-        - "#92ffffItems#8c8c8c: #2CCED2%zauctionhouse_category_count_misc%"
+        - "#92ffffItems#8c8c8c: #2CCED2%ravenauction_category_count_misc%"
         - ""
         - "#8c8c8c• #2CCED2Cliquez #92ffffpour parcourir"

@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Inventaire de Confirmation de Retrait
+#   RavenAuction V4 - Inventaire de Confirmation de Retrait
 #
 #   Cet inventaire demande aux vendeurs de confirmer le retrait de leur item de la vente.
 #   L'item sera retourné dans la section des items expirés du joueur.
@@ -14,7 +14,7 @@
 #   - S'ouvre automatiquement quand un vendeur clique sur son propre item en vente
 #   - Affiché uniquement si open-confirm-inventory est true dans config.yml
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -42,7 +42,7 @@ items:
 
   remove:
     # Type de bouton - gère le retrait de l'annonce.
-    type: ZAUCTIONHOUSE_CONFIRM_REMOVE_LISTED
+    type: RAVENAUCTION_CONFIRM_REMOVE_LISTED
 
     item:
       # Vitre verte pour l'action de confirmation.
@@ -107,7 +107,7 @@ items:
 
   show:
     # Type de bouton - affiche l'item de l'enchère.
-    type: ZAUCTIONHOUSE_SHOW
+    type: RAVENAUCTION_SHOW
 
     # Slot central.
     slot: 13
@@ -119,7 +119,7 @@ items:
 
   shulker:
     # Type de bouton - ouvre la prévisualisation du contenu shulker.
-    type: ZAUCTIONHOUSE_SHULKER_OPEN
+    type: RAVENAUCTION_SHULKER_OPEN
 
     slot: 4
 

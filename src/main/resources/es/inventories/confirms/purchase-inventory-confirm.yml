@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Inventario de Confirmacion de Compra en Lote
+#   RavenAuction V4 - Inventario de Confirmacion de Compra en Lote
 #
 #   Este inventario confirma la compra de multiples objetos (ventas en lote).
 #   Muestra todos los objetos de la venta con una vista previa antes de la compra.
@@ -14,7 +14,7 @@
 #   - Se abre automaticamente al hacer clic en un objeto en lote para comprar
 #   - Los objetos en lote se indican con un icono de cofre en la casa de subastas
 #
-#   Documentacion: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentacion: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -35,7 +35,7 @@ size: 54
 
 patterns:
   # Bordes decorativos de cristal.
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
 
 #=============================================================================
 # OBJETOS
@@ -51,7 +51,7 @@ items:
 
   item-content:
     # Tipo de boton - muestra todos los objetos de la venta.
-    type: ZAUCTIONHOUSE_ITEM_CONTENT
+    type: RAVENAUCTION_ITEM_CONTENT
 
     # Slots para mostrar los objetos (4 filas x 9 columnas = 36 slots).
     slots:
@@ -63,7 +63,7 @@ items:
   # Finaliza la compra de todos los objetos.
 
   confirm:
-    type: ZAUCTIONHOUSE_CONFIRM_PURCHASE
+    type: RAVENAUCTION_CONFIRM_PURCHASE
 
     item:
       material: GREEN_STAINED_GLASS_PANE
@@ -103,7 +103,7 @@ items:
   # Abre el visualizador del contenido shulker.
 
   shulker:
-    type: ZAUCTIONHOUSE_SHULKER_OPEN
+    type: RAVENAUCTION_SHULKER_OPEN
 
     # Centro de la fila inferior.
     slot: 49

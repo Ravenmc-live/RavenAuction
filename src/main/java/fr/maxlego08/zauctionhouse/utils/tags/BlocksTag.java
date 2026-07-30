@@ -24,6 +24,6 @@ public class BlocksTag implements Tag<Material> {
 
     @Override
     public @NotNull NamespacedKey getKey() {
-        return new NamespacedKey("zauctionhouse", "blocks");
+        return new NamespacedKey("ravenauction", "blocks");
     }
 }

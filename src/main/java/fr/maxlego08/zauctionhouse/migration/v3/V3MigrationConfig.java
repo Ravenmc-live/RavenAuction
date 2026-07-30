@@ -66,7 +66,7 @@ public class V3MigrationConfig {
      * Loads migration config from a configuration section using default V3 values.
      */
     public static V3MigrationConfig fromConfig(ConfigurationSection section, File pluginDataFolder) {
-        return fromConfig(section, "zauctionhouse_", "plugins/zAuctionHouse/database.db", "plugins/zAuctionHouse");
+        return fromConfig(section, "zauctionhouse_", "plugins/RavenAuction/database.db", "plugins/RavenAuction");
     }
 
     /**
@@ -90,7 +90,7 @@ public class V3MigrationConfig {
                     sourceType,
                     section.getString("host", "localhost"),
                     section.getInt("port", 3306),
-                    section.getString("database", "zauctionhouse"),
+                    section.getString("database", "ravenauction"),
                     section.getString("user", "root"),
                     section.getString("password", ""),
                     tablePrefix,

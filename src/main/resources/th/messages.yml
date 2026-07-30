@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - การตั้งค่าข้อความ (Messages Configuration)
+#   RavenAuction V4 - การตั้งค่าข้อความ (Messages Configuration)
 #
 #   ไฟล์นี้เก็บข้อความทั้งหมดที่ผู้เล่นจะเห็นจากปลั๊กอิน
 #   คุณสามารถแก้ไขให้ตรงกับภาษาและสไตล์ของเซิร์ฟเวอร์คุณได้
@@ -15,7 +15,7 @@
 #   - ใช้รูปแบบ %placeholder% สำหรับค่าที่เปลี่ยนแปลงได้
 #   - placeholder ที่ใช้ได้จะแตกต่างกันไปในแต่ละข้อความ (อธิบายไว้ในคอมเมนต์ของแต่ละส่วน)
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -27,7 +27,7 @@
 # prefix ที่จะถูกเพิ่มไว้หน้าข้อความทั้งหมดของปลั๊กอิน
 # ตั้งค่าเป็นสตริงว่าง "" หากต้องการปิด prefix
 # placeholder ที่ใช้ได้: ไม่มี
-prefix: "<primary>zAuctionHouse <secondary>• "
+prefix: "<primary>RavenAuction <secondary>• "
 
 #=============================================================================
 # VERSION & UPDATE MESSAGES
@@ -37,7 +37,7 @@ prefix: "<primary>zAuctionHouse <secondary>• "
 # placeholder ที่ใช้ได้:
 #   %version% - เวอร์ชันที่ติดตั้งอยู่ตอนนี้
 #   %latest%  - เวอร์ชันล่าสุดที่มีให้ใช้
-version-available: "<#ff0000>มีเวอร์ชันใหม่ของ zAuctionHouse ให้ใช้งานแล้ว! <gray>(<white>ปัจจุบัน: <#ff9900>%version% <gray>| <white>ล่าสุด: <#00ff00>%latest%<gray>)"
+version-available: "<#ff0000>มีเวอร์ชันใหม่ของ RavenAuction ให้ใช้งานแล้ว! <gray>(<white>ปัจจุบัน: <#ff9900>%version% <gray>| <white>ล่าสุด: <#00ff00>%latest%<gray>)"
 
 #=============================================================================
 # COMMAND MESSAGES
@@ -276,7 +276,7 @@ price-too-low: "<error>คุณไม่สามารถตั้งราค
 # แสดงเมื่อผู้เล่นขายไอเท็มถึงจำนวนสูงสุดที่กำหนดแล้ว
 # placeholder ที่ใช้ได้:
 #   %max-items% - จำนวนไอเท็มสูงสุดที่อนุญาต
-listed-items-limit: "<error>คุณไม่สามารถขายไอเท็มมากกว่า <white>%max-items%<error> ชิ้นได้<error>. &8(&7คุณได้ตั้งค่า zauctionhouse.<number ใน config.yml แล้วหรือยัง?&8)"
+listed-items-limit: "<error>คุณไม่สามารถขายไอเท็มมากกว่า <white>%max-items%<error> ชิ้นได้<error>. &8(&7คุณได้ตั้งค่า ravenauction.<number ใน config.yml แล้วหรือยัง?&8)"
 
 # แสดงเมื่อพยายามขายไอเท็มใน world ที่ถูกแบน
 # placeholder ที่ใช้ได้: ไม่มี
@@ -506,7 +506,7 @@ tax-insufficient-funds: "<error>คุณมีเงินไม่เพีย
 #=============================================================================
 # ข้อความสำหรับระบบย้ายข้อมูล (migration) จากปลั๊กอินตลาดอื่น
 # การใช้งาน: /ah admin migrate <source> confirm
-# แหล่งข้อมูลที่รองรับ: zauctionhousev3
+# แหล่งข้อมูลที่รองรับ: ravenauctionv3
 
 # แสดงเมื่อยังไม่ได้ตั้งค่าการย้ายข้อมูล
 # placeholder ที่ใช้ได้:

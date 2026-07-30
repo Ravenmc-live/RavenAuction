@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Pattern du Bouton Retour
+#   RavenAuction V4 - Pattern du Bouton Retour
 #
 #   Ce pattern fournit un bouton retour pour revenir à l'inventaire précédent.
 #   Utilisé dans les sous-menus et vues de détail pour naviguer en arrière.
@@ -13,15 +13,15 @@
 #   UTILISATION:
 #   Incluez ce pattern dans les fichiers d'inventaire qui nécessitent un bouton retour:
 #     patterns:
-#       - 'zauctionhouse-back'
+#       - 'ravenauction-back'
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
 
 # Nom du pattern - référencé dans les autres fichiers d'inventaire.
-name: "zauctionhouse-back"
+name: "ravenauction-back"
 
 # Taille de l'inventaire (doit correspondre aux inventaires utilisant ce pattern).
 # Conçu pour les inventaires à 6 rangées (54 slots).

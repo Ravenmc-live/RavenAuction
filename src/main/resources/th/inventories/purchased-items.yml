@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Purchased Items Inventory
+#   RavenAuction V4 - Purchased Items Inventory
 #
 #   Inventory นี้ใช้แสดงไอเทมที่ผู้เล่นซื้อจาก auction house แล้ว
 #   ผู้เล่นสามารถกดรับไอเทมที่ซื้อไว้กลับเข้ากระเป๋าจากที่นี่ได้
@@ -14,7 +14,7 @@
 #   - /ah purchased
 #   - คลิกปุ่ม "Purchased Items" ในหน้า auction หลัก
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -35,11 +35,11 @@ size: 54
 
 patterns:
   # กรอบกระจกตกแต่งรอบ ๆ
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
   # ปุ่มย้อนหน้า / หน้าถัดไป
-  - 'zauctionhouse-pagination'
+  - 'ravenauction-pagination'
   # ปุ่มกลับไปหน้า auction หลัก
-  - 'zauctionhouse-back'
+  - 'ravenauction-back'
 
 #=============================================================================
 # ITEMS
@@ -55,7 +55,7 @@ items:
 
   items:
     # ประเภทปุ่ม - แสดงและจัดการไอเทมที่ซื้อแล้ว
-    type: ZAUCTIONHOUSE_PURCHASED_ITEMS
+    type: RAVENAUCTION_PURCHASED_ITEMS
 
     # ช่องสำหรับแสดงไอเทม placeholder เมื่อไม่มีไอเทมที่เคยซื้อ
     empty-slot: 22
@@ -73,7 +73,7 @@ items:
       name: '#ff0000&nไม่พบไอเทมที่เคยซื้อ'
 
   remove-all:
-    type: ZAUCTIONHOUSE_REMOVE_ALL_PURCHASED
+    type: RAVENAUCTION_REMOVE_ALL_PURCHASED
     is-permanent: true
     slot: 47
     item:

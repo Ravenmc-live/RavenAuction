@@ -42,7 +42,7 @@ import java.util.concurrent.CompletableFuture;
  * <h2>Registration:</h2>
  * <pre>{@code
  * // In your plugin's onEnable()
- * AuctionPlugin auctionPlugin = (AuctionPlugin) Bukkit.getPluginManager().getPlugin("zAuctionHouse");
+ * AuctionPlugin auctionPlugin = (AuctionPlugin) Bukkit.getPluginManager().getPlugin("RavenAuction");
  * auctionPlugin.getMigrationRegistry().register(new AxAuctionsMigrationProvider());
  * }</pre>
  */
@@ -136,7 +136,7 @@ public interface MigrationProvider {
     /**
      * Executes the migration process.
      *
-     * @param plugin   The zAuctionHouse plugin instance
+     * @param plugin   The RavenAuction plugin instance
      * @param config   The configuration section for this migration
      * @param callback Callback for progress updates
      * @return A CompletableFuture that completes with the migration result

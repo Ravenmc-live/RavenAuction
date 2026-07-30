@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Admin History Main Inventory
+#   RavenAuction V4 - Admin History Main Inventory
 #
 #   This is the admin hub for viewing a player's auction history.
 #   From here, admins can access all aspects of a player's auction activity.
@@ -16,7 +16,7 @@
 #   - /ah admin history <player>
 #   - Requires admin permission
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -45,7 +45,7 @@ items:
 
   target:
     # Button type - displays target player information.
-    type: ZAUCTIONHOUSE_ADMIN_HISTORY_MAIN
+    type: RAVENAUCTION_ADMIN_HISTORY_MAIN
 
     # Slot position - top center.
     slot: 13
@@ -63,7 +63,7 @@ items:
 
   expired:
     # Button type - opens admin expired items view.
-    type: ZAUCTIONHOUSE_ADMIN_HISTORY_EXPIRED
+    type: RAVENAUCTION_ADMIN_HISTORY_EXPIRED
 
     # Slot position.
     slot: 28
@@ -86,7 +86,7 @@ items:
 
   purchased:
     # Button type - opens admin purchased items view.
-    type: ZAUCTIONHOUSE_ADMIN_HISTORY_PURCHASED
+    type: RAVENAUCTION_ADMIN_HISTORY_PURCHASED
 
     slot: 29
 
@@ -107,7 +107,7 @@ items:
 
   selling:
     # Button type - opens admin selling items view.
-    type: ZAUCTIONHOUSE_ADMIN_HISTORY_SELLING
+    type: RAVENAUCTION_ADMIN_HISTORY_SELLING
 
     slot: 30
 
@@ -129,7 +129,7 @@ items:
 
   logs:
     # Button type - opens admin logs view.
-    type: ZAUCTIONHOUSE_ADMIN_HISTORY_LOGS
+    type: RAVENAUCTION_ADMIN_HISTORY_LOGS
 
     slot: 33
 
@@ -148,7 +148,7 @@ items:
 
   transactions:
     # Button type - opens admin transactions view.
-    type: ZAUCTIONHOUSE_ADMIN_HISTORY_TRANSACTIONS
+    type: RAVENAUCTION_ADMIN_HISTORY_TRANSACTIONS
 
     slot: 34
 

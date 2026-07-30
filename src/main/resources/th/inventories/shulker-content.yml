@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Shulker Content Inventory
+#   RavenAuction V4 - Shulker Content Inventory
 #
 #   Inventory นี้ใช้แสดงของด้านในกล่อง shulker ที่ถูกนำมาลงขาย
 #   ให้ผู้ซื้อสามารถดูของข้างในได้ก่อนตัดสินใจซื้อ
@@ -14,7 +14,7 @@
 #   - คลิกปุ่ม "View Shulker Content" ในหน้าต่างยืนยันการซื้อ/ถอดประกาศ
 #   - จะแสดงเฉพาะเมื่อไอเทมที่กำลังขายมี shulker อยู่ข้างใน
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -37,9 +37,9 @@ size: 54
 
 patterns:
   # กรอบกระจกตกแต่งรอบ ๆ
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
   # ปุ่มกลับไปหน้าต่างยืนยันก่อนหน้า
-  - 'zauctionhouse-back'
+  - 'ravenauction-back'
 
 #=============================================================================
 # ITEMS
@@ -55,7 +55,7 @@ items:
 
   content:
     # ประเภทปุ่ม - ใช้แสดงของด้านใน shulker
-    type: ZAUCTIONHOUSE_SHULKER_CONTENT
+    type: RAVENAUCTION_SHULKER_CONTENT
 
     # ช่องที่ใช้แสดงของด้านใน shulker
     # 4 แถว × 7 คอลัมน์ = 28 ช่อง (shulker เก็บได้ 27 ช่อง)
@@ -82,7 +82,7 @@ items:
 
   shulker-info:
     # ประเภทปุ่ม - ใช้แสดงข้อมูล shulker ปัจจุบัน
-    type: ZAUCTIONHOUSE_SHULKER_INFO
+    type: RAVENAUCTION_SHULKER_INFO
 
     # ตำแหน่งช่อง - กึ่งกลางแถวบน
     slot: 4
@@ -103,7 +103,7 @@ items:
 
   previous:
     # ประเภทปุ่ม - ใช้ควบคุมการเลื่อน shulker
-    type: ZAUCTIONHOUSE_SHULKER_NAVIGATION
+    type: RAVENAUCTION_SHULKER_NAVIGATION
 
     # ทิศทางในการเลื่อน
     direction: previous
@@ -126,7 +126,7 @@ items:
 
   next:
     # ประเภทปุ่ม - ใช้ควบคุมการเลื่อน shulker
-    type: ZAUCTIONHOUSE_SHULKER_NAVIGATION
+    type: RAVENAUCTION_SHULKER_NAVIGATION
 
     # ทิศทางในการเลื่อน
     direction: next

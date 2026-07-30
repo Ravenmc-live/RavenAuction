@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Pattern del Boton Atras
+#   RavenAuction V4 - Pattern del Boton Atras
 #
 #   Este pattern proporciona un boton atras para volver al inventario anterior.
 #   Usado en submenus y vistas de detalle para navegar hacia atras.
@@ -13,15 +13,15 @@
 #   USO:
 #   Incluye este pattern en los archivos de inventario que necesiten un boton atras:
 #     patterns:
-#       - 'zauctionhouse-back'
+#       - 'ravenauction-back'
 #
-#   Documentacion: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentacion: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
 
 # Nombre del pattern - referenciado en otros archivos de inventario.
-name: "zauctionhouse-back"
+name: "ravenauction-back"
 
 # Tamano del inventario (debe coincidir con los inventarios que usan este pattern).
 # Disenado para inventarios de 6 filas (54 slots).

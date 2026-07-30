@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Inventario di Conferma Ritiro in Lotto
+#   RavenAuction V4 - Inventario di Conferma Ritiro in Lotto
 #
 #   Questo inventario conferma il ritiro di più oggetti dalla vendita (vendite in lotto).
 #   Mostra tutti gli oggetti che verranno ritirati e restituiti al venditore.
@@ -14,7 +14,7 @@
 #   - Si apre automaticamente quando un venditore clicca sul proprio annuncio in lotto
 #   - Mostrato solo se open-confirm-inventory è true in config.yml
 #
-#   Documentazione: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentazione: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -35,7 +35,7 @@ size: 54
 
 patterns:
   # Bordi decorativi in vetro.
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
 
 #=============================================================================
 # OGGETTI
@@ -50,7 +50,7 @@ items:
 
   item-content:
     # Tipo di pulsante - mostra tutti gli oggetti della vendita.
-    type: ZAUCTIONHOUSE_ITEM_CONTENT
+    type: RAVENAUCTION_ITEM_CONTENT
 
     # Slot per visualizzare gli oggetti (4 righe × 9 colonne = 36 slot).
     slots:
@@ -62,7 +62,7 @@ items:
   # Ritira tutti gli oggetti dalla vendita.
 
   confirm:
-    type: ZAUCTIONHOUSE_CONFIRM_REMOVE_LISTED
+    type: RAVENAUCTION_CONFIRM_REMOVE_LISTED
 
     item:
       material: GREEN_STAINED_GLASS_PANE
@@ -102,7 +102,7 @@ items:
   # Apre il visualizzatore del contenuto shulker.
 
   shulker:
-    type: ZAUCTIONHOUSE_SHULKER_OPEN
+    type: RAVENAUCTION_SHULKER_OPEN
 
     # Centro della riga inferiore.
     slot: 49

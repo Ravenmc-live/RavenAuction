@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Inventaire de Confirmation de Retrait en Lot
+#   RavenAuction V4 - Inventaire de Confirmation de Retrait en Lot
 #
 #   Cet inventaire confirme le retrait de plusieurs items de la vente (ventes en lot).
 #   Affiche tous les items qui seront retirés et retournés au vendeur.
@@ -14,7 +14,7 @@
 #   - S'ouvre automatiquement quand un vendeur clique sur sa propre annonce en lot
 #   - Affiché uniquement si open-confirm-inventory est true dans config.yml
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -35,7 +35,7 @@ size: 54
 
 patterns:
   # Bordures décoratives en vitres.
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
 
 #=============================================================================
 # ITEMS
@@ -50,7 +50,7 @@ items:
 
   item-content:
     # Type de bouton - affiche tous les items de la vente.
-    type: ZAUCTIONHOUSE_ITEM_CONTENT
+    type: RAVENAUCTION_ITEM_CONTENT
 
     # Slots pour afficher les items (4 rangées × 9 colonnes = 36 slots).
     slots:
@@ -62,7 +62,7 @@ items:
   # Retire tous les items de la vente.
 
   confirm:
-    type: ZAUCTIONHOUSE_CONFIRM_REMOVE_LISTED
+    type: RAVENAUCTION_CONFIRM_REMOVE_LISTED
 
     item:
       material: GREEN_STAINED_GLASS_PANE
@@ -102,7 +102,7 @@ items:
   # Ouvre la visionneuse de contenu shulker.
 
   shulker:
-    type: ZAUCTIONHOUSE_SHULKER_OPEN
+    type: RAVENAUCTION_SHULKER_OPEN
 
     # Centre de la rangée du bas.
     slot: 49

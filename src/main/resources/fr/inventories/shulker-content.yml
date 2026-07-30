@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Inventaire du Contenu Shulker
+#   RavenAuction V4 - Inventaire du Contenu Shulker
 #
 #   Cet inventaire affiche le contenu des boîtes shulker en vente.
 #   Permet aux acheteurs de prévisualiser ce qu'il y a à l'intérieur avant d'acheter.
@@ -14,7 +14,7 @@
 #   - Cliquez sur le bouton "Voir le contenu shulker" dans les confirmations d'achat/retrait
 #   - Apparaît uniquement quand l'item en vente contient des boîtes shulker
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -37,9 +37,9 @@ size: 54
 
 patterns:
   # Bordures décoratives en vitres.
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
   # Bouton retour pour revenir à l'écran de confirmation.
-  - 'zauctionhouse-back'
+  - 'ravenauction-back'
 
 #=============================================================================
 # ITEMS
@@ -55,7 +55,7 @@ items:
 
   content:
     # Type de bouton - affiche le contenu du shulker.
-    type: ZAUCTIONHOUSE_SHULKER_CONTENT
+    type: RAVENAUCTION_SHULKER_CONTENT
 
     # Slots pour afficher le contenu du shulker.
     # 4 rangées × 7 colonnes = 28 slots (les shulkers contiennent 27 items).
@@ -82,7 +82,7 @@ items:
 
   shulker-info:
     # Type de bouton - affiche les infos du shulker actuel.
-    type: ZAUCTIONHOUSE_SHULKER_INFO
+    type: RAVENAUCTION_SHULKER_INFO
 
     # Position du slot - centre de la rangée du haut.
     slot: 4
@@ -103,7 +103,7 @@ items:
 
   previous:
     # Type de bouton - gère la navigation entre shulkers.
-    type: ZAUCTIONHOUSE_SHULKER_NAVIGATION
+    type: RAVENAUCTION_SHULKER_NAVIGATION
 
     # Direction de navigation.
     direction: previous
@@ -126,7 +126,7 @@ items:
 
   next:
     # Type de bouton - gère la navigation entre shulkers.
-    type: ZAUCTIONHOUSE_SHULKER_NAVIGATION
+    type: RAVENAUCTION_SHULKER_NAVIGATION
 
     # Direction de navigation.
     direction: next

@@ -5,7 +5,7 @@ import fr.maxlego08.zauctionhouse.migration.v3.V3StorageType;
 import java.util.UUID;
 
 /**
- * Represents an auction item from zAuctionHouse V3.
+ * Represents an auction item from RavenAuction V3.
  * This is a data class used during migration to V4.
  */
 public class V3AuctionItem {

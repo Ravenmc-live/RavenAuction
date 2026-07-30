@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Remove Listing Confirmation  Inventory 
+#   RavenAuction V4 - Remove Listing Confirmation Inventory
 #
 #   inventory นี้ใช้สำหรับให้ผู้ขาย "ยืนยัน" การถอดไอเทมออกจากการขาย
 #   ไอเทมจะถูกย้ายกลับไปยังหมวดไอเทมหมดอายุ (expired items) ของผู้เล่น
@@ -14,7 +14,7 @@
 #   - เปิดขึ้นอัตโนมัติเมื่อผู้ขายคลิกไอเทมที่ตัวเองลงขาย
 #   - จะแสดงก็ต่อเมื่อ open-confirm-inventory เป็น true ใน config.yml
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -42,7 +42,7 @@ items:
 
   remove:
     # ประเภทปุ่ม - จัดการการถอดประกาศขาย
-    type: ZAUCTIONHOUSE_CONFIRM_REMOVE_LISTED
+    type: RAVENAUCTION_CONFIRM_REMOVE_LISTED
 
     item:
       # กระจกสีเขียว ใช้แทนปุ่มยืนยันการถอดประกาศ
@@ -107,7 +107,7 @@ items:
 
   show:
     # ประเภทปุ่ม - ใช้แสดงไอเทมในตลาด
-    type: ZAUCTIONHOUSE_SHOW
+    type: RAVENAUCTION_SHOW
 
     # ช่องตรงกลางของ inventory 
     slot: 13
@@ -119,7 +119,7 @@ items:
 
   shulker:
     # ประเภทปุ่ม - เปิดดูเนื้อหาของ Shulker
-    type: ZAUCTIONHOUSE_SHULKER_OPEN
+    type: RAVENAUCTION_SHULKER_OPEN
 
     slot: 4
 

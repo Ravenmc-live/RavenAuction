@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Inventario di Conferma Acquisto
+#   RavenAuction V4 - Inventario di Conferma Acquisto
 #
 #   Questo inventario chiede ai giocatori di confermare il loro acquisto prima di finalizzarlo.
 #   Mostra l'oggetto da acquistare con le opzioni conferma/annulla.
@@ -13,7 +13,7 @@
 #   ACCESSO:
 #   - Si apre automaticamente cliccando su un oggetto da acquistare nella casa d'aste
 #
-#   Documentazione: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentazione: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -41,7 +41,7 @@ items:
 
   confirm:
     # Tipo di pulsante - gestisce la conferma dell'acquisto.
-    type: ZAUCTIONHOUSE_CONFIRM_PURCHASE
+    type: RAVENAUCTION_CONFIRM_PURCHASE
 
     item:
       # Vetro verde per l'azione di conferma.
@@ -107,7 +107,7 @@ items:
 
   show:
     # Tipo di pulsante - mostra l'oggetto dell'asta.
-    type: ZAUCTIONHOUSE_SHOW
+    type: RAVENAUCTION_SHOW
 
     # Slot centrale.
     slot: 13
@@ -120,7 +120,7 @@ items:
   shulker:
     # Tipo di pulsante - apre l'anteprima del contenuto shulker.
     # Visibile solo quando l'oggetto contiene scatole shulker.
-    type: ZAUCTIONHOUSE_SHULKER_OPEN
+    type: RAVENAUCTION_SHULKER_OPEN
 
     # Posizione dello slot.
     slot: 4

@@ -1,4 +1,4 @@
-rootProject.name = "zAuctionHouseV4"
+rootProject.name = "RavenAuction"
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
@@ -15,23 +15,8 @@ pluginManagement {
 
 include("API")
 
-// Hooks that require a gradle.properties flag to be enabled
-val conditionalHooks = mapOf(
-    "ZelAuction" to "hooks.zelauction",
-    "DonutAuction" to "hooks.donutauction",
-    "CrazyAuctions" to "hooks.crazyauctions"
-)
-
 file("Hooks").listFiles()?.forEach { file ->
-    if (file.isDirectory and !file.name.equals("build")) {
-        val propertyKey = conditionalHooks[file.name]
-        if (propertyKey != null) {
-            val enabled = settings.providers.gradleProperty(propertyKey).getOrElse("false").toBoolean()
-            if (!enabled) {
-                println("Skip Hooks:${file.name} ($propertyKey=false)")
-                return@forEach
-            }
-        }
+    if (file.isDirectory && file.name == "LuckPerms") {
         println("Include Hooks:${file.name}")
         include(":Hooks:${file.name}")
     }

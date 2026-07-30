@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Purchased Items Inventory
+#   RavenAuction V4 - Purchased Items Inventory
 #
 #   This inventory displays items the player has bought from the auction house.
 #   Players can retrieve purchased items to their inventory from here.
@@ -14,7 +14,7 @@
 #   - /ah purchased
 #   - Click the "Purchased Items" button in the main auction house
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -35,11 +35,11 @@ size: 54
 
 patterns:
   # Decorative glass pane borders.
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
   # Previous/next page buttons.
-  - 'zauctionhouse-pagination'
+  - 'ravenauction-pagination'
   # Back button to return to auction house.
-  - 'zauctionhouse-back'
+  - 'ravenauction-back'
 
 #=============================================================================
 # ITEMS
@@ -55,7 +55,7 @@ items:
 
   items:
     # Button type - displays and handles purchased items.
-    type: ZAUCTIONHOUSE_PURCHASED_ITEMS
+    type: RAVENAUCTION_PURCHASED_ITEMS
 
     # Slot for empty state placeholder.
     empty-slot: 22
@@ -78,7 +78,7 @@ items:
   # Retrieves all purchased items at once (if inventory space allows).
 
   remove-all:
-    type: ZAUCTIONHOUSE_REMOVE_ALL_PURCHASED
+    type: RAVENAUCTION_REMOVE_ALL_PURCHASED
     is-permanent: true
     slot: 47
     item:

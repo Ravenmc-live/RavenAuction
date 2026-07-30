@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Inventario de Objetos en Venta (Tus Objetos)
+#   RavenAuction V4 - Inventario de Objetos en Venta (Tus Objetos)
 #
 #   Este inventario muestra los objetos que el jugador tiene actualmente en venta.
 #   Los jugadores pueden retirar sus anuncios y recuperar sus objetos.
@@ -15,7 +15,7 @@
 #   - /ah selling
 #   - Clic en el boton "Tus objetos" en la casa de subastas principal
 #
-#   Documentacion: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentacion: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -36,11 +36,11 @@ size: 54
 
 patterns:
   # Bordes decorativos de vidrio.
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
   # Botones pagina anterior/siguiente.
-  - 'zauctionhouse-pagination'
+  - 'ravenauction-pagination'
   # Boton volver para regresar a la casa de subastas.
-  - 'zauctionhouse-back'
+  - 'ravenauction-back'
 
 #=============================================================================
 # OBJETOS
@@ -56,7 +56,7 @@ items:
 
   items:
     # Tipo de boton - visualiza y gestiona los objetos en venta del jugador.
-    type: ZAUCTIONHOUSE_SELLING_ITEMS
+    type: RAVENAUCTION_SELLING_ITEMS
 
     # Slot para el placeholder de estado vacio.
     empty-slot: 22
@@ -74,7 +74,7 @@ items:
       name: '#ff0000&nNingun objeto encontrado'
 
   remove-all:
-    type: ZAUCTIONHOUSE_REMOVE_ALL_SELLING
+    type: RAVENAUCTION_REMOVE_ALL_SELLING
     is-permanent: true
     slot: 47
     item:

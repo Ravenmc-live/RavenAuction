@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Messages Configuration
+#   RavenAuction V4 - Messages Configuration
 #
 #   This file contains all player-facing messages displayed by the plugin.
 #   Customize these messages to match your server's language and style.
@@ -15,7 +15,7 @@
 #   - %placeholder% style is used for dynamic values
 #   - Available placeholders vary by message (documented inline)
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -27,7 +27,7 @@
 # Prefix added before all plugin messages.
 # Set to empty string "" to disable the prefix.
 # Available placeholders: none
-prefix: "<primary>zAuctionHouse <secondary>• "
+prefix: "<primary>RavenAuction <secondary>• "
 
 #=============================================================================
 # VERSION & UPDATE MESSAGES
@@ -37,7 +37,7 @@ prefix: "<primary>zAuctionHouse <secondary>• "
 # Available placeholders:
 #   %version% - Current installed version
 #   %latest%  - Latest available version
-version-available: "<#ff0000>There is a new version of zAuctionHouse available ! <gray>(<white>current: <#ff9900>%version% <gray>| <white>latest: <#00ff00>%latest%<gray>)"
+version-available: "<#ff0000>There is a new version of RavenAuction available ! <gray>(<white>current: <#ff9900>%version% <gray>| <white>latest: <#00ff00>%latest%<gray>)"
 
 #=============================================================================
 # COMMAND MESSAGES
@@ -276,7 +276,7 @@ price-too-low: "<error>You cannot sell for less than <white>%min-price%<error>."
 # Shown when player has reached their listing limit.
 # Available placeholders:
 #   %max-items% - Maximum items allowed
-listed-items-limit: "<error>You cannot sell more than <white>%max-items%<error> items<error>. &8(&7Did you set the zauctionhouse.<number in config.yml> ?&8)"
+listed-items-limit: "<error>You cannot sell more than <white>%max-items%<error> items<error>. &8(&7Did you set the ravenauction.<number in config.yml> ?&8)"
 
 # Shown when trying to sell in a banned world.
 # Available placeholders: none
@@ -506,7 +506,7 @@ tax-insufficient-funds: "<error>You don't have enough money to pay the tax of <w
 #=============================================================================
 # Messages for the data migration system (importing from other auction plugins).
 # Usage: /ah admin migrate <source> confirm
-# Supported sources: zauctionhousev3
+# Supported sources: ravenauctionv3
 
 # Shown when migration is not configured.
 # Available placeholders:

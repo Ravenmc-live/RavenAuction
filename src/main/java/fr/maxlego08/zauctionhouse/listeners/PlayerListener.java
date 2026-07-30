@@ -32,7 +32,7 @@ public class PlayerListener implements Listener {
         if (player.getName().equals("Maxlego08")) {
             this.plugin.getScheduler().runLater(task -> {
                 if (player.isOnline()) {
-                    ComponentMessageHelper.componentMessage.sendMessage(player, "<#24d65d>zAuctionHouse <#656665>• <#e6fff3>Ce serveur utilise <#24d65d>zAuctionHouse <white>v" + this.plugin.getDescription().getVersion());
+                    ComponentMessageHelper.componentMessage.sendMessage(player, "<#24d65d>RavenAuction <#656665>• <#e6fff3>Ce serveur utilise <#24d65d>RavenAuction <white>v" + this.plugin.getDescription().getVersion());
                 }
             }, 40L);
         }

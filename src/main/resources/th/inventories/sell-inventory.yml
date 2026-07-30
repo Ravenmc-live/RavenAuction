@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Sell Inventory
+#   RavenAuction V4 - Sell Inventory
 #
 #   Inventory นี้ใช้สำหรับให้ผู้เล่นลงขายไอเทมผ่าน GUI
 #   เปิดใช้งานได้ผ่าน /ah sell (เมื่อ enable-sell-inventory เป็น true ใน config.yml)
@@ -11,7 +11,7 @@
 #   - เลือกประเภทเศรษฐกิจ (economy) ได้ ถ้ามีมากกว่าหนึ่งแบบ
 #   - ยืนยันหรือยกเลิกการลงขายได้จากเมนูเดียว
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -32,7 +32,7 @@ size: 54
 
 patterns:
   # กรอบกระจกตกแต่งรอบ ๆ
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
 
 #=============================================================================
 # ITEMS
@@ -48,7 +48,7 @@ items:
 
   show-item:
     # ประเภทปุ่ม - จัดการการเลือกและแสดงไอเทม
-    type: ZAUCTIONHOUSE_SELL_SHOW_ITEM
+    type: RAVENAUCTION_SELL_SHOW_ITEM
 
     # ช่องที่ใช้แสดงไอเทมที่เลือกไว้
     # ครอบคลุมพื้นที่กลางทั้งหมด (36 ช่อง)
@@ -74,7 +74,7 @@ items:
 
   cancel:
     # ประเภทปุ่ม - จัดการการยกเลิกและคืนไอเทม
-    type: ZAUCTIONHOUSE_SELL_CANCEL
+    type: RAVENAUCTION_SELL_CANCEL
 
     # ตำแหน่งช่อง - ซ้ายสุดของแถวล่าง
     slot: 45
@@ -94,7 +94,7 @@ items:
 
   private-decrease:
     # ประเภทปุ่ม - จัดการการปรับราคา
-    type: ZAUCTIONHOUSE_SELL_PRICE
+    type: RAVENAUCTION_SELL_PRICE
 
     # ตำแหน่งช่อง
     slot: 48
@@ -129,7 +129,7 @@ items:
 
   select-economy:
     # ประเภทปุ่ม - จัดการการสลับ economy
-    type: ZAUCTIONHOUSE_SELL_ECONOMY
+    type: RAVENAUCTION_SELL_ECONOMY
 
     # ตำแหน่งช่อง - กึ่งกลางของแถวล่าง
     slot: 49
@@ -153,7 +153,7 @@ items:
 
   price-increase:
     # ประเภทปุ่ม - จัดการการปรับราคา
-    type: ZAUCTIONHOUSE_SELL_PRICE
+    type: RAVENAUCTION_SELL_PRICE
 
     # จำนวนเงินที่ใช้ปรับราคาตามรูปแบบการคลิก
     # ค่าเป็นบวก = เพิ่มราคา
@@ -185,7 +185,7 @@ items:
 
   confirm:
     # ประเภทปุ่ม - จัดการการยืนยันการขาย
-    type: ZAUCTIONHOUSE_SELL_CONFIRM
+    type: RAVENAUCTION_SELL_CONFIRM
 
     # ตำแหน่งช่อง - ขวาสุดของแถวล่าง
     slot: 53

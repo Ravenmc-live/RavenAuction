@@ -12,7 +12,7 @@ import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
 /**
- * Reads data from zAuctionHouse V3 SQL database (MySQL/MariaDB/SQLite).
+ * Reads data from RavenAuction V3 SQL database (MySQL/MariaDB/SQLite).
  */
 public class V3SqlDataReader implements V3DataReader {
 

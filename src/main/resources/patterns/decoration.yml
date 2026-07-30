@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Decoration Pattern
+#   RavenAuction V4 - Decoration Pattern
 #
 #   This pattern file provides decorative glass panes for inventory borders.
 #   It is reused across multiple inventories to maintain consistent styling.
@@ -14,16 +14,16 @@
 #   USAGE:
 #   Include this pattern in your inventory files:
 #     patterns:
-#       - 'zauctionhouse-decoration'
+#       - 'ravenauction-decoration'
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
 
 # Pattern name - referenced in other inventory files.
 # Must be unique across all pattern files.
-name: "zauctionhouse-decoration"
+name: "ravenauction-decoration"
 
 # Inventory size (must match the inventories using this pattern).
 # Standard sizes: 9, 18, 27, 36, 45, 54

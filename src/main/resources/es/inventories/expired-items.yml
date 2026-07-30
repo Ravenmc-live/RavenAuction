@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Inventario de Objetos Caducados
+#   RavenAuction V4 - Inventario de Objetos Caducados
 #
 #   Este inventario muestra los objetos que han caducado sin ser vendidos.
 #   Los jugadores pueden retirar estos objetos a su inventario.
@@ -14,7 +14,7 @@
 #   - /ah expired
 #   - Clic en el boton "Objetos caducados" en la casa de subastas principal
 #
-#   Documentacion: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentacion: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -36,11 +36,11 @@ size: 54
 
 patterns:
   # Bordes decorativos de vidrio.
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
   # Botones pagina anterior/siguiente.
-  - 'zauctionhouse-pagination'
+  - 'ravenauction-pagination'
   # Boton volver para regresar a la casa de subastas.
-  - 'zauctionhouse-back'
+  - 'ravenauction-back'
 
 #=============================================================================
 # OBJETOS
@@ -56,7 +56,7 @@ items:
 
   items:
     # Tipo de boton - visualiza y gestiona los objetos caducados.
-    type: ZAUCTIONHOUSE_EXPIRED_ITEMS
+    type: RAVENAUCTION_EXPIRED_ITEMS
 
     # Slot para el placeholder de estado vacio.
     empty-slot: 22
@@ -74,7 +74,7 @@ items:
       name: '#ff0000&nNingun objeto encontrado'
 
   remove-all:
-    type: ZAUCTIONHOUSE_REMOVE_ALL_EXPIRED
+    type: RAVENAUCTION_REMOVE_ALL_EXPIRED
     is-permanent: true
     slot: 47
     item:

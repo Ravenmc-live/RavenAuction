@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Back Button Pattern
+#   RavenAuction V4 - Back Button Pattern
 #
 #   แพทเทิร์นนี้ใช้สำหรับทำปุ่มย้อนกลับ (Back Button) เพื่อกลับไปยัง inventory ก่อนหน้า
 #   ใช้ใน sub-menu และหน้า detail ต่าง ๆ เพื่อให้ผู้เล่นกดกลับได้สะดวก
@@ -13,15 +13,15 @@
 #   USAGE:
 #   ให้ใส่แพทเทิร์นนี้ในไฟล์ inventory ที่ต้องการปุ่มย้อนกลับ:
 #     patterns:
-#       - 'zauctionhouse-back'
+#       - 'ravenauction-back'
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
 
 # ชื่อแพทเทิร์น - ใช้อ้างอิงจากไฟล์ inventory อื่น
-name: "zauctionhouse-back"
+name: "ravenauction-back"
 
 # ขนาด inventory (ต้องตรงกับ inventory ที่ใช้แพทเทิร์นนี้)
 # ออกแบบมาสำหรับ 6 แถว (54 slot)

@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Back Button Pattern
+#   RavenAuction V4 - Back Button Pattern
 #
 #   This pattern provides a back button to return to the previous inventory.
 #   Used in sub-menus and detail views to navigate back.
@@ -13,15 +13,15 @@
 #   USAGE:
 #   Include this pattern in inventory files that need a back button:
 #     patterns:
-#       - 'zauctionhouse-back'
+#       - 'ravenauction-back'
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
 
 # Pattern name - referenced in other inventory files.
-name: "zauctionhouse-back"
+name: "ravenauction-back"
 
 # Inventory size (must match the inventories using this pattern).
 # Designed for 6-row (54 slot) inventories.

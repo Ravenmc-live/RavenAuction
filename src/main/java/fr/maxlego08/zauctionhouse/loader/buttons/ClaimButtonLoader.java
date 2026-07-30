@@ -14,7 +14,7 @@ public class ClaimButtonLoader extends ButtonLoader {
     private final InventoryManager inventoryManager;
 
     public ClaimButtonLoader(AuctionPlugin plugin, InventoryManager inventoryManager) {
-        super(plugin, "ZAUCTIONHOUSE_CLAIM");
+        super(plugin, "RAVENAUCTION_CLAIM");
         this.plugin = plugin;
         this.inventoryManager = inventoryManager;
     }

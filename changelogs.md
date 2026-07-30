@@ -5,15 +5,14 @@
 - **Fixed** A crashed/timed-out purchase could leave an item permanently un-buyable in multi-server (Redis) setups. The lock key `auction:lock:<id>` expires via TTL but the item hash field `state=LOCKED` persisted (up to the item TTL, ~30 days), so `checkAvailability` reported the item as locked forever. Lock state now keys on the lock key's existence: a `LOCKED` state with no live lock key is treated as a stale lock and recovered. To prevent this recovery from ever enabling a double-purchase, `PurchaseService` now re-validates authoritative database state **under the lock** before charging — a row that is already `DELETED` or has a buyer aborts the purchase with nothing withdrawn
 - **Fixed** Expiration is now cluster-aware in multi-server (Redis) setups. Previously `ExpireService` moved items `LISTED -> EXPIRED` purely locally with no cluster coordination, so a lingering ghost of an item sold on another server could be resurrected as an `EXPIRED` item for the seller (and claimed back = duplication). In distributed setups the `LISTED -> EXPIRED` transition now locks the item, re-reads authoritative database state (skipping items sold elsewhere), performs the move, and broadcasts it so all nodes converge. Single-server setups keep the original fast path
 - **Fixed** `ItemRepository` could overwrite a sold/removed item when expiring. The `LISTED -> EXPIRED` update is now guarded with `WHERE storage_type = 'LISTED'`, so an expiration `UPDATE` can never clobber a row another server already set to `DELETED`/`PURCHASED`
-- **Added** DonutAuction migration - migrate data from the DonutAuction plugin (by EliVB) to zAuctionHouse V4 using `/ah admin migrate donutauction confirm` (aliases `donut`, `donutsmp`, `da`). Reads `plugins/DonutAuction/ah.data` directly, so no database configuration is needed; active auctions are imported as listed items and past-expiry auctions as reclaimable expired items, while unclaimed pending payments (money, not items) are skipped. Legacy Base64 itemstacks are deserialized through a hardened class allowlist to guard against malicious data files
 - **Fixed** Cross-server purchases could fail with `IllegalArgumentException: name cannot be null` (multi-server / Redis). When a buyer bought an item whose seller had never logged into that specific backend node, `getSellerName()` returned `null` and was passed straight to the economy provider's `withdraw()` call (and to the `%seller%` placeholder in the purchase notifications), aborting the purchase. The seller name is now resolved from the shared database before the economy call, falling back to the seller's UUID string (with a console warning to verify all servers share the same MySQL database) when even that lookup fails, so a `null` name can never reach downstream code
-- **Fixed** Purchases failing or charging incorrectly under CAPITALISM (VAT-style) tax - the balance check before buying only verified the buyer could afford the listed price, not the price plus the CAPITALISM tax added on top, so a player holding exactly the listed amount passed the check and the tax-inclusive withdrawal could then fail. `PurchaseService` and the `ZAUCTIONHOUSE_LISTED_ITEMS` button now check the tax-inclusive required balance when CAPITALISM tax is enabled
+- **Fixed** Purchases failing or charging incorrectly under CAPITALISM (VAT-style) tax - the balance check before buying only verified the buyer could afford the listed price, not the price plus the CAPITALISM tax added on top, so a player holding exactly the listed amount passed the check and the tax-inclusive withdrawal could then fail. `PurchaseService` and the `RAVENAUCTION_LISTED_ITEMS` button now check the tax-inclusive required balance when CAPITALISM tax is enabled
 - **Fixed** Items getting stuck in the "being purchased" state after a purchase failed for insufficient funds - the item was marked `IS_BEING_PURCHASED` before the funds check but only unlocked (not status-restored) on failure, so in multi-server (Redis) setups it stayed stuck and could no longer be bought. The status is now restored and broadcast to the cluster before unlocking
 - **Fixed** Money loss on economy errors during a purchase or claim - buyer withdraw, seller deposit and claim deposits are now wrapped in error handling: if the buyer is charged but the seller deposit throws, the buyer is automatically refunded; failed claim deposits are logged and skipped instead of silently losing the money
-- **Fixed** Expired listings could still be displayed and counted in the auction house. Because expiration is processed lazily, an item could remain `AVAILABLE` past its expiry (especially while a cache was stale) and keep showing in the main list, in the per-category counts, and in the `%zauctionhouse_listed_items%` placeholder. A single `Item.isActivelyListed()` predicate (available **and** not expired) is now applied at every display chokepoint, and interacting with a listing that has already expired now moves it to the player's expired items instead of opening a confirm inventory or re-showing it
+- **Fixed** Expired listings could still be displayed and counted in the auction house. Because expiration is processed lazily, an item could remain `AVAILABLE` past its expiry (especially while a cache was stale) and keep showing in the main list, in the per-category counts, and in the `%ravenauction_listed_items%` placeholder. A single `Item.isActivelyListed()` predicate (available **and** not expired) is now applied at every display chokepoint, and interacting with a listing that has already expired now moves it to the player's expired items instead of opening a confirm inventory or re-showing it
 - **Fixed** The selling, expired, purchased, listed and combined item-list buttons ignored their inventory's `player-inventory` setting - paginated items and the empty-slot placeholder were always rendered into the chest GUI even when the inventory was configured as a player inventory. These buttons now render items into the player's own inventory area when configured (PR #25)
-- **Fixed** Auction search button always showed a hardcoded English `None` in `%search_query%` when no search was active, ignoring the server language. The `ZAUCTIONHOUSE_SEARCH` button now reads a configurable `none-value` option on the search button in `inventories/auction.yml`, with a localized default per language (`None` / `Aucune` / `Ninguna` / `Nessuna` / `ไม่มี`), so the empty-search text is translatable and customizable
-- **Added** Configurable `%search_active%` value on the auction search button - the `ZAUCTIONHOUSE_SEARCH` button now reads `active-value` (default `true`) and `inactive-value` (default `false`) options in `inventories/auction.yml`, so the value returned by `%search_active%` when a search is / isn't active can be customized (e.g. `Enabled`/`Disabled`, `Yes`/`No`) instead of the hardcoded `true`/`false`
+- **Fixed** Auction search button always showed a hardcoded English `None` in `%search_query%` when no search was active, ignoring the server language. The `RAVENAUCTION_SEARCH` button now reads a configurable `none-value` option on the search button in `inventories/auction.yml`, with a localized default per language (`None` / `Aucune` / `Ninguna` / `Nessuna` / `ไม่มี`), so the empty-search text is translatable and customizable
+- **Added** Configurable `%search_active%` value on the auction search button - the `RAVENAUCTION_SEARCH` button now reads `active-value` (default `true`) and `inactive-value` (default `false`) options in `inventories/auction.yml`, so the value returned by `%search_active%` when a search is / isn't active can be customized (e.g. `Enabled`/`Disabled`, `Yes`/`No`) instead of the hardcoded `true`/`false`
 - **Changed** Updated the required zMenu API to `1.1.1.6` - make sure your server runs zMenu `1.1.1.6` or newer
 
 # 4.0.0.9
@@ -23,7 +22,6 @@
 - **Added** Admin log management commands - `/ah admin logs purge <days>` deletes all logs older than the specified number of days, `/ah admin logs player <player>` deletes all logs for a specific player, `/ah admin logs clear-migrated` deletes all V3 migrated logs (entries with `item_id = 0`). All operations run asynchronously and report the number of deleted entries
 - **Fixed** Ghost items in `/ah selling` on multi-server (Redis) setups - when a player removed a selling item on server #1 and switched to server #2, the item could still appear with "being purchased" lore and could not be removed, blocking selling slots. Three fixes applied: (1) `ItemRemovedListener` now removes the item from in-memory storage immediately on message receipt instead of waiting for an async DB query, (2) `RemoveService` no longer restores the item status via Redis when the local removal already completed (preventing ghost items from reappearing as AVAILABLE on other servers after a cluster notification timeout), (3) `getPlayerSellingItems` now filters out items with `DELETED` status as defense-in-depth
 - **Changed** Discord webhook `%expires_at%` placeholder now outputs a Discord [dynamic timestamp](https://discord.com/developers/docs/reference#message-formatting-timestamp-styles) (`<t:unix_seconds:f>`) instead of a pre-formatted date string. Discord renders it in each viewer's own local timezone (e.g. `12 June 2026 18:55`), making it easier to read and timezone-agnostic. Items with no expiration still fall back to the formatted date
-- **Added** Per-item custom images for Discord webhooks - a new `custom-images` section in `discord.yml` lets you override the `%item_image_url%` for specific items. Each entry pairs a `rule` (same format as `categories.yml`/`rules.yml`: `material`, `name`, `lore`, `custom-model-data`, `oraxen`, `itemsadder`, `nexo`, `mmoitems`, etc.) with an image URL. The first matching rule wins; items matching no rule fall back to the material-based `item-image-url` pattern. Ideal for custom items whose generic material does not represent the real item. Dominant color extraction caches the color per image URL so custom items sharing a material no longer collide
 
 # 4.0.0.8
 
@@ -40,11 +38,11 @@
 - **Added** Player options system - extensible per-player preference system backed by the database. Players can toggle options via `/ah option` (opens GUI) or `/ah option <option_name> [value]` (command toggle). Options are cached in memory and only stored in the database when different from the default value. Currently supports `broadcast_sell` and `broadcast_purchase` to opt out of broadcast messages
 - **Added** Options inventory (`/ah option`) - 27-slot GUI with toggle buttons for each broadcast option, showing current status (enabled/disabled)
 - **Added** Admin option commands - `/ah admin option set <player> <option> <value>` to set options for a player, `/ah admin option list <player>` to view player options, `/ah admin option reset <player>` to reset all options to defaults
-- **Added** `%zauctionhouse_option_<option_name>%` PlaceholderAPI placeholder - returns `true`/`false` for a player's option value (e.g., `%zauctionhouse_option_broadcast_sell%`)
+- **Added** `%ravenauction_option_<option_name>%` PlaceholderAPI placeholder - returns `true`/`false` for a player's option value (e.g., `%ravenauction_option_broadcast_sell%`)
 
 # 4.0.0.6
 
-- **Added** `ZAUCTIONHOUSE_COMBINED_ITEMS` button - combines selling, expired, and purchased items into a single paginated view. Each source is individually togglable via `include-selling`, `include-expired`, and `include-purchased`. Click actions automatically adapt to the item's storage type (cancel listing, claim expired, claim purchased). Each item type uses its own lore configuration from `config.yml`
+- **Added** `RAVENAUCTION_COMBINED_ITEMS` button - combines selling, expired, and purchased items into a single paginated view. Each source is individually togglable via `include-selling`, `include-expired`, and `include-purchased`. Click actions automatically adapt to the item's storage type (cancel listing, claim expired, claim purchased). Each item type uses its own lore configuration from `config.yml`
 - **Fixed** Item duplication exploit in multi-server (Redis) setups - removing a listing on one server and claiming the expired item could leave a ghost entry on the original server, allowing the item to be claimed again after natural expiration
 - **Fixed** `ItemRemovedListener` (Redis addon) - removed fragile DB state validation that rejected removal messages due to race conditions, added safety-net cleanup across all storage types
 - **Fixed** `ItemStatusListener` (Redis addon) - status change propagation now searches across all storage types (LISTED, EXPIRED, PURCHASED) instead of only LISTED
@@ -52,17 +50,16 @@
 - **Added** Redis Sentinel support (Redis addon) - enables high-availability Redis setups with automatic master discovery and failover. Configure `mode: "sentinel"` in `config.yml` with sentinel nodes. Fully backward compatible, existing standalone configurations work without changes
 - **Fixed** `NullPointerException` when default economy is not configured - `/ah sell` and all sell-related buttons now display an error message instead of crashing. Added startup validation with prominent warnings in console when a default economy is missing from `economies.yml`
 - **Fixed** Incorrect economy type names in `economies.yml` comments - `COINS_ENGINE` and `PLAYER_POINTS` did not match the actual CurrenciesAPI enum values (`COINSENGINE`, `PLAYERPOINTS`), causing these economy types to silently fail to load when users followed the documented names
-- **Added** All permissions are now programmatically registered in Spigot on startup and reload. Includes static permissions (use, sell, admin, etc.), and dynamic permissions from configuration (listing limits, expiration tiers, tax bypass/reductions, economy access, inventory commands, cooldown bypass). All permissions are grouped under the `zauctionhouse.*` wildcard
+- **Added** All permissions are now programmatically registered in Spigot on startup and reload. Includes static permissions (use, sell, admin, etc.), and dynamic permissions from configuration (listing limits, expiration tiers, tax bypass/reductions, economy access, inventory commands, cooldown bypass). All permissions are grouped under the `ravenauction.*` wildcard
 - **Fixed** Items dropping on the ground when claiming expired, purchased, or selling items with a full inventory - items now stay in their storage when the player's inventory is full. Added `player-inventory-must-have-free-space` config option under `remove-expired-item` and `selling-item` sections (enabled by default)
-- **Added** `ZAUCTIONHOUSE_REMOVE_ALL_EXPIRED`, `ZAUCTIONHOUSE_REMOVE_ALL_SELLING`, `ZAUCTIONHOUSE_REMOVE_ALL_PURCHASED` buttons - allows players to retrieve all items at once from expired, selling, and purchased inventories. Items are given one by one and stops when inventory is full (if `player-inventory-must-have-free-space` is enabled)
+- **Added** `RAVENAUCTION_REMOVE_ALL_EXPIRED`, `RAVENAUCTION_REMOVE_ALL_SELLING`, `RAVENAUCTION_REMOVE_ALL_PURCHASED` buttons - allows players to retrieve all items at once from expired, selling, and purchased inventories. Items are given one by one and stops when inventory is full (if `player-inventory-must-have-free-space` is enabled)
 - **Added** `ItemContentProvider` API - extensible system for displaying the contents of container items (shulker boxes, custom containers from plugins). External plugins can register their own providers via `AuctionPlugin.getItemContentManager().registerProvider()`
-- **Added** AxShulkers hook - displays the contents of shulker boxes managed by the AxShulkers plugin in the item content viewer. AxShulkers stores shulker contents externally instead of in vanilla NBT, so this hook is required to view their contents
 - **Fixed** Seller not receiving money in multi-server (Redis) setups when the buyer is on a different server - the plugin tried to deposit money locally on the buyer's server where the seller's economy account may not exist. Money is now deferred to `PENDING` status in distributed environments and claimed by the seller on their own server via `/ah claim` or auto-claim on join
 - **Added** `AuctionClusterBridge.isDistributed()` - allows cluster bridge implementations to signal a multi-server environment so the plugin can adapt its behavior (e.g., defer deposits instead of executing them locally)
 
 # 4.0.0.5
 
-- **Added** `ZAUCTIONHOUSE_CLAIM` button - displays pending money per economy with dynamic placeholders and allows players to claim directly from the auction GUI
+- **Added** `RAVENAUCTION_CLAIM` button - displays pending money per economy with dynamic placeholders and allows players to claim directly from the auction GUI
 - **Added** Configurable `loading-item` for the claim button, shown while pending money data is being fetched
 - **Added** `PRICE_WITHOUT_DECIMAL` price format - displays prices without decimal places (e.g., `10000.50` -> `10000`)
 - **Added** `%price-price-without-decimal%` placeholder - displays the price without decimals in item lore
@@ -72,7 +69,7 @@
 - **Fixed** `updateListedItems` crash on Folia/Canvas - inventory holder access was running on an async thread instead of the main tick thread
 - **Fixed** economy name argument configuration for the sell command - when the economy argument index was not configured, the default value was ignored causing a null economy name
 
-### `ZAUCTIONHOUSE_CLAIM` button
+### `RAVENAUCTION_CLAIM` button
 
 Allows players to claim their pending money directly from the auction house inventory. The button displays per-economy pending amounts using dynamic placeholders and supports a loading state while data is being fetched.
 
@@ -90,7 +87,7 @@ The economy name corresponds to the name defined in your `economies.yml` configu
 
 ```yaml
 claim-money:
-  type: ZAUCTIONHOUSE_CLAIM
+  type: RAVENAUCTION_CLAIM
   slot: 48
   loading-item:
     material: CLOCK
@@ -111,10 +108,9 @@ claim-money:
 
 # 4.0.0.4
 
-- **Added** ZelAuction migration - migrate data from ZelAuction plugin to zAuctionHouse V4 using `/ah admin migrate zelauction confirm`
 - **Added** Search system - players can search items by name, material, lore, or seller directly from the auction house GUI or via `/ah search <query>`
-- **Added** `ZAUCTIONHOUSE_SEARCH` button - opens a chat-based search input with support for advanced filter operators
-- **Added** `ZAUCTIONHOUSE_CLEAR_SEARCH` button - clears the active search filter, only visible when a search is active
+- **Added** `RAVENAUCTION_SEARCH` button - opens a chat-based search input with support for advanced filter operators
+- **Added** `RAVENAUCTION_CLEAR_SEARCH` button - clears the active search filter, only visible when a search is active
 - **Added** `/ah search <query>` command - search items directly from chat without opening the GUI first
 - **Added** Advanced search filters with operators: `~` (contains), `=` (exact), `~=` (contains, ignore case), `==` (exact, ignore case)
 - **Added** Searchable fields: `name`, `material`, `lore`, `seller` (e.g., `seller = Notch`, `name ~ Diamond`)
@@ -155,18 +151,18 @@ lore ~ Sharpness
 
 # 4.0.0.3
 
-- **Added** `ZAUCTIONHOUSE_SELL_LIMIT` button - displays remaining sell slots visually using a list of inventory slots, configurable per item type (auction, bid, rent)
-- **Added** `%zauctionhouse_max_items_<type>%` placeholder - returns the maximum number of items a player can list for a specific type (auction, bid, rent)
+- **Added** `RAVENAUCTION_SELL_LIMIT` button - displays remaining sell slots visually using a list of inventory slots, configurable per item type (auction, bid, rent)
+- **Added** `%ravenauction_max_items_<type>%` placeholder - returns the maximum number of items a player can list for a specific type (auction, bid, rent)
 - **Optimized** item lore placeholder resolution, placeholders are now pre-detected at config load and only resolved when referenced, significantly reducing CPU and memory usage per item render
 - **Fixed** `/ah history` stuck on "Loading..." when `action.purchased-item.give-item: true` is enabled
 - **Fixed** default config values
-- **Fixed** default table prefix to `zauctionhousev4` (fixes compatibility with zAuctionHouse V3)
+- **Fixed** default table prefix to `ravenauctionv4` (fixes compatibility with RavenAuction V3)
 
-### `ZAUCTIONHOUSE_SELL_LIMIT` button
+### `RAVENAUCTION_SELL_LIMIT` button
 
 ```yaml
 sell-limit:
-  type: ZAUCTIONHOUSE_SELL_LIMIT
+  type: RAVENAUCTION_SELL_LIMIT
   types:
     - auction
   slots:
@@ -176,20 +172,20 @@ sell-limit:
     name: '&aAvailable slot'
 ```
 
-### `%zauctionhouse_max_items_<type>%` placeholder
+### `%ravenauction_max_items_<type>%` placeholder
 
 Returns the maximum number of items a player can list based on their permissions for the given type.
 
-- `%zauctionhouse_max_items_auction%`
-- `%zauctionhouse_max_items_bid%`
-- `%zauctionhouse_max_items_rent%`
+- `%ravenauction_max_items_auction%`
+- `%ravenauction_max_items_bid%`
+- `%ravenauction_max_items_rent%`
 
 # 4.0.0.2
 
-- **Added** `zauctionhouse_category` permissible for zMenu - allows conditional button visibility based on the player's currently selected category (defaults to `main`)
-- **Added** `ZAUCTIONHOUSE_CATEGORY_SWITCHER` button - combines category cycling (left/right click) with dynamic lore showing enable/disable state per category
-- **Added** `%zauctionhouse_category_id%` placeholder - returns the player's currently selected category ID
-- **Added** `ZAUCTIONHOUSE_HISTORY_INVENTORY` button - opens the sales history inventory directly from any UI
+- **Added** `ravenauction_category` permissible for zMenu - allows conditional button visibility based on the player's currently selected category (defaults to `main`)
+- **Added** `RAVENAUCTION_CATEGORY_SWITCHER` button - combines category cycling (left/right click) with dynamic lore showing enable/disable state per category
+- **Added** `%ravenauction_category_id%` placeholder - returns the player's currently selected category ID
+- **Added** `RAVENAUCTION_HISTORY_INVENTORY` button - opens the sales history inventory directly from any UI
 - **Added** `force-amount-one` option in `config.yml` (`item-lore` section) - forces displayed item amount to 1 in the auction inventory while preserving the real amount internally
 - **Changed** `AuctionEconomy` API - economy methods (`get`, `has`, `deposit`, `withdraw`) now accept `UUID` instead of `OfflinePlayer` for better compatibility
 - **Updated** CurrenciesAPI dependency from 1.0.12 to 1.0.13
@@ -198,19 +194,19 @@ Returns the maximum number of items a player can list based on their permissions
 - **Fixed** history loading slot - `HistoryItemsButton` now properly handles `loadingSlot` set to `-1` without throwing an error
 - **Fixed** `LoadingSlotLoader` - added validation for invalid slot values with a clear error message
 
-### `zauctionhouse_category` permissible
+### `ravenauction_category` permissible
 
 ```yaml
 requirements:
-  - type: zauctionhouse_category
+  - type: ravenauction_category
     category: "weapons"
 ```
 
-### `ZAUCTIONHOUSE_CATEGORY_SWITCHER` button
+### `RAVENAUCTION_CATEGORY_SWITCHER` button
 
 ```yaml
 category-switcher:
-  type: ZAUCTIONHOUSE_CATEGORY_SWITCHER
+  type: RAVENAUCTION_CATEGORY_SWITCHER
   slot: 49
   enable-text: "&a● %category%"
   disable-text: "&7○ %category%"
@@ -257,7 +253,7 @@ item-lore:
 
 - **Added** Thai as a supported language
 - **Fixed** support for Minecraft **1.20.4**
-- **Fixed** the `/zauctionhouse` command - it is no longer the default main command (this can be changed in `config.yml`)
+- **Fixed** the `/ravenauction` command - it is no longer the default main command (this can be changed in `config.yml`)
 - **Fixed** message system errors that could appear without reason
 - **Added** the `reset-category-on-open` option, allowing categories to reset when reopening the inventory
 - **Added** `EXCELLENTEECONOMY` economy support

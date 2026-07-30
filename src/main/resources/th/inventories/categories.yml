@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Categories Inventory
+#   RavenAuction V4 - Categories Inventory
 #
 #   Inventory นี้ใช้แสดงเมนูเลือกหมวดหมู่ (category selection menu)
 #   ผู้เล่นสามารถเลือกหมวดหมู่เพื่อกรองไอเทมใน auction house
@@ -11,10 +11,10 @@
 #
 #   วิธีเพิ่มหมวดหมู่ใหม่:
 #   1. เพิ่มนิยามหมวดหมู่ใน categories.yml (พร้อม rules)
-#   2. เพิ่มปุ่มในไฟล์นี้ โดยใช้ type: ZAUCTIONHOUSE_CATEGORY และ category: <ชื่อหมวด>
-#   3. ใช้ placeholder %zauctionhouse_category_count_<ชื่อหมวด>% เพื่อแสดงจำนวนไอเทมในหมวดนั้น
+#   2. เพิ่มปุ่มในไฟล์นี้ โดยใช้ type: RAVENAUCTION_CATEGORY และ category: <ชื่อหมวด>
+#   3. ใช้ placeholder %ravenauction_category_count_<ชื่อหมวด>% เพื่อแสดงจำนวนไอเทมในหมวดนั้น
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -35,15 +35,15 @@ size: 54
 
 patterns:
   # กรอบกระจกตกแต่งรอบ ๆ
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
   # ปุ่มกลับไปหน้า auction หลัก
-  - 'zauctionhouse-back'
+  - 'ravenauction-back'
 
 #=============================================================================
 # CATEGORY BUTTONS
 #=============================================================================
 # แต่ละปุ่มจะเปิด auction house โดยกรองตามหมวดนั้น ๆ
-# ประเภทปุ่มใช้ ZAUCTIONHOUSE_CATEGORY พร้อม field 'category'
+# ประเภทปุ่มใช้ RAVENAUCTION_CATEGORY พร้อม field 'category'
 # ค่า 'category' ต้องตรงกับ key ในไฟล์ categories.yml
 
 items:
@@ -56,7 +56,7 @@ items:
 
   all-items:
     # ประเภทปุ่มสำหรับเลือกหมวด
-    type: ZAUCTIONHOUSE_CATEGORY
+    type: RAVENAUCTION_CATEGORY
 
     # ตัวระบุหมวด - 'all' เป็นหมวดพิเศษที่แสดงทุกอย่าง
     category: all
@@ -70,8 +70,8 @@ items:
       lore:
         - "#92ffffดูรายการไอเทมทั้งหมดในตลาด"
         - ""
-        # %zauctionhouse_category_count_all% = จำนวนไอเทมทั้งหมด
-        - "#92ffffจำนวนไอเทมทั้งหมด#8c8c8c: #2CCED2%zauctionhouse_category_count_all%"
+        # %ravenauction_category_count_all% = จำนวนไอเทมทั้งหมด
+        - "#92ffffจำนวนไอเทมทั้งหมด#8c8c8c: #2CCED2%ravenauction_category_count_all%"
         - ""
         - "#8c8c8c• #2CCED2คลิก #92ffffเพื่อเปิดดู"
 
@@ -81,7 +81,7 @@ items:
   # แสดงไอเทมที่เป็นบล็อก (วางได้)
 
   blocks:
-    type: ZAUCTIONHOUSE_CATEGORY
+    type: RAVENAUCTION_CATEGORY
     # ต้องตรงกับ key ใน categories.yml
     category: blocks
     slot: 19
@@ -94,7 +94,7 @@ items:
         - "#92ffffบล็อกสำหรับใช้สร้างสิ่งปลูกสร้าง"
         - ""
         # จำนวนไอเทมในหมวดนี้
-        - "#92ffffจำนวนไอเทม#8c8c8c: #2CCED2%zauctionhouse_category_count_blocks%"
+        - "#92ffffจำนวนไอเทม#8c8c8c: #2CCED2%ravenauction_category_count_blocks%"
         - ""
         - "#8c8c8c• #2CCED2คลิก #92ffffเพื่อเปิดดู"
 
@@ -104,7 +104,7 @@ items:
   # แสดงดาบ ธนู หน้าไม้ และอาวุธอื่น ๆ
 
   weapons:
-    type: ZAUCTIONHOUSE_CATEGORY
+    type: RAVENAUCTION_CATEGORY
     category: weapons
     slot: 20
 
@@ -115,7 +115,7 @@ items:
         - "#92ffffอุปกรณ์ต่อสู้"
         - "#92ffffดาบ ธนู หน้าไม้ ฯลฯ"
         - ""
-        - "#92ffffจำนวนไอเทม#8c8c8c: #2CCED2%zauctionhouse_category_count_weapons%"
+        - "#92ffffจำนวนไอเทม#8c8c8c: #2CCED2%ravenauction_category_count_weapons%"
         - ""
         - "#8c8c8c• #2CCED2คลิก #92ffffเพื่อเปิดดู"
 
@@ -125,7 +125,7 @@ items:
   # แสดงหมวก เสื้อ เกง เกราะ ขา รองเท้าบูต และโล่
 
   armor:
-    type: ZAUCTIONHOUSE_CATEGORY
+    type: RAVENAUCTION_CATEGORY
     category: armor
     slot: 21
 
@@ -135,7 +135,7 @@ items:
       lore:
         - "#92ffffอุปกรณ์ป้องกันตัว"
         - ""
-        - "#92ffffจำนวนไอเทม#8c8c8c: #2CCED2%zauctionhouse_category_count_armor%"
+        - "#92ffffจำนวนไอเทม#8c8c8c: #2CCED2%ravenauction_category_count_armor%"
         - ""
         - "#8c8c8c• #2CCED2คลิก #92ffffเพื่อเปิดดู"
 
@@ -145,7 +145,7 @@ items:
   # แสดง pickaxe ขวาน จอบ เสียม และเครื่องมืออื่น ๆ
 
   tools:
-    type: ZAUCTIONHOUSE_CATEGORY
+    type: RAVENAUCTION_CATEGORY
     category: tools
     slot: 22
 
@@ -155,7 +155,7 @@ items:
       lore:
         - "#92ffffเครื่องมือขุด ทำฟาร์ม และใช้งานทั่วไป"
         - ""
-        - "#92ffffจำนวนไอเทม#8c8c8c: #2CCED2%zauctionhouse_category_count_tools%"
+        - "#92ffffจำนวนไอเทม#8c8c8c: #2CCED2%ravenauction_category_count_tools%"
         - ""
         - "#8c8c8c• #2CCED2คลิก #92ffffเพื่อเปิดดู"
 
@@ -165,7 +165,7 @@ items:
   # แสดงโพชัน อาหาร และไอเทมที่ใช้แล้วหมด
 
   consumables:
-    type: ZAUCTIONHOUSE_CATEGORY
+    type: RAVENAUCTION_CATEGORY
     category: consumables
     slot: 23
 
@@ -175,7 +175,7 @@ items:
       lore:
         - "#92ffffอาหารและโพชัน"
         - ""
-        - "#92ffffจำนวนไอเทม#8c8c8c: #2CCED2%zauctionhouse_category_count_consumables%"
+        - "#92ffffจำนวนไอเทม#8c8c8c: #2CCED2%ravenauction_category_count_consumables%"
         - ""
         - "#8c8c8c• #2CCED2คลิก #92ffffเพื่อเปิดดู"
 
@@ -185,7 +185,7 @@ items:
   # แสดงแร่ อินก็อต และวัตถุดิบคราฟต์ต่าง ๆ
 
   resources:
-    type: ZAUCTIONHOUSE_CATEGORY
+    type: RAVENAUCTION_CATEGORY
     category: resources
     slot: 24
 
@@ -195,7 +195,7 @@ items:
       lore:
         - "#92ffffแร่และวัสดุสำหรับคราฟต์"
         - ""
-        - "#92ffffจำนวนไอเทม#8c8c8c: #2CCED2%zauctionhouse_category_count_resources%"
+        - "#92ffffจำนวนไอเทม#8c8c8c: #2CCED2%ravenauction_category_count_resources%"
         - ""
         - "#8c8c8c• #2CCED2คลิก #92ffffเพื่อเปิดดู"
 
@@ -205,7 +205,7 @@ items:
   # แสดงเฉพาะหนังสือที่มี enchant
 
   enchanted-books:
-    type: ZAUCTIONHOUSE_CATEGORY
+    type: RAVENAUCTION_CATEGORY
     category: enchanted-books
     slot: 25
 
@@ -215,7 +215,7 @@ items:
       lore:
         - "#92ffffหนังสือที่มี enchantment"
         - ""
-        - "#92ffffจำนวนไอเทม#8c8c8c: #2CCED2%zauctionhouse_category_count_enchanted-books%"
+        - "#92ffffจำนวนไอเทม#8c8c8c: #2CCED2%ravenauction_category_count_enchanted-books%"
         - ""
         - "#8c8c8c• #2CCED2คลิก #92ffffเพื่อเปิดดู"
 
@@ -225,7 +225,7 @@ items:
   # แสดงไอเทมที่ไม่เข้ากับหมวดอื่น
 
   misc:
-    type: ZAUCTIONHOUSE_CATEGORY
+    type: RAVENAUCTION_CATEGORY
     category: misc
     slot: 31
 
@@ -235,6 +235,6 @@ items:
       lore:
         - "#92ffffไอเทมอื่น ๆ ที่ไม่ได้อยู่ในหมวดหลัก"
         - ""
-        - "#92ffffจำนวนไอเทม#8c8c8c: #2CCED2%zauctionhouse_category_count_misc%"
+        - "#92ffffจำนวนไอเทม#8c8c8c: #2CCED2%ravenauction_category_count_misc%"
         - ""
         - "#8c8c8c• #2CCED2คลิก #92ffffเพื่อเปิดดู"

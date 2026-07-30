@@ -21,7 +21,7 @@ public record CooldownConfiguration(
 ) {
 
     public static final long DEFAULT_COOLDOWN = 100;
-    public static final String DEFAULT_BYPASS_PERMISSION = "zauctionhouse.cooldown.command.bypass";
+    public static final String DEFAULT_BYPASS_PERMISSION = "ravenauction.cooldown.command.bypass";
 
     public static CooldownConfiguration of(AuctionPlugin plugin, FileConfiguration configuration) {
         long defaultCooldown = configuration.getLong("commands.cooldown.default-cooldown", DEFAULT_COOLDOWN);

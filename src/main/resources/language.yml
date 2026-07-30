@@ -1,13 +1,13 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Language Configuration
+#   RavenAuction V4 - Language Configuration
 #
 #   This file controls the language used for all plugin messages, inventories, and configurations.
 #   It is loaded FIRST before any other configuration file.
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
-#   GitHub: https://github.com/GroupeZ-dev/zAuctionHouse
+#   GitHub: https://github.com/GroupeZ-dev/RavenAuction
 #
 ################################################################################################################################
 
@@ -42,7 +42,7 @@ language: auto
 #
 # 1. STOP your server completely (do not use /reload)
 #
-# 2. DELETE all configuration files in plugins/zAuctionHouse/ EXCEPT:
+# 2. DELETE all configuration files in plugins/RavenAuction/ EXCEPT:
 #    - language.yml (this file)
 #    - storage.db (your database, if using SQLite)
 #    - Any files you have customized and want to keep
@@ -68,7 +68,7 @@ language: auto
 #=============================================================================
 #
 # You can find the default configuration files for each language on GitHub:
-# https://github.com/GroupeZ-dev/zAuctionHouse
+# https://github.com/GroupeZ-dev/RavenAuction
 #
 # Default configurations:
 #   - English: src/main/resources/

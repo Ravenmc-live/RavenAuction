@@ -13,7 +13,7 @@ public class OptionToggleLoader extends ButtonLoader {
     private final AuctionPlugin plugin;
 
     public OptionToggleLoader(AuctionPlugin plugin) {
-        super(plugin, "ZAUCTIONHOUSE_OPTION_TOGGLE");
+        super(plugin, "RAVENAUCTION_OPTION_TOGGLE");
         this.plugin = plugin;
     }
 

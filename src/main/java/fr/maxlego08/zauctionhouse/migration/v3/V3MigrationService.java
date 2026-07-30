@@ -24,7 +24,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 
 /**
- * Service for migrating data from zAuctionHouse V3 to V4.
+ * Service for migrating data from RavenAuction V3 to V4.
  * <p>
  * This service handles the complete migration process including:
  * <ul>

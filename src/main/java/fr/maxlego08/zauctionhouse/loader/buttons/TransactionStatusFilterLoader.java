@@ -19,7 +19,7 @@ public class TransactionStatusFilterLoader extends ButtonLoader {
     private final AuctionPlugin plugin;
 
     public TransactionStatusFilterLoader(AuctionPlugin plugin) {
-        super(plugin, "ZAUCTIONHOUSE_ADMIN_TRANSACTIONS_FILTER_STATUS");
+        super(plugin, "RAVENAUCTION_ADMIN_TRANSACTIONS_FILTER_STATUS");
         this.plugin = plugin;
     }
 

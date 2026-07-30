@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Decoration Pattern
+#   RavenAuction V4 - Decoration Pattern
 #
 #   ไฟล์แพทเทิร์นนี้ใช้สำหรับทำกรอบตกแต่งรอบ inventory ด้วยกระจกสี (glass pane)
 #   สามารถนำไปใช้ซ้ำในหลาย ๆ inventory เพื่อให้สไตล์ UI เหมือนกัน
@@ -14,16 +14,16 @@
 #   USAGE:
 #   ใส่ pattern นี้ในไฟล์ inventory ที่ต้องการ:
 #     patterns:
-#       - 'zauctionhouse-decoration'
+#       - 'ravenauction-decoration'
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
 
 # ชื่อ pattern - ใช้อ้างอิงจากไฟล์ inventory อื่น
 # ต้องไม่ซ้ำกับชื่อ pattern อื่นทั้งหมด
-name: "zauctionhouse-decoration"
+name: "ravenauction-decoration"
 
 # ขนาด inventory (ต้องตรงกับ inventory ที่ใช้ pattern นี้)
 # ขนาดมาตรฐาน: 9, 18, 27, 36, 45, 54

@@ -11,9 +11,9 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 /**
- * Migration provider for zAuctionHouse V3.
+ * Migration provider for RavenAuction V3.
  * <p>
- * This provider handles migration from the previous version of zAuctionHouse.
+ * This provider handles migration from the previous version of RavenAuction.
  * It supports SQLite, MySQL/MariaDB, and JSON storage formats.
  * </p>
  */
@@ -26,32 +26,32 @@ public class V3MigrationProvider implements MigrationProvider {
 
     @Override
     public String getDisplayName() {
-        return "zAuctionHouse V3";
+        return "RavenAuction V3";
     }
 
     @Override
     public String getDescription() {
-        return "zAuctionHouse V3 (previous version)";
+        return "RavenAuction V3 (previous version)";
     }
 
     @Override
     public List<String> getAliases() {
-        return List.of("zah", "zahv3", "v3", "zauctionhouse");
+        return List.of("zah", "zahv3", "v3", "ravenauction");
     }
 
     @Override
     public String getConfigSection() {
-        return "zauctionhouse-v3";
+        return "ravenauction-v3";
     }
 
     @Override
     public String getDefaultSqlitePath() {
-        return "plugins/zAuctionHouseV3/database.db";
+        return "plugins/RavenAuctionV3/database.db";
     }
 
     @Override
     public String getDefaultJsonFolder() {
-        return "plugins/zAuctionHouseV3";
+        return "plugins/RavenAuctionV3";
     }
 
     @Override

@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Admin Selling Items Inventory
+#   RavenAuction V4 - Admin Selling Items Inventory
 #
 #   Inventory นี้ใช้สำหรับให้แอดมินดูและจัดการไอเทมที่ผู้เล่นกำลังลงขายอยู่ (active listings)
 #   แอดมินสามารถถอดไอเทมออกจากการขายแทนผู้เล่นได้
@@ -14,7 +14,7 @@
 #   - เปิดจากหน้า admin history main → ปุ่ม Sale Items
 #   - /ah admin open selling <player>
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -36,11 +36,11 @@ size: 54
 
 patterns:
   # กรอบกระจกตกแต่งรอบ ๆ
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
   # ปุ่มย้อนหน้า / หน้าถัดไป
-  - 'zauctionhouse-pagination'
+  - 'ravenauction-pagination'
   # ปุ่มกลับไปหน้า admin history main
-  - 'zauctionhouse-back'
+  - 'ravenauction-back'
 
 #=============================================================================
 # ITEMS
@@ -56,7 +56,7 @@ items:
 
   items:
     # ประเภทปุ่ม - ใช้แสดง selling items ของแอดมิน พร้อมความสามารถในการถอดออกจากการขาย
-    type: ZAUCTIONHOUSE_ADMIN_SELLING_ITEMS
+    type: RAVENAUCTION_ADMIN_SELLING_ITEMS
 
     # ช่องสำหรับแสดงไอเทมที่กำลังขาย (4 แถว × 9 คอลัมน์ = 36 ช่อง)
     slots:

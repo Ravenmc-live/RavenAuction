@@ -1,11 +1,11 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Configurazione delle Economie
+#   RavenAuction V4 - Configurazione delle Economie
 #
 #   Questo file configura i fornitori di economia per la casa d'aste.
 #   Puoi attivare più economie per permettere ai giocatori di scambiare con diverse valute.
 #
-#   Documentazione: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentazione: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -78,14 +78,14 @@ economies:
 
     # Permesso opzionale richiesto per usare questa economia.
     # Lascia commentato per permettere a tutti di usarla.
-    # permission: "zauctionhouse.economy.vault"
+    # permission: "ravenauction.economy.vault"
 
     # Stringa di motivazione per i prelievi di economia (mostrata nei log di economia).
     # Placeholder disponibile: %items% (mostra i nomi degli oggetti)
-    withdraw-reason: "Acquisto di %items% (zAuctionHouse)"
+    withdraw-reason: "Acquisto di %items% (RavenAuction)"
 
     # Stringa di motivazione per i depositi di economia (mostrata nei log di economia).
-    deposit-reason: "Vendita di %items% (zAuctionHouse)"
+    deposit-reason: "Vendita di %items% (RavenAuction)"
 
     # Modalità di formattazione dei numeri di prezzo.
     # Opzioni:
@@ -146,18 +146,18 @@ economies:
 
       # Permesso per aggirare completamente tutte le tasse
       # I giocatori con questo permesso non pagano nessuna tassa su nessuna transazione.
-      bypass-permission: "zauctionhouse.tax.bypass"
+      bypass-permission: "ravenauction.tax.bypass"
 
       # Riduzioni delle tasse basate sui permessi.
       # I giocatori con questi permessi ottengono aliquote fiscali ridotte.
       # Verificate in ordine - il primo permesso corrispondente viene applicato.
       # La riduzione è una percentuale IN MENO sull'aliquota fiscale normale.
       reductions:
-        - permission: "zauctionhouse.tax.vip"
+        - permission: "ravenauction.tax.vip"
           percentage: 50  # 50% di riduzione (5% tassa → 2.5% effettivo)
-        - permission: "zauctionhouse.tax.premium"
+        - permission: "ravenauction.tax.premium"
           percentage: 25  # 25% di riduzione (5% tassa → 3.75% effettivo)
-        - permission: "zauctionhouse.tax.member"
+        - permission: "ravenauction.tax.member"
           percentage: 10  # 10% di riduzione (5% tassa → 4.5% effettivo)
 
       #-----------------------------------------------------------------------

@@ -19,7 +19,7 @@ public class TransactionDateFilterLoader extends ButtonLoader {
     private final AuctionPlugin plugin;
 
     public TransactionDateFilterLoader(AuctionPlugin plugin) {
-        super(plugin, "ZAUCTIONHOUSE_ADMIN_TRANSACTIONS_FILTER_DATE");
+        super(plugin, "RAVENAUCTION_ADMIN_TRANSACTIONS_FILTER_DATE");
         this.plugin = plugin;
     }
 

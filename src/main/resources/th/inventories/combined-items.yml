@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - รายการรวม
+#   RavenAuction V4 - รายการรวม
 #
 #   อินเวนทอรีนี้รวมไอเทมที่กำลังขาย หมดอายุ และซื้อแล้วไว้ในรายการเดียว
 #   คุณสามารถตั้งค่าประเภทที่ต้องการแสดงได้
@@ -18,7 +18,7 @@
 #   - include-expired: true/false - รวมไอเทมที่หมดอายุ
 #   - include-purchased: true/false - รวมไอเทมที่ซื้อแล้ว
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -36,9 +36,9 @@ size: 54
 #=============================================================================
 
 patterns:
-  - 'zauctionhouse-decoration'
-  - 'zauctionhouse-pagination'
-  - 'zauctionhouse-back'
+  - 'ravenauction-decoration'
+  - 'ravenauction-pagination'
+  - 'ravenauction-back'
 
 #=============================================================================
 # ITEMS
@@ -47,7 +47,7 @@ patterns:
 items:
 
   items:
-    type: ZAUCTIONHOUSE_COMBINED_ITEMS
+    type: RAVENAUCTION_COMBINED_ITEMS
     empty-slot: 22
     include-selling: true
     include-expired: true

@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Inventario di Vendita
+#   RavenAuction V4 - Inventario di Vendita
 #
 #   Questo inventario permette ai giocatori di mettere oggetti in vendita tramite un GUI.
 #   Aperto tramite /ah sell (quando enable-sell-inventory è true in config.yml).
@@ -11,7 +11,7 @@
 #   - Scegliere il tipo di economia (se più economie sono attivate)
 #   - Confermare o annullare la messa in vendita
 #
-#   Documentazione: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentazione: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -32,7 +32,7 @@ size: 54
 
 patterns:
   # Bordi decorativi in vetro.
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
 
 #=============================================================================
 # OGGETTI
@@ -48,7 +48,7 @@ items:
 
   show-item:
     # Tipo di pulsante - gestisce la selezione e la visualizzazione degli oggetti.
-    type: ZAUCTIONHOUSE_SELL_SHOW_ITEM
+    type: RAVENAUCTION_SELL_SHOW_ITEM
 
     # Slot per visualizzare gli oggetti selezionati.
     # Copre tutta la zona centrale (36 slot).
@@ -74,7 +74,7 @@ items:
 
   cancel:
     # Tipo di pulsante - gestisce l'annullamento e la restituzione degli oggetti.
-    type: ZAUCTIONHOUSE_SELL_CANCEL
+    type: RAVENAUCTION_SELL_CANCEL
 
     # Posizione dello slot - estrema sinistra della riga inferiore.
     slot: 45
@@ -94,7 +94,7 @@ items:
 
   private-decrease:
     # Tipo di pulsante - gestisce la modifica del prezzo.
-    type: ZAUCTIONHOUSE_SELL_PRICE
+    type: RAVENAUCTION_SELL_PRICE
 
     # Posizione dello slot.
     slot: 48
@@ -129,7 +129,7 @@ items:
 
   select-economy:
     # Tipo di pulsante - gestisce il ciclo delle economie.
-    type: ZAUCTIONHOUSE_SELL_ECONOMY
+    type: RAVENAUCTION_SELL_ECONOMY
 
     # Posizione dello slot - centro della riga inferiore.
     slot: 49
@@ -153,7 +153,7 @@ items:
 
   price-increase:
     # Tipo di pulsante - gestisce la modifica del prezzo.
-    type: ZAUCTIONHOUSE_SELL_PRICE
+    type: RAVENAUCTION_SELL_PRICE
 
     # Importi di variazione del prezzo per diversi tipi di clic.
     # I valori positivi aumentano il prezzo.
@@ -185,7 +185,7 @@ items:
 
   confirm:
     # Tipo di pulsante - gestisce la conferma della vendita.
-    type: ZAUCTIONHOUSE_SELL_CONFIRM
+    type: RAVENAUCTION_SELL_CONFIRM
 
     # Posizione dello slot - estrema destra della riga inferiore.
     slot: 53

@@ -16,9 +16,9 @@ import java.util.List;
  */
 public enum Message {
 
-    PREFIX("<primary>zAuctionHouse <secondary>• "),
+    PREFIX("<primary>RavenAuction <secondary>• "),
 
-    VERSION_AVAILABLE("<#ff0000>There is a new version of zAuctionHouse available ! <gray>(<white>current: <#ff9900>%version% <gray>| <white>latest: <#00ff00>%latest%<gray>)"),
+    VERSION_AVAILABLE("<#ff0000>There is a new version of RavenAuction available ! <gray>(<white>current: <#ff9900>%version% <gray>| <white>latest: <#00ff00>%latest%<gray>)"),
 
     COMMAND_SYNTAX_ERROR("<error>You must execute the command like this<gray>: <success>%syntax%"),
     COMMAND_NO_PERMISSION("<error>You do not have permission to run this command."),

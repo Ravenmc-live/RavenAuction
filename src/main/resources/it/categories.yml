@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Configurazione delle Categorie
+#   RavenAuction V4 - Configurazione delle Categorie
 #
 #   Questo file definisce le categorie di oggetti per organizzare la casa d'aste.
 #   Le categorie aiutano i giocatori a sfogliare gli oggetti più facilmente filtrando per tipo.
@@ -24,7 +24,6 @@
 #   - lore            : Corrispondenza per contenuto del lore
 #   - custom-model-data: Corrispondenza per valore CustomModelData
 #   - and/or          : Combinare più regole
-#   - Regole di plugin di oggetti personalizzati (itemsadder, oraxen, mmoitems, ecc.)
 #
 #   REGOLE DI ESCLUSIONE (BANNED RULES):
 #   - Puoi aggiungere una lista "banned-rules" a qualsiasi categoria
@@ -33,7 +32,7 @@
 #   - Usa gli stessi tipi di regole delle regole normali
 #   - Utile per escludere oggetti personalizzati (es: oggetti con un CustomModelData specifico)
 #
-#   Documentazione: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentazione: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -268,11 +267,9 @@ misc:
 #
 # ESEMPI:
 #
-# # Categoria personalizzata per gli oggetti ItemsAdder
 # oggetti-personalizzati:
 #   display-name: "#ffd700Oggetti Personalizzati"
 #   rules:
-#     - type: itemsadder
 #       items:
 #         - "mionamespace:*"  # Tutti gli oggetti del tuo namespace
 #

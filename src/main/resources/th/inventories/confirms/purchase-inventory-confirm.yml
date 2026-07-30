@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Bulk Purchase Confirmation Inventory
+#   RavenAuction V4 - Bulk Purchase Confirmation Inventory
 #
 #   inventory นี้ใช้สำหรับยืนยันการซื้อไอเทมหลายชิ้นพร้อมกัน (bulk sales)
 #   จะแสดงไอเทมทั้งหมดในชุดให้ดูเป็นตัวอย่างก่อนกดยืนยันซื้อ
@@ -14,7 +14,7 @@
 #   - เปิดขึ้นอัตโนมัติเมื่อคลิกซื้อไอเทมแบบชุดใหญ่
 #   - ไอเทมแบบชุดใหญ่จะแสดงด้วยไอคอนหีบในหน้าตลาด
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -35,7 +35,7 @@ size: 54
 
 patterns:
   # กรอบกระจกตกแต่งรอบ ๆ
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
 
 #=============================================================================
 # ไอเทมภายใน inventory
@@ -51,7 +51,7 @@ items:
 
   item-content:
     # ประเภทปุ่ม - แสดงไอเทมทั้งหมดในชุดขาย
-    type: ZAUCTIONHOUSE_ITEM_CONTENT
+    type: RAVENAUCTION_ITEM_CONTENT
 
     # ช่องสำหรับแสดงไอเทม (4 แถว × 9 คอลัมน์ = 36 ช่อง)
     slots:
@@ -63,7 +63,7 @@ items:
   # ยืนยันการซื้อไอเทมทั้งหมดในชุดนี้
 
   confirm:
-    type: ZAUCTIONHOUSE_CONFIRM_PURCHASE
+    type: RAVENAUCTION_CONFIRM_PURCHASE
 
     item:
       material: GREEN_STAINED_GLASS_PANE
@@ -103,7 +103,7 @@ items:
   # เปิดหน้าดูของด้านใน Shulker
 
   shulker:
-    type: ZAUCTIONHOUSE_SHULKER_OPEN
+    type: RAVENAUCTION_SHULKER_OPEN
 
     # ตรงกลางของแถวล่างสุด
     slot: 49

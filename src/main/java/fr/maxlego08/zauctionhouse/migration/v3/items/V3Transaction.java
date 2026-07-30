@@ -3,7 +3,7 @@ package fr.maxlego08.zauctionhouse.migration.v3.items;
 import java.util.UUID;
 
 /**
- * Represents a transaction from zAuctionHouse V3.
+ * Represents a transaction from RavenAuction V3.
  * This is a data class used during migration to V4.
  */
 public class V3Transaction {

@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - ตั้งค่าตัวเลือก
+#   RavenAuction V4 - ตั้งค่าตัวเลือก
 #
 #   อินเวนทอรีนี้ให้ผู้เล่นจัดการการตั้งค่าส่วนตัว
 #
@@ -10,13 +10,13 @@ name: '#0c1719ตัวเลือก'
 size: 27
 
 patterns:
-  - 'zauctionhouse-decoration'
-  - 'zauctionhouse-back'
+  - 'ravenauction-decoration'
+  - 'ravenauction-back'
 
 items:
 
   broadcast-sell:
-    type: ZAUCTIONHOUSE_OPTION_TOGGLE
+    type: RAVENAUCTION_OPTION_TOGGLE
     slot: 11
     option-name: broadcast_sell
     enable-text: '<green>เปิด'
@@ -35,7 +35,7 @@ items:
         - '#8c8c8c• #2CCED2คลิก #92ffffเพื่อสลับ'
 
   broadcast-purchase:
-    type: ZAUCTIONHOUSE_OPTION_TOGGLE
+    type: RAVENAUCTION_OPTION_TOGGLE
     slot: 15
     option-name: broadcast_purchase
     enable-text: '<green>เปิด'

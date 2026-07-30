@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Inventario Principale della Casa d'Aste
+#   RavenAuction V4 - Inventario Principale della Casa d'Aste
 #
 #   Questo è l'inventario principale che mostra tutti gli oggetti in vendita.
 #   I giocatori vi accedono tramite /ah o cliccando su un NPC.
@@ -11,7 +11,7 @@
 #   - Opzioni di ordinamento
 #   - Paginazione per sfogliare più pagine
 #
-#   Documentazione: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentazione: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -25,8 +25,8 @@
 # Placeholder disponibili:
 #   %page%                        - Numero di pagina attuale
 #   %max-page%                    - Numero totale di pagine
-#   %zauctionhouse_category_name% - Nome della categoria attuale
-name: "%zauctionhouse_category_name% (%page%/%max-page%)"
+#   %ravenauction_category_name% - Nome della categoria attuale
+name: "%ravenauction_category_name% (%page%/%max-page%)"
 
 # Dimensione dell'inventario in slot (deve essere un multiplo di 9).
 # Opzioni: 9, 18, 27, 36, 45, 54 (1-6 righe)
@@ -41,9 +41,9 @@ size: 54
 
 patterns:
   # Aggiunge bordi decorativi in vetro (righe superiore e inferiore)
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
   # Aggiunge i pulsanti di navigazione (pagina precedente/successiva)
-  - "zauctionhouse-pagination"
+  - "ravenauction-pagination"
 
 #=============================================================================
 # OGGETTI
@@ -60,13 +60,13 @@ items:
   # Gli oggetti sono paginati e possono essere filtrati per categoria.
 
   display-items:
-    # Tipo di pulsante - ZAUCTIONHOUSE_LISTED_ITEMS è un tipo specifico del plugin.
+    # Tipo di pulsante - RAVENAUCTION_LISTED_ITEMS è un tipo specifico del plugin.
     # Gestisce automaticamente:
     # - Caricamento e visualizzazione degli oggetti
     # - Filtraggio per categoria
     # - Ordinamento
     # - Azioni al clic (acquista/ritira)
-    type: ZAUCTIONHOUSE_LISTED_ITEMS
+    type: RAVENAUCTION_LISTED_ITEMS
 
     # Slot per mostrare l'oggetto "vuoto" quando non viene trovato nessun oggetto.
     # Questo slot viene usato quando la casa d'aste è vuota.
@@ -101,7 +101,7 @@ items:
     type: inventory
 
     # Plugin proprietario dell'inventario target.
-    plugin: "zAuctionHouse"
+    plugin: "RavenAuction"
 
     # File di inventario da aprire (inventories/categories.yml).
     inventory: "categories"
@@ -123,7 +123,7 @@ items:
 
   expired-items:
     # Tipo di pulsante - apre l'inventario degli oggetti scaduti se ci sono oggetti.
-    type: ZAUCTIONHOUSE_EXPIRED_INVENTORY
+    type: RAVENAUCTION_EXPIRED_INVENTORY
 
     # Posizione dello slot - estrema sinistra della riga inferiore.
     slot: 45
@@ -155,7 +155,7 @@ items:
 
   purchased-items:
     # Tipo di pulsante - apre l'inventario degli oggetti acquistati se ci sono oggetti.
-    type: ZAUCTIONHOUSE_PURCHASED_INVENTORY
+    type: RAVENAUCTION_PURCHASED_INVENTORY
 
     # Posizione dello slot - secondo da sinistra nella riga inferiore.
     slot: 46
@@ -185,7 +185,7 @@ items:
 
   selling-items:
     # Tipo di pulsante - apre l'inventario degli oggetti in vendita se ci sono oggetti.
-    type: ZAUCTIONHOUSE_SELLING_INVENTORY
+    type: RAVENAUCTION_SELLING_INVENTORY
 
     # Posizione dello slot - estrema destra della riga inferiore.
     slot: 53
@@ -214,7 +214,7 @@ items:
   # Apre l'input di ricerca nella chat per filtrare gli oggetti.
 
   search:
-    type: ZAUCTIONHOUSE_SEARCH
+    type: RAVENAUCTION_SEARCH
     slot: 47
     is-permanent: true
     # Valore mostrato in %search_query% quando nessuna ricerca è attiva.
@@ -251,8 +251,8 @@ items:
   # Mostra le informazioni della casa d'aste e aggiorna la lista.
 
   refresh:
-    # Tipo di pulsante - ZAUCTIONHOUSE_REFRESH gestisce l'aggiornamento asincrono.
-    type: ZAUCTIONHOUSE_REFRESH
+    # Tipo di pulsante - RAVENAUCTION_REFRESH gestisce l'aggiornamento asincrono.
+    type: RAVENAUCTION_REFRESH
 
     # Posizione dello slot - centro della riga inferiore.
     slot: 49
@@ -276,8 +276,8 @@ items:
         - "#2CCED2/ah sell #92ffff<prezzo> [<quantità>]"
         - ""
         # Placeholder PlaceholderAPI per le statistiche dinamiche.
-        - "#92ffffNumero di oggetti#8c8c8c: #2CCED2%zauctionhouse_listed_items%"
-        - "#92ffffTipo di ordinamento#8c8c8c: #2CCED2%zauctionhouse_sorting_name%"
+        - "#92ffffNumero di oggetti#8c8c8c: #2CCED2%ravenauction_listed_items%"
+        - "#92ffffTipo di ordinamento#8c8c8c: #2CCED2%ravenauction_sorting_name%"
         - ""
         - "#8c8c8c• #2CCED2Clicca #92ffffper aggiornare gli oggetti"
 
@@ -288,7 +288,7 @@ items:
 
   change-sort:
     # Tipo di pulsante - gestisce il ciclo di ordinamento.
-    type: ZAUCTIONHOUSE_CHANGE_SORT
+    type: RAVENAUCTION_CHANGE_SORT
 
     # Opzioni di ordinamento disponibili (cicli in questo ordine).
     # Opzioni: DECREASING_DATE, DECREASING_PRICE, ASCENDING_DATE, ASCENDING_PRICE

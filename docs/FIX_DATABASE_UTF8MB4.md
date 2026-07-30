@@ -1,15 +1,15 @@
-# zAuctionHouse V4 — Correctif base de données (errno 150 sur la table `options`)
+# RavenAuction V4 — Correctif base de données (errno 150 sur la table `options`)
 
 ## Symptôme
 
 Lors de la mise à jour **4.0.0.6 → 4.0.0.9** (ou supérieur), le plugin ne démarre plus et affiche :
 
 ```
-[zAuctionHouse] Create table operation failed on table: %prefix%options
+[RavenAuction] Create table operation failed on table: %prefix%options
  - Can't create table `s379_earth`.`zauctionhouse_options`
    (errno: 150 "Foreign key constraint is incorrectly formed")
 
-Error occurred while enabling zAuctionHouse v4.0.0.9 (Is it up to date?)
+Error occurred while enabling RavenAuction v4.0.0.9 (Is it up to date?)
 ```
 
 ## Cause

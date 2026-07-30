@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Sales History Inventory
+#   RavenAuction V4 - Sales History Inventory
 #
 #   Inventory นี้ใช้แสดงประวัติการขายของผู้เล่น (sales history)
 #   แสดงรายการดีลที่ขายสำเร็จ พร้อมข้อมูลผู้ซื้อและราคาขาย
@@ -15,7 +15,7 @@
 #   - /ah history
 #   - คลิกที่ข้อความแจ้งเตือนตอนเข้าเกม หลังมีการขายระหว่างที่คุณออฟไลน์
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -36,11 +36,11 @@ size: 54
 
 patterns:
   # กรอบกระจกตกแต่งรอบ ๆ
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
   # ปุ่มย้อนหน้า / หน้าถัดไป
-  - 'zauctionhouse-pagination'
+  - 'ravenauction-pagination'
   # ปุ่มกลับไปหน้า auction หลัก
-  - 'zauctionhouse-back'
+  - 'ravenauction-back'
 
 #=============================================================================
 # ITEMS
@@ -56,7 +56,7 @@ items:
 
   items:
     # ประเภทปุ่ม - ใช้แสดงประวัติการขาย
-    type: ZAUCTIONHOUSE_HISTORY_ITEMS
+    type: RAVENAUCTION_HISTORY_ITEMS
 
     # ช่องสำหรับแสดงสถานะกำลังโหลด ระหว่างดึงข้อมูลประวัติ
     loading-slot: 22
@@ -91,7 +91,7 @@ items:
 
   sort:
     # ประเภทปุ่ม - จัดการการวนเปลี่ยนรูปแบบการเรียงของ history
-    type: ZAUCTIONHOUSE_HISTORY_SORT
+    type: RAVENAUCTION_HISTORY_SORT
 
     # ตำแหน่งช่อง
     slot: 51

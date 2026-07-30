@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Inventaire des items expirés admin
+#   RavenAuction V4 - Inventaire des items expirés admin
 #
 #   Cet inventaire permet aux admins de voir et gérer les items expirés d'un joueur.
 #   Les admins peuvent récupérer les items au nom des joueurs qui ont perdu l'accès.
@@ -14,7 +14,7 @@
 #   - Depuis le menu principal historique admin → Bouton Items Expirés
 #   - /ah admin open expired <joueur>
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -35,11 +35,11 @@ size: 54
 
 patterns:
   # Bordures décoratives en vitres.
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
   # Boutons page précédente/suivante.
-  - 'zauctionhouse-pagination'
+  - 'ravenauction-pagination'
   # Bouton retour vers le menu principal admin.
-  - 'zauctionhouse-back'
+  - 'ravenauction-back'
 
 #=============================================================================
 # ITEMS
@@ -55,7 +55,7 @@ items:
 
   items:
     # Type de bouton - affiche les items expirés admin avec fonctionnalité de récupération.
-    type: ZAUCTIONHOUSE_ADMIN_EXPIRED_ITEMS
+    type: RAVENAUCTION_ADMIN_EXPIRED_ITEMS
 
     # Slots pour afficher les items expirés (4 lignes × 9 colonnes = 36 slots).
     slots:

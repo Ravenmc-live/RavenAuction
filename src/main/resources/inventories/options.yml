@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Player Options Inventory
+#   RavenAuction V4 - Player Options Inventory
 #
 #   This inventory allows players to toggle their personal preferences.
 #   Currently supports broadcast notification opt-in/opt-out.
@@ -9,7 +9,7 @@
 #   - /ah option
 #   - /ah options
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -26,8 +26,8 @@ size: 27
 #=============================================================================
 
 patterns:
-  - 'zauctionhouse-decoration'
-  - 'zauctionhouse-back'
+  - 'ravenauction-decoration'
+  - 'ravenauction-back'
 
 #=============================================================================
 # ITEMS
@@ -40,7 +40,7 @@ items:
   #---------------------------------------------------------------------------
 
   broadcast-sell:
-    type: ZAUCTIONHOUSE_OPTION_TOGGLE
+    type: RAVENAUCTION_OPTION_TOGGLE
     slot: 11
     option-name: broadcast_sell
     enable-text: '<green>Enabled'
@@ -63,7 +63,7 @@ items:
   #---------------------------------------------------------------------------
 
   broadcast-purchase:
-    type: ZAUCTIONHOUSE_OPTION_TOGGLE
+    type: RAVENAUCTION_OPTION_TOGGLE
     slot: 15
     option-name: broadcast_purchase
     enable-text: '<green>Enabled'

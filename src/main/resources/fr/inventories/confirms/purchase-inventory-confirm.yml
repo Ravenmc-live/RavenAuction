@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Inventaire de Confirmation d'Achat en Lot
+#   RavenAuction V4 - Inventaire de Confirmation d'Achat en Lot
 #
 #   Cet inventaire confirme l'achat de plusieurs items (ventes en lot).
 #   Affiche tous les items de la vente avec une prévisualisation avant l'achat.
@@ -14,7 +14,7 @@
 #   - S'ouvre automatiquement en cliquant sur un item en lot à acheter
 #   - Les items en lot sont indiqués par une icône de coffre dans l'hôtel des ventes
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -35,7 +35,7 @@ size: 54
 
 patterns:
   # Bordures décoratives en vitres.
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
 
 #=============================================================================
 # ITEMS
@@ -51,7 +51,7 @@ items:
 
   item-content:
     # Type de bouton - affiche tous les items de la vente.
-    type: ZAUCTIONHOUSE_ITEM_CONTENT
+    type: RAVENAUCTION_ITEM_CONTENT
 
     # Slots pour afficher les items (4 rangées × 9 colonnes = 36 slots).
     slots:
@@ -63,7 +63,7 @@ items:
   # Finalise l'achat de tous les items.
 
   confirm:
-    type: ZAUCTIONHOUSE_CONFIRM_PURCHASE
+    type: RAVENAUCTION_CONFIRM_PURCHASE
 
     item:
       material: GREEN_STAINED_GLASS_PANE
@@ -103,7 +103,7 @@ items:
   # Ouvre la visionneuse de contenu shulker.
 
   shulker:
-    type: ZAUCTIONHOUSE_SHULKER_OPEN
+    type: RAVENAUCTION_SHULKER_OPEN
 
     # Centre de la rangée du bas.
     slot: 49

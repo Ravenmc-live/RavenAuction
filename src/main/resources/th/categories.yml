@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - การตั้งค่าหมวดหมู่ (Categories Configuration)
+#   RavenAuction V4 - การตั้งค่าหมวดหมู่ (Categories Configuration)
 #
 #   ไฟล์นี้ใช้กำหนดหมวดหมู่ไอเท็มสำหรับจัดระเบียบใน auction house
 #   หมวดหมู่จะช่วยให้ผู้เล่นค้นหา/กรองไอเท็มตามประเภทได้ง่ายขึ้น
@@ -24,7 +24,6 @@
 #   - lore             : แมตช์ตามข้อความใน lore
 #   - custom-model-data: แมตช์ตามค่า CustomModelData
 #   - and/or           : รวมหลายกฎเข้าด้วยกัน
-#   - กฎปลั๊กอิน custom item ต่าง ๆ (itemsadder, oraxen, mmoitems ฯลฯ)
 #
 #   BANNED RULES (กฎยกเว้น/ห้าม):
 #   - คุณสามารถเพิ่มรายการ "banned-rules" ให้กับหมวดหมู่ใดก็ได้
@@ -33,7 +32,7 @@
 #   - ใช้ประเภท rule เดียวกับ rules ปกติ
 #   - เหมาะสำหรับยกเว้นไอเท็ม custom (เช่น ไอเท็มที่มี CustomModelData เฉพาะ)
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -267,11 +266,9 @@ misc:
 #
 # ตัวอย่างเพิ่มเติม:
 #
-# # หมวดหมู่สำหรับ ItemsAdder
 # custom-items:
 #   display-name: "#ffd700Custom Items"
 #   rules:
-#     - type: itemsadder
 #       items:
 #         - "mynamespace:*"  # ไอเท็มทุกชิ้นใน namespace ของคุณ
 #

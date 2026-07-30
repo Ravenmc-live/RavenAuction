@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Inventaire des transactions admin
+#   RavenAuction V4 - Inventaire des transactions admin
 #
 #   Cet inventaire affiche l'historique des transactions d'un joueur.
 #   Les transactions sont des enregistrements de ventes complétées avec les détails financiers.
@@ -18,7 +18,7 @@
 #   ACCÈS:
 #   - Depuis le menu principal historique admin → Bouton Transactions
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -39,11 +39,11 @@ size: 54
 
 patterns:
   # Bordures décoratives en vitres.
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
   # Boutons page précédente/suivante.
-  - 'zauctionhouse-pagination'
+  - 'ravenauction-pagination'
   # Bouton retour vers le menu principal admin.
-  - 'zauctionhouse-back'
+  - 'ravenauction-back'
 
 #=============================================================================
 # ITEMS
@@ -58,7 +58,7 @@ items:
 
   items:
     # Type de bouton - affiche les entrées de transaction.
-    type: ZAUCTIONHOUSE_ADMIN_TRANSACTIONS
+    type: RAVENAUCTION_ADMIN_TRANSACTIONS
 
     # Slot pour l'indicateur de chargement.
     loading-slot: 22
@@ -93,7 +93,7 @@ items:
 
   filter-status:
     # Type de bouton - gère le filtrage par statut.
-    type: ZAUCTIONHOUSE_ADMIN_TRANSACTIONS_FILTER_STATUS
+    type: RAVENAUCTION_ADMIN_TRANSACTIONS_FILTER_STATUS
 
     slot: 47
 
@@ -134,7 +134,7 @@ items:
 
   filter-date:
     # Type de bouton - gère le filtrage par date.
-    type: ZAUCTIONHOUSE_ADMIN_TRANSACTIONS_FILTER_DATE
+    type: RAVENAUCTION_ADMIN_TRANSACTIONS_FILTER_DATE
 
     slot: 51
 

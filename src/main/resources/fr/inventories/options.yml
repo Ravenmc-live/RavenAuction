@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Inventaire des Options
+#   RavenAuction V4 - Inventaire des Options
 #
 #   Cet inventaire permet aux joueurs de gérer leurs préférences personnelles.
 #
@@ -10,13 +10,13 @@ name: '#0c1719Options'
 size: 27
 
 patterns:
-  - 'zauctionhouse-decoration'
-  - 'zauctionhouse-back'
+  - 'ravenauction-decoration'
+  - 'ravenauction-back'
 
 items:
 
   broadcast-sell:
-    type: ZAUCTIONHOUSE_OPTION_TOGGLE
+    type: RAVENAUCTION_OPTION_TOGGLE
     slot: 11
     option-name: broadcast_sell
     enable-text: '<green>Activé'
@@ -35,7 +35,7 @@ items:
         - '#8c8c8c• #2CCED2Cliquez #92ffffpour basculer'
 
   broadcast-purchase:
-    type: ZAUCTIONHOUSE_OPTION_TOGGLE
+    type: RAVENAUCTION_OPTION_TOGGLE
     slot: 15
     option-name: broadcast_purchase
     enable-text: '<green>Activé'

@@ -19,7 +19,7 @@ public class HistorySortLoader extends ButtonLoader {
     private final AuctionPlugin plugin;
 
     public HistorySortLoader(AuctionPlugin plugin) {
-        super(plugin, "ZAUCTIONHOUSE_HISTORY_SORT");
+        super(plugin, "RAVENAUCTION_HISTORY_SORT");
         this.plugin = plugin;
     }
 

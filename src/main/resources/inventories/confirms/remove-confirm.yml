@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Remove Listing Confirmation Inventory
+#   RavenAuction V4 - Remove Listing Confirmation Inventory
 #
 #   This inventory asks sellers to confirm removing their item from sale.
 #   The item will be returned to the player's expired items section.
@@ -14,7 +14,7 @@
 #   - Automatically opens when a seller clicks their own listed item
 #   - Only shown if open-confirm-inventory is true in config.yml
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -42,7 +42,7 @@ items:
 
   remove:
     # Button type - handles listing removal.
-    type: ZAUCTIONHOUSE_CONFIRM_REMOVE_LISTED
+    type: RAVENAUCTION_CONFIRM_REMOVE_LISTED
 
     item:
       # Green glass pane for confirm action.
@@ -107,7 +107,7 @@ items:
 
   show:
     # Button type - displays the auction item.
-    type: ZAUCTIONHOUSE_SHOW
+    type: RAVENAUCTION_SHOW
 
     # Center slot.
     slot: 13
@@ -119,7 +119,7 @@ items:
 
   shulker:
     # Button type - opens shulker content preview.
-    type: ZAUCTIONHOUSE_SHULKER_OPEN
+    type: RAVENAUCTION_SHULKER_OPEN
 
     slot: 4
 

@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Inventario Objetos en Venta Admin
+#   RavenAuction V4 - Inventario Objetos en Venta Admin
 #
 #   Este inventario permite a los administradores ver y gestionar las publicaciones activas de un jugador.
 #   Los administradores pueden eliminar objetos de la venta en nombre de los jugadores.
@@ -14,7 +14,7 @@
 #   - Desde el menu principal historial admin -> Boton Objetos en Venta
 #   - /ah admin open selling <jugador>
 #
-#   Documentacion: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentacion: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -36,11 +36,11 @@ size: 54
 
 patterns:
   # Bordes decorativos de cristal.
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
   # Botones pagina anterior/siguiente.
-  - 'zauctionhouse-pagination'
+  - 'ravenauction-pagination'
   # Boton atras para volver al historial admin.
-  - 'zauctionhouse-back'
+  - 'ravenauction-back'
 
 #=============================================================================
 # OBJETOS
@@ -56,7 +56,7 @@ items:
 
   items:
     # Tipo de boton - visualiza objetos en venta admin con funcionalidad de eliminacion.
-    type: ZAUCTIONHOUSE_ADMIN_SELLING_ITEMS
+    type: RAVENAUCTION_ADMIN_SELLING_ITEMS
 
     # Slots para mostrar los objetos en venta (4 filas x 9 columnas = 36 slots).
     slots:

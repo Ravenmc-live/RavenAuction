@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Inventaire Combiné
+#   RavenAuction V4 - Inventaire Combiné
 #
 #   Cet inventaire combine les items en vente, expirés et achetés dans une
 #   seule liste paginée. Vous pouvez configurer quels types inclure.
@@ -18,7 +18,7 @@
 #   - include-expired: true/false - inclure les items expirés
 #   - include-purchased: true/false - inclure les items achetés
 #
-#   Documentation : https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation : https://docs.groupez.dev/ravenauction/introduction
 #   Discord : https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -36,9 +36,9 @@ size: 54
 #=============================================================================
 
 patterns:
-  - 'zauctionhouse-decoration'
-  - 'zauctionhouse-pagination'
-  - 'zauctionhouse-back'
+  - 'ravenauction-decoration'
+  - 'ravenauction-pagination'
+  - 'ravenauction-back'
 
 #=============================================================================
 # ITEMS
@@ -47,7 +47,7 @@ patterns:
 items:
 
   items:
-    type: ZAUCTIONHOUSE_COMBINED_ITEMS
+    type: RAVENAUCTION_COMBINED_ITEMS
     empty-slot: 22
     include-selling: true
     include-expired: true

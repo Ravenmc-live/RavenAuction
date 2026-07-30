@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Admin Purchased Items Inventory
+#   RavenAuction V4 - Admin Purchased Items Inventory
 #
 #   Inventory นี้ใช้สำหรับให้แอดมินดูและจัดการไอเทมที่ผู้เล่นเคยซื้อ (purchased items)
 #   แอดมินสามารถดึงไอเทมคืนให้ผู้เล่นในกรณีที่ผู้เล่นเข้าไปกดรับเองไม่ได้
@@ -14,7 +14,7 @@
 #   - เปิดจากหน้า admin history main → ปุ่ม Purchased Items
 #   - /ah admin open purchased <player>
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -35,11 +35,11 @@ size: 54
 
 patterns:
   # กรอบกระจกตกแต่งรอบ ๆ
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
   # ปุ่มย้อนหน้า / หน้าถัดไป
-  - 'zauctionhouse-pagination'
+  - 'ravenauction-pagination'
   # ปุ่มกลับไปหน้า admin history main
-  - 'zauctionhouse-back'
+  - 'ravenauction-back'
 
 #=============================================================================
 # ITEMS
@@ -55,7 +55,7 @@ items:
 
   items:
     # ประเภทปุ่ม - ใช้แสดง purchased items ของแอดมิน พร้อมความสามารถในการดึงไอเทม
-    type: ZAUCTIONHOUSE_ADMIN_PURCHASED_ITEMS
+    type: RAVENAUCTION_ADMIN_PURCHASED_ITEMS
 
     # ช่องสำหรับแสดงไอเทมที่เคยซื้อ (4 แถว × 9 คอลัมน์ = 36 ช่อง)
     slots:

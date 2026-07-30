@@ -14,7 +14,6 @@ import fr.maxlego08.zauctionhouse.api.economy.EconomyManager;
 import fr.maxlego08.zauctionhouse.api.hooks.itemcontent.ItemContentManager;
 import fr.maxlego08.zauctionhouse.api.hooks.permission.OfflinePermission;
 import fr.maxlego08.zauctionhouse.api.messages.Message;
-import fr.maxlego08.zauctionhouse.api.migration.MigrationProvider;
 import fr.maxlego08.zauctionhouse.api.migration.MigrationRegistry;
 import fr.maxlego08.zauctionhouse.api.placeholders.Placeholder;
 import fr.maxlego08.zauctionhouse.api.placeholders.PlaceholderRegister;
@@ -125,7 +124,6 @@ public class ZAuctionPlugin extends JavaPlugin implements AuctionPlugin {
 
         // Register rule loaders BEFORE loading files (categories need them)
         this.ruleLoaderRegistry.registerDefaultLoaders();
-        this.registerCustomItemLoaders();
 
         this.loadFiles();
         this.permissionRegistrar.register();
@@ -147,9 +145,9 @@ public class ZAuctionPlugin extends JavaPlugin implements AuctionPlugin {
         String primaryCommand;
         if (!aliases.isEmpty()) {
             primaryCommand = aliases.removeFirst();
-            aliases.add("zauctionhouse");
+            aliases.add("ravenauction");
         } else {
-            primaryCommand = "zauctionhouse";
+            primaryCommand = "ravenauction";
         }
         this.commandManager.registerCommand(this, primaryCommand, new CommandAuction(this), aliases);
 
@@ -177,7 +175,7 @@ public class ZAuctionPlugin extends JavaPlugin implements AuctionPlugin {
         getServer().getServicesManager().register(AuctionPlugin.class, this, this, ServicePriority.Highest);
 
         isEnabled = true;
-        this.getLogger().info("zAuctionHouse has just been loaded successfully!");
+        this.getLogger().info("RavenAuction has just been loaded successfully!");
     }
 
     @Override
@@ -268,105 +266,10 @@ public class ZAuctionPlugin extends JavaPlugin implements AuctionPlugin {
     private void registerItemContentProviders() {
         // Default vanilla shulker box provider (priority 100)
         this.itemContentManager.registerProvider(new VanillaShulkerContentProvider());
-
-        if (isEnable(Plugins.AXSHULKERS)) {
-            this.registerOptionalItemContentProvider("fr.maxlego08.zauctionhouse.hooks.axshulkers.AxShulkersContentProvider", "AxShulkers");
-        }
-    }
-
-    private void registerOptionalItemContentProvider(String className, String name) {
-        try {
-            var clazz = Class.forName(className);
-            var provider = (fr.maxlego08.zauctionhouse.api.hooks.itemcontent.ItemContentProvider) clazz.getDeclaredConstructor().newInstance();
-            this.itemContentManager.registerProvider(provider);
-            this.getLogger().info(name + " item content provider registered.");
-        } catch (Exception exception) {
-            this.getLogger().log(Level.WARNING, "Failed to register " + name + " item content provider.", exception);
-        }
-    }
-
-    private void registerCustomItemLoaders() {
-        if (isEnable(Plugins.ITEMSADDER)) {
-            this.ruleLoaderRegistry.registerItemsAdderLoader();
-            this.getLogger().info("ItemsAdder rule loader registered.");
-        }
-
-        if (isEnable(Plugins.ORAXEN)) {
-            this.ruleLoaderRegistry.registerOraxenLoader();
-            this.getLogger().info("Oraxen rule loader registered.");
-        }
-
-        if (isEnable(Plugins.NEXO)) {
-            this.ruleLoaderRegistry.registerNexoLoader();
-            this.getLogger().info("Nexo rule loader registered.");
-        }
-
-        if (isEnable(Plugins.MMOITEMS)) {
-            this.ruleLoaderRegistry.registerMMOItemsLoader();
-            this.getLogger().info("MMOItems rule loader registered.");
-        }
-
-        if (isEnable(Plugins.EXECUTABLE_ITEMS)) {
-            this.ruleLoaderRegistry.registerExecutableItemsLoader();
-            this.getLogger().info("ExecutableItems rule loader registered.");
-        }
-
-        if (isEnable(Plugins.SLIMEFUN)) {
-            this.ruleLoaderRegistry.registerSlimefunLoader();
-            this.getLogger().info("Slimefun rule loader registered.");
-        }
-
-        if (isEnable(Plugins.HEADDATABASE)) {
-            this.ruleLoaderRegistry.registerHeadDatabaseLoader();
-            this.getLogger().info("HeadDatabase rule loader registered.");
-        }
-
-        if (isEnable(Plugins.NOVA)) {
-            this.ruleLoaderRegistry.registerNovaLoader();
-            this.getLogger().info("Nova rule loader registered.");
-        }
-
-        if (isEnable(Plugins.DENIZEN)) {
-            this.ruleLoaderRegistry.registerDenizenLoader();
-            this.getLogger().info("Denizen rule loader registered.");
-        }
-
-        if (isEnable(Plugins.CRAFTENGINE)) {
-            this.ruleLoaderRegistry.registerCraftEngineLoader();
-            this.getLogger().info("CraftEngine rule loader registered.");
-        }
-
-        if (isEnable(Plugins.EXECUTABLE_BLOCKS)) {
-            this.ruleLoaderRegistry.registerExecutableBlocksLoader();
-            this.getLogger().info("ExecutableBlocks rule loader registered.");
-        }
     }
 
     private void registerDefaultMigrationProviders() {
         this.migrationRegistry.register(new V3MigrationProvider());
-        this.registerOptionalMigrationProvider("fr.maxlego08.zauctionhouse.hooks.zelauction.ZelAuctionMigrationProvider", "ZelAuction");
-        this.registerOptionalMigrationProvider("fr.maxlego08.zauctionhouse.hooks.donutauction.DonutAuctionMigrationProvider", "DonutAuction");
-        this.registerOptionalMigrationProvider("fr.maxlego08.zauctionhouse.hooks.crazyauctions.CrazyAuctionsMigrationProvider", "CrazyAuctions");
-    }
-
-    /**
-     * Registers a migration provider using reflection.
-     * Used for optional hooks that may not be included in the build.
-     *
-     * @param className   The fully qualified class name
-     * @param displayName The display name for logging
-     */
-    private void registerOptionalMigrationProvider(String className, String displayName) {
-        try {
-            Class<?> clazz = Class.forName(className);
-            MigrationProvider provider = (MigrationProvider) clazz.getDeclaredConstructor().newInstance();
-            this.migrationRegistry.register(provider);
-            // this.getLogger().info(displayName + " migration provider registered.");
-        } catch (ClassNotFoundException ignored) {
-            // Hook not included in build, skip silently
-        } catch (Exception exception) {
-            this.getLogger().warning("Failed to register " + displayName + " migration provider: " + exception.getMessage());
-        }
     }
 
     @Override

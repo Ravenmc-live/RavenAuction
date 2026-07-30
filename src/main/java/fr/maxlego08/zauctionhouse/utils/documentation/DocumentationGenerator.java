@@ -79,7 +79,7 @@ public class DocumentationGenerator {
         placeholders.sort(Comparator.comparing(AutoPlaceholder::getStartWith));
         for (AutoPlaceholder placeholder : placeholders) {
             // Format placeholder with arguments
-            String placeholderText = "%zauctionhouse_" + placeholder.getStartWith();
+            String placeholderText = "%ravenauction_" + placeholder.getStartWith();
             if (!placeholder.getArgs().isEmpty()) {
                 String args = placeholder.getArgs().stream().map(argument -> "<" + argument + ">").collect(Collectors.joining("_"));
                 placeholderText += args;

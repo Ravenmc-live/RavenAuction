@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Combined Items Inventory
+#   RavenAuction V4 - Combined Items Inventory
 #
 #   This inventory combines multiple item views (selling, expired, purchased)
 #   into a single paginated list. You can configure which storage types to include.
@@ -21,7 +21,7 @@
 #   ACCESS:
 #   - Assign this inventory to a command or button in your configuration
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -39,9 +39,9 @@ size: 54
 #=============================================================================
 
 patterns:
-  - 'zauctionhouse-decoration'
-  - 'zauctionhouse-pagination'
-  - 'zauctionhouse-back'
+  - 'ravenauction-decoration'
+  - 'ravenauction-pagination'
+  - 'ravenauction-back'
 
 #=============================================================================
 # ITEMS
@@ -56,7 +56,7 @@ items:
   # Click action adapts based on the item's actual storage type.
 
   items:
-    type: ZAUCTIONHOUSE_COMBINED_ITEMS
+    type: RAVENAUCTION_COMBINED_ITEMS
 
     # Slot for empty state placeholder.
     empty-slot: 22

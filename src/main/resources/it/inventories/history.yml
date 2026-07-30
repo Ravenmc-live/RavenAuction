@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Inventario dello Storico delle Vendite
+#   RavenAuction V4 - Inventario dello Storico delle Vendite
 #
 #   Questo inventario mostra lo storico delle vendite del giocatore - gli oggetti che ha venduto.
 #   Mostra le transazioni completate con le informazioni sull'acquirente e i prezzi.
@@ -15,7 +15,7 @@
 #   - /ah history
 #   - Clicca sul messaggio di notifica alla connessione dopo vendite offline
 #
-#   Documentazione: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentazione: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -36,11 +36,11 @@ size: 54
 
 patterns:
   # Bordi decorativi in vetro.
-  - 'zauctionhouse-decoration'
+  - 'ravenauction-decoration'
   # Pulsanti pagina precedente/successiva.
-  - 'zauctionhouse-pagination'
+  - 'ravenauction-pagination'
   # Pulsante indietro per tornare alla casa d'aste.
-  - 'zauctionhouse-back'
+  - 'ravenauction-back'
 
 #=============================================================================
 # OGGETTI
@@ -56,7 +56,7 @@ items:
 
   items:
     # Tipo di pulsante - visualizza le vendite storiche.
-    type: ZAUCTIONHOUSE_HISTORY_ITEMS
+    type: RAVENAUCTION_HISTORY_ITEMS
 
     # Slot per l'indicatore di caricamento durante il recupero dello storico.
     loading-slot: 22
@@ -91,7 +91,7 @@ items:
 
   sort:
     # Tipo di pulsante - gestisce il ciclo di ordinamento per lo storico.
-    type: ZAUCTIONHOUSE_HISTORY_SORT
+    type: RAVENAUCTION_HISTORY_SORT
 
     # Posizione dello slot.
     slot: 51

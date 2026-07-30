@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - การตั้งค่า Item Rules
+#   RavenAuction V4 - การตั้งค่า Item Rules
 #
 #   ไฟล์นี้ใช้กำหนดว่าไอเท็มไหน "สามารถ" หรือ "ไม่สามารถ" ขายบน auction house ได้
 #   ใช้ blacklist เพื่อบล็อกไอเท็มบางอย่าง หรือใช้ whitelist เพื่ออนุญาตเฉพาะไอเท็มที่กำหนด
@@ -8,7 +8,7 @@
 #   TIP: คุณสามารถบันทึกไอเท็มเป็น Base64 ได้ด้วยคำสั่ง /zmenu save <item name>
 #        จากนั้นนำมาอ้างอิงใน rules เพื่อแมตช์ไอเท็มแบบตรงตัวได้
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -86,33 +86,23 @@
 # ไอเท็มจะถูกตรวจด้วย identifier ของปลั๊กอินนั้น ๆ
 # รองรับ wildcard (*) สำหรับการแมตช์แบบ pattern
 #
-# ITEMSADDER:
-#   type: itemsadder
 #   items:
 #     - "namespace:item_id"      # แมตช์แบบตรงตัว
 #     - "namespace:*"            # แมตช์ทุกไอเท็มใน namespace นั้น
 #
-# ORAXEN:
-#   type: oraxen
 #   items:
 #     - "custom_sword"           # แมตช์แบบตรงตัว
 #     - "*_armor"                # แมตช์ทุกไอเท็มที่ลงท้ายด้วย "_armor"
 #
-# NEXO:
-#   type: nexo
 #   items:
 #     - "mythic_blade"
 #     - "special_*"              # แมตช์ทุกไอเท็มที่ขึ้นต้นด้วย "special_"
 #
-# MMOITEMS:
-#   type: mmoitems
 #   items:
 #     - "SWORD:CUTLASS"          # รูปแบบ TYPE:ID
 #     - "SWORD:*"                # ทุกไอเท็ม TYPE SWORD
 #     - "*:LEGENDARY_ITEM"       # ไอเท็ม ID นี้จากทุก TYPE
 #
-# EXECUTABLEITEMS:
-#   type: executableitems
 #   items:
 #     - "custom_wand"
 #
@@ -126,23 +116,16 @@
 #   items:
 #     - "mythic_blade"
 #
-# SLIMEFUN:
-#   type: slimefun
 #   items:
 #     - "ELECTRIC_MOTOR"
 #
-# HEADDATABASE:
-#   type: headdatabase
 #   items:
 #     - "12345"
 #
 # NOVA:
-#   type: nova
 #   items:
 #     - "machines:electric_furnace"
 #
-# DENIZEN:
-#   type: denizen
 #   items:
 #     - "my_custom_script"
 #
@@ -176,13 +159,9 @@
 #   items:
 #     - "custom_gem"
 #
-# CRAFTENGINE:
-#   type: craftengine
 #   items:
 #     - "namespace:custom_block"
 #
-# EXECUTABLEBLOCKS:
-#   type: executableblocks
 #   items:
 #     - "magic_chest"
 
@@ -233,36 +212,28 @@ blacklist:
     # แต่ละบล็อกจะบอกชื่อปลั๊กอินและตัวอย่างรูปแบบที่ใช้บ่อย
     #
     #-------------------------------------------------------------------------
-    # ItemsAdder - บล็อกไอเท็มจาก ItemsAdder
     #-------------------------------------------------------------------------
-    # - type: itemsadder
     #   items:
     #     - "namespace:item_id"       # บล็อกไอเท็มตัวนี้
     #     - "namespace:*"             # บล็อกทุกไอเท็มใน namespace นี้
     #     - "mynamespace:rare_*"      # บล็อกไอเท็มที่ขึ้นต้นด้วย "rare_"
     #
     #-------------------------------------------------------------------------
-    # Oraxen - บล็อกไอเท็มจาก Oraxen
     #-------------------------------------------------------------------------
-    # - type: oraxen
     #   items:
     #     - "custom_sword"            # บล็อกไอเท็มนี้
     #     - "*_armor"                 # บล็อกทุกไอเท็มที่ลงท้ายด้วย "_armor"
     #     - "event_*"                 # บล็อกทุกไอเท็ม event
     #
     #-------------------------------------------------------------------------
-    # Nexo - บล็อกไอเท็มจาก Nexo
     #-------------------------------------------------------------------------
-    # - type: nexo
     #   items:
     #     - "mythic_blade"
     #     - "special_*"               # บล็อกไอเท็มที่ขึ้นต้นด้วย "special_"
     #     - "*_soulbound"             # บล็อกไอเท็มที่ลงท้ายด้วย "_soulbound"
     #
     #-------------------------------------------------------------------------
-    # MMOItems - บล็อกไอเท็มจาก MMOItems (ฟอร์แมต TYPE:ID)
     #-------------------------------------------------------------------------
-    # - type: mmoitems
     #   items:
     #     - "SWORD:CUTLASS"           # บล็อกดาบตัวนี้
     #     - "SWORD:*"                 # บล็อกดาบทุกชนิด
@@ -270,9 +241,7 @@ blacklist:
     #     - "TOOL:*"                  # บล็อก tool ทั้งหมด
     #
     #-------------------------------------------------------------------------
-    # ExecutableItems - บล็อกไอเท็มจาก ExecutableItems
     #-------------------------------------------------------------------------
-    # - type: executableitems
     #   items:
     #     - "custom_wand"
     #     - "voucher_*"               # บล็อกทุก voucher
@@ -295,18 +264,14 @@ blacklist:
     #     - "dungeon_*"               # บล็อกของดรอป dungeon ทั้งหมด
     #
     #-------------------------------------------------------------------------
-    # Slimefun - บล็อกไอเท็มจาก Slimefun
     #-------------------------------------------------------------------------
-    # - type: slimefun
     #   items:
     #     - "ELECTRIC_MOTOR"
     #     - "*_INGOT"                 # บล็อก custom ingot ทั้งหมด
     #     - "CARGO_*"                 # บล็อกไอเท็ม cargo ทั้งหมด
     #
     #-------------------------------------------------------------------------
-    # HeadDatabase - บล็อกหัวจาก HeadDatabase
     #-------------------------------------------------------------------------
-    # - type: headdatabase
     #   items:
     #     - "12345"                   # บล็อกหัว ID นี้
     #     - "123*"                    # บล็อกหัวที่ ID ขึ้นต้นด้วย 123
@@ -314,16 +279,13 @@ blacklist:
     #-------------------------------------------------------------------------
     # Nova - บล็อกไอเท็มจาก Nova
     #-------------------------------------------------------------------------
-    # - type: nova
     #   items:
     #     - "machines:electric_furnace"
     #     - "machines:*"              # บล็อกไอเท็มทั้งหมดจาก addon machines
     #     - "*:solar_panel"           # บล็อก solar_panel จากทุก addon
     #
     #-------------------------------------------------------------------------
-    # Denizen - บล็อกไอเท็มจาก Denizen script
     #-------------------------------------------------------------------------
-    # - type: denizen
     #   items:
     #     - "my_custom_script"
     #     - "*_weapon"                # บล็อก script ที่ลงท้ายด้วย "_weapon"
@@ -377,17 +339,13 @@ blacklist:
     #     - "upgrade_*"               # บล็อกไอเท็มอัปเกรดทั้งหมด
     #
     #-------------------------------------------------------------------------
-    # CraftEngine - บล็อกไอเท็มจาก CraftEngine
     #-------------------------------------------------------------------------
-    # - type: craftengine
     #   items:
     #     - "namespace:custom_block"
     #     - "namespace:*"             # บล็อกไอเท็มทุกอย่างใน namespace นี้
     #
     #-------------------------------------------------------------------------
-    # ExecutableBlocks - บล็อกบล็อกจาก ExecutableBlocks
     #-------------------------------------------------------------------------
-    # - type: executableblocks
     #   items:
     #     - "magic_chest"
     #     - "teleporter_*"            # บล็อกบล็อกเทเลพอร์ตทั้งหมด
@@ -446,8 +404,6 @@ whitelist:
     #   values:
     #     - "Tradeable"
     #
-    # อนุญาตเฉพาะ TYPE ของ MMOItems บางประเภท
-    # - type: mmoitems
     #   items:
     #     - "WEAPON:*"
     #     - "ARMOR:*"

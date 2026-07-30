@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Pattern di Decorazione
+#   RavenAuction V4 - Pattern di Decorazione
 #
 #   Questo file di pattern fornisce pannelli di vetro decorativi per i bordi dell'inventario.
 #   Viene riutilizzato in più inventari per mantenere uno stile coerente.
@@ -14,16 +14,16 @@
 #   UTILIZZO:
 #   Includi questo pattern nei tuoi file di inventario:
 #     patterns:
-#       - 'zauctionhouse-decoration'
+#       - 'ravenauction-decoration'
 #
-#   Documentazione: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentazione: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
 
 # Nome del pattern - referenziato in altri file di inventario.
 # Deve essere unico tra tutti i file di pattern.
-name: "zauctionhouse-decoration"
+name: "ravenauction-decoration"
 
 # Dimensione dell'inventario (deve corrispondere agli inventari che usano questo pattern).
 # Dimensioni standard: 9, 18, 27, 36, 45, 54

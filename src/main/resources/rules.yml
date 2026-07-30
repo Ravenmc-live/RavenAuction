@@ -1,6 +1,6 @@
 ################################################################################################################################
 #
-#   zAuctionHouse V4 - Item Rules Configuration
+#   RavenAuction V4 - Item Rules Configuration
 #
 #   This file defines which items can or cannot be sold on the auction house.
 #   Use blacklist to block specific items, or whitelist to only allow specific items.
@@ -8,7 +8,7 @@
 #   TIP: You can save items in Base64 format using /zmenu save <item name>
 #        Then reference them in your rules for exact item matching.
 #
-#   Documentation: https://docs.groupez.dev/zauctionhouse/introduction
+#   Documentation: https://docs.groupez.dev/ravenauction/introduction
 #   Discord: https://discord.groupez.dev/
 #
 ################################################################################################################################
@@ -86,33 +86,23 @@
 # Items are matched by their plugin-specific identifiers.
 # Supports wildcards (*) for pattern matching.
 #
-# ITEMSADDER:
-#   type: itemsadder
 #   items:
 #     - "namespace:item_id"      # Exact match
 #     - "namespace:*"            # All items from namespace
 #
-# ORAXEN:
-#   type: oraxen
 #   items:
 #     - "custom_sword"           # Exact match
 #     - "*_armor"                # Pattern match
 #
-# NEXO:
-#   type: nexo
 #   items:
 #     - "mythic_blade"
 #     - "special_*"
 #
-# MMOITEMS:
-#   type: mmoitems
 #   items:
 #     - "SWORD:CUTLASS"          # TYPE:ID format
 #     - "SWORD:*"                # All items of type SWORD
 #     - "*:LEGENDARY_ITEM"       # Any type with this ID
 #
-# EXECUTABLEITEMS:
-#   type: executableitems
 #   items:
 #     - "custom_wand"
 #
@@ -126,23 +116,16 @@
 #   items:
 #     - "mythic_blade"
 #
-# SLIMEFUN:
-#   type: slimefun
 #   items:
 #     - "ELECTRIC_MOTOR"
 #
-# HEADDATABASE:
-#   type: headdatabase
 #   items:
 #     - "12345"
 #
 # NOVA:
-#   type: nova
 #   items:
 #     - "machines:electric_furnace"
 #
-# DENIZEN:
-#   type: denizen
 #   items:
 #     - "my_custom_script"
 #
@@ -176,13 +159,9 @@
 #   items:
 #     - "custom_gem"
 #
-# CRAFTENGINE:
-#   type: craftengine
 #   items:
 #     - "namespace:custom_block"
 #
-# EXECUTABLEBLOCKS:
-#   type: executableblocks
 #   items:
 #     - "magic_chest"
 #
@@ -234,36 +213,28 @@ blacklist:
     # Each example shows the plugin name and common configuration patterns.
 
     #-------------------------------------------------------------------------
-    # ItemsAdder - Block specific ItemsAdder items
     #-------------------------------------------------------------------------
-    # - type: itemsadder
     #   items:
     #     - "namespace:item_id"       # Block specific item
     #     - "namespace:*"             # Block ALL items from this namespace
     #     - "mynamespace:rare_*"      # Block items starting with "rare_"
 
     #-------------------------------------------------------------------------
-    # Oraxen - Block specific Oraxen items
     #-------------------------------------------------------------------------
-    # - type: oraxen
     #   items:
     #     - "custom_sword"            # Block specific item
     #     - "*_armor"                 # Block all items ending with "_armor"
     #     - "event_*"                 # Block all event items
 
     #-------------------------------------------------------------------------
-    # Nexo - Block specific Nexo items
     #-------------------------------------------------------------------------
-    # - type: nexo
     #   items:
     #     - "mythic_blade"
     #     - "special_*"               # Block all items starting with "special_"
     #     - "*_soulbound"             # Block all soulbound items
 
     #-------------------------------------------------------------------------
-    # MMOItems - Block specific MMOItems (TYPE:ID format)
     #-------------------------------------------------------------------------
-    # - type: mmoitems
     #   items:
     #     - "SWORD:CUTLASS"           # Block specific sword
     #     - "SWORD:*"                 # Block ALL swords
@@ -271,9 +242,7 @@ blacklist:
     #     - "TOOL:*"                  # Block all tools
 
     #-------------------------------------------------------------------------
-    # ExecutableItems - Block specific ExecutableItems
     #-------------------------------------------------------------------------
-    # - type: executableitems
     #   items:
     #     - "custom_wand"
     #     - "voucher_*"               # Block all vouchers
@@ -296,18 +265,14 @@ blacklist:
     #     - "dungeon_*"               # Block dungeon loot
 
     #-------------------------------------------------------------------------
-    # Slimefun - Block specific Slimefun items
     #-------------------------------------------------------------------------
-    # - type: slimefun
     #   items:
     #     - "ELECTRIC_MOTOR"
     #     - "*_INGOT"                 # Block all custom ingots
     #     - "CARGO_*"                 # Block cargo items
 
     #-------------------------------------------------------------------------
-    # HeadDatabase - Block specific HeadDatabase heads
     #-------------------------------------------------------------------------
-    # - type: headdatabase
     #   items:
     #     - "12345"                   # Block specific head by ID
     #     - "123*"                    # Block heads with IDs starting with 123
@@ -315,16 +280,13 @@ blacklist:
     #-------------------------------------------------------------------------
     # Nova - Block specific Nova items
     #-------------------------------------------------------------------------
-    # - type: nova
     #   items:
     #     - "machines:electric_furnace"
     #     - "machines:*"              # Block all items from machines addon
     #     - "*:solar_panel"           # Block solar panels from any addon
 
     #-------------------------------------------------------------------------
-    # Denizen - Block specific Denizen scripted items
     #-------------------------------------------------------------------------
-    # - type: denizen
     #   items:
     #     - "my_custom_script"
     #     - "*_weapon"                # Block weapon scripts
@@ -378,17 +340,13 @@ blacklist:
     #     - "upgrade_*"               # Block upgrade items
 
     #-------------------------------------------------------------------------
-    # CraftEngine - Block specific CraftEngine items
     #-------------------------------------------------------------------------
-    # - type: craftengine
     #   items:
     #     - "namespace:custom_block"
     #     - "namespace:*"             # Block all from namespace
 
     #-------------------------------------------------------------------------
-    # ExecutableBlocks - Block specific ExecutableBlocks
     #-------------------------------------------------------------------------
-    # - type: executableblocks
     #   items:
     #     - "magic_chest"
     #     - "teleporter_*"            # Block teleporter blocks
@@ -447,8 +405,6 @@ whitelist:
     #   values:
     #     - "Tradeable"
 
-    # Allow specific MMOItems types
-    # - type: mmoitems
     #   items:
     #     - "WEAPON:*"
     #     - "ARMOR:*"
