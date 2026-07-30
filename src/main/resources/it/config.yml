@@ -125,7 +125,7 @@ timezone: auto
 #             Ideale per: Configurazioni multi-server, grandi case d'aste
 # - MARIADB : Server database MariaDB (compatibile MySQL)
 #             Ideale per: Configurazioni multi-server, grandi case d'aste
-# Nota: Per la sincronizzazione multi-server, usa MySQL/MariaDB con l'addon Redis.
+# Nota: Per la sincronizzazione multi-server, usa MySQL/MariaDB e attiva la sezione 'redis' piu sotto.
 storage-type: SQLITE
 
 # Identificatore del nome del server per configurazioni multi-server.
@@ -994,6 +994,86 @@ performance:
 
     # Timeout per notificare altri server degli acquisti/rimozioni di oggetti.
     notify-item-action-ms: 5000
+
+#=============================================================================
+# SINCRONIZZAZIONE MULTI-SERVER (REDIS)
+#=============================================================================
+
+# Sincronizza in tempo reale piu server che condividono la stessa casa d'aste.
+#
+# Requisiti:
+#  - 'storage-type' deve essere MYSQL o MARIADB e tutti i server devono puntare allo
+#    stesso database. SQLITE e un file locale e non puo essere condiviso, quindi la
+#    sincronizzazione si rifiuta di partire con quel tipo di archiviazione.
+#  - ogni server ha bisogno del proprio 'server-name' univoco (vedi l'inizio del file).
+#  - tutti i server dovrebbero condividere gli stessi economies.yml e categories.yml,
+#    perche gli oggetti vengono risolti con la configurazione locale di ogni server.
+#
+# Cosa succede quando e attiva:
+#  - le inserzioni compaiono e scompaiono istantaneamente su tutti i server.
+#  - un acquisto prende un lock globale, quindi un oggetto non puo mai essere venduto due volte.
+#  - i venditori vengono avvisati in tempo reale anche se il compratore e su un altro server.
+#  - il denaro dovuto a un venditore che non e sul server del compratore resta in attesa e
+#    viene riscosso con /ah claim (o automaticamente all'accesso) sul suo server.
+#
+# Le modifiche a questa sezione si applicano al riavvio del server, non con /ah reload.
+redis:
+  # Interruttore principale. Finche e false il plugin si comporta esattamente come un
+  # server singolo e non apre mai una connessione.
+  enabled: false
+
+  # Topologia di connessione.
+  # - standalone : una singola istanza Redis, raggiunta all'host/porta qui sotto.
+  # - sentinel   : configurazione ad alta disponibilita in cui il master viene scoperto
+  #                tramite i nodi sentinel definiti in basso e sopravvive a un failover.
+  mode: standalone
+
+  # Indirizzo del server Redis (solo modalita standalone).
+  host: 127.0.0.1
+  port: 6379
+
+  # Autenticazione. Lascia entrambi vuoti se Redis non richiede una password.
+  # Compila solo 'password' per un classico server requirepass; compila entrambi per un
+  # utente ACL di Redis 6+.
+  username: ""
+  password: ""
+
+  # Indice del database logico. Usa un indice dedicato se il server Redis e condiviso con
+  # altro software, cosi un FLUSHDB esterno non puo cancellare i lock dell'asta.
+  database: 0
+
+  # Usa TLS per la connessione. Richiesto dalla maggior parte dei provider Redis gestiti.
+  ssl: false
+
+  # Timeout di connessione e di socket, in millisecondi.
+  timeout-ms: 2000
+
+  # Prefisso applicato al canale pub/sub e a ogni chiave di lock.
+  # Tutti i server della STESSA rete devono usare lo STESSO prefisso.
+  # Due reti distinte che condividono un Redis devono usare prefissi diversi.
+  channel-prefix: "zauctionhouse"
+
+  # Durata di un lock su un oggetto, in millisecondi.
+  # I lock vengono rilasciati appena l'operazione termina: questa scadenza conta solo se un
+  # server va giu durante un acquisto, e limita il tempo in cui l'oggetto non e acquistabile.
+  # Tienila ben sopra il tempo di risposta piu lento del tuo plugin di economia.
+  lock-ttl-ms: 10000
+
+  # Dimensione del pool di connessioni. Una connessione resta riservata in permanenza
+  # all'ascolto dei messaggi, quindi 'max-total' deve restare almeno a 2.
+  pool:
+    max-total: 8
+    max-idle: 8
+    min-idle: 1
+
+  # Impostazioni sentinel, lette solo quando 'mode' vale sentinel.
+  sentinel:
+    # Nome del master monitorato, come dichiarato nella tua configurazione sentinel.
+    master-name: mymaster
+
+    # Nodi sentinel, in formato host:porta.
+    nodes:
+      - "127.0.0.1:26379"
 
 #=============================================================================
 # CONFIGURAZIONE DELL'ORDINAMENTO

@@ -125,7 +125,7 @@ timezone: auto
 #             Best for: Multi-server setups, large auction houses
 # - MARIADB : MariaDB database server (MySQL-compatible)
 #             Best for: Multi-server setups, large auction houses
-# Note: For multi-server synchronization, use MySQL/MariaDB with the Redis addon.
+# Note: For multi-server synchronization, use MySQL/MariaDB and enable the 'redis' section below.
 storage-type: SQLITE
 
 # Server name identifier for multi-server setups.
@@ -997,6 +997,85 @@ performance:
 
     # Timeout for notifying other servers about item purchases/removals.
     notify-item-action-ms: 5000
+
+#=============================================================================
+# MULTI-SERVER SYNCHRONIZATION (REDIS)
+#=============================================================================
+
+# Keeps several servers sharing one auction house in sync in real time.
+#
+# Requirements:
+#  - 'storage-type' must be MYSQL or MARIADB and every server must point at the same
+#    database. SQLITE is a local file and cannot be shared, so synchronization refuses
+#    to start with it.
+#  - every server needs its own unique 'server-name' (see the top of this file).
+#  - all servers should share the same economies.yml and categories.yml, because items
+#    are resolved against the local configuration on each server.
+#
+# What it does once enabled:
+#  - listings appear and disappear on every server instantly.
+#  - a purchase takes a cluster-wide lock, so an item can never be sold twice.
+#  - sellers are notified in real time even when the buyer is on another server.
+#  - money owed to a seller who is not on the buyer's server is held as pending and
+#    collected with /ah claim (or automatically on join) on their own server.
+#
+# Changes to this section apply on server restart, not on /ah reload.
+redis:
+  # Master switch. While false the plugin behaves exactly like a single server and
+  # never opens a connection.
+  enabled: false
+
+  # Connection topology.
+  # - standalone : a single Redis instance, reached at the host/port below.
+  # - sentinel   : a high-availability setup where the master is discovered through the
+  #                sentinel nodes configured at the bottom, surviving a failover.
+  mode: standalone
+
+  # Address of the Redis server (standalone mode only).
+  host: 127.0.0.1
+  port: 6379
+
+  # Authentication. Leave both blank when Redis needs no password.
+  # Set only 'password' for a classic requirepass server; set both for a Redis 6+ ACL user.
+  username: ""
+  password: ""
+
+  # Logical database index. Use a dedicated index when the Redis server is shared with
+  # other software, so that a FLUSHDB elsewhere cannot wipe the auction locks.
+  database: 0
+
+  # Use TLS for the connection. Required by most hosted/managed Redis providers.
+  ssl: false
+
+  # Connection and socket timeout, in milliseconds.
+  timeout-ms: 2000
+
+  # Prefix applied to the pub/sub channel and to every lock key.
+  # All servers of the SAME network must use the SAME prefix.
+  # Two unrelated networks sharing one Redis server must use different prefixes.
+  channel-prefix: "zauctionhouse"
+
+  # How long a lock on an item survives, in milliseconds.
+  # Locks are released as soon as the operation ends, so this expiry only matters when a
+  # server crashes mid-purchase: it caps how long the item stays unbuyable.
+  # Keep it comfortably above the slowest response time of your economy plugin.
+  lock-ttl-ms: 10000
+
+  # Connection pool sizing. One connection is permanently reserved for the listener,
+  # so 'max-total' must stay at 2 or more.
+  pool:
+    max-total: 8
+    max-idle: 8
+    min-idle: 1
+
+  # Sentinel settings, read only when 'mode' is set to sentinel.
+  sentinel:
+    # Name of the monitored master, as declared in your sentinel configuration.
+    master-name: mymaster
+
+    # Sentinel nodes, in host:port form.
+    nodes:
+      - "127.0.0.1:26379"
 
 #=============================================================================
 # SORTING CONFIGURATION

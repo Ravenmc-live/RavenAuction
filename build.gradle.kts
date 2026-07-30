@@ -80,6 +80,16 @@ repositories {
 dependencies {
     api(projects.api)
     api(projects.hooks)
+
+    // Redis client for the multi-server cluster bridge. Declared here rather than in allprojects
+    // because only this module talks to Redis, and only this module's shadowJar relocates it.
+    // Only core commands and pub/sub are used, so the JSON extras are dropped; slf4j-api is already
+    // bundled by sarah, so shading a second copy would clash.
+    implementation("redis.clients:jedis:5.2.0") {
+        exclude(group = "org.slf4j", module = "slf4j-api")
+        exclude(group = "com.google.code.gson", module = "gson")
+        exclude(group = "org.json", module = "json")
+    }
 }
 
 tasks {
@@ -87,6 +97,8 @@ tasks {
         relocate("fr.maxlego08.sarah", "fr.maxlego08.zauctionhouse.libs.sarah")
         relocate("com.tcoded.folialib", "fr.maxlego08.zauctionhouse.libs.folialib")
         relocate("fr.traqueur.currencies", "fr.maxlego08.zauctionhouse.libs.currencies")
+        relocate("redis.clients", "fr.maxlego08.zauctionhouse.libs.jedis")
+        relocate("org.apache.commons.pool2", "fr.maxlego08.zauctionhouse.libs.pool2")
 
         rootProject.extra.properties["sha"]?.let { sha ->
             archiveClassifier.set("${rootProject.extra.properties["classifier"]}-${sha}")

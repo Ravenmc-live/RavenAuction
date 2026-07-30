@@ -24,6 +24,7 @@ import fr.maxlego08.zauctionhouse.api.storage.StorageManager;
 import fr.maxlego08.zauctionhouse.api.utils.Plugins;
 import fr.maxlego08.zauctionhouse.category.ZCategoryManager;
 import fr.maxlego08.zauctionhouse.cluster.LocalAuctionClusterBridge;
+import fr.maxlego08.zauctionhouse.cluster.redis.RedisClusterService;
 import fr.maxlego08.zauctionhouse.command.ZCommandManager;
 import fr.maxlego08.zauctionhouse.command.commands.CommandAuction;
 import fr.maxlego08.zauctionhouse.configuration.MainConfiguration;
@@ -98,6 +99,7 @@ public class ZAuctionPlugin extends JavaPlugin implements AuctionPlugin {
     private PlatformScheduler platformScheduler;
     private AuctionClusterBridge auctionClusterBridge = new LocalAuctionClusterBridge();
     private OfflinePermission offlinePermission = new EmptyOfflinePermission();
+    private final RedisClusterService redisClusterService = new RedisClusterService(this);
 
     @Override
     public void onEnable() {
@@ -155,6 +157,10 @@ public class ZAuctionPlugin extends JavaPlugin implements AuctionPlugin {
 
         this.storageManager.loadItems();
 
+        // Started once the local caches are populated, so incoming cluster events apply on top of a
+        // complete picture instead of racing the initial load.
+        this.redisClusterService.start();
+
         this.registerPlaceholders();
         this.registerHooks();
 
@@ -183,6 +189,9 @@ public class ZAuctionPlugin extends JavaPlugin implements AuctionPlugin {
         if (this.versionChecker != null) {
             this.versionChecker.unregister();
         }
+
+        // Stop cluster synchronization before the executor it publishes on is shut down
+        this.redisClusterService.stop();
 
         // Shutdown the sorted items cache (closes ForkJoinPool)
         this.auctionManager.shutdown();
@@ -408,6 +417,13 @@ public class ZAuctionPlugin extends JavaPlugin implements AuctionPlugin {
     @Override
     public AuctionClusterBridge getAuctionClusterBridge() {
         return this.auctionClusterBridge;
+    }
+
+    /**
+     * @return the service managing Redis-backed multi-server synchronization
+     */
+    public RedisClusterService getRedisClusterService() {
+        return this.redisClusterService;
     }
 
     @Override

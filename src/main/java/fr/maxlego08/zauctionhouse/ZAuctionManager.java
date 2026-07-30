@@ -263,6 +263,12 @@ public class ZAuctionManager extends ZUtils implements AuctionManager {
     }
 
     @Override
+    public Item getItem(StorageType storageType, int itemId) {
+        var storage = this.storageItemsById.get(storageType);
+        return storage == null ? null : storage.get(itemId);
+    }
+
+    @Override
     public List<Item> getItemsListedForSale(Player player) {
         long startTime = performanceDebug.start();
 

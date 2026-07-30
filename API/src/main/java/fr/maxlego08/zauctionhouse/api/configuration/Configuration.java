@@ -16,6 +16,7 @@ import fr.maxlego08.zauctionhouse.api.configuration.records.NumberMultiplication
 import fr.maxlego08.zauctionhouse.api.configuration.records.PerformanceConfiguration;
 import fr.maxlego08.zauctionhouse.api.configuration.records.PerformanceDebugConfiguration;
 import fr.maxlego08.zauctionhouse.api.configuration.records.PermissionConfiguration;
+import fr.maxlego08.zauctionhouse.api.configuration.records.RedisConfiguration;
 import fr.maxlego08.zauctionhouse.api.configuration.records.SearchFilterConfiguration;
 import fr.maxlego08.zauctionhouse.api.configuration.records.SortConfiguration;
 import fr.maxlego08.zauctionhouse.api.configuration.records.SpecialItemsConfiguration;
@@ -198,6 +199,13 @@ public interface Configuration extends ConfigurationFile {
      * @return the performance configuration
      */
     PerformanceConfiguration getPerformance();
+
+    /**
+     * Gets the Redis configuration used for multi-server synchronization.
+     *
+     * @return the redis configuration
+     */
+    RedisConfiguration getRedis();
 
     /**
      * Gets the search filter configuration containing operator mappings.

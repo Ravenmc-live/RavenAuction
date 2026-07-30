@@ -125,7 +125,7 @@ timezone: auto
 #             Idéal pour: Configurations multi-serveurs, grands hôtels des ventes
 # - MARIADB : Serveur de base de données MariaDB (compatible MySQL)
 #             Idéal pour: Configurations multi-serveurs, grands hôtels des ventes
-# Note: Pour la synchronisation multi-serveur, utilisez MySQL/MariaDB avec l'addon Redis.
+# Note: Pour la synchronisation multi-serveur, utilisez MySQL/MariaDB et activez la section 'redis' ci-dessous.
 storage-type: SQLITE
 
 # Identifiant du nom de serveur pour les configurations multi-serveurs.
@@ -1001,6 +1001,86 @@ performance:
 
     # Timeout pour notifier les autres serveurs des achats/suppressions d'items.
     notify-item-action-ms: 5000
+
+#=============================================================================
+# SYNCHRONISATION MULTI-SERVEURS (REDIS)
+#=============================================================================
+
+# Synchronise en temps réel plusieurs serveurs partageant un même hôtel des ventes.
+#
+# Prérequis :
+#  - 'storage-type' doit être MYSQL ou MARIADB, et tous les serveurs doivent pointer
+#    vers la même base de données. SQLITE est un fichier local, donc impossible à
+#    partager : la synchronisation refuse de démarrer avec ce type de stockage.
+#  - chaque serveur doit avoir son propre 'server-name' unique (voir le début du fichier).
+#  - tous les serveurs devraient partager les mêmes economies.yml et categories.yml, car
+#    les items sont résolus avec la configuration locale de chaque serveur.
+#
+# Ce que cela apporte une fois activé :
+#  - les annonces apparaissent et disparaissent instantanément sur tous les serveurs.
+#  - un achat prend un verrou global, un item ne peut donc jamais être vendu deux fois.
+#  - les vendeurs sont notifiés en temps réel même si l'acheteur est sur un autre serveur.
+#  - l'argent dû à un vendeur absent du serveur de l'acheteur est mis en attente, puis
+#    récupéré via /ah claim (ou automatiquement à la connexion) sur son propre serveur.
+#
+# Les modifications de cette section s'appliquent au redémarrage, pas avec /ah reload.
+redis:
+  # Interrupteur principal. Tant qu'il est à false, le plugin se comporte exactement
+  # comme un serveur unique et n'ouvre aucune connexion.
+  enabled: false
+
+  # Topologie de connexion.
+  # - standalone : une seule instance Redis, joignable via host/port ci-dessous.
+  # - sentinel   : configuration en haute disponibilité où le master est découvert via
+  #                les nœuds sentinel définis plus bas, et survit à un basculement.
+  mode: standalone
+
+  # Adresse du serveur Redis (mode standalone uniquement).
+  host: 127.0.0.1
+  port: 6379
+
+  # Authentification. Laissez les deux vides si Redis ne demande pas de mot de passe.
+  # Renseignez uniquement 'password' pour un serveur requirepass classique ; renseignez
+  # les deux pour un utilisateur ACL Redis 6+.
+  username: ""
+  password: ""
+
+  # Index de la base logique. Utilisez un index dédié si le serveur Redis est partagé
+  # avec d'autres logiciels, afin qu'un FLUSHDB externe n'efface pas les verrous.
+  database: 0
+
+  # Utiliser TLS pour la connexion. Requis par la plupart des hébergeurs Redis managés.
+  ssl: false
+
+  # Timeout de connexion et de socket, en millisecondes.
+  timeout-ms: 2000
+
+  # Préfixe appliqué au canal pub/sub et à toutes les clés de verrou.
+  # Tous les serveurs d'un MÊME réseau doivent utiliser le MÊME préfixe.
+  # Deux réseaux distincts partageant un Redis doivent utiliser des préfixes différents.
+  channel-prefix: "zauctionhouse"
+
+  # Durée de vie d'un verrou sur un item, en millisecondes.
+  # Les verrous sont libérés dès la fin de l'opération : cette expiration ne sert que si
+  # un serveur plante en pleine transaction, et limite le temps d'indisponibilité.
+  # Gardez une valeur nettement supérieure au temps de réponse de votre plugin d'économie.
+  lock-ttl-ms: 10000
+
+  # Dimensionnement du pool de connexions. Une connexion est réservée en permanence à
+  # l'écoute des messages, donc 'max-total' doit rester à 2 minimum.
+  pool:
+    max-total: 8
+    max-idle: 8
+    min-idle: 1
+
+  # Paramètres sentinel, lus uniquement si 'mode' vaut sentinel.
+  sentinel:
+    # Nom du master surveillé, tel que déclaré dans votre configuration sentinel.
+    master-name: mymaster
+
+    # Nœuds sentinel, au format host:port.
+    nodes:
+      - "127.0.0.1:26379"
 
 #=============================================================================
 # CONFIGURATION DU TRI

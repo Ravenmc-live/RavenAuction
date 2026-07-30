@@ -21,6 +21,7 @@ import fr.maxlego08.zauctionhouse.api.configuration.records.NumberMultiplication
 import fr.maxlego08.zauctionhouse.api.configuration.records.PerformanceConfiguration;
 import fr.maxlego08.zauctionhouse.api.configuration.records.PerformanceDebugConfiguration;
 import fr.maxlego08.zauctionhouse.api.configuration.records.PermissionConfiguration;
+import fr.maxlego08.zauctionhouse.api.configuration.records.RedisConfiguration;
 import fr.maxlego08.zauctionhouse.api.configuration.records.SearchFilterConfiguration;
 import fr.maxlego08.zauctionhouse.api.configuration.records.SortConfiguration;
 import fr.maxlego08.zauctionhouse.api.configuration.records.SpecialItemsConfiguration;
@@ -65,6 +66,7 @@ public class MainConfiguration extends YamlLoader implements Configuration {
     private SalesNotificationConfiguration salesNotificationConfiguration;
     private BroadcastConfiguration broadcastConfiguration;
     private PerformanceConfiguration performanceConfiguration;
+    private RedisConfiguration redisConfiguration;
     private SearchFilterConfiguration searchFilterConfiguration;
     private HistoryConfiguration historyConfiguration;
     private CooldownConfiguration cooldownConfiguration;
@@ -99,6 +101,7 @@ public class MainConfiguration extends YamlLoader implements Configuration {
         this.salesNotificationConfiguration = SalesNotificationConfiguration.of(plugin, config);
         this.broadcastConfiguration = BroadcastConfiguration.of(plugin, config);
         this.performanceConfiguration = PerformanceConfiguration.of(plugin, config);
+        this.redisConfiguration = RedisConfiguration.of(plugin, config);
         this.searchFilterConfiguration = SearchFilterConfiguration.of(plugin, config);
         this.historyConfiguration = HistoryConfiguration.of(plugin, config);
         this.cooldownConfiguration = CooldownConfiguration.of(plugin, config);
@@ -250,6 +253,11 @@ public class MainConfiguration extends YamlLoader implements Configuration {
     @Override
     public PerformanceConfiguration getPerformance() {
         return this.performanceConfiguration;
+    }
+
+    @Override
+    public RedisConfiguration getRedis() {
+        return this.redisConfiguration;
     }
 
     @Override

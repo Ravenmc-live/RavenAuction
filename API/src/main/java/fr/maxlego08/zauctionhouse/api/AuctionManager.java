@@ -155,6 +155,16 @@ public interface AuctionManager {
     void removeItem(StorageType storageType, int itemId);
 
     /**
+     * Retrieves a single cached item from the specified storage bucket without copying the whole
+     * bucket, which matters on the hot paths that only need one item (cluster message handling).
+     *
+     * @param storageType storage bucket to read from
+     * @param itemId      unique identifier of the item
+     * @return the cached item, or {@code null} when this server has no such item in that bucket
+     */
+    Item getItem(StorageType storageType, int itemId);
+
+    /**
      * Retrieves every item currently listed for sale by the given player, excluding expired or
      * purchased entries.
      *
