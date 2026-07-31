@@ -1,0 +1,20 @@
+# Pterodactyl SFTP deploy targets.
+# Copy this file to 'deploy.properties' (gitignored) and fill in your credentials.
+#
+#   ./gradlew sftpDeployAll            uploads to every server listed below
+#   ./gradlew sftpDeployToSpawn1       uploads to a single server
+#
+# Comma-separated list of server names. Each name below is a prefix for its settings.
+servers=spawn1,spawn2
+
+spawn1.host=127.0.0.1
+spawn1.port=2022
+spawn1.user=user.xxxxxxxx
+spawn1.password=changeme
+spawn1.remoteDir=/plugins
+
+spawn2.host=127.0.0.1
+spawn2.port=2022
+spawn2.user=user.xxxxxxxx
+spawn2.password=changeme
+spawn2.remoteDir=/plugins

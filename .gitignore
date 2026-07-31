@@ -135,3 +135,6 @@ CHANGELOG-V4-SPIGOT.txt
 CHANGELOG-V4.md
 migrations.sql
 todo.md
+
+# Pterodactyl SFTP deploy credentials (see deploy.properties.example)
+deploy.properties

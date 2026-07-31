@@ -2,14 +2,14 @@ name: RavenAuction
 version: ${version}
 main: fr.maxlego08.zauctionhouse.ZAuctionPlugin
 api-version: '1.20'
-authors: [ Maxlego08 ]
+authors: [ Kammoun ]
 description: Buy, resell, rent, bid your items!
-website: https://groupez.dev/
 folia-supported: true
 depend:
   - zMenu
   - PlaceholderAPI
 softdepend:
   - LuckPerms
+  - RavenCore
 libraries:
   - org.mariadb.jdbc:mariadb-java-client:3.5.6

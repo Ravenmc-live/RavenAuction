@@ -1023,7 +1023,7 @@ performance:
 redis:
   # Master switch. While false the plugin behaves exactly like a single server and
   # never opens a connection.
-  enabled: false
+  enabled: true
 
   # Connection topology.
   # - standalone : a single Redis instance, reached at the host/port below.
@@ -1032,13 +1032,13 @@ redis:
   mode: standalone
 
   # Address of the Redis server (standalone mode only).
-  host: 127.0.0.1
+  host: 172.18.0.2
   port: 6379
 
   # Authentication. Leave both blank when Redis needs no password.
   # Set only 'password' for a classic requirepass server; set both for a Redis 6+ ACL user.
   username: ""
-  password: ""
+  password: "v9OvHKGQ3EXLqE0F"
 
   # Logical database index. Use a dedicated index when the Redis server is shared with
   # other software, so that a FLUSHDB elsewhere cannot wipe the auction locks.
@@ -1144,7 +1144,7 @@ migration:
   ravenauction-v3:
     # Source storage type from V3
     # Options: MYSQL, MARIADB, SQLITE, or JSON
-    source-type: SQLITE
+    source-type: MYSQL
 
     # Table prefix used in your V3 installation
     # Check your V3 config.yml if unsure (default was "ravenauction_")
@@ -1156,11 +1156,11 @@ migration:
 
     # === MySQL/MariaDB Configuration ===
     # Only needed if source-type is MYSQL or MARIADB
-    host: "localhost"
+    host: "172.18.0.1"
     port: 3306
-    database: "ravenauction"
-    user: "root"
-    password: ""
+    database: "s10_SMP_DATABASE"
+    user: "u10_Y8LJHuTiM8"
+    password: "D@o!DfVIJPOA9DnPGmF9o@Xh"
 
     # === JSON Configuration ===
     # Path to the V3 data folder containing JSON storage files
