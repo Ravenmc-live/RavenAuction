@@ -102,10 +102,10 @@ items:
     slot: 51
 
     # Format for currently selected sort option.
-    enable-text: ' #FFAA00◈ #FFCC00%sorting%'
+    enable-text: '#00FFFF✦ %sorting%'
 
     # Format for unselected sort options.
-    disable-text: ' #AAAAAA◈ &f%sorting%'
+    disable-text: '#AAAAAA○ %sorting%'
 
     # Available sort options (cycled in this order).
     sorts:

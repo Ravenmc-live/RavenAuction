@@ -320,10 +320,10 @@ items:
 
     # Format for currently SELECTED sort option in lore.
     # %sorting% is replaced with the sort name from config.yml.
-    enable-text: ' #FFAA00◈ #FFCC00%sorting%'
+    enable-text: '#00FFFF✦ %sorting%'
 
     # Format for NOT selected sort options in lore.
-    disable-text: ' #AAAAAA◈ &f%sorting%'
+    disable-text: '#AAAAAA○ %sorting%'
 
     # Item shown while loading/sorting (prevents spam clicks).
     loading-item:

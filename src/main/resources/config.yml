@@ -147,7 +147,7 @@ database-configuration:
   # IP address or hostname of the database server.
   # Use 'localhost' or '127.0.0.1' if the database is on the same machine.
   # For remote databases, use the server's IP address or domain name.
-  host: 100.104.31.88
+  host: 172.18.0.1
 
   # Port number of the database server.
   # Default MySQL/MariaDB port: 3306
@@ -1145,7 +1145,7 @@ migration:
   ravenauction-v3:
     # Source storage type from V3
     # Options: MYSQL, MARIADB, SQLITE, or JSON
-    source-type: MYSQL
+    source-type: SQLITE
 
     # Table prefix used in your V3 installation
     # Check your V3 config.yml if unsure (default was "ravenauction_")
