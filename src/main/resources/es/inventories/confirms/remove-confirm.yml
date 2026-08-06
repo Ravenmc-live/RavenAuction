@@ -42,7 +42,7 @@ items:
 
   remove:
     # Tipo de boton - gestiona el retiro del anuncio.
-    type: RAVENAUCTION_CONFIRM_REMOVE_LISTED
+    type: ZAUCTIONHOUSE_CONFIRM_REMOVE_LISTED
 
     item:
       # Cristal verde para la accion de confirmar.
@@ -107,7 +107,7 @@ items:
 
   show:
     # Tipo de boton - muestra el objeto de la subasta.
-    type: RAVENAUCTION_SHOW
+    type: ZAUCTIONHOUSE_SHOW
 
     # Slot central.
     slot: 13
@@ -119,7 +119,7 @@ items:
 
   shulker:
     # Tipo de boton - abre la vista previa del contenido shulker.
-    type: RAVENAUCTION_SHULKER_OPEN
+    type: ZAUCTIONHOUSE_SHULKER_OPEN
 
     slot: 4
 

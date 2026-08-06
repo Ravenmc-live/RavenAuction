@@ -58,7 +58,7 @@ items:
 
   items:
     # ประเภทปุ่ม - ใช้แสดง transaction entries
-    type: RAVENAUCTION_ADMIN_TRANSACTIONS
+    type: ZAUCTIONHOUSE_ADMIN_TRANSACTIONS
 
     # ช่องสำหรับแสดงสถานะกำลังโหลด
     loading-slot: 22
@@ -93,7 +93,7 @@ items:
 
   filter-status:
     # ประเภทปุ่ม - จัดการการกรองตามสถานะธุรกรรม
-    type: RAVENAUCTION_ADMIN_TRANSACTIONS_FILTER_STATUS
+    type: ZAUCTIONHOUSE_ADMIN_TRANSACTIONS_FILTER_STATUS
 
     slot: 47
 
@@ -134,7 +134,7 @@ items:
 
   filter-date:
     # ประเภทปุ่ม - จัดการการกรองตามวันที่
-    type: RAVENAUCTION_ADMIN_TRANSACTIONS_FILTER_DATE
+    type: ZAUCTIONHOUSE_ADMIN_TRANSACTIONS_FILTER_DATE
 
     slot: 51
 

@@ -55,7 +55,7 @@ items:
 
   items:
     # Type de bouton - affiche et gère les items achetés.
-    type: RAVENAUCTION_PURCHASED_ITEMS
+    type: ZAUCTIONHOUSE_PURCHASED_ITEMS
 
     # Slot pour le placeholder d'état vide.
     empty-slot: 22
@@ -77,7 +77,7 @@ items:
   #---------------------------------------------------------------------------
 
   remove-all:
-    type: RAVENAUCTION_REMOVE_ALL_PURCHASED
+    type: ZAUCTIONHOUSE_REMOVE_ALL_PURCHASED
     is-permanent: true
     slot: 47
     item:

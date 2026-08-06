@@ -47,7 +47,7 @@ public class PermissionRegistrar {
 
     private void registerStaticPermissions() {
         for (Permission perm : Permission.values()) {
-            boolean isAdmin = perm.name().startsWith("RAVENAUCTION_ADMIN") || perm == Permission.ZAUCTIONHOUSE_RELOAD;
+            boolean isAdmin = perm.name().startsWith("ZAUCTIONHOUSE_ADMIN") || perm == Permission.ZAUCTIONHOUSE_RELOAD;
             addPermission(perm.asPermission(), perm.getDescription(), isAdmin ? PermissionDefault.OP : PermissionDefault.TRUE);
         }
     }

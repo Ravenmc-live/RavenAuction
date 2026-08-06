@@ -60,13 +60,13 @@ items:
   # มีการแบ่งหน้า และสามารถกรองตามหมวดหมู่ได้
 
   display-items:
-    # ประเภทปุ่ม - RAVENAUCTION_LISTED_ITEMS เป็น type เฉพาะของปลั๊กอิน
+    # ประเภทปุ่ม - ZAUCTIONHOUSE_LISTED_ITEMS เป็น type เฉพาะของปลั๊กอิน
     # จัดการให้โดยอัตโนมัติ:
     # - โหลดและแสดงไอเทมในตลาด
     # - กรองตามหมวดหมู่
     # - การเรียงลำดับ
     # - การคลิกเพื่อซื้อ / ถอดประกาศ
-    type: RAVENAUCTION_LISTED_ITEMS
+    type: ZAUCTIONHOUSE_LISTED_ITEMS
 
     # ช่องที่ใช้แสดงไอเทม "ว่าง" เมื่อไม่มีไอเทมในตลาดเลย
     empty-slot: 22
@@ -122,7 +122,7 @@ items:
 
   expired-items:
     # ประเภทปุ่ม - เปิด expired items inventory ถ้ามีไอเทมหมดอายุ
-    type: RAVENAUCTION_EXPIRED_INVENTORY
+    type: ZAUCTIONHOUSE_EXPIRED_INVENTORY
 
     # ตำแหน่งช่อง - ซ้ายสุดของแถวล่าง
     slot: 45
@@ -154,7 +154,7 @@ items:
 
   purchased-items:
     # ประเภทปุ่ม - เปิด purchased items inventory ถ้ามีไอเทม
-    type: RAVENAUCTION_PURCHASED_INVENTORY
+    type: ZAUCTIONHOUSE_PURCHASED_INVENTORY
 
     # ตำแหน่งช่อง - อันดับที่สองจากซ้ายในแถวล่าง
     slot: 46
@@ -184,7 +184,7 @@ items:
 
   selling-items:
     # ประเภทปุ่ม - เปิด selling items inventory ถ้ามีไอเทมลงขาย
-    type: RAVENAUCTION_SELLING_INVENTORY
+    type: ZAUCTIONHOUSE_SELLING_INVENTORY
 
     # ตำแหน่งช่อง - ขวาสุดของแถวล่าง
     slot: 53
@@ -212,7 +212,7 @@ items:
   #---------------------------------------------------------------------------
 
   search:
-    type: RAVENAUCTION_SEARCH
+    type: ZAUCTIONHOUSE_SEARCH
     slot: 47
     is-permanent: true
     # ค่าที่แสดงใน %search_query% เมื่อไม่มีการค้นหาที่ใช้งานอยู่
@@ -248,8 +248,8 @@ items:
   # แสดงข้อมูลของ auction house และใช้รีเฟรชรายการไอเทม
 
   refresh:
-    # ประเภทปุ่ม - RAVENAUCTION_REFRESH จัดการรีเฟรชแบบ async
-    type: RAVENAUCTION_REFRESH
+    # ประเภทปุ่ม - ZAUCTIONHOUSE_REFRESH จัดการรีเฟรชแบบ async
+    type: ZAUCTIONHOUSE_REFRESH
 
     # ตำแหน่งช่อง - กึ่งกลางแถวล่าง
     slot: 49
@@ -285,7 +285,7 @@ items:
 
   change-sort:
     # ประเภทปุ่ม - จัดการการวนเปลี่ยน sort
-    type: RAVENAUCTION_CHANGE_SORT
+    type: ZAUCTIONHOUSE_CHANGE_SORT
 
     # รูปแบบการเรียงลำดับที่จะวนผ่าน (ตามลำดับนี้)
     # ตัวเลือก: DECREASING_DATE, DECREASING_PRICE, ASCENDING_DATE, ASCENDING_PRICE

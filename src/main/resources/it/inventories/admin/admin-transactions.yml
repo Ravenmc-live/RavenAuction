@@ -58,7 +58,7 @@ items:
 
   items:
     # Tipo pulsante - visualizza le voci di transazione.
-    type: RAVENAUCTION_ADMIN_TRANSACTIONS
+    type: ZAUCTIONHOUSE_ADMIN_TRANSACTIONS
 
     # Slot per l'indicatore di caricamento.
     loading-slot: 22
@@ -93,7 +93,7 @@ items:
 
   filter-status:
     # Tipo pulsante - gestisce il filtraggio per stato.
-    type: RAVENAUCTION_ADMIN_TRANSACTIONS_FILTER_STATUS
+    type: ZAUCTIONHOUSE_ADMIN_TRANSACTIONS_FILTER_STATUS
 
     slot: 47
 
@@ -134,7 +134,7 @@ items:
 
   filter-date:
     # Tipo pulsante - gestisce il filtraggio per data.
-    type: RAVENAUCTION_ADMIN_TRANSACTIONS_FILTER_DATE
+    type: ZAUCTIONHOUSE_ADMIN_TRANSACTIONS_FILTER_DATE
 
     slot: 51
 

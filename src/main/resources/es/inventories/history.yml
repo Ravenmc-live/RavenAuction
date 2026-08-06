@@ -56,7 +56,7 @@ items:
 
   items:
     # Tipo de boton - visualiza las ventas historicas.
-    type: RAVENAUCTION_HISTORY_ITEMS
+    type: ZAUCTIONHOUSE_HISTORY_ITEMS
 
     # Slot para el indicador de carga durante la recuperacion del historial.
     loading-slot: 22
@@ -91,7 +91,7 @@ items:
 
   sort:
     # Tipo de boton - gestiona el ciclo de ordenamiento para el historial.
-    type: RAVENAUCTION_HISTORY_SORT
+    type: ZAUCTIONHOUSE_HISTORY_SORT
 
     # Posicion del slot.
     slot: 51

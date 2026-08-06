@@ -55,7 +55,7 @@ items:
 
   items:
     # Tipo pulsante - visualizza oggetti scaduti admin con funzionalità di recupero.
-    type: RAVENAUCTION_ADMIN_EXPIRED_ITEMS
+    type: ZAUCTIONHOUSE_ADMIN_EXPIRED_ITEMS
 
     # Slot per visualizzare gli oggetti scaduti (4 righe x 9 colonne = 36 slot).
     slots:

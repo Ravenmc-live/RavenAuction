@@ -31,7 +31,7 @@
 #=============================================================================
 
 # Inventory title with pagination placeholders.
-name: '#0c1719Admin logs (%page%/%max-page%)'
+name: '#0c1719ᴀᴅᴍɪɴ ʟᴏɢs (%page%/%max-page%)'
 
 # Inventory size - 6 rows.
 size: 54
@@ -62,7 +62,7 @@ items:
 
   items:
     # Button type - displays log entries.
-    type: RAVENAUCTION_ADMIN_LOGS
+    type: ZAUCTIONHOUSE_ADMIN_LOGS
 
     # Slot for loading indicator.
     loading-slot: 22
@@ -77,7 +77,11 @@ items:
     # Item shown while loading logs.
     item:
       material: BARRIER
-      name: "#ff0000Loading..."
+      name: "#FFAA00<bold>LOADING..."
+      lore:
+        - "&fFetching the action logs."
+        - ""
+        - "#FFAA00◈ #AAAAAAPlease wait a moment."
 
     # Item shown when no logs exist.
     else:
@@ -85,10 +89,11 @@ items:
         - 22
       item:
         material: BARRIER
-        name: '#ff0000&nNo Sales Found'
+        name: "#FF4D4D<bold>NO LOGS FOUND"
         lore:
-          - ''
-          - '&7You have not sold any items yet.'
+          - "&fThis player has no recorded auction activity."
+          - ""
+          - "#FF4D4D✕ #AAAAAATry widening the type or date filter."
 
   #---------------------------------------------------------------------------
   # FILTER BY TYPE BUTTON
@@ -97,16 +102,16 @@ items:
 
   filter-type:
     # Button type - handles type filtering.
-    type: RAVENAUCTION_ADMIN_LOGS_FILTER_TYPE
+    type: ZAUCTIONHOUSE_ADMIN_LOGS_FILTER_TYPE
 
     # Slot position.
     slot: 47
 
     # Format for currently selected type.
-    enable-text: ' #F27438➜ %type%'
+    enable-text: ' #FFAA00◈ #FFCC00%type%'
 
     # Format for unselected types.
-    disable-text: ' #76CDCD➜ %type%'
+    disable-text: ' #AAAAAA◈ &f%type%'
 
     # Display name for "all types" option.
     all-types-name: "All"
@@ -131,9 +136,10 @@ items:
 
     item:
       material: HOPPER
-      name: '#2CCED2<bold>ғɪʟᴛᴇʀ ʙʏ ᴛʏᴘᴇ'
+      name: '#FFAA00<bold>FILTER BY TYPE'
       lore:
-        - '#92ffffAvailable types:'
+        - '&fShow only one kind of auction action.'
+        - ''
         # Placeholders for each type (formatted by enable/disable-text).
         - '%ALL%'
         - '%SALE%'
@@ -143,7 +149,7 @@ items:
         - '%REMOVE_EXPIRED%'
         - '%REMOVE_PURCHASED%'
         - ''
-        - '#8c8c8c• #2CCED2Click #92ffffto change the filter type'
+        - '#FFFF55▸ #FFFF55&nCLICK&r #FFAA00to Change Filter'
 
   #---------------------------------------------------------------------------
   # FILTER BY DATE BUTTON
@@ -152,15 +158,15 @@ items:
 
   filter-date:
     # Button type - handles date filtering.
-    type: RAVENAUCTION_ADMIN_LOGS_FILTER_DATE
+    type: ZAUCTIONHOUSE_ADMIN_LOGS_FILTER_DATE
 
     slot: 51
 
     # Format for currently selected date range.
-    enable-text: ' #F27438➜ %date%'
+    enable-text: ' #FFAA00◈ #FFCC00%date%'
 
     # Format for unselected date ranges.
-    disable-text: ' #76CDCD➜ %date%'
+    disable-text: ' #AAAAAA◈ &f%date%'
 
     # Available date filters.
     filters:
@@ -180,13 +186,14 @@ items:
 
     item:
       material: CLOCK
-      name: '#2CCED2<bold>ғɪʟᴛᴇʀ ʙʏ ᴅᴀᴛᴇ'
+      name: '#FFAA00<bold>FILTER BY DATE'
       lore:
-        - '#92ffffAvailable filters:'
+        - '&fLimit the results to a time range.'
+        - ''
         - '%ALL%'
         - '%TODAY%'
         - '%THIS_WEEK%'
         - '%THIS_MONTH%'
         - '%THIS_YEAR%'
         - ''
-        - '#8c8c8c• #2CCED2Click #92ffffto change the date filter'
+        - '#FFFF55▸ #FFFF55&nCLICK&r #FFAA00to Change Filter'

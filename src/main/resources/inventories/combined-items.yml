@@ -30,7 +30,7 @@
 # INVENTORY SETTINGS
 #=============================================================================
 
-name: '#0c1719My Items (%page%/%max-page%)'
+name: '#0c1719ᴍʏ ɪᴛᴇᴍs (%page%/%max-page%)'
 
 size: 54
 
@@ -56,7 +56,7 @@ items:
   # Click action adapts based on the item's actual storage type.
 
   items:
-    type: RAVENAUCTION_COMBINED_ITEMS
+    type: ZAUCTIONHOUSE_COMBINED_ITEMS
 
     # Slot for empty state placeholder.
     empty-slot: 22
@@ -76,4 +76,8 @@ items:
     # Placeholder item when no items are found.
     item:
       material: BARRIER
-      name: '#ff0000&nNo items found'
+      name: "#FF4D4D<bold>NO ITEMS FOUND"
+      lore:
+        - "&fYou have no listed, expired or purchased items."
+        - ""
+        - "#FF4D4D✕ #AAAAAANothing to claim here."

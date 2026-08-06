@@ -16,7 +16,7 @@ public class ShulkerNavigationLoader extends ButtonLoader {
     private final AuctionPlugin plugin;
 
     public ShulkerNavigationLoader(AuctionPlugin plugin) {
-        super(plugin, "RAVENAUCTION_SHULKER_NAVIGATION");
+        super(plugin, "ZAUCTIONHOUSE_SHULKER_NAVIGATION");
         this.plugin = plugin;
     }
 

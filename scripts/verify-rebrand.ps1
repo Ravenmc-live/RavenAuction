@@ -45,12 +45,32 @@ $textFiles = Get-ChildItem $repositoryRoot -Recurse -File |
 $permissionMatches = $textFiles | Select-String -Pattern '["'']zauctionhouse\.'
 Assert-Condition ($permissionMatches.Count -eq 0) "Legacy zauctionhouse.* permission nodes remain"
 
-$placeholderIdentifiers = $textFiles | Select-String -Pattern '%zauctionhouse_|return\s+["'']zauctionhouse["'']'
+$placeholderScanFiles = $textFiles | Where-Object {
+    $_.Name -ne "LegacyPlaceholderMigrator.java" -and
+    $_.Name -ne "TestLegacyPlaceholderMigration.java"
+}
+$placeholderIdentifiers = $placeholderScanFiles | Select-String -Pattern '%zauctionhouse_|return\s+["'']zauctionhouse["'']'
 Assert-Condition ($placeholderIdentifiers.Count -eq 0) "Legacy zauctionhouse PlaceholderAPI identifiers remain"
+
+$migratorSource = Get-Content -Raw (Join-Path $repositoryRoot "src/main/java/fr/maxlego08/zauctionhouse/utils/LegacyPlaceholderMigrator.java")
+Assert-Condition ($migratorSource -match '"%zauctionhouse_"') "Legacy placeholder migrator must recognize %zauctionhouse_*%"
+Assert-Condition ($migratorSource -match '"%ravenauction_"') "Legacy placeholder migrator must write %ravenauction_*%"
+
+$technicalIdFiles = Get-ChildItem (Join-Path $repositoryRoot "src/main/java"), (Join-Path $repositoryRoot "src/main/resources") -Recurse -File |
+    Where-Object { $_.Extension -in @(".java", ".yml", ".yaml") }
+$renamedTechnicalIds = $technicalIdFiles | Select-String -Pattern 'RAVENAUCTION_[A-Z_]+' -CaseSensitive
+$preservedTechnicalIds = $technicalIdFiles | Select-String -Pattern 'ZAUCTIONHOUSE_[A-Z_]+' -CaseSensitive
+Assert-Condition ($renamedTechnicalIds.Count -eq 0) "zMenu technical button IDs must remain ZAUCTIONHOUSE_* for existing inventory compatibility"
+Assert-Condition ($preservedTechnicalIds.Count -gt 0) "Preserved ZAUCTIONHOUSE_* zMenu technical button IDs were not found"
 
 $packageDeclarations = Get-ChildItem (Join-Path $repositoryRoot "src"), (Join-Path $repositoryRoot "API") -Recurse -Filter "*.java" |
     Select-String -Pattern '^package fr\.maxlego08\.zauctionhouse'
 Assert-Condition ($packageDeclarations.Count -gt 0) "The retained fr.maxlego08.zauctionhouse package namespace was not found"
+
+$updateCheckerFiles = Get-ChildItem (Join-Path $repositoryRoot "src"), (Join-Path $repositoryRoot "API") -Recurse -File |
+    Where-Object { $_.Extension -in @(".java", ".yml", ".yaml") }
+$updateCheckerReferences = $updateCheckerFiles | Select-String -Pattern 'VersionChecker|enable-version-checker|VERSION_AVAILABLE|version-available' -CaseSensitive
+Assert-Condition ($updateCheckerReferences.Count -eq 0) "Update checker code, configuration, or messages remain"
 
 if ($failures.Count -gt 0) {
     $failures | ForEach-Object { Write-Error $_ -ErrorAction Continue }

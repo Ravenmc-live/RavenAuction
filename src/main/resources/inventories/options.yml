@@ -18,7 +18,7 @@
 # INVENTORY SETTINGS
 #=============================================================================
 
-name: '#0c1719Options'
+name: '#0c1719ᴏᴘᴛɪᴏɴs'
 size: 27
 
 #=============================================================================
@@ -40,43 +40,37 @@ items:
   #---------------------------------------------------------------------------
 
   broadcast-sell:
-    type: RAVENAUCTION_OPTION_TOGGLE
+    type: ZAUCTIONHOUSE_OPTION_TOGGLE
     slot: 11
     option-name: broadcast_sell
-    enable-text: '<green>Enabled'
-    disable-text: '<red>Disabled'
+    enable-text: '#55FF55ENABLED'
+    disable-text: '#FF4D4DDISABLED'
     item:
       material: OAK_SIGN
-      name: '#2CCED2<bold>Sell Broadcasts'
+      name: '#33FF66<bold>SELL BROADCASTS'
       lore:
+        - '&fAnnouncements shown when players list items.'
         - ''
-        - '#92ffffToggle sell broadcast messages.'
-        - '#92ffffWhen enabled, you will see messages'
-        - '#92ffffwhen players list items for sale.'
+        - '#55FF55✔ #AAAAAAStatus: %option_status%'
         - ''
-        - '#8c8c8cStatus: %option_status%'
-        - ''
-        - '#8c8c8c• #2CCED2Click #92ffffto toggle'
+        - '#FFFF55▸ #FFFF55&nCLICK&r #55FF55to Toggle'
 
   #---------------------------------------------------------------------------
   # BROADCAST PURCHASE TOGGLE
   #---------------------------------------------------------------------------
 
   broadcast-purchase:
-    type: RAVENAUCTION_OPTION_TOGGLE
+    type: ZAUCTIONHOUSE_OPTION_TOGGLE
     slot: 15
     option-name: broadcast_purchase
-    enable-text: '<green>Enabled'
-    disable-text: '<red>Disabled'
+    enable-text: '#55FF55ENABLED'
+    disable-text: '#FF4D4DDISABLED'
     item:
       material: GOLD_INGOT
-      name: '#2CCED2<bold>Purchase Broadcasts'
+      name: '#33FF66<bold>PURCHASE BROADCASTS'
       lore:
+        - '&fAnnouncements shown when players buy items.'
         - ''
-        - '#92ffffToggle purchase broadcast messages.'
-        - '#92ffffWhen enabled, you will see messages'
-        - '#92ffffwhen players purchase items.'
+        - '#55FF55✔ #AAAAAAStatus: %option_status%'
         - ''
-        - '#8c8c8cStatus: %option_status%'
-        - ''
-        - '#8c8c8c• #2CCED2Click #92ffffto toggle'
+        - '#FFFF55▸ #FFFF55&nCLICK&r #55FF55to Toggle'

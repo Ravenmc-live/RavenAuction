@@ -23,7 +23,7 @@
 #=============================================================================
 
 # Inventory title - question format for clarity.
-name: "#0c1719Purchase this item?"
+name: "#0c1719ᴘᴜʀᴄʜᴀsᴇ ᴛʜɪs ɪᴛᴇᴍ?"
 
 # Inventory size - 3 rows (27 slots) for compact confirmation dialog.
 size: 27
@@ -41,16 +41,16 @@ items:
 
   confirm:
     # Button type - handles purchase confirmation.
-    type: RAVENAUCTION_CONFIRM_PURCHASE
+    type: ZAUCTIONHOUSE_CONFIRM_PURCHASE
 
     item:
       # Green glass pane for confirm action.
       material: GREEN_STAINED_GLASS_PANE
-      name: "#2CCED2<bold>ᴘᴜʀᴄʜᴀsᴇ"
+      name: "#33FF66<bold>PURCHASE"
       lore:
-        - "#92ffffPurchase this item."
+        - "&fBuy this item and pay the seller."
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto purchase"
+        - "#FFFF55▸ #FFFF55&nCLICK&r #55FF55to Confirm"
 
     # Multiple slots for larger click area.
     # Left side of the inventory (3×3 grid).
@@ -71,11 +71,11 @@ items:
     item:
       # Red glass pane for cancel action.
       material: RED_STAINED_GLASS_PANE
-      name: "#2CCED2<bold>ʙᴀᴄᴋ"
+      name: "#FF4D4D<bold>CANCEL"
       lore:
-        - "#92ffffGo back."
+        - "&fLeave without buying anything."
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto go back"
+        - "#FFFF55▸ #FFFF55&nCLICK&r #FF4D4Dto Go Back"
 
     # Right side of the inventory (3×3 grid).
     slots:
@@ -91,7 +91,7 @@ items:
   decoration:
     item:
       material: LIGHT_BLUE_STAINED_GLASS_PANE
-      name: "#2CCED2"
+      name: "<white>"
 
     # Middle column and surrounding slots.
     slots:
@@ -107,7 +107,7 @@ items:
 
   show:
     # Button type - displays the auction item.
-    type: RAVENAUCTION_SHOW
+    type: ZAUCTIONHOUSE_SHOW
 
     # Center slot.
     slot: 13
@@ -120,15 +120,15 @@ items:
   shulker:
     # Button type - opens shulker content preview.
     # Only visible when the item contains shulker boxes.
-    type: RAVENAUCTION_SHULKER_OPEN
+    type: ZAUCTIONHOUSE_SHULKER_OPEN
 
     # Slot position.
     slot: 4
 
     item:
       material: SHULKER_BOX
-      name: "#2CCED2<bold>ᴠɪᴇᴡ sʜᴜʟᴋᴇʀ ᴄᴏɴᴛᴇɴᴛ"
+      name: "#00FFFF<bold>VIEW SHULKER CONTENT"
       lore:
-        - "#92ffffView the content of shulker boxes."
+        - "&fInspect what is packed inside before you buy."
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto view content"
+        - "#FFFF55▸ #FFFF55&nCLICK&r #00FFFFto Preview"

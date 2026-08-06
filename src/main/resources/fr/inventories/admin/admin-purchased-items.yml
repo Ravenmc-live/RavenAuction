@@ -55,7 +55,7 @@ items:
 
   items:
     # Type de bouton - affiche les items achetés admin avec fonctionnalité de récupération.
-    type: RAVENAUCTION_ADMIN_PURCHASED_ITEMS
+    type: ZAUCTIONHOUSE_ADMIN_PURCHASED_ITEMS
 
     # Slots pour afficher les items achetés (4 lignes × 9 colonnes = 36 slots).
     slots:

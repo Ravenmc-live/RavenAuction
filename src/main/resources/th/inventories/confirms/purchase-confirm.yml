@@ -41,7 +41,7 @@ items:
 
   confirm:
     # ประเภทปุ่ม - จัดการการยืนยันการซื้อให้โดยอัตโนมัติ
-    type: RAVENAUCTION_CONFIRM_PURCHASE
+    type: ZAUCTIONHOUSE_CONFIRM_PURCHASE
 
     item:
       # กระจกสีเขียว ใช้แทนปุ่มยืนยันการซื้อ
@@ -107,7 +107,7 @@ items:
 
   show:
     # ประเภทปุ่ม - ใช้สำหรับแสดงไอเทมจากตลาด
-    type: RAVENAUCTION_SHOW
+    type: ZAUCTIONHOUSE_SHOW
 
     # ช่องตรงกลาง inventory
     slot: 13
@@ -120,7 +120,7 @@ items:
   shulker:
     # ประเภทปุ่ม - เปิดดูของด้านใน shulker
     # จะแสดงเฉพาะเมื่อไอเทมมี shulker อยู่ด้านใน
-    type: RAVENAUCTION_SHULKER_OPEN
+    type: ZAUCTIONHOUSE_SHULKER_OPEN
 
     # ตำแหน่งช่อง
     slot: 4

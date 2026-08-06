@@ -56,7 +56,7 @@ items:
 
   items:
     # Tipo de boton - visualiza y gestiona los objetos en venta del jugador.
-    type: RAVENAUCTION_SELLING_ITEMS
+    type: ZAUCTIONHOUSE_SELLING_ITEMS
 
     # Slot para el placeholder de estado vacio.
     empty-slot: 22
@@ -74,7 +74,7 @@ items:
       name: '#ff0000&nNingun objeto encontrado'
 
   remove-all:
-    type: RAVENAUCTION_REMOVE_ALL_SELLING
+    type: ZAUCTIONHOUSE_REMOVE_ALL_SELLING
     is-permanent: true
     slot: 47
     item:

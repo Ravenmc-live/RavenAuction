@@ -33,11 +33,6 @@ prefix: "<primary>RavenAuction <secondary>• "
 # MESSAGGI DI VERSIONE E AGGIORNAMENTO
 #=============================================================================
 
-# Mostrato quando è disponibile una nuova versione del plugin (se version-checker è attivato).
-# Placeholder disponibili:
-#   %version% - Versione attualmente installata
-#   %latest%  - Ultima versione disponibile
-version-available: "<#ff0000>È disponibile una nuova versione di RavenAuction! <gray>(<white>attuale: <#ff9900>%version% <gray>| <white>ultima: <#00ff00>%latest%<gray>)"
 
 #=============================================================================
 # MESSAGGI DEI COMANDI

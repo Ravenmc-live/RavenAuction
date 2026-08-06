@@ -42,7 +42,7 @@ items:
 
   remove:
     # Type de bouton - gère le retrait de l'annonce.
-    type: RAVENAUCTION_CONFIRM_REMOVE_LISTED
+    type: ZAUCTIONHOUSE_CONFIRM_REMOVE_LISTED
 
     item:
       # Vitre verte pour l'action de confirmation.
@@ -107,7 +107,7 @@ items:
 
   show:
     # Type de bouton - affiche l'item de l'enchère.
-    type: RAVENAUCTION_SHOW
+    type: ZAUCTIONHOUSE_SHOW
 
     # Slot central.
     slot: 13
@@ -119,7 +119,7 @@ items:
 
   shulker:
     # Type de bouton - ouvre la prévisualisation du contenu shulker.
-    type: RAVENAUCTION_SHULKER_OPEN
+    type: ZAUCTIONHOUSE_SHULKER_OPEN
 
     slot: 4
 

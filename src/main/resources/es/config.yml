@@ -33,11 +33,6 @@ enable-debug: false
 # Recomendado: Activar temporalmente en caso de lag o cargas de inventario lentas.
 enable-performance-debug: false
 
-# Activa la verificacion automatica de la version respecto a la ultima release.
-# Cuando esta activado, el plugin notifica la consola/admin si hay una nueva version disponible.
-# Esto NO actualiza automaticamente el plugin, solo muestra una notificacion.
-# Recomendado: Mantener activado para estar informado de actualizaciones importantes y correcciones de bugs.
-enable-version-checker: true
 
 # Configuracion del filtro de depuracion de rendimiento.
 # Permite concentrarse en operaciones especificas filtrando cuales se registran.

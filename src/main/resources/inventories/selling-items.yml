@@ -25,7 +25,7 @@
 #=============================================================================
 
 # Inventory title with pagination placeholders.
-name: '#0c1719Selling items (%page%/%max-page%)'
+name: '#0c1719sᴇʟʟɪɴɢ ɪᴛᴇᴍs (%page%/%max-page%)'
 
 # Inventory size - 6 rows.
 size: 54
@@ -56,7 +56,7 @@ items:
 
   items:
     # Button type - displays and handles the player's selling items.
-    type: RAVENAUCTION_SELLING_ITEMS
+    type: ZAUCTIONHOUSE_SELLING_ITEMS
 
     # Slot for empty state placeholder.
     empty-slot: 22
@@ -71,7 +71,11 @@ items:
     # Placeholder item when no items are listed.
     item:
       material: BARRIER
-      name: '#ff0000&nNo items found'
+      name: "#FF4D4D<bold>NO ITEMS FOUND"
+      lore:
+        - "&fYou have nothing listed for sale."
+        - ""
+        - "#FF4D4D✕ #AAAAAAUse &f/ah sell #AAAAAAto list an item."
 
   #---------------------------------------------------------------------------
   # REMOVE ALL BUTTON
@@ -79,13 +83,15 @@ items:
   # Retrieves all selling items at once (if inventory space allows).
 
   remove-all:
-    type: RAVENAUCTION_REMOVE_ALL_SELLING
+    type: ZAUCTIONHOUSE_REMOVE_ALL_SELLING
     is-permanent: true
     slot: 47
     item:
       material: CHEST
-      name: "#2CCED2<bold>Retrieve All"
+      name: "#33FF66<bold>RETRIEVE ALL"
       lore:
-        - "#92ffffRetrieve all listed items."
+        - "&fCancel every listing and take the items back."
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto retrieve all"
+        - "#55FF55✔ #AAAAAANeeds enough free inventory space."
+        - ""
+        - "#FFFF55▸ #FFFF55&nCLICK&r #55FF55to Retrieve All"

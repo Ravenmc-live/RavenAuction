@@ -42,7 +42,7 @@ items:
 
   remove:
     # ประเภทปุ่ม - จัดการการถอดประกาศขาย
-    type: RAVENAUCTION_CONFIRM_REMOVE_LISTED
+    type: ZAUCTIONHOUSE_CONFIRM_REMOVE_LISTED
 
     item:
       # กระจกสีเขียว ใช้แทนปุ่มยืนยันการถอดประกาศ
@@ -107,7 +107,7 @@ items:
 
   show:
     # ประเภทปุ่ม - ใช้แสดงไอเทมในตลาด
-    type: RAVENAUCTION_SHOW
+    type: ZAUCTIONHOUSE_SHOW
 
     # ช่องตรงกลางของ inventory 
     slot: 13
@@ -119,7 +119,7 @@ items:
 
   shulker:
     # ประเภทปุ่ม - เปิดดูเนื้อหาของ Shulker
-    type: RAVENAUCTION_SHULKER_OPEN
+    type: ZAUCTIONHOUSE_SHULKER_OPEN
 
     slot: 4
 

@@ -55,7 +55,7 @@ items:
 
   content:
     # ประเภทปุ่ม - ใช้แสดงของด้านใน shulker
-    type: RAVENAUCTION_SHULKER_CONTENT
+    type: ZAUCTIONHOUSE_SHULKER_CONTENT
 
     # ช่องที่ใช้แสดงของด้านใน shulker
     # 4 แถว × 7 คอลัมน์ = 28 ช่อง (shulker เก็บได้ 27 ช่อง)
@@ -82,7 +82,7 @@ items:
 
   shulker-info:
     # ประเภทปุ่ม - ใช้แสดงข้อมูล shulker ปัจจุบัน
-    type: RAVENAUCTION_SHULKER_INFO
+    type: ZAUCTIONHOUSE_SHULKER_INFO
 
     # ตำแหน่งช่อง - กึ่งกลางแถวบน
     slot: 4
@@ -103,7 +103,7 @@ items:
 
   previous:
     # ประเภทปุ่ม - ใช้ควบคุมการเลื่อน shulker
-    type: RAVENAUCTION_SHULKER_NAVIGATION
+    type: ZAUCTIONHOUSE_SHULKER_NAVIGATION
 
     # ทิศทางในการเลื่อน
     direction: previous
@@ -126,7 +126,7 @@ items:
 
   next:
     # ประเภทปุ่ม - ใช้ควบคุมการเลื่อน shulker
-    type: RAVENAUCTION_SHULKER_NAVIGATION
+    type: ZAUCTIONHOUSE_SHULKER_NAVIGATION
 
     # ทิศทางในการเลื่อน
     direction: next

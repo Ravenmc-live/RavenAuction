@@ -55,13 +55,13 @@ items:
 
       # Display name with MiniMessage formatting.
       # <bold> makes the text bold.
-      name: "#2CCED2<bold>ᴘʀᴇᴠɪᴏᴜs ᴘᴀɢᴇ"
+      name: "#00FFFF<bold>PREVIOUS PAGE"
 
       # Lore lines - additional information shown below the name.
       lore:
-        - "#92ffffGo to the previous page."
+        - "&fStep back one page of listings."
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto open"
+        - "#FFFF55▸ #FFFF55&nCLICK&r #00FFFFto Go Back"
 
     # Fallback item shown when there is NO previous page (page = 1)
     # 'else' provides an alternative item when the button's condition is not met.
@@ -91,12 +91,12 @@ items:
       # Right-pointing arrow head texture.
       url: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODI3MWE0NzEwNDQ5NWUzNTdjM2U4ZTgwZjUxMWE5ZjEwMmIwNzAwY2E5Yjg4ZTg4Yjc5NWQzM2ZmMjAxMDVlYiJ9fX0="
 
-      name: "#2CCED2<bold>ɴᴇxᴛ ᴘᴀɢᴇ"
+      name: "#00FFFF<bold>NEXT PAGE"
 
       lore:
-        - "#92ffffGo to the next page."
+        - "&fMove forward one page of listings."
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto open"
+        - "#FFFF55▸ #FFFF55&nCLICK&r #00FFFFto Continue"
 
     # Fallback item shown when there is NO next page (last page)
     else:

@@ -55,7 +55,7 @@ items:
 
   items:
     # Type de bouton - affiche les items expirés admin avec fonctionnalité de récupération.
-    type: RAVENAUCTION_ADMIN_EXPIRED_ITEMS
+    type: ZAUCTIONHOUSE_ADMIN_EXPIRED_ITEMS
 
     # Slots pour afficher les items expirés (4 lignes × 9 colonnes = 36 slots).
     slots:

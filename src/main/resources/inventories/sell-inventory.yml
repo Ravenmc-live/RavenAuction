@@ -21,7 +21,7 @@
 #=============================================================================
 
 # Inventory title.
-name: "#0c1719Sell Item"
+name: "#0c1719sᴇʟʟ ɪᴛᴇᴍ"
 
 # Inventory size - 6 rows.
 size: 54
@@ -48,7 +48,7 @@ items:
 
   show-item:
     # Button type - handles item selection and display.
-    type: RAVENAUCTION_SELL_SHOW_ITEM
+    type: ZAUCTIONHOUSE_SELL_SHOW_ITEM
 
     # Slots for displaying selected items.
     # Covers the entire middle area (36 slots).
@@ -61,11 +61,12 @@ items:
     # Placeholder item when nothing is selected.
     item:
       material: BARRIER
-      name: "#ff0000<bold>No Item Selected"
+      name: "#FF4D4D<bold>NO ITEM SELECTED"
       lore:
+        - "&fNothing has been added to this sale yet."
         - ""
-        - "#8c8c8cHold an item in your hand"
-        - "#8c8c8cor select items from your inventory"
+        - "#FF4D4D✕ #AAAAAAHold an item in your hand, or"
+        - "#FF4D4D✕ #AAAAAAclick items in your inventory."
 
   #---------------------------------------------------------------------------
   # CANCEL BUTTON
@@ -74,7 +75,7 @@ items:
 
   cancel:
     # Button type - handles cancellation and item return.
-    type: RAVENAUCTION_SELL_CANCEL
+    type: ZAUCTIONHOUSE_SELL_CANCEL
 
     # Slot position - far left of bottom row.
     slot: 45
@@ -82,10 +83,11 @@ items:
     item:
       # Red glass pane indicates cancel/danger action.
       material: RED_STAINED_GLASS_PANE
-      name: "#ff0000<bold>CANCEL"
+      name: "#FF4D4D<bold>CANCEL"
       lore:
+        - "&fAbandon this sale and take your items back."
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto cancel and return items"
+        - "#FFFF55▸ #FFFF55&nCLICK&r #FF4D4Dto Cancel"
 
   #---------------------------------------------------------------------------
   # DECREASE PRICE BUTTON
@@ -94,7 +96,7 @@ items:
 
   private-decrease:
     # Button type - handles price modification.
-    type: RAVENAUCTION_SELL_PRICE
+    type: ZAUCTIONHOUSE_SELL_PRICE
 
     # Slot position.
     slot: 48
@@ -110,16 +112,17 @@ items:
     item:
       # Red minus sign texture.
       url: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTM1ZTRlMjZlYWZjMTFiNTJjMTE2NjhlMWQ2NjM0ZTdkMWQwZDIxYzQxMWNiMDg1ZjkzOTQyNjhlYjRjZGZiYSJ9fX0=
-      name: "#ff3333-1,000"
+      name: "#FF4D4D<bold>DECREASE PRICE"
       lore:
+        - "&fLower the asking price of this listing."
         - ""
         # %price% shows current listing price.
-        - "<white>Current price#8c8c8c: #2CCED2%price%"
+        - "#FF4D4D✕ #AAAAAACurrent price: #FF4D4D%price%"
         - ""
-        - "#8c8c8c• #92ffffLeft click#8c8c8c: -500"
-        - "#8c8c8c• #92ffffRight click#8c8c8c: -100"
-        - "#8c8c8c• #92ffffShift+Left#8c8c8c: -1,000"
-        - "#8c8c8c• #92ffffShift+Right#8c8c8c: -2,500"
+        - "#FFFF55▸ #FFFF55&nLEFT-CLICK&r #FF4D4Dto Subtract 500"
+        - "#FFFF55▸ #FFFF55&nRIGHT-CLICK&r #FF4D4Dto Subtract 100"
+        - "#FFFF55▸ #FFFF55&nSHIFT + LEFT&r #FF4D4Dto Subtract 1,000"
+        - "#FFFF55▸ #FFFF55&nSHIFT + RIGHT&r #FF4D4Dto Subtract 2,500"
 
   #---------------------------------------------------------------------------
   # ECONOMY SELECTOR
@@ -129,7 +132,7 @@ items:
 
   select-economy:
     # Button type - handles economy cycling.
-    type: RAVENAUCTION_SELL_ECONOMY
+    type: ZAUCTIONHOUSE_SELL_ECONOMY
 
     # Slot position - center of bottom row.
     slot: 49
@@ -137,14 +140,15 @@ items:
     item:
       # Gold coin texture.
       url: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGU3NGQ2NDcyZjgxMWVlN2U1ZTgwNWVhOTNkN2I0Yzc2MWM2NmE2NGU1OTM3MDJmYzgwNzNkYjM1N2YwNDY0ZCJ9fX0=
-      name: "#ffd700<bold>Economy"
+      name: "#FFAA00<bold>ECONOMY"
       lore:
+        - "&fChoose which currency this item sells for."
         - ""
         # %economy% shows currently selected economy name.
-        - "<white>Current#8c8c8c: #2CCED2%economy%"
+        - "#FFAA00◈ #AAAAAASelected: #FFCC00%economy%"
         - ""
-        - "#8c8c8c• #92ffffLeft click#8c8c8c: Next economy"
-        - "#8c8c8c• #92ffffRight click#8c8c8c: Previous economy"
+        - "#FFFF55▸ #FFFF55&nLEFT-CLICK&r #FFAA00to Select Next"
+        - "#FFFF55▸ #FFFF55&nRIGHT-CLICK&r #FFAA00to Select Previous"
 
   #---------------------------------------------------------------------------
   # INCREASE PRICE BUTTON
@@ -153,7 +157,7 @@ items:
 
   price-increase:
     # Button type - handles price modification.
-    type: RAVENAUCTION_SELL_PRICE
+    type: ZAUCTIONHOUSE_SELL_PRICE
 
     # Price change amounts for different click types.
     # Positive values increase the price.
@@ -169,14 +173,17 @@ items:
     item:
       # Green plus sign texture.
       url: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOWEyZDg5MWM2YWU5ZjZiYWEwNDBkNzM2YWI4NGQ0ODM0NGJiNmI3MGQ3ZjFhMjgwZGQxMmNiYWM0ZDc3NyJ9fX0=
-      name: '#00cc00+1,000'
+      name: "#33FF66<bold>INCREASE PRICE"
       lore:
-        - '<white>Current price#8c8c8c: #2CCED2%price%'
-        - ''
-        - '#8c8c8c• #92ffffLeft click#8c8c8c: +5000'
-        - '#8c8c8c• #92ffffRight click#8c8c8c: +100'
-        - '#8c8c8c• #92ffffShift+Left#8c8c8c: +1,000'
-        - '#8c8c8c• #92ffffShift+Right#8c8c8c: +2,500'
+        - "&fRaise the asking price of this listing."
+        - ""
+        # %price% shows current listing price.
+        - "#55FF55✔ #AAAAAACurrent price: #55FF55%price%"
+        - ""
+        - "#FFFF55▸ #FFFF55&nLEFT-CLICK&r #55FF55to Add 500"
+        - "#FFFF55▸ #FFFF55&nRIGHT-CLICK&r #55FF55to Add 100"
+        - "#FFFF55▸ #FFFF55&nSHIFT + LEFT&r #55FF55to Add 1,000"
+        - "#FFFF55▸ #FFFF55&nSHIFT + RIGHT&r #55FF55to Add 2,500"
 
   #---------------------------------------------------------------------------
   # CONFIRM BUTTON
@@ -185,7 +192,7 @@ items:
 
   confirm:
     # Button type - handles sale confirmation.
-    type: RAVENAUCTION_SELL_CONFIRM
+    type: ZAUCTIONHOUSE_SELL_CONFIRM
 
     # Slot position - far right of bottom row.
     slot: 53
@@ -193,12 +200,14 @@ items:
     item:
       # Green glass pane indicates confirm/safe action.
       material: LIME_STAINED_GLASS_PANE
-      name: "#00ff00<bold>CONFIRM SALE"
+      name: "#33FF66<bold>CONFIRM SALE"
       lore:
+        - "&fList these items on the auction house."
         - ""
+        - "#33FF66Information"
         # Summary of the listing details.
-        - "<white>Economy#8c8c8c: #2CCED2%economy%"
-        - "<white>Price#8c8c8c: #2CCED2%price%"
-        - "<white>Items#8c8c8c: #2CCED2%item_count%"
+        - "#55FF55✔ #AAAAAAEconomy: #55FF55%economy%"
+        - "#55FF55✔ #AAAAAAPrice: #55FF55%price%"
+        - "#55FF55✔ #AAAAAAItems: #55FF55%item_count%"
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto confirm the sale"
+        - "#FFFF55▸ #FFFF55&nCLICK&r #55FF55to Confirm"

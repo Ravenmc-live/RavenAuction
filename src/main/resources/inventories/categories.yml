@@ -11,7 +11,7 @@
 #
 #   ADDING NEW CATEGORIES:
 #   1. Add the category definition to categories.yml (with rules)
-#   2. Add a button here with type: RAVENAUCTION_CATEGORY and category: <name>
+#   2. Add a button here with type: ZAUCTIONHOUSE_CATEGORY and category: <name>
 #   3. Use the placeholder %ravenauction_category_count_<name>% for item counts
 #
 #   Documentation: https://docs.groupez.dev/ravenauction/introduction
@@ -24,7 +24,7 @@
 #=============================================================================
 
 # Inventory title - static text for the categories menu.
-name: "#0c1719Categories"
+name: "#0c1719ᴄᴀᴛᴇɢᴏʀɪᴇs"
 
 # Inventory size - 6 rows (54 slots).
 size: 54
@@ -43,7 +43,7 @@ patterns:
 # CATEGORY BUTTONS
 #=============================================================================
 # Each button opens the auction house filtered by that category.
-# Button types use RAVENAUCTION_CATEGORY with a 'category' field.
+# Button types use ZAUCTIONHOUSE_CATEGORY with a 'category' field.
 # The 'category' value must match a key from categories.yml.
 
 items:
@@ -56,7 +56,7 @@ items:
 
   all-items:
     # Button type for category selection.
-    type: RAVENAUCTION_CATEGORY
+    type: ZAUCTIONHOUSE_CATEGORY
 
     # Category identifier - 'all' is a special category showing everything.
     category: all
@@ -66,14 +66,14 @@ items:
 
     item:
       material: CHEST
-      name: "#2CCED2<bold>ᴀʟʟ ɪᴛᴇᴍs"
+      name: "#00FFFF<bold>ALL ITEMS"
       lore:
-        - "#92ffffView all auction listings"
+        - "&fEvery listing currently in the auction house."
         - ""
         # %ravenauction_category_count_all% shows total items.
-        - "#92ffffTotal items#8c8c8c: #2CCED2%ravenauction_category_count_all%"
+        - "#00FFFF✦ #AAAAAATotal items: #00FFFF%ravenauction_category_count_all%"
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto browse"
+        - "#FFFF55▸ #FFFF55&nCLICK&r #00FFFFto Browse"
 
   #---------------------------------------------------------------------------
   # BLOCKS CATEGORY
@@ -81,7 +81,7 @@ items:
   # Shows only placeable block items.
 
   blocks:
-    type: RAVENAUCTION_CATEGORY
+    type: ZAUCTIONHOUSE_CATEGORY
     # Must match the key in categories.yml
     category: blocks
     slot: 19
@@ -89,14 +89,14 @@ items:
     item:
       # Representative material for this category.
       material: GRASS_BLOCK
-      name: "#7a7a7a<bold>ʙʟᴏᴄᴋs"
+      name: "#33FF66<bold>BLOCKS"
       lore:
-        - "#92ffffAll building blocks"
+        - "&fBuilding blocks of every kind."
         - ""
         # Dynamic item count for this category.
-        - "#92ffffItems#8c8c8c: #2CCED2%ravenauction_category_count_blocks%"
+        - "#55FF55✔ #AAAAAAItems: #55FF55%ravenauction_category_count_blocks%"
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto browse"
+        - "#FFFF55▸ #FFFF55&nCLICK&r #55FF55to Browse"
 
   #---------------------------------------------------------------------------
   # WEAPONS CATEGORY
@@ -104,20 +104,20 @@ items:
   # Shows swords, bows, crossbows, and other weapons.
 
   weapons:
-    type: RAVENAUCTION_CATEGORY
+    type: ZAUCTIONHOUSE_CATEGORY
     category: weapons
     slot: 20
 
     item:
       material: DIAMOND_SWORD
-      name: "#ff5555<bold>ᴡᴇᴀᴘᴏɴs"
+      name: "#FF4D4D<bold>WEAPONS"
       lore:
-        - "#92ffffCombat equipment"
-        - "#92ffffSwords, bows, crossbows..."
+        - "&fCombat equipment for the battlefield."
+        - "&fSwords, bows, crossbows and more."
         - ""
-        - "#92ffffItems#8c8c8c: #2CCED2%ravenauction_category_count_weapons%"
+        - "#FF4D4D✕ #AAAAAAItems: #FF4D4D%ravenauction_category_count_weapons%"
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto browse"
+        - "#FFFF55▸ #FFFF55&nCLICK&r #FF4D4Dto Browse"
 
   #---------------------------------------------------------------------------
   # ARMOR CATEGORY
@@ -125,19 +125,19 @@ items:
   # Shows helmets, chestplates, leggings, boots, and shields.
 
   armor:
-    type: RAVENAUCTION_CATEGORY
+    type: ZAUCTIONHOUSE_CATEGORY
     category: armor
     slot: 21
 
     item:
       material: DIAMOND_CHESTPLATE
-      name: "#55ffff<bold>ᴀʀᴍᴏʀ"
+      name: "#00FFFF<bold>ARMOR"
       lore:
-        - "#92ffffProtective equipment"
+        - "&fProtective gear to keep you alive."
         - ""
-        - "#92ffffItems#8c8c8c: #2CCED2%ravenauction_category_count_armor%"
+        - "#00FFFF✦ #AAAAAAItems: #00FFFF%ravenauction_category_count_armor%"
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto browse"
+        - "#FFFF55▸ #FFFF55&nCLICK&r #00FFFFto Browse"
 
   #---------------------------------------------------------------------------
   # TOOLS CATEGORY
@@ -145,19 +145,19 @@ items:
   # Shows pickaxes, axes, shovels, hoes, and other tools.
 
   tools:
-    type: RAVENAUCTION_CATEGORY
+    type: ZAUCTIONHOUSE_CATEGORY
     category: tools
     slot: 22
 
     item:
       material: DIAMOND_PICKAXE
-      name: "#ffff55<bold>ᴛᴏᴏʟs"
+      name: "#FFAA00<bold>TOOLS"
       lore:
-        - "#92ffffMining and farming tools"
+        - "&fMining, digging and farming gear."
         - ""
-        - "#92ffffItems#8c8c8c: #2CCED2%ravenauction_category_count_tools%"
+        - "#FFAA00◈ #AAAAAAItems: #FFCC00%ravenauction_category_count_tools%"
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto browse"
+        - "#FFFF55▸ #FFFF55&nCLICK&r #FFAA00to Browse"
 
   #---------------------------------------------------------------------------
   # CONSUMABLES CATEGORY
@@ -165,19 +165,19 @@ items:
   # Shows potions, food, and other consumable items.
 
   consumables:
-    type: RAVENAUCTION_CATEGORY
+    type: ZAUCTIONHOUSE_CATEGORY
     category: consumables
     slot: 23
 
     item:
       material: GOLDEN_APPLE
-      name: "#55ff55<bold>ᴄᴏɴsᴜᴍᴀʙʟᴇs"
+      name: "#33FF66<bold>CONSUMABLES"
       lore:
-        - "#92ffffFood and potions"
+        - "&fFood, potions and other one-use items."
         - ""
-        - "#92ffffItems#8c8c8c: #2CCED2%ravenauction_category_count_consumables%"
+        - "#55FF55✔ #AAAAAAItems: #55FF55%ravenauction_category_count_consumables%"
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto browse"
+        - "#FFFF55▸ #FFFF55&nCLICK&r #55FF55to Browse"
 
   #---------------------------------------------------------------------------
   # RESOURCES CATEGORY
@@ -185,19 +185,19 @@ items:
   # Shows ores, ingots, and crafting materials.
 
   resources:
-    type: RAVENAUCTION_CATEGORY
+    type: ZAUCTIONHOUSE_CATEGORY
     category: resources
     slot: 24
 
     item:
       material: DIAMOND
-      name: "#ffaa00<bold>ʀᴇsᴏᴜʀᴄᴇs"
+      name: "#FFAA00<bold>RESOURCES"
       lore:
-        - "#92ffffOres and materials"
+        - "&fOres, ingots and crafting materials."
         - ""
-        - "#92ffffItems#8c8c8c: #2CCED2%ravenauction_category_count_resources%"
+        - "#FFAA00◈ #AAAAAAItems: #FFCC00%ravenauction_category_count_resources%"
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto browse"
+        - "#FFFF55▸ #FFFF55&nCLICK&r #FFAA00to Browse"
 
   #---------------------------------------------------------------------------
   # ENCHANTED BOOKS CATEGORY
@@ -205,19 +205,19 @@ items:
   # Shows enchanted books only.
 
   enchanted-books:
-    type: RAVENAUCTION_CATEGORY
+    type: ZAUCTIONHOUSE_CATEGORY
     category: enchanted-books
     slot: 25
 
     item:
       material: ENCHANTED_BOOK
-      name: "#ff55ff<bold>ᴇɴᴄʜᴀɴᴛᴇᴅ ʙᴏᴏᴋs"
+      name: "#B466DF<bold>ENCHANTED BOOKS"
       lore:
-        - "#92ffffBooks with enchantments"
+        - "&fBooks carrying powerful enchantments."
         - ""
-        - "#92ffffItems#8c8c8c: #2CCED2%ravenauction_category_count_enchanted-books%"
+        - "#B466DF★ #AAAAAAItems: #B466DF%ravenauction_category_count_enchanted-books%"
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto browse"
+        - "#FFFF55▸ #FFFF55&nCLICK&r #B466DFto Browse"
 
   #---------------------------------------------------------------------------
   # MISCELLANEOUS CATEGORY
@@ -225,16 +225,16 @@ items:
   # Shows items that don't fit in other categories.
 
   misc:
-    type: RAVENAUCTION_CATEGORY
+    type: ZAUCTIONHOUSE_CATEGORY
     category: misc
     slot: 31
 
     item:
       material: CHEST
-      name: "#555555<bold>ᴍɪsᴄᴇʟʟᴀɴᴇᴏᴜs"
+      name: "#00FFFF<bold>MISCELLANEOUS"
       lore:
-        - "#92ffffOther items"
+        - "&fEverything that fits nowhere else."
         - ""
-        - "#92ffffItems#8c8c8c: #2CCED2%ravenauction_category_count_misc%"
+        - "#00FFFF✦ #AAAAAAItems: #00FFFF%ravenauction_category_count_misc%"
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto browse"
+        - "#FFFF55▸ #FFFF55&nCLICK&r #00FFFFto Browse"

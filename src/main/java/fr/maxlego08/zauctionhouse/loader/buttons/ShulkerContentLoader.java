@@ -14,7 +14,7 @@ public class ShulkerContentLoader extends ButtonLoader {
     private final AuctionPlugin plugin;
 
     public ShulkerContentLoader(AuctionPlugin plugin) {
-        super(plugin, "RAVENAUCTION_SHULKER_CONTENT");
+        super(plugin, "ZAUCTIONHOUSE_SHULKER_CONTENT");
         this.plugin = plugin;
     }
 

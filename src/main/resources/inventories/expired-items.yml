@@ -25,7 +25,7 @@
 
 # Inventory title with pagination placeholders.
 # %page% = current page, %max-page% = total pages
-name: '#0c1719Expired items (%page%/%max-page%)'
+name: '#0c1719ᴇxᴘɪʀᴇᴅ ɪᴛᴇᴍs (%page%/%max-page%)'
 
 # Inventory size - 6 rows.
 size: 54
@@ -56,7 +56,7 @@ items:
 
   items:
     # Button type - displays and handles expired items.
-    type: RAVENAUCTION_EXPIRED_ITEMS
+    type: ZAUCTIONHOUSE_EXPIRED_ITEMS
 
     # Slot for empty state placeholder.
     empty-slot: 22
@@ -71,7 +71,11 @@ items:
     # Placeholder item when no expired items exist.
     item:
       material: BARRIER
-      name: '#ff0000&nNo items found'
+      name: "#FF4D4D<bold>NO ITEMS FOUND"
+      lore:
+        - "&fNone of your listings have expired."
+        - ""
+        - "#FF4D4D✕ #AAAAAANothing to claim here."
 
   #---------------------------------------------------------------------------
   # REMOVE ALL BUTTON
@@ -79,13 +83,15 @@ items:
   # Retrieves all expired items at once (if inventory space allows).
 
   remove-all:
-    type: RAVENAUCTION_REMOVE_ALL_EXPIRED
+    type: ZAUCTIONHOUSE_REMOVE_ALL_EXPIRED
     is-permanent: true
     slot: 47
     item:
       material: CHEST
-      name: "#2CCED2<bold>Retrieve All"
+      name: "#33FF66<bold>RETRIEVE ALL"
       lore:
-        - "#92ffffRetrieve all expired items."
+        - "&fClaim every expired item back at once."
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto retrieve all"
+        - "#55FF55✔ #AAAAAANeeds enough free inventory space."
+        - ""
+        - "#FFFF55▸ #FFFF55&nCLICK&r #55FF55to Retrieve All"

@@ -47,7 +47,7 @@ patterns:
 items:
 
   items:
-    type: RAVENAUCTION_COMBINED_ITEMS
+    type: ZAUCTIONHOUSE_COMBINED_ITEMS
     empty-slot: 22
     include-selling: true
     include-expired: true

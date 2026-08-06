@@ -58,7 +58,7 @@ items:
 
   items:
     # Tipo de boton - visualiza las entradas de transaccion.
-    type: RAVENAUCTION_ADMIN_TRANSACTIONS
+    type: ZAUCTIONHOUSE_ADMIN_TRANSACTIONS
 
     # Slot para el indicador de carga.
     loading-slot: 22
@@ -93,7 +93,7 @@ items:
 
   filter-status:
     # Tipo de boton - gestiona el filtrado por estado.
-    type: RAVENAUCTION_ADMIN_TRANSACTIONS_FILTER_STATUS
+    type: ZAUCTIONHOUSE_ADMIN_TRANSACTIONS_FILTER_STATUS
 
     slot: 47
 
@@ -134,7 +134,7 @@ items:
 
   filter-date:
     # Tipo de boton - gestiona el filtrado por fecha.
-    type: RAVENAUCTION_ADMIN_TRANSACTIONS_FILTER_DATE
+    type: ZAUCTIONHOUSE_ADMIN_TRANSACTIONS_FILTER_DATE
 
     slot: 51
 

@@ -33,15 +33,16 @@ enable-debug: false
 # Recommended: Enable temporarily when experiencing lag or slow inventory loading.
 enable-performance-debug: false
 
+
+# Performance debug filter configuration.
+# Allows you to focus on specific operations by filtering which ones are logged.
+# Only relevant when 'enable-performance-debug' is set to true.
+
 # Enables automatic version checking against the latest release.
 # When enabled, the plugin will notify console/admins if a newer version is available.
 # This does NOT auto-update the plugin, it only displays a notification.
 # Recommended: Keep enabled to stay informed about important updates and bug fixes.
 enable-version-checker: true
-
-# Performance debug filter configuration.
-# Allows you to focus on specific operations by filtering which ones are logged.
-# Only relevant when 'enable-performance-debug' is set to true.
 performance-debug:
   filter:
     # Filter mode options:
@@ -126,13 +127,13 @@ timezone: auto
 # - MARIADB : MariaDB database server (MySQL-compatible)
 #             Best for: Multi-server setups, large auction houses
 # Note: For multi-server synchronization, use MySQL/MariaDB and enable the 'redis' section below.
-storage-type: SQLITE
+storage-type: MYSQL
 
 # Server name identifier for multi-server setups.
 # This name is stored with each auction listing to identify which server it came from.
 # Useful for tracking sales origin when using a shared database across multiple servers.
 # Recommended: Use a unique, descriptive name (e.g., "skyblock", "survival", "creative").
-server-name: skyblock
+server-name: spawn1
 
 # Database connection settings for MySQL/MariaDB.
 # Only used when 'storage-type' is set to MYSQL or MARIADB.
@@ -146,7 +147,7 @@ database-configuration:
   # IP address or hostname of the database server.
   # Use 'localhost' or '127.0.0.1' if the database is on the same machine.
   # For remote databases, use the server's IP address or domain name.
-  host: 192.168.10.10
+  host: 100.104.31.88
 
   # Port number of the database server.
   # Default MySQL/MariaDB port: 3306
@@ -155,16 +156,16 @@ database-configuration:
 
   # Username for database authentication.
   # This user must have permissions: SELECT, INSERT, UPDATE, DELETE, CREATE TABLE
-  user: homestead
+  user: u10_VR6YJtZYrc
 
   # Password for the database user.
   # Keep this secure and don't share your configuration file publicly.
-  password: secret
+  password: 4X+IJialcdd4qpq6bKn!bwPs
 
   # Name of the database where auction data will be stored.
   # The database must exist before the plugin starts.
   # The plugin will automatically create the required tables.
-  database: ravenauction
+  database: s10_SMP_PLAYERS
 
   # Enables SQL query debugging.
   # When enabled, all SQL queries will be logged to console.

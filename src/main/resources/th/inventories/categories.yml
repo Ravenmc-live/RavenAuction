@@ -11,7 +11,7 @@
 #
 #   วิธีเพิ่มหมวดหมู่ใหม่:
 #   1. เพิ่มนิยามหมวดหมู่ใน categories.yml (พร้อม rules)
-#   2. เพิ่มปุ่มในไฟล์นี้ โดยใช้ type: RAVENAUCTION_CATEGORY และ category: <ชื่อหมวด>
+#   2. เพิ่มปุ่มในไฟล์นี้ โดยใช้ type: ZAUCTIONHOUSE_CATEGORY และ category: <ชื่อหมวด>
 #   3. ใช้ placeholder %ravenauction_category_count_<ชื่อหมวด>% เพื่อแสดงจำนวนไอเทมในหมวดนั้น
 #
 #   Documentation: https://docs.groupez.dev/ravenauction/introduction
@@ -43,7 +43,7 @@ patterns:
 # CATEGORY BUTTONS
 #=============================================================================
 # แต่ละปุ่มจะเปิด auction house โดยกรองตามหมวดนั้น ๆ
-# ประเภทปุ่มใช้ RAVENAUCTION_CATEGORY พร้อม field 'category'
+# ประเภทปุ่มใช้ ZAUCTIONHOUSE_CATEGORY พร้อม field 'category'
 # ค่า 'category' ต้องตรงกับ key ในไฟล์ categories.yml
 
 items:
@@ -56,7 +56,7 @@ items:
 
   all-items:
     # ประเภทปุ่มสำหรับเลือกหมวด
-    type: RAVENAUCTION_CATEGORY
+    type: ZAUCTIONHOUSE_CATEGORY
 
     # ตัวระบุหมวด - 'all' เป็นหมวดพิเศษที่แสดงทุกอย่าง
     category: all
@@ -81,7 +81,7 @@ items:
   # แสดงไอเทมที่เป็นบล็อก (วางได้)
 
   blocks:
-    type: RAVENAUCTION_CATEGORY
+    type: ZAUCTIONHOUSE_CATEGORY
     # ต้องตรงกับ key ใน categories.yml
     category: blocks
     slot: 19
@@ -104,7 +104,7 @@ items:
   # แสดงดาบ ธนู หน้าไม้ และอาวุธอื่น ๆ
 
   weapons:
-    type: RAVENAUCTION_CATEGORY
+    type: ZAUCTIONHOUSE_CATEGORY
     category: weapons
     slot: 20
 
@@ -125,7 +125,7 @@ items:
   # แสดงหมวก เสื้อ เกง เกราะ ขา รองเท้าบูต และโล่
 
   armor:
-    type: RAVENAUCTION_CATEGORY
+    type: ZAUCTIONHOUSE_CATEGORY
     category: armor
     slot: 21
 
@@ -145,7 +145,7 @@ items:
   # แสดง pickaxe ขวาน จอบ เสียม และเครื่องมืออื่น ๆ
 
   tools:
-    type: RAVENAUCTION_CATEGORY
+    type: ZAUCTIONHOUSE_CATEGORY
     category: tools
     slot: 22
 
@@ -165,7 +165,7 @@ items:
   # แสดงโพชัน อาหาร และไอเทมที่ใช้แล้วหมด
 
   consumables:
-    type: RAVENAUCTION_CATEGORY
+    type: ZAUCTIONHOUSE_CATEGORY
     category: consumables
     slot: 23
 
@@ -185,7 +185,7 @@ items:
   # แสดงแร่ อินก็อต และวัตถุดิบคราฟต์ต่าง ๆ
 
   resources:
-    type: RAVENAUCTION_CATEGORY
+    type: ZAUCTIONHOUSE_CATEGORY
     category: resources
     slot: 24
 
@@ -205,7 +205,7 @@ items:
   # แสดงเฉพาะหนังสือที่มี enchant
 
   enchanted-books:
-    type: RAVENAUCTION_CATEGORY
+    type: ZAUCTIONHOUSE_CATEGORY
     category: enchanted-books
     slot: 25
 
@@ -225,7 +225,7 @@ items:
   # แสดงไอเทมที่ไม่เข้ากับหมวดอื่น
 
   misc:
-    type: RAVENAUCTION_CATEGORY
+    type: ZAUCTIONHOUSE_CATEGORY
     category: misc
     slot: 31
 

@@ -24,7 +24,7 @@
 #=============================================================================
 
 # Inventory title with pagination placeholders.
-name: '#0c1719Admin expired items (%page%/%max-page%)'
+name: '#0c1719ᴀᴅᴍɪɴ ᴇxᴘɪʀᴇᴅ ɪᴛᴇᴍs (%page%/%max-page%)'
 
 # Inventory size - 6 rows.
 size: 54
@@ -55,7 +55,7 @@ items:
 
   items:
     # Button type - displays admin expired items with retrieval functionality.
-    type: RAVENAUCTION_ADMIN_EXPIRED_ITEMS
+    type: ZAUCTIONHOUSE_ADMIN_EXPIRED_ITEMS
 
     # Slots for displaying expired items (4 rows × 9 columns = 36 slots).
     slots:
@@ -70,4 +70,8 @@ items:
         - 22
       item:
         material: BARRIER
-        name: '#ff0000&nNo Items Found'
+        name: "#FF4D4D<bold>NO ITEMS FOUND"
+        lore:
+          - "&fThis player has no expired items."
+          - ""
+          - "#FF4D4D✕ #AAAAAANothing to recover here."

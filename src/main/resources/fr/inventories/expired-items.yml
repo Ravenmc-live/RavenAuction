@@ -56,7 +56,7 @@ items:
 
   items:
     # Type de bouton - affiche et gère les items expirés.
-    type: RAVENAUCTION_EXPIRED_ITEMS
+    type: ZAUCTIONHOUSE_EXPIRED_ITEMS
 
     # Slot pour le placeholder d'état vide.
     empty-slot: 22
@@ -78,7 +78,7 @@ items:
   #---------------------------------------------------------------------------
 
   remove-all:
-    type: RAVENAUCTION_REMOVE_ALL_EXPIRED
+    type: ZAUCTIONHOUSE_REMOVE_ALL_EXPIRED
     is-permanent: true
     slot: 47
     item:

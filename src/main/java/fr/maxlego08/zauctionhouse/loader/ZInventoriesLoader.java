@@ -39,11 +39,13 @@ import fr.maxlego08.zauctionhouse.loader.buttons.CombinedItemsLoader;
 import fr.maxlego08.zauctionhouse.loader.buttons.*;
 import fr.maxlego08.zauctionhouse.loader.permissibles.CategoryPermissibleLoader;
 import fr.maxlego08.zauctionhouse.utils.PerformanceDebug;
+import fr.maxlego08.zauctionhouse.utils.LegacyPlaceholderMigrator;
 import fr.maxlego08.zauctionhouse.utils.ZUtils;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
 import java.io.File;
+import java.io.IOException;
 
 public class ZInventoriesLoader extends ZUtils implements InventoriesLoader {
 
@@ -86,6 +88,14 @@ public class ZInventoriesLoader extends ZUtils implements InventoriesLoader {
     @Override
     public void loadInventory(File file) {
         try {
+            if (LegacyPlaceholderMigrator.migrate(file.toPath())) {
+                this.plugin.getLogger().info("Updated legacy placeholder prefixes in " + file.getPath());
+            }
+        } catch (IOException exception) {
+            this.plugin.getLogger().warning("Unable to update legacy placeholder prefixes in " + file.getPath() + ": " + exception.getMessage());
+        }
+
+        try {
             this.inventoryManager.loadInventory(this.plugin, file);
         } catch (InventoryException e) {
             throw new RuntimeException(e);
@@ -122,50 +132,50 @@ public class ZInventoriesLoader extends ZUtils implements InventoriesLoader {
         this.buttonManager.registerPermissible(new CategoryPermissibleLoader(this.plugin));
 
         // Player
-        this.buttonManager.register(new EmptySlotLoader(this.plugin, ListedItemsButton.class, "RAVENAUCTION_LISTED_ITEMS"));
-        this.buttonManager.register(new EmptySlotLoader(this.plugin, ExpiredItemsButton.class, "RAVENAUCTION_EXPIRED_ITEMS"));
-        this.buttonManager.register(new EmptySlotLoader(this.plugin, SellingItemsButton.class, "RAVENAUCTION_SELLING_ITEMS"));
-        this.buttonManager.register(new EmptySlotLoader(this.plugin, PurchasedItemsButton.class, "RAVENAUCTION_PURCHASED_ITEMS"));
-        this.buttonManager.register(new NoneLoader(this.plugin, ItemContentButton.class, "RAVENAUCTION_ITEM_CONTENT"));
+        this.buttonManager.register(new EmptySlotLoader(this.plugin, ListedItemsButton.class, "ZAUCTIONHOUSE_LISTED_ITEMS"));
+        this.buttonManager.register(new EmptySlotLoader(this.plugin, ExpiredItemsButton.class, "ZAUCTIONHOUSE_EXPIRED_ITEMS"));
+        this.buttonManager.register(new EmptySlotLoader(this.plugin, SellingItemsButton.class, "ZAUCTIONHOUSE_SELLING_ITEMS"));
+        this.buttonManager.register(new EmptySlotLoader(this.plugin, PurchasedItemsButton.class, "ZAUCTIONHOUSE_PURCHASED_ITEMS"));
+        this.buttonManager.register(new NoneLoader(this.plugin, ItemContentButton.class, "ZAUCTIONHOUSE_ITEM_CONTENT"));
         this.buttonManager.register(new CombinedItemsLoader(this.plugin));
 
-        this.buttonManager.register(new NoneLoader(this.plugin, RemoveAllExpiredButton.class, "RAVENAUCTION_REMOVE_ALL_EXPIRED"));
-        this.buttonManager.register(new NoneLoader(this.plugin, RemoveAllSellingButton.class, "RAVENAUCTION_REMOVE_ALL_SELLING"));
-        this.buttonManager.register(new NoneLoader(this.plugin, RemoveAllPurchasedButton.class, "RAVENAUCTION_REMOVE_ALL_PURCHASED"));
+        this.buttonManager.register(new NoneLoader(this.plugin, RemoveAllExpiredButton.class, "ZAUCTIONHOUSE_REMOVE_ALL_EXPIRED"));
+        this.buttonManager.register(new NoneLoader(this.plugin, RemoveAllSellingButton.class, "ZAUCTIONHOUSE_REMOVE_ALL_SELLING"));
+        this.buttonManager.register(new NoneLoader(this.plugin, RemoveAllPurchasedButton.class, "ZAUCTIONHOUSE_REMOVE_ALL_PURCHASED"));
 
-        this.buttonManager.register(new NoneLoader(this.plugin, ExpiredInventoryButton.class, "RAVENAUCTION_EXPIRED_INVENTORY"));
-        this.buttonManager.register(new NoneLoader(this.plugin, SellingInventoryButton.class, "RAVENAUCTION_SELLING_INVENTORY"));
-        this.buttonManager.register(new NoneLoader(this.plugin, PurchasedInventoryButton.class, "RAVENAUCTION_PURCHASED_INVENTORY"));
-        this.buttonManager.register(new NoneLoader(this.plugin, HistoryInventoryButton.class, "RAVENAUCTION_HISTORY_INVENTORY"));
+        this.buttonManager.register(new NoneLoader(this.plugin, ExpiredInventoryButton.class, "ZAUCTIONHOUSE_EXPIRED_INVENTORY"));
+        this.buttonManager.register(new NoneLoader(this.plugin, SellingInventoryButton.class, "ZAUCTIONHOUSE_SELLING_INVENTORY"));
+        this.buttonManager.register(new NoneLoader(this.plugin, PurchasedInventoryButton.class, "ZAUCTIONHOUSE_PURCHASED_INVENTORY"));
+        this.buttonManager.register(new NoneLoader(this.plugin, HistoryInventoryButton.class, "ZAUCTIONHOUSE_HISTORY_INVENTORY"));
 
-        this.buttonManager.register(new NoneLoader(this.plugin, ShowButton.class, "RAVENAUCTION_SHOW"));
-        this.buttonManager.register(new NoneLoader(this.plugin, ConfirmRemoveListedButton.class, "RAVENAUCTION_CONFIRM_REMOVE_LISTED"));
-        this.buttonManager.register(new NoneLoader(this.plugin, ConfirmPurchaseButton.class, "RAVENAUCTION_CONFIRM_PURCHASE"));
-        this.buttonManager.register(new NoneLoader(this.plugin, SellCancelButton.class, "RAVENAUCTION_SELL_CANCEL"));
-        this.buttonManager.register(new NoneLoader(this.plugin, SellConfirmButton.class, "RAVENAUCTION_SELL_CONFIRM"));
-        this.buttonManager.register(new NoneLoader(this.plugin, SellEconomyButton.class, "RAVENAUCTION_SELL_ECONOMY"));
-        this.buttonManager.register(new LoadingSlotLoader(this.plugin, HistoryItemsButton.class, "RAVENAUCTION_HISTORY_ITEMS"));
+        this.buttonManager.register(new NoneLoader(this.plugin, ShowButton.class, "ZAUCTIONHOUSE_SHOW"));
+        this.buttonManager.register(new NoneLoader(this.plugin, ConfirmRemoveListedButton.class, "ZAUCTIONHOUSE_CONFIRM_REMOVE_LISTED"));
+        this.buttonManager.register(new NoneLoader(this.plugin, ConfirmPurchaseButton.class, "ZAUCTIONHOUSE_CONFIRM_PURCHASE"));
+        this.buttonManager.register(new NoneLoader(this.plugin, SellCancelButton.class, "ZAUCTIONHOUSE_SELL_CANCEL"));
+        this.buttonManager.register(new NoneLoader(this.plugin, SellConfirmButton.class, "ZAUCTIONHOUSE_SELL_CONFIRM"));
+        this.buttonManager.register(new NoneLoader(this.plugin, SellEconomyButton.class, "ZAUCTIONHOUSE_SELL_ECONOMY"));
+        this.buttonManager.register(new LoadingSlotLoader(this.plugin, HistoryItemsButton.class, "ZAUCTIONHOUSE_HISTORY_ITEMS"));
         this.buttonManager.register(new SellShowItemLoader(this.plugin));
         this.buttonManager.register(new SellPriceButtonLoader(this.plugin));
         this.buttonManager.register(new HistorySortLoader(this.plugin));
 
         // Admin
-        this.buttonManager.register(new NoneLoader(this.plugin, AdminSellingItemsButton.class, "RAVENAUCTION_ADMIN_SELLING_ITEMS"));
-        this.buttonManager.register(new NoneLoader(this.plugin, AdminExpiredItemsButton.class, "RAVENAUCTION_ADMIN_EXPIRED_ITEMS"));
-        this.buttonManager.register(new NoneLoader(this.plugin, AdminPurchasedItemsButton.class, "RAVENAUCTION_ADMIN_PURCHASED_ITEMS"));
-        this.buttonManager.register(new LoadingSlotLoader(this.plugin, AdminLogsButton.class, "RAVENAUCTION_ADMIN_LOGS"));
-        this.buttonManager.register(new LoadingSlotLoader(this.plugin, AdminTransactionsButton.class, "RAVENAUCTION_ADMIN_TRANSACTIONS"));
+        this.buttonManager.register(new NoneLoader(this.plugin, AdminSellingItemsButton.class, "ZAUCTIONHOUSE_ADMIN_SELLING_ITEMS"));
+        this.buttonManager.register(new NoneLoader(this.plugin, AdminExpiredItemsButton.class, "ZAUCTIONHOUSE_ADMIN_EXPIRED_ITEMS"));
+        this.buttonManager.register(new NoneLoader(this.plugin, AdminPurchasedItemsButton.class, "ZAUCTIONHOUSE_ADMIN_PURCHASED_ITEMS"));
+        this.buttonManager.register(new LoadingSlotLoader(this.plugin, AdminLogsButton.class, "ZAUCTIONHOUSE_ADMIN_LOGS"));
+        this.buttonManager.register(new LoadingSlotLoader(this.plugin, AdminTransactionsButton.class, "ZAUCTIONHOUSE_ADMIN_TRANSACTIONS"));
         this.buttonManager.register(new LogTypeFilterLoader(this.plugin));
         this.buttonManager.register(new LogDateFilterLoader(this.plugin));
         this.buttonManager.register(new TransactionStatusFilterLoader(this.plugin));
         this.buttonManager.register(new TransactionDateFilterLoader(this.plugin));
 
-        this.buttonManager.register(new NoneLoader(this.plugin, AdminHistoryMainButton.class, "RAVENAUCTION_ADMIN_HISTORY_MAIN"));
-        this.buttonManager.register(new NoneLoader(this.plugin, AdminHistoryMainLogsButton.class, "RAVENAUCTION_ADMIN_HISTORY_LOGS"));
-        this.buttonManager.register(new NoneLoader(this.plugin, AdminHistoryMainSellingButton.class, "RAVENAUCTION_ADMIN_HISTORY_SELLING"));
-        this.buttonManager.register(new NoneLoader(this.plugin, AdminHistoryMainPurchasedButton.class, "RAVENAUCTION_ADMIN_HISTORY_PURCHASED"));
-        this.buttonManager.register(new NoneLoader(this.plugin, AdminHistoryMainTransactionsButton.class, "RAVENAUCTION_ADMIN_HISTORY_TRANSACTIONS"));
-        this.buttonManager.register(new NoneLoader(this.plugin, AdminHistoryMainExpiredButton.class, "RAVENAUCTION_ADMIN_HISTORY_EXPIRED"));
+        this.buttonManager.register(new NoneLoader(this.plugin, AdminHistoryMainButton.class, "ZAUCTIONHOUSE_ADMIN_HISTORY_MAIN"));
+        this.buttonManager.register(new NoneLoader(this.plugin, AdminHistoryMainLogsButton.class, "ZAUCTIONHOUSE_ADMIN_HISTORY_LOGS"));
+        this.buttonManager.register(new NoneLoader(this.plugin, AdminHistoryMainSellingButton.class, "ZAUCTIONHOUSE_ADMIN_HISTORY_SELLING"));
+        this.buttonManager.register(new NoneLoader(this.plugin, AdminHistoryMainPurchasedButton.class, "ZAUCTIONHOUSE_ADMIN_HISTORY_PURCHASED"));
+        this.buttonManager.register(new NoneLoader(this.plugin, AdminHistoryMainTransactionsButton.class, "ZAUCTIONHOUSE_ADMIN_HISTORY_TRANSACTIONS"));
+        this.buttonManager.register(new NoneLoader(this.plugin, AdminHistoryMainExpiredButton.class, "ZAUCTIONHOUSE_ADMIN_HISTORY_EXPIRED"));
 
         this.buttonManager.register(new SortLoader(this.plugin, this.inventoryManager));
         this.buttonManager.register(new RefreshLoader(this.plugin, this.inventoryManager));
@@ -178,15 +188,15 @@ public class ZInventoriesLoader extends ZUtils implements InventoriesLoader {
 
         // Search
         this.buttonManager.register(new SearchLoader(this.plugin));
-        this.buttonManager.register(new NoneLoader(this.plugin, ClearSearchButton.class, "RAVENAUCTION_CLEAR_SEARCH"));
+        this.buttonManager.register(new NoneLoader(this.plugin, ClearSearchButton.class, "ZAUCTIONHOUSE_CLEAR_SEARCH"));
 
         // Options
         this.buttonManager.register(new OptionToggleLoader(this.plugin));
 
         // Shulker
-        this.buttonManager.register(new NoneLoader(this.plugin, ShulkerOpenButton.class, "RAVENAUCTION_SHULKER_OPEN"));
+        this.buttonManager.register(new NoneLoader(this.plugin, ShulkerOpenButton.class, "ZAUCTIONHOUSE_SHULKER_OPEN"));
         this.buttonManager.register(new ShulkerContentLoader(this.plugin));
-        this.buttonManager.register(new NoneLoader(this.plugin, ShulkerInfoButton.class, "RAVENAUCTION_SHULKER_INFO"));
+        this.buttonManager.register(new NoneLoader(this.plugin, ShulkerInfoButton.class, "ZAUCTIONHOUSE_SHULKER_INFO"));
         this.buttonManager.register(new ShulkerNavigationLoader(this.plugin));
     }
 

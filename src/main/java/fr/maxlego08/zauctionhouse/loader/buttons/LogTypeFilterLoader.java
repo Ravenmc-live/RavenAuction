@@ -19,7 +19,7 @@ public class LogTypeFilterLoader extends ButtonLoader {
     private final AuctionPlugin plugin;
 
     public LogTypeFilterLoader(AuctionPlugin plugin) {
-        super(plugin, "RAVENAUCTION_ADMIN_LOGS_FILTER_TYPE");
+        super(plugin, "ZAUCTIONHOUSE_ADMIN_LOGS_FILTER_TYPE");
         this.plugin = plugin;
     }
 

@@ -56,7 +56,7 @@ items:
 
   items:
     # ประเภทปุ่ม - ใช้แสดงประวัติการขาย
-    type: RAVENAUCTION_HISTORY_ITEMS
+    type: ZAUCTIONHOUSE_HISTORY_ITEMS
 
     # ช่องสำหรับแสดงสถานะกำลังโหลด ระหว่างดึงข้อมูลประวัติ
     loading-slot: 22
@@ -91,7 +91,7 @@ items:
 
   sort:
     # ประเภทปุ่ม - จัดการการวนเปลี่ยนรูปแบบการเรียงของ history
-    type: RAVENAUCTION_HISTORY_SORT
+    type: ZAUCTIONHOUSE_HISTORY_SORT
 
     # ตำแหน่งช่อง
     slot: 51

@@ -55,7 +55,7 @@ items:
 
   items:
     # Tipo pulsante - visualizza oggetti acquistati admin con funzionalità di recupero.
-    type: RAVENAUCTION_ADMIN_PURCHASED_ITEMS
+    type: ZAUCTIONHOUSE_ADMIN_PURCHASED_ITEMS
 
     # Slot per visualizzare gli oggetti acquistati (4 righe x 9 colonne = 36 slot).
     slots:

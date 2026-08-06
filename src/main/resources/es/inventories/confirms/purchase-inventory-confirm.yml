@@ -51,7 +51,7 @@ items:
 
   item-content:
     # Tipo de boton - muestra todos los objetos de la venta.
-    type: RAVENAUCTION_ITEM_CONTENT
+    type: ZAUCTIONHOUSE_ITEM_CONTENT
 
     # Slots para mostrar los objetos (4 filas x 9 columnas = 36 slots).
     slots:
@@ -63,7 +63,7 @@ items:
   # Finaliza la compra de todos los objetos.
 
   confirm:
-    type: RAVENAUCTION_CONFIRM_PURCHASE
+    type: ZAUCTIONHOUSE_CONFIRM_PURCHASE
 
     item:
       material: GREEN_STAINED_GLASS_PANE
@@ -103,7 +103,7 @@ items:
   # Abre el visualizador del contenido shulker.
 
   shulker:
-    type: RAVENAUCTION_SHULKER_OPEN
+    type: ZAUCTIONHOUSE_SHULKER_OPEN
 
     # Centro de la fila inferior.
     slot: 49

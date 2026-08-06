@@ -45,7 +45,7 @@ items:
 
   target:
     # ประเภทปุ่ม - ใช้แสดงข้อมูลผู้เล่นเป้าหมาย
-    type: RAVENAUCTION_ADMIN_HISTORY_MAIN
+    type: ZAUCTIONHOUSE_ADMIN_HISTORY_MAIN
 
     # ตำแหน่งช่อง - ด้านบนกึ่งกลาง
     slot: 13
@@ -63,7 +63,7 @@ items:
 
   expired:
     # ประเภทปุ่ม - เปิดหน้า admin expired items
-    type: RAVENAUCTION_ADMIN_HISTORY_EXPIRED
+    type: ZAUCTIONHOUSE_ADMIN_HISTORY_EXPIRED
 
     # ตำแหน่งช่อง
     slot: 28
@@ -86,7 +86,7 @@ items:
 
   purchased:
     # ประเภทปุ่ม - เปิดหน้า admin purchased items
-    type: RAVENAUCTION_ADMIN_HISTORY_PURCHASED
+    type: ZAUCTIONHOUSE_ADMIN_HISTORY_PURCHASED
 
     slot: 29
 
@@ -107,7 +107,7 @@ items:
 
   selling:
     # ประเภทปุ่ม - เปิดหน้า admin selling items
-    type: RAVENAUCTION_ADMIN_HISTORY_SELLING
+    type: ZAUCTIONHOUSE_ADMIN_HISTORY_SELLING
 
     slot: 30
 
@@ -129,7 +129,7 @@ items:
 
   logs:
     # ประเภทปุ่ม - เปิดหน้า admin logs
-    type: RAVENAUCTION_ADMIN_HISTORY_LOGS
+    type: ZAUCTIONHOUSE_ADMIN_HISTORY_LOGS
 
     slot: 33
 
@@ -148,7 +148,7 @@ items:
 
   transactions:
     # ประเภทปุ่ม - เปิดหน้า admin transactions
-    type: RAVENAUCTION_ADMIN_HISTORY_TRANSACTIONS
+    type: ZAUCTIONHOUSE_ADMIN_HISTORY_TRANSACTIONS
 
     slot: 34
 

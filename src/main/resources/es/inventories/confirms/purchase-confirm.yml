@@ -41,7 +41,7 @@ items:
 
   confirm:
     # Tipo de boton - gestiona la confirmacion de compra.
-    type: RAVENAUCTION_CONFIRM_PURCHASE
+    type: ZAUCTIONHOUSE_CONFIRM_PURCHASE
 
     item:
       # Cristal verde para la accion de confirmar.
@@ -107,7 +107,7 @@ items:
 
   show:
     # Tipo de boton - muestra el objeto de la subasta.
-    type: RAVENAUCTION_SHOW
+    type: ZAUCTIONHOUSE_SHOW
 
     # Slot central.
     slot: 13
@@ -120,7 +120,7 @@ items:
   shulker:
     # Tipo de boton - abre la vista previa del contenido shulker.
     # Visible solo cuando el objeto contiene cajas shulker.
-    type: RAVENAUCTION_SHULKER_OPEN
+    type: ZAUCTIONHOUSE_SHULKER_OPEN
 
     # Posicion del slot.
     slot: 4

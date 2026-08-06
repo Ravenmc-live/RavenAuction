@@ -60,13 +60,13 @@ items:
   # Gli oggetti sono paginati e possono essere filtrati per categoria.
 
   display-items:
-    # Tipo di pulsante - RAVENAUCTION_LISTED_ITEMS è un tipo specifico del plugin.
+    # Tipo di pulsante - ZAUCTIONHOUSE_LISTED_ITEMS è un tipo specifico del plugin.
     # Gestisce automaticamente:
     # - Caricamento e visualizzazione degli oggetti
     # - Filtraggio per categoria
     # - Ordinamento
     # - Azioni al clic (acquista/ritira)
-    type: RAVENAUCTION_LISTED_ITEMS
+    type: ZAUCTIONHOUSE_LISTED_ITEMS
 
     # Slot per mostrare l'oggetto "vuoto" quando non viene trovato nessun oggetto.
     # Questo slot viene usato quando la casa d'aste è vuota.
@@ -123,7 +123,7 @@ items:
 
   expired-items:
     # Tipo di pulsante - apre l'inventario degli oggetti scaduti se ci sono oggetti.
-    type: RAVENAUCTION_EXPIRED_INVENTORY
+    type: ZAUCTIONHOUSE_EXPIRED_INVENTORY
 
     # Posizione dello slot - estrema sinistra della riga inferiore.
     slot: 45
@@ -155,7 +155,7 @@ items:
 
   purchased-items:
     # Tipo di pulsante - apre l'inventario degli oggetti acquistati se ci sono oggetti.
-    type: RAVENAUCTION_PURCHASED_INVENTORY
+    type: ZAUCTIONHOUSE_PURCHASED_INVENTORY
 
     # Posizione dello slot - secondo da sinistra nella riga inferiore.
     slot: 46
@@ -185,7 +185,7 @@ items:
 
   selling-items:
     # Tipo di pulsante - apre l'inventario degli oggetti in vendita se ci sono oggetti.
-    type: RAVENAUCTION_SELLING_INVENTORY
+    type: ZAUCTIONHOUSE_SELLING_INVENTORY
 
     # Posizione dello slot - estrema destra della riga inferiore.
     slot: 53
@@ -214,7 +214,7 @@ items:
   # Apre l'input di ricerca nella chat per filtrare gli oggetti.
 
   search:
-    type: RAVENAUCTION_SEARCH
+    type: ZAUCTIONHOUSE_SEARCH
     slot: 47
     is-permanent: true
     # Valore mostrato in %search_query% quando nessuna ricerca è attiva.
@@ -251,8 +251,8 @@ items:
   # Mostra le informazioni della casa d'aste e aggiorna la lista.
 
   refresh:
-    # Tipo di pulsante - RAVENAUCTION_REFRESH gestisce l'aggiornamento asincrono.
-    type: RAVENAUCTION_REFRESH
+    # Tipo di pulsante - ZAUCTIONHOUSE_REFRESH gestisce l'aggiornamento asincrono.
+    type: ZAUCTIONHOUSE_REFRESH
 
     # Posizione dello slot - centro della riga inferiore.
     slot: 49
@@ -288,7 +288,7 @@ items:
 
   change-sort:
     # Tipo di pulsante - gestisce il ciclo di ordinamento.
-    type: RAVENAUCTION_CHANGE_SORT
+    type: ZAUCTIONHOUSE_CHANGE_SORT
 
     # Opzioni di ordinamento disponibili (cicli in questo ordine).
     # Opzioni: DECREASING_DATE, DECREASING_PRICE, ASCENDING_DATE, ASCENDING_PRICE

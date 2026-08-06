@@ -12,7 +12,7 @@ public class SearchLoader extends ButtonLoader {
     private final AuctionPlugin plugin;
 
     public SearchLoader(AuctionPlugin plugin) {
-        super(plugin, "RAVENAUCTION_SEARCH");
+        super(plugin, "ZAUCTIONHOUSE_SEARCH");
         this.plugin = plugin;
     }
 

@@ -53,10 +53,10 @@ items:
       material: BARRIER
 
       # Display name with MiniMessage formatting.
-      name: "#2CCED2<bold>ʙᴀᴄᴋ"
+      name: "#00FFFF<bold>BACK"
 
       # Lore lines describing the button's action.
       lore:
-        - "#92ffffGo to the previous inventory."
+        - "&fReturn to the previous menu."
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto open"
+        - "#FFFF55▸ #FFFF55&nCLICK&r #00FFFFto Go Back"

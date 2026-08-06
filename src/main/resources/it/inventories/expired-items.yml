@@ -56,7 +56,7 @@ items:
 
   items:
     # Tipo di pulsante - visualizza e gestisce gli oggetti scaduti.
-    type: RAVENAUCTION_EXPIRED_ITEMS
+    type: ZAUCTIONHOUSE_EXPIRED_ITEMS
 
     # Slot per il placeholder dello stato vuoto.
     empty-slot: 22
@@ -74,7 +74,7 @@ items:
       name: '#ff0000&nNessun oggetto trovato'
 
   remove-all:
-    type: RAVENAUCTION_REMOVE_ALL_EXPIRED
+    type: ZAUCTIONHOUSE_REMOVE_ALL_EXPIRED
     is-permanent: true
     slot: 47
     item:

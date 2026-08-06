@@ -42,7 +42,7 @@ items:
 
   remove:
     # Tipo di pulsante - gestisce il ritiro dell'annuncio.
-    type: RAVENAUCTION_CONFIRM_REMOVE_LISTED
+    type: ZAUCTIONHOUSE_CONFIRM_REMOVE_LISTED
 
     item:
       # Vetro verde per l'azione di conferma.
@@ -107,7 +107,7 @@ items:
 
   show:
     # Tipo di pulsante - mostra l'oggetto dell'asta.
-    type: RAVENAUCTION_SHOW
+    type: ZAUCTIONHOUSE_SHOW
 
     # Slot centrale.
     slot: 13
@@ -119,7 +119,7 @@ items:
 
   shulker:
     # Tipo di pulsante - apre l'anteprima del contenuto shulker.
-    type: RAVENAUCTION_SHULKER_OPEN
+    type: ZAUCTIONHOUSE_SHULKER_OPEN
 
     slot: 4
 

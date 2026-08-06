@@ -24,7 +24,7 @@
 #=============================================================================
 
 # Inventory title - question format with plural "items".
-name: "#0c1719Purchase these items ?"
+name: "#0c1719ᴘᴜʀᴄʜᴀsᴇ ᴛʜᴇsᴇ ɪᴛᴇᴍs ?"
 
 # Inventory size - 6 rows to show all items in the bulk sale.
 size: 54
@@ -51,7 +51,7 @@ items:
 
   item-content:
     # Button type - displays all items in the sale.
-    type: RAVENAUCTION_ITEM_CONTENT
+    type: ZAUCTIONHOUSE_ITEM_CONTENT
 
     # Slots for displaying items (4 rows × 9 columns = 36 slots).
     slots:
@@ -63,15 +63,15 @@ items:
   # Completes the purchase of all items.
 
   confirm:
-    type: RAVENAUCTION_CONFIRM_PURCHASE
+    type: ZAUCTIONHOUSE_CONFIRM_PURCHASE
 
     item:
       material: GREEN_STAINED_GLASS_PANE
-      name: "#2CCED2<bold>ᴘᴜʀᴄʜᴀsᴇ"
+      name: "#33FF66<bold>PURCHASE"
       lore:
-        - "#92ffffPurchase this item."
+        - "&fBuy every item shown above in one go."
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto purchase"
+        - "#FFFF55▸ #FFFF55&nCLICK&r #55FF55to Confirm"
 
     # Bottom-left area (3 slots).
     slots:
@@ -87,11 +87,11 @@ items:
 
     item:
       material: RED_STAINED_GLASS_PANE
-      name: "#2CCED2<bold>ʙᴀᴄᴋ"
+      name: "#FF4D4D<bold>CANCEL"
       lore:
-        - "#92ffffGo back."
+        - "&fLeave without buying anything."
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto go back"
+        - "#FFFF55▸ #FFFF55&nCLICK&r #FF4D4Dto Go Back"
 
     # Bottom-right area (3 slots).
     slots:
@@ -103,15 +103,15 @@ items:
   # Opens the shulker content viewer.
 
   shulker:
-    type: RAVENAUCTION_SHULKER_OPEN
+    type: ZAUCTIONHOUSE_SHULKER_OPEN
 
     # Center of bottom row.
     slot: 49
 
     item:
       material: SHULKER_BOX
-      name: "#2CCED2<bold>ᴠɪᴇᴡ sʜᴜʟᴋᴇʀ ᴄᴏɴᴛᴇɴᴛ"
+      name: "#00FFFF<bold>VIEW SHULKER CONTENT"
       lore:
-        - "#92ffffView the content of shulker boxes."
+        - "&fInspect what is packed inside before you buy."
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto view content"
+        - "#FFFF55▸ #FFFF55&nCLICK&r #00FFFFto Preview"

@@ -14,7 +14,7 @@ public class CombinedItemsLoader extends ButtonLoader {
     private final AuctionPlugin plugin;
 
     public CombinedItemsLoader(AuctionPlugin plugin) {
-        super(plugin, "RAVENAUCTION_COMBINED_ITEMS");
+        super(plugin, "ZAUCTIONHOUSE_COMBINED_ITEMS");
         this.plugin = plugin;
     }
 

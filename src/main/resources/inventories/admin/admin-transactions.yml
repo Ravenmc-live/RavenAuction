@@ -28,7 +28,7 @@
 #=============================================================================
 
 # Inventory title with pagination placeholders.
-name: '#0c1719Admin transactions (%page%/%max-page%)'
+name: '#0c1719ᴀᴅᴍɪɴ ᴛʀᴀɴsᴀᴄᴛɪᴏɴs (%page%/%max-page%)'
 
 # Inventory size - 6 rows.
 size: 54
@@ -58,7 +58,7 @@ items:
 
   items:
     # Button type - displays transaction entries.
-    type: RAVENAUCTION_ADMIN_TRANSACTIONS
+    type: ZAUCTIONHOUSE_ADMIN_TRANSACTIONS
 
     # Slot for loading indicator.
     loading-slot: 22
@@ -73,7 +73,11 @@ items:
     # Item shown while loading.
     item:
       material: BARRIER
-      name: "#ff0000Loading..."
+      name: "#FFAA00<bold>LOADING..."
+      lore:
+        - "&fFetching the transaction records."
+        - ""
+        - "#FFAA00◈ #AAAAAAPlease wait a moment."
 
     # Item shown when no transactions exist.
     else:
@@ -81,10 +85,11 @@ items:
         - 22
       item:
         material: BARRIER
-        name: '#ff0000&nNo Sales Found'
+        name: "#FF4D4D<bold>NO TRANSACTIONS FOUND"
         lore:
-          - ''
-          - '&7You have not sold any items yet.'
+          - "&fThis player has no completed sales."
+          - ""
+          - "#FF4D4D✕ #AAAAAATry widening the status or date filter."
 
   #---------------------------------------------------------------------------
   # FILTER BY STATUS BUTTON
@@ -93,15 +98,15 @@ items:
 
   filter-status:
     # Button type - handles status filtering.
-    type: RAVENAUCTION_ADMIN_TRANSACTIONS_FILTER_STATUS
+    type: ZAUCTIONHOUSE_ADMIN_TRANSACTIONS_FILTER_STATUS
 
     slot: 47
 
     # Format for currently selected status.
-    enable-text: ' #F27438➜ %status%'
+    enable-text: ' #FFAA00◈ #FFCC00%status%'
 
     # Format for unselected statuses.
-    disable-text: ' #76CDCD➜ %status%'
+    disable-text: ' #AAAAAA◈ &f%status%'
 
     # Display name for "all statuses" option.
     all-statuses-name: "All"
@@ -118,14 +123,15 @@ items:
 
     item:
       material: HOPPER
-      name: '#2CCED2<bold>ғɪʟᴛᴇʀ ʙʏ sᴛᴀᴛᴜs'
+      name: '#FFAA00<bold>FILTER BY STATUS'
       lore:
-        - '#92ffffAvailable statuses:'
+        - '&fShow only claimed or unclaimed payouts.'
+        - ''
         - '%ALL%'
         - '%PENDING%'
         - '%RETRIEVED%'
         - ''
-        - '#8c8c8c• #2CCED2Click #92ffffto change the filter status'
+        - '#FFFF55▸ #FFFF55&nCLICK&r #FFAA00to Change Filter'
 
   #---------------------------------------------------------------------------
   # FILTER BY DATE BUTTON
@@ -134,15 +140,15 @@ items:
 
   filter-date:
     # Button type - handles date filtering.
-    type: RAVENAUCTION_ADMIN_TRANSACTIONS_FILTER_DATE
+    type: ZAUCTIONHOUSE_ADMIN_TRANSACTIONS_FILTER_DATE
 
     slot: 51
 
     # Format for currently selected date range.
-    enable-text: ' #F27438➜ %date%'
+    enable-text: ' #FFAA00◈ #FFCC00%date%'
 
     # Format for unselected date ranges.
-    disable-text: ' #76CDCD➜ %date%'
+    disable-text: ' #AAAAAA◈ &f%date%'
 
     # Available date filters.
     filters:
@@ -162,13 +168,14 @@ items:
 
     item:
       material: CLOCK
-      name: '#2CCED2<bold>ғɪʟᴛᴇʀ ʙʏ ᴅᴀᴛᴇ'
+      name: '#FFAA00<bold>FILTER BY DATE'
       lore:
-        - '#92ffffAvailable filters:'
+        - '&fLimit the results to a time range.'
+        - ''
         - '%ALL%'
         - '%TODAY%'
         - '%THIS_WEEK%'
         - '%THIS_MONTH%'
         - '%THIS_YEAR%'
         - ''
-        - '#8c8c8c• #2CCED2Click #92ffffto change the date filter'
+        - '#FFFF55▸ #FFFF55&nCLICK&r #FFAA00to Change Filter'

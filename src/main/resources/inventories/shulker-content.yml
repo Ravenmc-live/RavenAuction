@@ -26,7 +26,7 @@
 # Inventory title with shulker navigation placeholders.
 # %shulker-current% = currently viewing shulker number (1-based)
 # %shulker-total% = total number of shulkers in the sale
-name: "#0c1719Shulker Content (%shulker-current%/%shulker-total%)"
+name: "#0c1719sʜᴜʟᴋᴇʀ ᴄᴏɴᴛᴇɴᴛ (%shulker-current%/%shulker-total%)"
 
 # Inventory size - 6 rows.
 size: 54
@@ -55,7 +55,7 @@ items:
 
   content:
     # Button type - displays shulker contents.
-    type: RAVENAUCTION_SHULKER_CONTENT
+    type: ZAUCTIONHOUSE_SHULKER_CONTENT
 
     # Slots for displaying shulker contents.
     # 4 rows × 7 columns = 28 slots (shulkers hold 27 items).
@@ -71,9 +71,11 @@ items:
     # Item displayed when the shulker box is empty.
     item:
       material: BARRIER
-      name: "#2CCED2<bold>ᴇᴍᴘᴛʏ sʜᴜʟᴋᴇʀ"
+      name: "#FF4D4D<bold>EMPTY SHULKER"
       lore:
-        - "#92ffffThis shulker box does not contain any items."
+        - "&fThis shulker box does not contain any items."
+        - ""
+        - "#FF4D4D✕ #AAAAAANothing to preview here."
 
   #---------------------------------------------------------------------------
   # SHULKER INFO DISPLAY
@@ -82,19 +84,21 @@ items:
 
   shulker-info:
     # Button type - displays current shulker info.
-    type: RAVENAUCTION_SHULKER_INFO
+    type: ZAUCTIONHOUSE_SHULKER_INFO
 
     # Slot position - center of top row.
     slot: 4
 
     item:
       material: SHULKER_BOX
-      name: "#2CCED2<bold>sʜᴜʟᴋᴇʀ ʙᴏx"
+      name: "#00FFFF<bold>SHULKER BOX"
       lore:
-        # Shows current position in the shulker list.
-        - "#92ffffViewing shulker #2CCED2%shulker_current% #92ffffof #2CCED2%shulker_total%"
+        - "&fPreview of the contents included in this sale."
         - ""
-        - "#8c8c8c• Use navigation buttons to switch"
+        # Shows current position in the shulker list.
+        - "#00FFFF✦ #AAAAAAViewing: #00FFFF%shulker_current% #AAAAAAof #00FFFF%shulker_total%"
+        - ""
+        - "#00FFFF✦ #AAAAAAUse the arrows below to switch."
 
   #---------------------------------------------------------------------------
   # PREVIOUS SHULKER BUTTON
@@ -103,7 +107,7 @@ items:
 
   previous:
     # Button type - handles shulker navigation.
-    type: RAVENAUCTION_SHULKER_NAVIGATION
+    type: ZAUCTIONHOUSE_SHULKER_NAVIGATION
 
     # Direction to navigate.
     direction: previous
@@ -113,11 +117,11 @@ items:
 
     item:
       material: ARROW
-      name: "#2CCED2<bold>ᴘʀᴇᴠɪᴏᴜs sʜᴜʟᴋᴇʀ"
+      name: "#00FFFF<bold>PREVIOUS SHULKER"
       lore:
-        - "#92ffffView the previous shulker box."
+        - "&fStep back to the previous shulker box."
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto view previous"
+        - "#FFFF55▸ #FFFF55&nCLICK&r #00FFFFto Go Back"
 
   #---------------------------------------------------------------------------
   # NEXT SHULKER BUTTON
@@ -126,7 +130,7 @@ items:
 
   next:
     # Button type - handles shulker navigation.
-    type: RAVENAUCTION_SHULKER_NAVIGATION
+    type: ZAUCTIONHOUSE_SHULKER_NAVIGATION
 
     # Direction to navigate.
     direction: next
@@ -136,8 +140,8 @@ items:
 
     item:
       material: ARROW
-      name: "#2CCED2<bold>ɴᴇxᴛ sʜᴜʟᴋᴇʀ"
+      name: "#00FFFF<bold>NEXT SHULKER"
       lore:
-        - "#92ffffView the next shulker box."
+        - "&fMove on to the next shulker box."
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto view next"
+        - "#FFFF55▸ #FFFF55&nCLICK&r #00FFFFto Continue"

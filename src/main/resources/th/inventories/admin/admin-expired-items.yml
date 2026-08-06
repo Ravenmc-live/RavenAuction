@@ -55,7 +55,7 @@ items:
 
   items:
     # ประเภทปุ่ม - ใช้แสดง expired items ของแอดมิน พร้อมความสามารถในการดึงไอเทม
-    type: RAVENAUCTION_ADMIN_EXPIRED_ITEMS
+    type: ZAUCTIONHOUSE_ADMIN_EXPIRED_ITEMS
 
     # ช่องสำหรับแสดงไอเทมหมดอายุ (4 แถว × 9 คอลัมน์ = 36 ช่อง)
     slots:

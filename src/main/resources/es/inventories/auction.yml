@@ -60,13 +60,13 @@ items:
   # Los objetos estan paginados y pueden filtrarse por categoria.
 
   display-items:
-    # Tipo de boton - RAVENAUCTION_LISTED_ITEMS es un tipo especifico del plugin.
+    # Tipo de boton - ZAUCTIONHOUSE_LISTED_ITEMS es un tipo especifico del plugin.
     # Gestiona automaticamente:
     # - Carga y visualizacion de objetos
     # - Filtrado por categoria
     # - Ordenamiento
     # - Acciones al clic (comprar/retirar)
-    type: RAVENAUCTION_LISTED_ITEMS
+    type: ZAUCTIONHOUSE_LISTED_ITEMS
 
     # Slot para mostrar el objeto "vacio" cuando no se encuentra ningun objeto.
     # Este slot se usa cuando la casa de subastas esta vacia.
@@ -123,7 +123,7 @@ items:
 
   expired-items:
     # Tipo de boton - abre el inventario de objetos caducados si hay objetos.
-    type: RAVENAUCTION_EXPIRED_INVENTORY
+    type: ZAUCTIONHOUSE_EXPIRED_INVENTORY
 
     # Posicion del slot - extremo izquierdo de la fila inferior.
     slot: 45
@@ -155,7 +155,7 @@ items:
 
   purchased-items:
     # Tipo de boton - abre el inventario de objetos comprados si hay objetos.
-    type: RAVENAUCTION_PURCHASED_INVENTORY
+    type: ZAUCTIONHOUSE_PURCHASED_INVENTORY
 
     # Posicion del slot - segundo desde la izquierda en la fila inferior.
     slot: 46
@@ -185,7 +185,7 @@ items:
 
   selling-items:
     # Tipo de boton - abre el inventario de objetos en venta si hay objetos.
-    type: RAVENAUCTION_SELLING_INVENTORY
+    type: ZAUCTIONHOUSE_SELLING_INVENTORY
 
     # Posicion del slot - extremo derecho de la fila inferior.
     slot: 53
@@ -214,7 +214,7 @@ items:
   # Abre la entrada de busqueda por chat para filtrar objetos.
 
   search:
-    type: RAVENAUCTION_SEARCH
+    type: ZAUCTIONHOUSE_SEARCH
     slot: 47
     is-permanent: true
     # Valor mostrado en %search_query% cuando no hay ninguna búsqueda activa.
@@ -251,8 +251,8 @@ items:
   # Muestra informacion de la casa de subastas y actualiza la lista.
 
   refresh:
-    # Tipo de boton - RAVENAUCTION_REFRESH gestiona la actualizacion asincrona.
-    type: RAVENAUCTION_REFRESH
+    # Tipo de boton - ZAUCTIONHOUSE_REFRESH gestiona la actualizacion asincrona.
+    type: ZAUCTIONHOUSE_REFRESH
 
     # Posicion del slot - centro de la fila inferior.
     slot: 49
@@ -288,7 +288,7 @@ items:
 
   change-sort:
     # Tipo de boton - gestiona el ciclo de ordenamiento.
-    type: RAVENAUCTION_CHANGE_SORT
+    type: ZAUCTIONHOUSE_CHANGE_SORT
 
     # Opciones de ordenamiento disponibles (ciclos en este orden).
     # Opciones: DECREASING_DATE, DECREASING_PRICE, ASCENDING_DATE, ASCENDING_PRICE

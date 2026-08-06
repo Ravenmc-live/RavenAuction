@@ -51,7 +51,7 @@ items:
 
   item-content:
     # ประเภทปุ่ม - แสดงไอเทมทั้งหมดในชุดขาย
-    type: RAVENAUCTION_ITEM_CONTENT
+    type: ZAUCTIONHOUSE_ITEM_CONTENT
 
     # ช่องสำหรับแสดงไอเทม (4 แถว × 9 คอลัมน์ = 36 ช่อง)
     slots:
@@ -63,7 +63,7 @@ items:
   # ยืนยันการซื้อไอเทมทั้งหมดในชุดนี้
 
   confirm:
-    type: RAVENAUCTION_CONFIRM_PURCHASE
+    type: ZAUCTIONHOUSE_CONFIRM_PURCHASE
 
     item:
       material: GREEN_STAINED_GLASS_PANE
@@ -103,7 +103,7 @@ items:
   # เปิดหน้าดูของด้านใน Shulker
 
   shulker:
-    type: RAVENAUCTION_SHULKER_OPEN
+    type: ZAUCTIONHOUSE_SHULKER_OPEN
 
     # ตรงกลางของแถวล่างสุด
     slot: 49

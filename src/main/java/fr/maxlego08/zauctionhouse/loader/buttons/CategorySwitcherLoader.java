@@ -14,7 +14,7 @@ public class CategorySwitcherLoader extends ButtonLoader {
     private final AuctionPlugin plugin;
 
     public CategorySwitcherLoader(AuctionPlugin plugin) {
-        super(plugin, "RAVENAUCTION_CATEGORY_SWITCHER");
+        super(plugin, "ZAUCTIONHOUSE_CATEGORY_SWITCHER");
         this.plugin = plugin;
     }
 

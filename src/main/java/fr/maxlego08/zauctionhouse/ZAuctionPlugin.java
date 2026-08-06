@@ -51,7 +51,6 @@ import fr.maxlego08.zauctionhouse.search.ChatSearchListener;
 import fr.maxlego08.zauctionhouse.storage.ZStorageManager;
 import fr.maxlego08.zauctionhouse.utils.LocaleHelper;
 import fr.maxlego08.zauctionhouse.utils.Metrics;
-import fr.maxlego08.zauctionhouse.utils.VersionChecker;
 import fr.maxlego08.zauctionhouse.utils.documentation.DocumentationGenerator;
 import fr.maxlego08.zauctionhouse.utils.yaml.YamlUpdater;
 import org.bukkit.Bukkit;
@@ -93,7 +92,6 @@ public class ZAuctionPlugin extends JavaPlugin implements AuctionPlugin {
     private ChatSearchListener chatSearchListener;
     private BroadcastService broadcastService;
     private DiscordWebhookService discordWebhookService;
-    private VersionChecker versionChecker;
     private boolean isEnabled = false;
     private PlatformScheduler platformScheduler;
     private AuctionClusterBridge auctionClusterBridge = new LocalAuctionClusterBridge();
@@ -164,11 +162,6 @@ public class ZAuctionPlugin extends JavaPlugin implements AuctionPlugin {
 
         new Metrics(this, 5326);
 
-        if (getConfig().getBoolean("enable-version-checker", true)) {
-            this.versionChecker = new VersionChecker(this, 1);
-            this.versionChecker.useLastVersion();
-        }
-
         var documentation = new DocumentationGenerator(this);
         documentation.generate(this.commandManager.getCommands(), ((LocalPlaceholder) placeholder).getAutoPlaceholders());
 
@@ -182,11 +175,6 @@ public class ZAuctionPlugin extends JavaPlugin implements AuctionPlugin {
     public void onDisable() {
 
         if (!this.isEnabled) return;
-
-        // Unregister version checker listener
-        if (this.versionChecker != null) {
-            this.versionChecker.unregister();
-        }
 
         // Stop cluster synchronization before the executor it publishes on is shut down
         this.redisClusterService.stop();

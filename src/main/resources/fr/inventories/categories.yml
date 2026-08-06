@@ -11,7 +11,7 @@
 #
 #   AJOUTER DE NOUVELLES CATÉGORIES:
 #   1. Ajoutez la définition de catégorie dans categories.yml (avec les règles)
-#   2. Ajoutez un bouton ici avec type: RAVENAUCTION_CATEGORY et category: <nom>
+#   2. Ajoutez un bouton ici avec type: ZAUCTIONHOUSE_CATEGORY et category: <nom>
 #   3. Utilisez le placeholder %ravenauction_category_count_<nom>% pour les compteurs
 #
 #   Documentation: https://docs.groupez.dev/ravenauction/introduction
@@ -43,7 +43,7 @@ patterns:
 # BOUTONS DE CATÉGORIES
 #=============================================================================
 # Chaque bouton ouvre l'hôtel des ventes filtré par cette catégorie.
-# Les types de boutons utilisent RAVENAUCTION_CATEGORY avec un champ 'category'.
+# Les types de boutons utilisent ZAUCTIONHOUSE_CATEGORY avec un champ 'category'.
 # La valeur 'category' doit correspondre à une clé de categories.yml.
 
 items:
@@ -56,7 +56,7 @@ items:
 
   all-items:
     # Type de bouton pour la sélection de catégorie.
-    type: RAVENAUCTION_CATEGORY
+    type: ZAUCTIONHOUSE_CATEGORY
 
     # Identifiant de catégorie - 'all' est une catégorie spéciale montrant tout.
     category: all
@@ -81,7 +81,7 @@ items:
   # Affiche uniquement les blocs plaçables.
 
   blocks:
-    type: RAVENAUCTION_CATEGORY
+    type: ZAUCTIONHOUSE_CATEGORY
     # Doit correspondre à la clé dans categories.yml
     category: blocks
     slot: 19
@@ -104,7 +104,7 @@ items:
   # Affiche les épées, arcs, arbalètes et autres armes.
 
   weapons:
-    type: RAVENAUCTION_CATEGORY
+    type: ZAUCTIONHOUSE_CATEGORY
     category: weapons
     slot: 20
 
@@ -125,7 +125,7 @@ items:
   # Affiche les casques, plastrons, jambières, bottes et boucliers.
 
   armor:
-    type: RAVENAUCTION_CATEGORY
+    type: ZAUCTIONHOUSE_CATEGORY
     category: armor
     slot: 21
 
@@ -145,7 +145,7 @@ items:
   # Affiche les pioches, haches, pelles, houes et autres outils.
 
   tools:
-    type: RAVENAUCTION_CATEGORY
+    type: ZAUCTIONHOUSE_CATEGORY
     category: tools
     slot: 22
 
@@ -165,7 +165,7 @@ items:
   # Affiche les potions, nourriture et autres items consommables.
 
   consumables:
-    type: RAVENAUCTION_CATEGORY
+    type: ZAUCTIONHOUSE_CATEGORY
     category: consumables
     slot: 23
 
@@ -185,7 +185,7 @@ items:
   # Affiche les minerais, lingots et matériaux d'artisanat.
 
   resources:
-    type: RAVENAUCTION_CATEGORY
+    type: ZAUCTIONHOUSE_CATEGORY
     category: resources
     slot: 24
 
@@ -205,7 +205,7 @@ items:
   # Affiche uniquement les livres enchantés.
 
   enchanted-books:
-    type: RAVENAUCTION_CATEGORY
+    type: ZAUCTIONHOUSE_CATEGORY
     category: enchanted-books
     slot: 25
 
@@ -225,7 +225,7 @@ items:
   # Affiche les items qui ne rentrent pas dans les autres catégories.
 
   misc:
-    type: RAVENAUCTION_CATEGORY
+    type: ZAUCTIONHOUSE_CATEGORY
     category: misc
     slot: 31
 

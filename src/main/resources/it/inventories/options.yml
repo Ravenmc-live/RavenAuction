@@ -16,7 +16,7 @@ patterns:
 items:
 
   broadcast-sell:
-    type: RAVENAUCTION_OPTION_TOGGLE
+    type: ZAUCTIONHOUSE_OPTION_TOGGLE
     slot: 11
     option-name: broadcast_sell
     enable-text: '<green>Attivato'
@@ -35,7 +35,7 @@ items:
         - '#8c8c8c• #2CCED2Clicca #92ffffper cambiare'
 
   broadcast-purchase:
-    type: RAVENAUCTION_OPTION_TOGGLE
+    type: ZAUCTIONHOUSE_OPTION_TOGGLE
     slot: 15
     option-name: broadcast_purchase
     enable-text: '<green>Attivato'

@@ -45,7 +45,7 @@ items:
 
   target:
     # Tipo de boton - visualiza informacion del jugador objetivo.
-    type: RAVENAUCTION_ADMIN_HISTORY_MAIN
+    type: ZAUCTIONHOUSE_ADMIN_HISTORY_MAIN
 
     # Posicion del slot - centro arriba.
     slot: 13
@@ -63,7 +63,7 @@ items:
 
   expired:
     # Tipo de boton - abre la vista objetos caducados admin.
-    type: RAVENAUCTION_ADMIN_HISTORY_EXPIRED
+    type: ZAUCTIONHOUSE_ADMIN_HISTORY_EXPIRED
 
     # Posicion del slot.
     slot: 28
@@ -86,7 +86,7 @@ items:
 
   purchased:
     # Tipo de boton - abre la vista objetos comprados admin.
-    type: RAVENAUCTION_ADMIN_HISTORY_PURCHASED
+    type: ZAUCTIONHOUSE_ADMIN_HISTORY_PURCHASED
 
     slot: 29
 
@@ -107,7 +107,7 @@ items:
 
   selling:
     # Tipo de boton - abre la vista objetos en venta admin.
-    type: RAVENAUCTION_ADMIN_HISTORY_SELLING
+    type: ZAUCTIONHOUSE_ADMIN_HISTORY_SELLING
 
     slot: 30
 
@@ -129,7 +129,7 @@ items:
 
   logs:
     # Tipo de boton - abre la vista registros admin.
-    type: RAVENAUCTION_ADMIN_HISTORY_LOGS
+    type: ZAUCTIONHOUSE_ADMIN_HISTORY_LOGS
 
     slot: 33
 
@@ -148,7 +148,7 @@ items:
 
   transactions:
     # Tipo de boton - abre la vista transacciones admin.
-    type: RAVENAUCTION_ADMIN_HISTORY_TRANSACTIONS
+    type: ZAUCTIONHOUSE_ADMIN_HISTORY_TRANSACTIONS
 
     slot: 34
 

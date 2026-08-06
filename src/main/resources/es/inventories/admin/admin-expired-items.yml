@@ -55,7 +55,7 @@ items:
 
   items:
     # Tipo de boton - visualiza objetos caducados admin con funcionalidad de recuperacion.
-    type: RAVENAUCTION_ADMIN_EXPIRED_ITEMS
+    type: ZAUCTIONHOUSE_ADMIN_EXPIRED_ITEMS
 
     # Slots para mostrar los objetos caducados (4 filas x 9 columnas = 36 slots).
     slots:

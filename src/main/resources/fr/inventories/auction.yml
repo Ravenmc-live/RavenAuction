@@ -60,13 +60,13 @@ items:
   # Les items sont paginés et peuvent être filtrés par catégorie.
 
   display-items:
-    # Type de bouton - RAVENAUCTION_LISTED_ITEMS est un type spécifique au plugin.
+    # Type de bouton - ZAUCTIONHOUSE_LISTED_ITEMS est un type spécifique au plugin.
     # Il gère automatiquement:
     # - Chargement et affichage des items
     # - Filtrage par catégorie
     # - Tri
     # - Actions au clic (acheter/retirer)
-    type: RAVENAUCTION_LISTED_ITEMS
+    type: ZAUCTIONHOUSE_LISTED_ITEMS
 
     # Slot pour afficher l'item "vide" quand aucun item n'est trouvé.
     # Ce slot est utilisé quand l'hôtel des ventes est vide.
@@ -123,7 +123,7 @@ items:
 
   expired-items:
     # Type de bouton - ouvre l'inventaire des items expirés si des items existent.
-    type: RAVENAUCTION_EXPIRED_INVENTORY
+    type: ZAUCTIONHOUSE_EXPIRED_INVENTORY
 
     # Position du slot - extrême gauche de la rangée du bas.
     slot: 45
@@ -155,7 +155,7 @@ items:
 
   purchased-items:
     # Type de bouton - ouvre l'inventaire des items achetés si des items existent.
-    type: RAVENAUCTION_PURCHASED_INVENTORY
+    type: ZAUCTIONHOUSE_PURCHASED_INVENTORY
 
     # Position du slot - deuxième depuis la gauche dans la rangée du bas.
     slot: 46
@@ -185,7 +185,7 @@ items:
 
   selling-items:
     # Type de bouton - ouvre l'inventaire des items en vente si des items existent.
-    type: RAVENAUCTION_SELLING_INVENTORY
+    type: ZAUCTIONHOUSE_SELLING_INVENTORY
 
     # Position du slot - extrême droite de la rangée du bas.
     slot: 53
@@ -214,7 +214,7 @@ items:
   # Ouvre la saisie de recherche dans le chat pour filtrer les objets.
 
   search:
-    type: RAVENAUCTION_SEARCH
+    type: ZAUCTIONHOUSE_SEARCH
     slot: 47
     is-permanent: true
     # Valeur affichée dans %search_query% lorsqu'aucune recherche n'est active.
@@ -251,8 +251,8 @@ items:
   # Affiche les informations de l'hôtel des ventes et rafraîchit la liste.
 
   refresh:
-    # Type de bouton - RAVENAUCTION_REFRESH gère le rafraîchissement async.
-    type: RAVENAUCTION_REFRESH
+    # Type de bouton - ZAUCTIONHOUSE_REFRESH gère le rafraîchissement async.
+    type: ZAUCTIONHOUSE_REFRESH
 
     # Position du slot - centre de la rangée du bas.
     slot: 49
@@ -288,7 +288,7 @@ items:
 
   change-sort:
     # Type de bouton - gère le cycle de tri.
-    type: RAVENAUCTION_CHANGE_SORT
+    type: ZAUCTIONHOUSE_CHANGE_SORT
 
     # Options de tri disponibles (cyclées dans cet ordre).
     # Options: DECREASING_DATE, DECREASING_PRICE, ASCENDING_DATE, ASCENDING_PRICE

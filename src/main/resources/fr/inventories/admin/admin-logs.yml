@@ -62,7 +62,7 @@ items:
 
   items:
     # Type de bouton - affiche les entrées de log.
-    type: RAVENAUCTION_ADMIN_LOGS
+    type: ZAUCTIONHOUSE_ADMIN_LOGS
 
     # Slot pour l'indicateur de chargement.
     loading-slot: 22
@@ -97,7 +97,7 @@ items:
 
   filter-type:
     # Type de bouton - gère le filtrage par type.
-    type: RAVENAUCTION_ADMIN_LOGS_FILTER_TYPE
+    type: ZAUCTIONHOUSE_ADMIN_LOGS_FILTER_TYPE
 
     # Position du slot.
     slot: 47
@@ -152,7 +152,7 @@ items:
 
   filter-date:
     # Type de bouton - gère le filtrage par date.
-    type: RAVENAUCTION_ADMIN_LOGS_FILTER_DATE
+    type: ZAUCTIONHOUSE_ADMIN_LOGS_FILTER_DATE
 
     slot: 51
 

@@ -27,7 +27,7 @@
 
 # Inventory title with target player placeholder.
 # %target% = name of the player being viewed
-name: '#0c1719Admin global history (%target%)'
+name: '#0c1719ᴀᴅᴍɪɴ ɢʟᴏʙᴀʟ ʜɪsᴛᴏʀʏ (%target%)'
 
 # Inventory size - 6 rows.
 size: 54
@@ -45,7 +45,7 @@ items:
 
   target:
     # Button type - displays target player information.
-    type: RAVENAUCTION_ADMIN_HISTORY_MAIN
+    type: ZAUCTIONHOUSE_ADMIN_HISTORY_MAIN
 
     # Slot position - top center.
     slot: 13
@@ -54,7 +54,11 @@ items:
       # Display the target player's head.
       # %target% is replaced with the player name.
       player-head: '%target%'
-      name: '#2CCED2<bold>%target%'
+      name: '#B466DF<bold>%target%'
+      lore:
+        - '&fAuction activity for this player.'
+        - ''
+        - '#B466DF★ #AAAAAAUse the buttons below to inspect it.'
 
   #---------------------------------------------------------------------------
   # EXPIRED ITEMS BUTTON
@@ -63,7 +67,7 @@ items:
 
   expired:
     # Button type - opens admin expired items view.
-    type: RAVENAUCTION_ADMIN_HISTORY_EXPIRED
+    type: ZAUCTIONHOUSE_ADMIN_HISTORY_EXPIRED
 
     # Slot position.
     slot: 28
@@ -71,13 +75,15 @@ items:
     item:
       # Hourglass/clock texture.
       url: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjdhYWRmZjlkZGM1NDZmZGNlYzZlZDU5MTljYzM5ZGZhOGQwYzA3ZmY0YmM2MTNhMTlmMmU2ZDdmMjU5MyJ9fX0="
-      name: '#2CCED2<bold>ᴇxᴘɪʀᴇᴅ ɪᴛᴇᴍs'
+      name: '#FFAA00<bold>EXPIRED ITEMS'
       lore:
+        - '&fListings that ran out of time before selling.'
+        - ''
         # %expired-items% = number of expired items for target
         # %s% = pluralization suffix
-        - '#92ffff%target% has #2CCED2%expired-items% #92ffffexpired item%s%.'
+        - '#FFAA00◈ #AAAAAA%target% has #FFCC00%expired-items% #AAAAAAitem%s%'
         - ''
-        - '#8c8c8c• #2CCED2Click #92ffffto open'
+        - '#FFFF55▸ #FFFF55&nCLICK&r #FFAA00to Open'
 
   #---------------------------------------------------------------------------
   # PURCHASED ITEMS BUTTON
@@ -86,19 +92,21 @@ items:
 
   purchased:
     # Button type - opens admin purchased items view.
-    type: RAVENAUCTION_ADMIN_HISTORY_PURCHASED
+    type: ZAUCTIONHOUSE_ADMIN_HISTORY_PURCHASED
 
     slot: 29
 
     item:
       # Chest texture.
       url: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjM3Y2FlNWM1MWViMTU1OGVhODI4ZjU4ZTBkZmY4ZTZiN2IwYjFhMTgzZDczN2VlY2Y3MTQ2NjE3NjEifX19"
-      name: '#2CCED2<bold>ᴘᴜʀᴄʜᴀsᴇᴅ ɪᴛᴇᴍs'
+      name: '#33FF66<bold>PURCHASED ITEMS'
       lore:
-        # %purchased-items% = number of purchased items
-        - '#92ffff%target% has #2CCED2%purchased-items% #92ffffbought item%s%.'
+        - '&fItems bought but not yet collected.'
         - ''
-        - '#8c8c8c• #2CCED2Click #92ffffto open'
+        # %purchased-items% = number of purchased items
+        - '#55FF55✔ #AAAAAA%target% has #55FF55%purchased-items% #AAAAAAitem%s%'
+        - ''
+        - '#FFFF55▸ #FFFF55&nCLICK&r #55FF55to Open'
 
   #---------------------------------------------------------------------------
   # SELLING ITEMS BUTTON
@@ -107,19 +115,21 @@ items:
 
   selling:
     # Button type - opens admin selling items view.
-    type: RAVENAUCTION_ADMIN_HISTORY_SELLING
+    type: ZAUCTIONHOUSE_ADMIN_HISTORY_SELLING
 
     slot: 30
 
     item:
       # Player icon texture.
       url: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjU4MDdjYzRjM2I2OTU4YWVhNjE1NmU4NDUxOGQ5MWE0OWM1ZjMyOTcxZTZlYjI2OWEyM2EyNWEyNzE0NSJ9fX0="
-      name: '#2CCED2<bold>sᴀʟᴇ ɪᴛᴇᴍs'
+      name: '#00FFFF<bold>SALE ITEMS'
       lore:
-        # %selling-items% = number of items on sale
-        - '#92ffff%target% has #2CCED2%selling-items% #92ffffitem%s% on sale.'
+        - '&fItems this player currently has listed.'
         - ''
-        - '#8c8c8c• #2CCED2Click #92ffffto open'
+        # %selling-items% = number of items on sale
+        - '#00FFFF✦ #AAAAAA%target% has #00FFFF%selling-items% #AAAAAAitem%s% on sale'
+        - ''
+        - '#FFFF55▸ #FFFF55&nCLICK&r #00FFFFto Open'
 
   #---------------------------------------------------------------------------
   # LOGS BUTTON
@@ -129,16 +139,17 @@ items:
 
   logs:
     # Button type - opens admin logs view.
-    type: RAVENAUCTION_ADMIN_HISTORY_LOGS
+    type: ZAUCTIONHOUSE_ADMIN_HISTORY_LOGS
 
     slot: 33
 
     item:
       material: SUNFLOWER
-      name: '#2CCED2<bold>ʟᴏɢs'
+      name: '#FFAA00<bold>LOGS'
       lore:
+        - '&fEvery auction action recorded for this player.'
         - ''
-        - '#8c8c8c• #2CCED2Click #92ffffto open'
+        - '#FFFF55▸ #FFFF55&nCLICK&r #FFAA00to Open'
 
   #---------------------------------------------------------------------------
   # TRANSACTIONS BUTTON
@@ -148,13 +159,14 @@ items:
 
   transactions:
     # Button type - opens admin transactions view.
-    type: RAVENAUCTION_ADMIN_HISTORY_TRANSACTIONS
+    type: ZAUCTIONHOUSE_ADMIN_HISTORY_TRANSACTIONS
 
     slot: 34
 
     item:
       material: NETHER_STAR
-      name: '#2CCED2<bold>ᴛʀᴀɴsᴀᴄᴛɪᴏɴs'
+      name: '#33FF66<bold>TRANSACTIONS'
       lore:
+        - '&fCompleted sales and their payouts.'
         - ''
-        - '#8c8c8c• #2CCED2Click #92ffffto open'
+        - '#FFFF55▸ #FFFF55&nCLICK&r #55FF55to Open'

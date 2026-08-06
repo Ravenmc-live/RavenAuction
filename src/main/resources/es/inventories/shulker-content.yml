@@ -55,7 +55,7 @@ items:
 
   content:
     # Tipo de boton - muestra el contenido del shulker.
-    type: RAVENAUCTION_SHULKER_CONTENT
+    type: ZAUCTIONHOUSE_SHULKER_CONTENT
 
     # Slots para mostrar el contenido del shulker.
     # 4 filas x 7 columnas = 28 slots (las shulkers contienen 27 objetos).
@@ -82,7 +82,7 @@ items:
 
   shulker-info:
     # Tipo de boton - muestra la info del shulker actual.
-    type: RAVENAUCTION_SHULKER_INFO
+    type: ZAUCTIONHOUSE_SHULKER_INFO
 
     # Posicion del slot - centro de la fila superior.
     slot: 4
@@ -103,7 +103,7 @@ items:
 
   previous:
     # Tipo de boton - gestiona la navegacion entre shulkers.
-    type: RAVENAUCTION_SHULKER_NAVIGATION
+    type: ZAUCTIONHOUSE_SHULKER_NAVIGATION
 
     # Direccion de navegacion.
     direction: previous
@@ -126,7 +126,7 @@ items:
 
   next:
     # Tipo de boton - gestiona la navegacion entre shulkers.
-    type: RAVENAUCTION_SHULKER_NAVIGATION
+    type: ZAUCTIONHOUSE_SHULKER_NAVIGATION
 
     # Direccion de navegacion.
     direction: next

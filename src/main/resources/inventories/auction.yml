@@ -60,13 +60,13 @@ items:
   # Items are paginated and can be filtered by category.
 
   display-items:
-    # Button type - RAVENAUCTION_LISTED_ITEMS is a plugin-specific type.
+    # Button type - ZAUCTIONHOUSE_LISTED_ITEMS is a plugin-specific type.
     # It automatically handles:
     # - Loading and displaying auction items
     # - Category filtering
     # - Sorting
     # - Click actions (buy/remove)
-    type: RAVENAUCTION_LISTED_ITEMS
+    type: ZAUCTIONHOUSE_LISTED_ITEMS
 
     # Slot to display the "empty" item when no items are found.
     # This slot is used when the auction house has no items.
@@ -85,8 +85,11 @@ items:
     # Item shown when no items are listed (empty auction house).
     item:
       material: BARRIER
-      # &n creates underlined text (legacy formatting)
-      name: '#ff0000&nNo items found'
+      name: "#FF4D4D<bold>NO ITEMS FOUND"
+      lore:
+        - "&fThere is nothing for sale right now."
+        - ""
+        - "#FF4D4D✕ #AAAAAACheck back later or try another category."
 
   #---------------------------------------------------------------------------
   # CATEGORIES BUTTON
@@ -110,10 +113,11 @@ items:
     # Button appearance
     item:
       material: CHEST
-      name: "#2CCED2<bold>ᴄᴀᴛᴇɢᴏʀɪᴇs"
+      name: "#00FFFF<bold>CATEGORIES"
       lore:
+        - "&fBrowse the auction house by item type."
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto open"
+        - "#FFFF55▸ #FFFF55&nCLICK&r #00FFFFto Open"
 
   #---------------------------------------------------------------------------
   # EXPIRED ITEMS BUTTON
@@ -123,7 +127,7 @@ items:
 
   expired-items:
     # Button type - opens the expired items inventory if items exist.
-    type: RAVENAUCTION_EXPIRED_INVENTORY
+    type: ZAUCTIONHOUSE_EXPIRED_INVENTORY
 
     # Slot position - far left of bottom row.
     slot: 45
@@ -132,21 +136,25 @@ items:
     item:
       # Custom player head texture (hourglass/clock icon).
       url: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjdhYWRmZjlkZGM1NDZmZGNlYzZlZDU5MTljYzM5ZGZhOGQwYzA3ZmY0YmM2MTNhMTlmMmU2ZDdmMjU5MyJ9fX0="
-      name: "#2CCED2<bold>ᴇxᴘɪʀᴇᴅ ɪᴛᴇᴍs"
+      name: "#FFAA00<bold>EXPIRED ITEMS"
       lore:
+        - "&fListings that ran out of time before selling."
+        - ""
         # %expired-items% = number of expired items
         # %s% = pluralization suffix ("" for 1, "s" for 2+)
-        - "#92ffffYou have #2CCED2%expired-items% #92ffffexpired item%s%."
+        - "#FFAA00◈ #AAAAAAWaiting for you: #FFCC00%expired-items% #AAAAAAitem%s%"
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto open"
+        - "#FFFF55▸ #FFFF55&nCLICK&r #FFAA00to Open"
 
     # Item shown when player has NO expired items.
     else:
       item:
         url: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjdhYWRmZjlkZGM1NDZmZGNlYzZlZDU5MTljYzM5ZGZhOGQwYzA3ZmY0YmM2MTNhMTlmMmU2ZDdmMjU5MyJ9fX0="
-        name: "#2CCED2<bold>ᴇxᴘɪʀᴇᴅ ɪᴛᴇᴍs"
+        name: "#FF4D4D<bold>EXPIRED ITEMS"
         lore:
-          - "#ff3535You have no expired items."
+          - "&fNone of your listings have expired."
+          - ""
+          - "#FF4D4D✕ #AAAAAANothing to claim here."
 
   #---------------------------------------------------------------------------
   # PURCHASED ITEMS BUTTON
@@ -155,7 +163,7 @@ items:
 
   purchased-items:
     # Button type - opens the purchased items inventory if items exist.
-    type: RAVENAUCTION_PURCHASED_INVENTORY
+    type: ZAUCTIONHOUSE_PURCHASED_INVENTORY
 
     # Slot position - second from left in bottom row.
     slot: 46
@@ -164,19 +172,23 @@ items:
     item:
       # Chest icon texture.
       url: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjM3Y2FlNWM1MWViMTU1OGVhODI4ZjU4ZTBkZmY4ZTZiN2IwYjFhMTgzZDczN2VlY2Y3MTQ2NjE3NjEifX19"
-      name: "#2CCED2<bold>ᴘᴜʀᴄʜᴀsᴇᴅ ɪᴛᴇᴍs"
+      name: "#33FF66<bold>PURCHASED ITEMS"
       lore:
-        - "#92ffffYou have #2CCED2%purchased-items% #92ffffbought item%s%."
+        - "&fItems you bought and have not collected yet."
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto open"
+        - "#55FF55✔ #AAAAAAReady to claim: #55FF55%purchased-items% #AAAAAAitem%s%"
+        - ""
+        - "#FFFF55▸ #FFFF55&nCLICK&r #55FF55to Open"
 
     # Item shown when player has NO purchased items.
     else:
       item:
         url: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjM3Y2FlNWM1MWViMTU1OGVhODI4ZjU4ZTBkZmY4ZTZiN2IwYjFhMTgzZDczN2VlY2Y3MTQ2NjE3NjEifX19"
-        name: "#2CCED2<bold>ᴘᴜʀᴄʜᴀsᴇᴅ ɪᴛᴇᴍs"
+        name: "#FF4D4D<bold>PURCHASED ITEMS"
         lore:
-          - "#ff3535You have no purchased items."
+          - "&fYou have not bought anything yet."
+          - ""
+          - "#FF4D4D✕ #AAAAAANothing to claim here."
 
   #---------------------------------------------------------------------------
   # YOUR ITEMS (SELLING) BUTTON
@@ -185,7 +197,7 @@ items:
 
   selling-items:
     # Button type - opens the selling items inventory if items exist.
-    type: RAVENAUCTION_SELLING_INVENTORY
+    type: ZAUCTIONHOUSE_SELLING_INVENTORY
 
     # Slot position - far right of bottom row.
     slot: 53
@@ -194,19 +206,23 @@ items:
     item:
       # Player icon texture.
       url: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjU4MDdjYzRjM2I2OTU4YWVhNjE1NmU4NDUxOGQ5MWE0OWM1ZjMyOTcxZTZlYjI2OWEyM2EyNWEyNzE0NSJ9fX0="
-      name: "#2CCED2<bold>ʏᴏᴜʀ ɪᴛᴇᴍs"
+      name: "#B466DF<bold>YOUR ITEMS"
       lore:
-        - "#92ffffYou have #2CCED2%selling-items% #92ffffitem%s% on sale."
+        - "&fEverything you currently have listed for sale."
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto open"
+        - "#B466DF★ #AAAAAAActive listings: #B466DF%selling-items% #AAAAAAitem%s%"
+        - ""
+        - "#FFFF55▸ #FFFF55&nCLICK&r #B466DFto Open"
 
     # Item shown when player has NO items listed.
     else:
       item:
         url: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjU4MDdjYzRjM2I2OTU4YWVhNjE1NmU4NDUxOGQ5MWE0OWM1ZjMyOTcxZTZlYjI2OWEyM2EyNWEyNzE0NSJ9fX0="
-        name: "#2CCED2<bold>ʏᴏᴜʀ ɪᴛᴇᴍs"
+        name: "#FF4D4D<bold>YOUR ITEMS"
         lore:
-          - "#ff3535You have no items for sale."
+          - "&fYou have nothing listed for sale."
+          - ""
+          - "#FF4D4D✕ #AAAAAAUse &f/ah sell #AAAAAAto list an item."
 
   #---------------------------------------------------------------------------
   # SEARCH BUTTON
@@ -214,7 +230,7 @@ items:
   # Opens the chat search input for filtering items.
 
   search:
-    type: RAVENAUCTION_SEARCH
+    type: ZAUCTIONHOUSE_SEARCH
     slot: 47
     is-permanent: true
     # Value shown in %search_query% when no search is active.
@@ -225,33 +241,35 @@ items:
     inactive-value: "false"
     item:
       material: COMPASS
-      name: "#2CCED2<bold>sᴇᴀʀᴄʜ"
+      name: "#00FFFF<bold>SEARCH"
       lore:
+        - "&fNarrow the listings down to what you want."
         - ""
-        - "#92ffffCurrent search#8c8c8c: #2CCED2%search_query%"
+        - "#00FFFF✦ #AAAAAAActive query: #00FFFF%search_query%"
         - ""
-        - "#92ffffFilters#8c8c8c:"
-        - "#8c8c8c  name #76CDCD~ #8c8c8cvalue    #555555(contains)"
-        - "#8c8c8c  name #76CDCD= #8c8c8cvalue    #555555(exact)"
-        - "#8c8c8c  name #76CDCD~= #8c8c8cvalue   #555555(contains, ignore case)"
-        - "#8c8c8c  name #76CDCD== #8c8c8cvalue   #555555(exact, ignore case)"
+        - "#00FFFFOperators"
+        - "&f  name #00FFFF~ &fvalue    #AAAAAA(contains)"
+        - "&f  name #00FFFF= &fvalue    #AAAAAA(exact)"
+        - "&f  name #00FFFF~= &fvalue   #AAAAAA(contains, ignore case)"
+        - "&f  name #00FFFF== &fvalue   #AAAAAA(exact, ignore case)"
         - ""
-        - "#92ffffFields#8c8c8c: #76CDCDname#8c8c8c, #76CDCDmaterial#8c8c8c, #76CDCDlore#8c8c8c, #76CDCDseller"
+        - "#00FFFFFields"
+        - "&f  name#AAAAAA, &fmaterial#AAAAAA, &flore#AAAAAA, &fseller"
         - ""
-        - "#92ffffExamples#8c8c8c:"
-        - "#8c8c8c  seller #76CDCD= #8c8c8cNotch"
-        - "#8c8c8c  name #76CDCD~ #8c8c8cDiamond"
+        - "#00FFFFExamples"
+        - "&f  seller #00FFFF= &fNotch"
+        - "&f  name #00FFFF~ &fDiamond"
         - ""
-        - "#8c8c8c- #2CCED2Left-click #92ffffto search"
-        - "#8c8c8c- #2CCED2Right-click #92ffffto reset search"
+        - "#FFFF55▸ #FFFF55&nLEFT-CLICK&r #00FFFFto Search"
+        - "#FFFF55▸ #FFFF55&nRIGHT-CLICK&r #00FFFFto Reset"
   #---------------------------------------------------------------------------
   # REFRESH BUTTON
   #---------------------------------------------------------------------------
   # Displays auction house information and refreshes the item list.
 
   refresh:
-    # Button type - RAVENAUCTION_REFRESH handles async refresh.
-    type: RAVENAUCTION_REFRESH
+    # Button type - ZAUCTIONHOUSE_REFRESH handles async refresh.
+    type: ZAUCTIONHOUSE_REFRESH
 
     # Slot position - center of bottom row.
     slot: 49
@@ -259,26 +277,29 @@ items:
     # Item shown while loading/refreshing (prevents spam clicks).
     loading-item:
       material: CLOCK
-      name: "#2CCED2<bold>ʀᴇғʀᴇsʜɪɴɢ..."
+      name: "#FFAA00<bold>REFRESHING..."
       lore:
-        - "#8c8c8c• #ff3535Loading, please wait..."
+        - "&fFetching the latest listings."
+        - ""
+        - "#FFAA00◈ #AAAAAAPlease wait a moment."
 
     # Normal refresh button display.
     item:
       material: BELL
-      name: "#2CCED2<bold>ᴀᴜᴄᴛɪᴏɴ ɪɴғᴏʀᴍᴀᴛɪᴏɴ"
+      name: "#FFAA00<bold>AUCTION INFORMATION"
       lore:
-        - "#92ffffWelcome to the auction house."
-        - "#92ffffTrade items with other players."
+        - "&fWelcome to the auction house."
+        - "&fTrade items freely with other players."
         - ""
-        - "#92ffffUsage#8c8c8c:"
-        - "#2CCED2/ah sell #92ffff<price> [<amount>]"
-        - ""
+        - "#FFAA00Information"
         # PlaceholderAPI placeholders for dynamic stats.
-        - "#92ffffNumber of items#8c8c8c: #2CCED2%ravenauction_listed_items%"
-        - "#92ffffSort type#8c8c8c: #2CCED2%ravenauction_sorting_name%"
+        - "#FFAA00◈ #AAAAAAItems listed: #FFCC00%ravenauction_listed_items%"
+        - "#FFAA00◈ #AAAAAASort type: #FFCC00%ravenauction_sorting_name%"
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto refresh the items"
+        - "#FFAA00Usage"
+        - "#FFAA00▌ &f/ah sell <price> [<amount>]"
+        - ""
+        - "#FFFF55▸ #FFFF55&nCLICK&r #FFAA00to Refresh"
 
   #---------------------------------------------------------------------------
   # SORT TYPE BUTTON
@@ -287,7 +308,7 @@ items:
 
   change-sort:
     # Button type - handles sort cycling.
-    type: RAVENAUCTION_CHANGE_SORT
+    type: ZAUCTIONHOUSE_CHANGE_SORT
 
     # Available sort options (cycled in this order).
     # Options: DECREASING_DATE, DECREASING_PRICE, ASCENDING_DATE, ASCENDING_PRICE
@@ -299,17 +320,19 @@ items:
 
     # Format for currently SELECTED sort option in lore.
     # %sorting% is replaced with the sort name from config.yml.
-    enable-text: ' #F27438➜ %sorting%'
+    enable-text: ' #FFAA00◈ #FFCC00%sorting%'
 
     # Format for NOT selected sort options in lore.
-    disable-text: ' #76CDCD➜ %sorting%'
+    disable-text: ' #AAAAAA◈ &f%sorting%'
 
     # Item shown while loading/sorting (prevents spam clicks).
     loading-item:
       material: HOPPER
-      name: "#2CCED2<bold>sᴏʀᴛ ᴛʏᴘᴇ"
+      name: "#FFAA00<bold>SORT TYPE"
       lore:
-        - "#8c8c8c• #ff3535Loading, please wait"
+        - "&fApplying the new sort order."
+        - ""
+        - "#FFAA00◈ #AAAAAAPlease wait a moment."
 
     # Slot position - right side of bottom row.
     slot: 52
@@ -317,13 +340,14 @@ items:
     # Normal sort button display.
     item:
       material: HOPPER
-      name: "#2CCED2<bold>sᴏʀᴛ ᴛʏᴘᴇ"
+      name: "#FFAA00<bold>SORT TYPE"
       lore:
-        - "#92ffffAvailable sort types:"
+        - "&fChoose how listings are ordered."
+        - ""
         # Placeholders for each sort option (formatted by enable/disable-text).
         - "%DECREASING_DATE%"
         - "%DECREASING_PRICE%"
         - "%ASCENDING_DATE%"
         - "%ASCENDING_PRICE%"
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto change the sort type"
+        - "#FFFF55▸ #FFFF55&nCLICK&r #FFAA00to Change Sort"

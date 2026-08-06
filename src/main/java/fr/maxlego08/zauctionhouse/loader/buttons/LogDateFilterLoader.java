@@ -19,7 +19,7 @@ public class LogDateFilterLoader extends ButtonLoader {
     private final AuctionPlugin plugin;
 
     public LogDateFilterLoader(AuctionPlugin plugin) {
-        super(plugin, "RAVENAUCTION_ADMIN_LOGS_FILTER_DATE");
+        super(plugin, "ZAUCTIONHOUSE_ADMIN_LOGS_FILTER_DATE");
         this.plugin = plugin;
     }
 

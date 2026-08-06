@@ -25,7 +25,7 @@
 #=============================================================================
 
 # Inventory title with pagination placeholders.
-name: '#0c1719Sales History (%page%/%max-page%)'
+name: '#0c1719sᴀʟᴇs ʜɪsᴛᴏʀʏ (%page%/%max-page%)'
 
 # Inventory size - 6 rows.
 size: 54
@@ -56,7 +56,7 @@ items:
 
   items:
     # Button type - displays historical sales.
-    type: RAVENAUCTION_HISTORY_ITEMS
+    type: ZAUCTIONHOUSE_HISTORY_ITEMS
 
     # Slot for loading indicator while fetching history.
     loading-slot: 22
@@ -71,7 +71,11 @@ items:
     # Item shown while loading history from database.
     item:
       material: BARRIER
-      name: "#ff0000Loading..."
+      name: "#FFAA00<bold>LOADING..."
+      lore:
+        - "&fFetching your sales history."
+        - ""
+        - "#FFAA00◈ #AAAAAAPlease wait a moment."
 
     # Item shown when no sales exist.
     else:
@@ -79,10 +83,11 @@ items:
         - 22
       item:
         material: BARRIER
-        name: '#ff0000&nNo Sales Found'
+        name: "#FF4D4D<bold>NO SALES FOUND"
         lore:
-          - ''
-          - '&7You have not sold any items yet.'
+          - "&fYou have not sold any items yet."
+          - ""
+          - "#FF4D4D✕ #AAAAAAYour completed sales will appear here."
 
   #---------------------------------------------------------------------------
   # SORT BUTTON
@@ -91,16 +96,16 @@ items:
 
   sort:
     # Button type - handles sort cycling for history.
-    type: RAVENAUCTION_HISTORY_SORT
+    type: ZAUCTIONHOUSE_HISTORY_SORT
 
     # Slot position.
     slot: 51
 
     # Format for currently selected sort option.
-    enable-text: ' #F27438➜ %sorting%'
+    enable-text: ' #FFAA00◈ #FFCC00%sorting%'
 
     # Format for unselected sort options.
-    disable-text: ' #76CDCD➜ %sorting%'
+    disable-text: ' #AAAAAA◈ &f%sorting%'
 
     # Available sort options (cycled in this order).
     sorts:
@@ -122,9 +127,10 @@ items:
 
     item:
       material: HOPPER
-      name: "#2CCED2<bold>sᴏʀᴛ"
+      name: "#FFAA00<bold>SORT"
       lore:
-        - "#92ffffAvailable sort types:"
+        - "&fChoose how your sales history is ordered."
+        - ""
         # Placeholders for each sort option (formatted by enable/disable-text).
         - "%DATE_DESC%"
         - "%DATE_ASC%"
@@ -133,4 +139,4 @@ items:
         - "%BUYER_ASC%"
         - "%BUYER_DESC%"
         - ""
-        - "#8c8c8c• #2CCED2Click #92ffffto change the sort type"
+        - "#FFFF55▸ #FFFF55&nCLICK&r #FFAA00to Change Sort"

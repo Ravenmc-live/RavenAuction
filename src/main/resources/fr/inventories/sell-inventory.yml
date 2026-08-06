@@ -48,7 +48,7 @@ items:
 
   show-item:
     # Type de bouton - gère la sélection et l'affichage des items.
-    type: RAVENAUCTION_SELL_SHOW_ITEM
+    type: ZAUCTIONHOUSE_SELL_SHOW_ITEM
 
     # Slots pour afficher les items sélectionnés.
     # Couvre toute la zone centrale (36 slots).
@@ -74,7 +74,7 @@ items:
 
   cancel:
     # Type de bouton - gère l'annulation et le retour des items.
-    type: RAVENAUCTION_SELL_CANCEL
+    type: ZAUCTIONHOUSE_SELL_CANCEL
 
     # Position du slot - extrême gauche de la rangée du bas.
     slot: 45
@@ -94,7 +94,7 @@ items:
 
   private-decrease:
     # Type de bouton - gère la modification du prix.
-    type: RAVENAUCTION_SELL_PRICE
+    type: ZAUCTIONHOUSE_SELL_PRICE
 
     # Position du slot.
     slot: 48
@@ -129,7 +129,7 @@ items:
 
   select-economy:
     # Type de bouton - gère le cycle des économies.
-    type: RAVENAUCTION_SELL_ECONOMY
+    type: ZAUCTIONHOUSE_SELL_ECONOMY
 
     # Position du slot - centre de la rangée du bas.
     slot: 49
@@ -153,7 +153,7 @@ items:
 
   price-increase:
     # Type de bouton - gère la modification du prix.
-    type: RAVENAUCTION_SELL_PRICE
+    type: ZAUCTIONHOUSE_SELL_PRICE
 
     # Montants de changement de prix pour différents types de clic.
     # Les valeurs positives augmentent le prix.
@@ -185,7 +185,7 @@ items:
 
   confirm:
     # Type de bouton - gère la confirmation de vente.
-    type: RAVENAUCTION_SELL_CONFIRM
+    type: ZAUCTIONHOUSE_SELL_CONFIRM
 
     # Position du slot - extrême droite de la rangée du bas.
     slot: 53
