@@ -143,7 +143,7 @@ public class PurchaseService extends AuctionService implements AuctionPurchaseSe
                     }
 
                     // Insufficient funds - unlock, restore status, and notify
-                    message(this.plugin, player, Message.NOT_ENOUGH_MONEY);
+                    fr.maxlego08.zauctionhouse.utils.PurchaseFeedback.insufficientFunds(this.plugin, player);
                     resultHolder.set(PurchaseResult.failure("Insufficient funds", PurchaseFailReason.INSUFFICIENT_FUNDS));
                     var previousStatus = previousStatusHolder.get();
                     item.setStatus(previousStatus);

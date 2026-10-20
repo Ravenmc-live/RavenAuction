@@ -1,181 +1,93 @@
-################################################################################################################################
-#
-#   RavenAuction V4 - Admin Transactions Inventory
-#
-#   This inventory displays transaction history for a player.
-#   Transactions are records of completed sales with financial details.
-#
-#   TRANSACTION STATUS:
-#   - PENDING: Money has not yet been claimed by the seller
-#   - RETRIEVED: Money has been claimed/deposited to the seller
-#
-#   FEATURES:
-#   - View all completed transactions
-#   - Filter by transaction status
-#   - Filter by date range
-#   - See buyer/seller information
-#
-#   ACCESS:
-#   - From admin history main menu → Transactions button
-#
-#   Documentation: https://docs.groupez.dev/ravenauction/introduction
-#   Discord: https://discord.groupez.dev/
-#
-################################################################################################################################
-
-#=============================================================================
-# INVENTORY SETTINGS
-#=============================================================================
-
-# Inventory title with pagination placeholders.
-name: '#0c1719ᴀᴅᴍɪɴ ᴛʀᴀɴsᴀᴄᴛɪᴏɴs (%page%/%max-page%)'
-
-# Inventory size - 6 rows.
+name: '&8ADMIN TRANsACTIONs (%page%/%max-page%)'
 size: 54
-
-#=============================================================================
-# PATTERNS
-#=============================================================================
-
 patterns:
-  # Decorative glass pane borders.
-  - 'ravenauction-decoration'
-  # Previous/next page buttons.
-  - 'ravenauction-pagination'
-  # Back button to return to admin history main.
-  - 'ravenauction-back'
-
-#=============================================================================
-# ITEMS
-#=============================================================================
-
+- ravenauction-decoration
+- ravenauction-pagination
+- ravenauction-back
 items:
-
-  #---------------------------------------------------------------------------
-  # TRANSACTION ENTRIES DISPLAY
-  #---------------------------------------------------------------------------
-  # Shows all transaction records for the target player.
-
   items:
-    # Button type - displays transaction entries.
     type: ZAUCTIONHOUSE_ADMIN_TRANSACTIONS
-
-    # Slot for loading indicator.
     loading-slot: 22
-
-    # Slots for displaying transactions (4 rows × 9 columns = 36 slots).
     slots:
-      - 9-17    # Row 2
-      - 18-26   # Row 3
-      - 27-35   # Row 4
-      - 36-44   # Row 5
-
-    # Item shown while loading.
+    - 9-17
+    - 18-26
+    - 27-35
+    - 36-44
     item:
       material: BARRIER
-      name: "#FFAA00<bold>LOADING..."
+      name: '&r&#FF1F1FLoading'
       lore:
-        - "&fFetching the transaction records."
-        - ""
-        - "#FFAA00◈ #AAAAAAPlease wait a moment."
-
-    # Item shown when no transactions exist.
+      - ''
+      - '&r&fFetching The Records'
+      - '&r&fPlease Wait A Moment'
     else:
       slots:
-        - 22
+      - 22
       item:
         material: BARRIER
-        name: "#FF4D4D<bold>NO TRANSACTIONS FOUND"
+        name: '&r&#FF1F1FNo Transactions Found'
         lore:
-          - "&fThis player has no completed sales."
-          - ""
-          - "#FF4D4D✕ #AAAAAATry widening the status or date filter."
-
-  #---------------------------------------------------------------------------
-  # FILTER BY STATUS BUTTON
-  #---------------------------------------------------------------------------
-  # Cycles through transaction status filters.
-
+        - ''
+        - '&r&fNo Completed Sales'
+        - '&r&fTry Widening The Status Or Date Filter'
+      sound: UI_BUTTON_CLICK
+      pitch: 1.05
+      volume: 0.35
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   filter-status:
-    # Button type - handles status filtering.
     type: ZAUCTIONHOUSE_ADMIN_TRANSACTIONS_FILTER_STATUS
-
     slot: 47
-
-    # Format for currently selected status.
-    enable-text: ' #FFAA00◈ #FFCC00%status%'
-
-    # Format for unselected statuses.
-    disable-text: ' #AAAAAA◈ &f%status%'
-
-    # Display name for "all statuses" option.
-    all-statuses-name: "All"
-
-    # Available transaction statuses to filter by.
+    enable-text: ' #FF1F1F◈ #FF1F1F%status%'
+    disable-text: ' #FF1F1F◈ &7%status%'
+    all-statuses-name: All
     statuses:
-      - PENDING    # Money not yet claimed
-      - RETRIEVED  # Money has been claimed
-
-    # Display names for each status.
+    - PENDING
+    - RETRIEVED
     status-names:
-      PENDING: "Pending"
-      RETRIEVED: "Retrieved"
-
+      PENDING: Pending
+      RETRIEVED: Retrieved
     item:
       material: HOPPER
-      name: '#FFAA00<bold>FILTER BY STATUS'
+      name: '&r&#FF1F1FFilter By Status'
       lore:
-        - '&fShow only claimed or unclaimed payouts.'
-        - ''
-        - '%ALL%'
-        - '%PENDING%'
-        - '%RETRIEVED%'
-        - ''
-        - '#FFFF55▸ #FFFF55&nCLICK&r #FFAA00to Change Filter'
-
-  #---------------------------------------------------------------------------
-  # FILTER BY DATE BUTTON
-  #---------------------------------------------------------------------------
-  # Cycles through date range filters.
-
+      - ''
+      - '&r&fShow Only Claimed Or Unclaimed Payouts'
+      - '&r&f%ALL%'
+      - '&r&f%PENDING%'
+      - '&r&f%RETRIEVED%'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   filter-date:
-    # Button type - handles date filtering.
     type: ZAUCTIONHOUSE_ADMIN_TRANSACTIONS_FILTER_DATE
-
     slot: 51
-
-    # Format for currently selected date range.
-    enable-text: ' #FFAA00◈ #FFCC00%date%'
-
-    # Format for unselected date ranges.
-    disable-text: ' #AAAAAA◈ &f%date%'
-
-    # Available date filters.
+    enable-text: ' #FF1F1F◈ #FF1F1F%date%'
+    disable-text: ' #FF1F1F◈ &7%date%'
     filters:
-      - ALL         # All time
-      - TODAY       # Today only
-      - THIS_WEEK   # Last 7 days
-      - THIS_MONTH  # Last 30 days
-      - THIS_YEAR   # Last 365 days
-
-    # Display names for each date filter.
+    - ALL
+    - TODAY
+    - THIS_WEEK
+    - THIS_MONTH
+    - THIS_YEAR
     filter-names:
-      ALL: "All Time"
-      TODAY: "Today"
-      THIS_WEEK: "This Week"
-      THIS_MONTH: "This Month"
-      THIS_YEAR: "This Year"
-
+      ALL: All Time
+      TODAY: Today
+      THIS_WEEK: This Week
+      THIS_MONTH: This Month
+      THIS_YEAR: This Year
     item:
       material: CLOCK
-      name: '#FFAA00<bold>FILTER BY DATE'
+      name: '&r&#FF1F1FFilter By Date'
       lore:
-        - '&fLimit the results to a time range.'
-        - ''
-        - '%ALL%'
-        - '%TODAY%'
-        - '%THIS_WEEK%'
-        - '%THIS_MONTH%'
-        - '%THIS_YEAR%'
-        - ''
-        - '#FFFF55▸ #FFFF55&nCLICK&r #FFAA00to Change Filter'
+      - ''
+      - '&r&fLimit The Results To A Time Range'
+      - '&r&f%ALL%'
+      - '&r&f%TODAY%'
+      - '&r&f%THIS_WEEK%'
+      - '&r&f%THIS_MONTH%'
+      - '&r&f%THIS_YEAR%'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35

@@ -1,0 +1,40 @@
+raven-filter-blocks:
+  display-name: Blocks
+  rules:
+  - type: raven-order-filter
+    filter: blocks
+raven-filter-tools:
+  display-name: Tools
+  rules:
+  - type: raven-order-filter
+    filter: tools
+raven-filter-food:
+  display-name: Food
+  rules:
+  - type: raven-order-filter
+    filter: food
+raven-filter-combat:
+  display-name: Combat
+  rules:
+  - type: raven-order-filter
+    filter: combat
+raven-filter-potions:
+  display-name: Potions
+  rules:
+  - type: raven-order-filter
+    filter: potions
+raven-filter-books:
+  display-name: Books
+  rules:
+  - type: raven-order-filter
+    filter: books
+raven-filter-ingredients:
+  display-name: Ingredients
+  rules:
+  - type: raven-order-filter
+    filter: ingredients
+raven-filter-utilities:
+  display-name: Utilities
+  rules:
+  - type: raven-order-filter
+    filter: utilities

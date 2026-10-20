@@ -1,116 +1,49 @@
-################################################################################################################################
-#
-#   RavenAuction V4 - Bulk Remove Confirmation Inventory
-#
-#   This inventory confirms removal of multiple items from sale (bulk sales).
-#   Shows all items that will be removed and returned to the seller.
-#
-#   FEATURES:
-#   - Preview all items in the bulk sale before removal
-#   - View shulker contents (if applicable)
-#   - Single click to remove all items from sale
-#
-#   ACCESS:
-#   - Automatically opens when a seller clicks their own bulk listing
-#   - Only shown if open-confirm-inventory is true in config.yml
-#
-#   Documentation: https://docs.groupez.dev/ravenauction/introduction
-#   Discord: https://discord.groupez.dev/
-#
-################################################################################################################################
-
-#=============================================================================
-# INVENTORY SETTINGS
-#=============================================================================
-
-# Inventory title - question format with plural "items".
-name: "#0c1719ʀᴇᴍᴏᴠᴇ ᴛʜᴇsᴇ ɪᴛᴇᴍs ?"
-
-# Inventory size - 6 rows to show all items in the bulk sale.
+name: '&8REMOVE THEsE ITEMs?'
 size: 54
-
-#=============================================================================
-# PATTERNS
-#=============================================================================
-
 patterns:
-  # Decorative glass pane borders.
-  - 'ravenauction-decoration'
-
-#=============================================================================
-# ITEMS
-#=============================================================================
-
+- ravenauction-decoration
 items:
-
-  #---------------------------------------------------------------------------
-  # BULK ITEM CONTENT DISPLAY
-  #---------------------------------------------------------------------------
-  # Shows all items included in the bulk sale.
-
   item-content:
-    # Button type - displays all items in the sale.
     type: ZAUCTIONHOUSE_ITEM_CONTENT
-
-    # Slots for displaying items (4 rows × 9 columns = 36 slots).
     slots:
-      - 9-44
-
-  #---------------------------------------------------------------------------
-  # CONFIRM REMOVE BUTTON
-  #---------------------------------------------------------------------------
-  # Removes all items from sale.
-
+    - 9-44
   confirm:
     type: ZAUCTIONHOUSE_CONFIRM_REMOVE_LISTED
-
     item:
       material: GREEN_STAINED_GLASS_PANE
-      name: "#33FF66<bold>REMOVE"
+      name: '&r&#FF1F1FRemove'
       lore:
-        - "&fCancel this listing and take every item back."
-        - ""
-        - "#FFFF55▸ #FFFF55&nCLICK&r #55FF55to Confirm"
-
-    # Bottom-left area (3 slots).
+      - ''
+      - '&r&fCancel This Listing'
+      - '&r&fTake Every Item Back'
     slots:
-      - 46-48
-
-  #---------------------------------------------------------------------------
-  # CANCEL/BACK BUTTON
-  #---------------------------------------------------------------------------
-  # Cancels and returns to the auction house.
-
+    - 46-48
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   deny:
     type: BACK
-
     item:
       material: RED_STAINED_GLASS_PANE
-      name: "#FF4D4D<bold>CANCEL"
+      name: '&r&#FF1F1FCancel'
       lore:
-        - "&fLeave the listing exactly as it is."
-        - ""
-        - "#FFFF55▸ #FFFF55&nCLICK&r #FF4D4Dto Go Back"
-
-    # Bottom-right area (3 slots).
+      - ''
+      - '&r&fKeep The Listing'
+      - '&r&fLeave It Exactly As It Is'
     slots:
-      - 50-52
-
-  #---------------------------------------------------------------------------
-  # SHULKER CONTENT BUTTON
-  #---------------------------------------------------------------------------
-  # Opens the shulker content viewer.
-
+    - 50-52
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   shulker:
     type: ZAUCTIONHOUSE_SHULKER_OPEN
-
-    # Center of bottom row.
     slot: 49
-
     item:
       material: SHULKER_BOX
-      name: "#00FFFF<bold>VIEW SHULKER CONTENT"
+      name: '&r&#FF1F1FView Shulker Content'
       lore:
-        - "&fInspect what is packed inside this listing."
-        - ""
-        - "#FFFF55▸ #FFFF55&nCLICK&r #00FFFFto Preview"
+      - ''
+      - '&r&fInspect This Listing'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35

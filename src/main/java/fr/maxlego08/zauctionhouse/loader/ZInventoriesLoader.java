@@ -149,6 +149,7 @@ public class ZInventoriesLoader extends ZUtils implements InventoriesLoader {
         this.buttonManager.register(new NoneLoader(this.plugin, HistoryInventoryButton.class, "ZAUCTIONHOUSE_HISTORY_INVENTORY"));
 
         this.buttonManager.register(new NoneLoader(this.plugin, ShowButton.class, "ZAUCTIONHOUSE_SHOW"));
+        this.buttonManager.register(new NoneLoader(this.plugin, fr.maxlego08.zauctionhouse.buttons.PurchasePreviewButton.class, "RAVENAUCTION_PURCHASE_PREVIEW"));
         this.buttonManager.register(new NoneLoader(this.plugin, ConfirmRemoveListedButton.class, "ZAUCTIONHOUSE_CONFIRM_REMOVE_LISTED"));
         this.buttonManager.register(new NoneLoader(this.plugin, ConfirmPurchaseButton.class, "ZAUCTIONHOUSE_CONFIRM_PURCHASE"));
         this.buttonManager.register(new NoneLoader(this.plugin, SellCancelButton.class, "ZAUCTIONHOUSE_SELL_CANCEL"));

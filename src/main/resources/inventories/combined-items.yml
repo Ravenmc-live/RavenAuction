@@ -1,83 +1,24 @@
-################################################################################################################################
-#
-#   RavenAuction V4 - Combined Items Inventory
-#
-#   This inventory combines multiple item views (selling, expired, purchased)
-#   into a single paginated list. You can configure which storage types to include.
-#
-#   FEATURES:
-#   - Combine selling, expired, and purchased items in one view
-#   - Each item type uses its own lore configuration (from config.yml item-lore)
-#   - Click action adapts to the item's storage type:
-#     - Selling items: removes/cancels the listing
-#     - Expired items: claims the item back
-#     - Purchased items: claims the purchased item
-#
-#   CONFIGURATION:
-#   - include-selling: true/false - include items currently listed for sale
-#   - include-expired: true/false - include expired items
-#   - include-purchased: true/false - include purchased items
-#
-#   ACCESS:
-#   - Assign this inventory to a command or button in your configuration
-#
-#   Documentation: https://docs.groupez.dev/ravenauction/introduction
-#   Discord: https://discord.groupez.dev/
-#
-################################################################################################################################
-
-#=============================================================================
-# INVENTORY SETTINGS
-#=============================================================================
-
-name: '#0c1719ᴍʏ ɪᴛᴇᴍs (%page%/%max-page%)'
-
+name: '&8Your Items (%page%/%max-page%)'
 size: 54
-
-#=============================================================================
-# PATTERNS
-#=============================================================================
-
 patterns:
-  - 'ravenauction-decoration'
-  - 'ravenauction-pagination'
-  - 'ravenauction-back'
-
-#=============================================================================
-# ITEMS
-#=============================================================================
-
+- ravenauction-pagination
+- ravenauction-back
 items:
-
-  #---------------------------------------------------------------------------
-  # COMBINED ITEMS DISPLAY
-  #---------------------------------------------------------------------------
-  # Shows selling, expired, and purchased items in a single list.
-  # Click action adapts based on the item's actual storage type.
-
   items:
     type: ZAUCTIONHOUSE_COMBINED_ITEMS
-
-    # Slot for empty state placeholder.
     empty-slot: 22
-
-    # Configure which item types to include.
     include-selling: true
     include-expired: true
     include-purchased: true
-
-    # Slots for displaying items (4 rows x 9 columns = 36 slots).
     slots:
-      - 9-17    # Row 2
-      - 18-26   # Row 3
-      - 27-35   # Row 4
-      - 36-44   # Row 5
-
-    # Placeholder item when no items are found.
+    - 0-44
     item:
       material: BARRIER
-      name: "#FF4D4D<bold>NO ITEMS FOUND"
+      name: '&r&#FF1F1FNo Items Found'
       lore:
-        - "&fYou have no listed, expired or purchased items."
-        - ""
-        - "#FF4D4D✕ #AAAAAANothing to claim here."
+      - ''
+      - '&r&fYour listings and collected'
+      - '&r&fpurchases will appear here.'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35

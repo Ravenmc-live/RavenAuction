@@ -105,6 +105,11 @@ public class ZAuctionPlugin extends JavaPlugin implements AuctionPlugin {
         if (!dataFolder.exists()) dataFolder.mkdirs();
 
         // Load language.yml first (not localized, always from root resources)
+        try {
+            fr.maxlego08.zauctionhouse.utils.StyleMigration.apply(dataFolder.toPath(), this::getResource);
+        } catch (IOException ex) {
+            throw new IllegalStateException("Could not apply the one-time auction style. Check backups/red-gui-ff1f1f-v3.", ex);
+        }
         this.saveLanguageFile();
         String configuredLanguage = this.loadLanguageConfiguration();
 
@@ -122,6 +127,7 @@ public class ZAuctionPlugin extends JavaPlugin implements AuctionPlugin {
 
         // Register rule loaders BEFORE loading files (categories need them)
         this.ruleLoaderRegistry.registerDefaultLoaders();
+        this.ruleLoaderRegistry.register(new fr.maxlego08.zauctionhouse.rule.loaders.OrderFilterRuleLoader());
 
         this.loadFiles();
         this.permissionRegistrar.register();
@@ -174,6 +180,7 @@ public class ZAuctionPlugin extends JavaPlugin implements AuctionPlugin {
     @Override
     public void onDisable() {
 
+        if (this.chatSearchListener != null) this.chatSearchListener.close();
         if (!this.isEnabled) return;
 
         // Stop cluster synchronization before the executor it publishes on is shut down

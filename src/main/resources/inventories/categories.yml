@@ -1,240 +1,132 @@
-################################################################################################################################
-#
-#   RavenAuction V4 - Categories Inventory
-#
-#   This inventory displays the category selection menu.
-#   Players can choose a category to filter auction house items.
-#
-#   CATEGORIES ARE DEFINED IN:
-#   - categories.yml - Defines which items belong to each category
-#   - This file - Defines the GUI buttons for each category
-#
-#   ADDING NEW CATEGORIES:
-#   1. Add the category definition to categories.yml (with rules)
-#   2. Add a button here with type: ZAUCTIONHOUSE_CATEGORY and category: <name>
-#   3. Use the placeholder %ravenauction_category_count_<name>% for item counts
-#
-#   Documentation: https://docs.groupez.dev/ravenauction/introduction
-#   Discord: https://discord.groupez.dev/
-#
-################################################################################################################################
-
-#=============================================================================
-# INVENTORY SETTINGS
-#=============================================================================
-
-# Inventory title - static text for the categories menu.
-name: "#0c1719ᴄᴀᴛᴇɢᴏʀɪᴇs"
-
-# Inventory size - 6 rows (54 slots).
+name: '&8CATEGORIEs'
 size: 54
-
-#=============================================================================
-# PATTERNS
-#=============================================================================
-
 patterns:
-  # Decorative glass pane borders.
-  - 'ravenauction-decoration'
-  # Back button to return to auction house.
-  - 'ravenauction-back'
-
-#=============================================================================
-# CATEGORY BUTTONS
-#=============================================================================
-# Each button opens the auction house filtered by that category.
-# Button types use ZAUCTIONHOUSE_CATEGORY with a 'category' field.
-# The 'category' value must match a key from categories.yml.
-
+- ravenauction-decoration
+- ravenauction-back
 items:
-
-  #---------------------------------------------------------------------------
-  # ALL ITEMS CATEGORY
-  #---------------------------------------------------------------------------
-  # Shows all items regardless of type (no filtering).
-  # This is the default view when first opening the auction house.
-
   all-items:
-    # Button type for category selection.
     type: ZAUCTIONHOUSE_CATEGORY
-
-    # Category identifier - 'all' is a special category showing everything.
     category: all
-
-    # Slot position - center of top row (excluding decoration).
     slot: 4
-
     item:
       material: CHEST
-      name: "#00FFFF<bold>ALL ITEMS"
+      name: '&r&#FF1F1FAll Items'
       lore:
-        - "&fEvery listing currently in the auction house."
-        - ""
-        # %ravenauction_category_count_all% shows total items.
-        - "#00FFFF✦ #AAAAAATotal items: #00FFFF%ravenauction_category_count_all%"
-        - ""
-        - "#FFFF55▸ #FFFF55&nCLICK&r #00FFFFto Browse"
-
-  #---------------------------------------------------------------------------
-  # BLOCKS CATEGORY
-  #---------------------------------------------------------------------------
-  # Shows only placeable block items.
-
+      - ''
+      - '&r&fBrowse All Auction Items.'
+      - '&r&fItems: %ravenauction_category_count_all%'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   blocks:
     type: ZAUCTIONHOUSE_CATEGORY
-    # Must match the key in categories.yml
     category: blocks
     slot: 19
-
     item:
-      # Representative material for this category.
       material: GRASS_BLOCK
-      name: "#33FF66<bold>BLOCKS"
+      name: '&r&#FF1F1FBlocks'
       lore:
-        - "&fBuilding blocks of every kind."
-        - ""
-        # Dynamic item count for this category.
-        - "#55FF55✔ #AAAAAAItems: #55FF55%ravenauction_category_count_blocks%"
-        - ""
-        - "#FFFF55▸ #FFFF55&nCLICK&r #55FF55to Browse"
-
-  #---------------------------------------------------------------------------
-  # WEAPONS CATEGORY
-  #---------------------------------------------------------------------------
-  # Shows swords, bows, crossbows, and other weapons.
-
+      - ''
+      - '&r&fBrowse Building Blocks.'
+      - '&r&fItems: %ravenauction_category_count_blocks%'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   weapons:
     type: ZAUCTIONHOUSE_CATEGORY
     category: weapons
     slot: 20
-
     item:
       material: DIAMOND_SWORD
-      name: "#FF4D4D<bold>WEAPONS"
+      name: '&r&#FF1F1FWeapons'
       lore:
-        - "&fCombat equipment for the battlefield."
-        - "&fSwords, bows, crossbows and more."
-        - ""
-        - "#FF4D4D✕ #AAAAAAItems: #FF4D4D%ravenauction_category_count_weapons%"
-        - ""
-        - "#FFFF55▸ #FFFF55&nCLICK&r #FF4D4Dto Browse"
-
-  #---------------------------------------------------------------------------
-  # ARMOR CATEGORY
-  #---------------------------------------------------------------------------
-  # Shows helmets, chestplates, leggings, boots, and shields.
-
+      - ''
+      - '&r&fBrowse Weapons And Combat Gear.'
+      - '&r&fItems: %ravenauction_category_count_weapons%'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   armor:
     type: ZAUCTIONHOUSE_CATEGORY
     category: armor
     slot: 21
-
     item:
       material: DIAMOND_CHESTPLATE
-      name: "#00FFFF<bold>ARMOR"
+      name: '&r&#FF1F1FArmor'
       lore:
-        - "&fProtective gear to keep you alive."
-        - ""
-        - "#00FFFF✦ #AAAAAAItems: #00FFFF%ravenauction_category_count_armor%"
-        - ""
-        - "#FFFF55▸ #FFFF55&nCLICK&r #00FFFFto Browse"
-
-  #---------------------------------------------------------------------------
-  # TOOLS CATEGORY
-  #---------------------------------------------------------------------------
-  # Shows pickaxes, axes, shovels, hoes, and other tools.
-
+      - ''
+      - '&r&fBrowse Armor And Protection Gear.'
+      - '&r&fItems: %ravenauction_category_count_armor%'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   tools:
     type: ZAUCTIONHOUSE_CATEGORY
     category: tools
     slot: 22
-
     item:
       material: DIAMOND_PICKAXE
-      name: "#FFAA00<bold>TOOLS"
+      name: '&r&#FF1F1FTools'
       lore:
-        - "&fMining, digging and farming gear."
-        - ""
-        - "#FFAA00◈ #AAAAAAItems: #FFCC00%ravenauction_category_count_tools%"
-        - ""
-        - "#FFFF55▸ #FFFF55&nCLICK&r #FFAA00to Browse"
-
-  #---------------------------------------------------------------------------
-  # CONSUMABLES CATEGORY
-  #---------------------------------------------------------------------------
-  # Shows potions, food, and other consumable items.
-
+      - ''
+      - '&r&fBrowse Mining And Farming Tools.'
+      - '&r&fItems: %ravenauction_category_count_tools%'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   consumables:
     type: ZAUCTIONHOUSE_CATEGORY
     category: consumables
     slot: 23
-
     item:
       material: GOLDEN_APPLE
-      name: "#33FF66<bold>CONSUMABLES"
+      name: '&r&#FF1F1FConsumables'
       lore:
-        - "&fFood, potions and other one-use items."
-        - ""
-        - "#55FF55✔ #AAAAAAItems: #55FF55%ravenauction_category_count_consumables%"
-        - ""
-        - "#FFFF55▸ #FFFF55&nCLICK&r #55FF55to Browse"
-
-  #---------------------------------------------------------------------------
-  # RESOURCES CATEGORY
-  #---------------------------------------------------------------------------
-  # Shows ores, ingots, and crafting materials.
-
+      - ''
+      - '&r&fBrowse Food And Potions.'
+      - '&r&fItems: %ravenauction_category_count_consumables%'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   resources:
     type: ZAUCTIONHOUSE_CATEGORY
     category: resources
     slot: 24
-
     item:
       material: DIAMOND
-      name: "#FFAA00<bold>RESOURCES"
+      name: '&r&#FF1F1FResources'
       lore:
-        - "&fOres, ingots and crafting materials."
-        - ""
-        - "#FFAA00◈ #AAAAAAItems: #FFCC00%ravenauction_category_count_resources%"
-        - ""
-        - "#FFFF55▸ #FFFF55&nCLICK&r #FFAA00to Browse"
-
-  #---------------------------------------------------------------------------
-  # ENCHANTED BOOKS CATEGORY
-  #---------------------------------------------------------------------------
-  # Shows enchanted books only.
-
+      - ''
+      - '&r&fBrowse Ores And Crafting Materials.'
+      - '&r&fItems: %ravenauction_category_count_resources%'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   enchanted-books:
     type: ZAUCTIONHOUSE_CATEGORY
     category: enchanted-books
     slot: 25
-
     item:
       material: ENCHANTED_BOOK
-      name: "#B466DF<bold>ENCHANTED BOOKS"
+      name: '&r&#FF1F1FEnchanted Books'
       lore:
-        - "&fBooks carrying powerful enchantments."
-        - ""
-        - "#B466DF★ #AAAAAAItems: #B466DF%ravenauction_category_count_enchanted-books%"
-        - ""
-        - "#FFFF55▸ #FFFF55&nCLICK&r #B466DFto Browse"
-
-  #---------------------------------------------------------------------------
-  # MISCELLANEOUS CATEGORY
-  #---------------------------------------------------------------------------
-  # Shows items that don't fit in other categories.
-
+      - ''
+      - '&r&fBrowse Enchanted Books.'
+      - '&r&fItems: %ravenauction_category_count_enchanted-books%'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   misc:
     type: ZAUCTIONHOUSE_CATEGORY
     category: misc
     slot: 31
-
     item:
       material: CHEST
-      name: "#00FFFF<bold>MISCELLANEOUS"
+      name: '&r&#FF1F1FMiscellaneous'
       lore:
-        - "&fEverything that fits nowhere else."
-        - ""
-        - "#00FFFF✦ #AAAAAAItems: #00FFFF%ravenauction_category_count_misc%"
-        - ""
-        - "#FFFF55▸ #FFFF55&nCLICK&r #00FFFFto Browse"
+      - ''
+      - '&r&fBrowse Other Auction Items.'
+      - '&r&fItems: %ravenauction_category_count_misc%'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35

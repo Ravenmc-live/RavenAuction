@@ -1,0 +1,111 @@
+item-lore:
+  force-amount-one: false
+  listed-auction-item:
+  - ''
+  - '&7Auction Details'
+  - ''
+  - '&fSeller: #FF1F1F%seller%'
+  - '&fPrice: #FF1F1F%price%'
+  - '&fExpires: #FF1F1F%time-remaining%'
+  multiple-listed-auction-item:
+  - ''
+  - '&7Auction Details'
+  - ''
+  - '&fSeller: #FF1F1F%seller%'
+  - '&fPrice: #FF1F1F%price%'
+  - '&fExpires: #FF1F1F%time-remaining%'
+  - ''
+  - '&fContents: #FF1F1FMultiple items'
+  expired-item:
+  - ''
+  - '&7Auction Details'
+  - ''
+  - '&fExpired: #FF1F1F%time-remaining%'
+  purchased-item:
+  - ''
+  - '&7Auction Details'
+  - ''
+  - '&fPurchased: #FF1F1F%time-remaining%'
+  selling-item:
+  - ''
+  - '&7Auction Details'
+  - ''
+  - '&fExpires: #FF1F1F%time-remaining%'
+  being-purchased-item:
+  - ''
+  - '&7Auction Details'
+  - ''
+  - '&fExpires: #FF1F1F%time-remaining%'
+  - ''
+  - '&7A purchase is in progress.'
+  history-item:
+  - ''
+  - '#FF1F1F・ &fBuyer&8: #FF1F1F%buyer%'
+  - '#FF1F1F◆ &fPrice&8: #FF1F1F%price%'
+  - '#FF1F1F⌚ &fDate&8: #FF1F1F%date%'
+  admin-log-item:
+  - ''
+  - '#FF1F1F⌁ &fType&8: #FF1F1F%type%'
+  - '#FF1F1F・ &fPlayer&8: #FF1F1F%player%'
+  - '#FF1F1F・ &fTarget&8: #FF1F1F%target%'
+  - '#FF1F1F◆ &fPrice&8: #FF1F1F%price%'
+  - '#FF1F1F⌚ &fDate&8: #FF1F1F%date%'
+  - ''
+  admin-log-multiple-item:
+  - ''
+  - '#FF1F1F⌁ &fType&8: #FF1F1F%type%'
+  - '#FF1F1F・ &fPlayer&8: #FF1F1F%player%'
+  - '#FF1F1F・ &fTarget&8: #FF1F1F%target%'
+  - '#FF1F1F◆ &fPrice&8: #FF1F1F%price%'
+  - '#FF1F1F⌚ &fDate&8: #FF1F1F%date%'
+  - ''
+  sell-inventory-remove-item:
+  - ''
+  status:
+    seller: ''
+    buyer: ''
+    right-seller: ''
+    right-buyer: ''
+  log-type-names:
+    SALE: Item Listed
+    PURCHASE: Item Purchased
+    REMOVE_LISTED: Removed from Listing
+    REMOVE_SELLING: Retrieved Selling Item
+    REMOVE_EXPIRED: Retrieved Expired
+    REMOVE_PURCHASED: Retrieved Purchase
+message-colors:
+- key: <primary>
+  color: '#FF1F1F'
+- key: <secondary>
+  color: '#656665'
+- key: <error>
+  color: '#FF1F1F'
+- key: <success>
+  color: '#FF1F1F'
+special-items:
+  auction-item:
+    material: CHEST
+    name: '#FF1F1FBulk Sale'
+item-display:
+  lang: '#FF1F1Fx%amount% &7<lang:%item-translation-key%>'
+  item-name: '#FF1F1Fx%amount% &7%item-name%'
+  and: ' &fand '
+  between: '&f, '
+  merge-similar-items: true
+action:
+  purchased-item:
+    money-sound:
+      enable: true
+      category: MASTER
+      sound: minecraft:entity.villager.no
+      volume: 0.6
+      pitch: 1.0
+    money-item:
+      enable: false
+    money-message: false
+sort-items:
+  translations:
+    DECREASING_DATE: Recently Listed
+    ASCENDING_DATE: Ending Soon
+    DECREASING_PRICE: Highest Price
+    ASCENDING_PRICE: Lowest Price

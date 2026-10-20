@@ -1,172 +1,79 @@
-################################################################################################################################
-#
-#   RavenAuction V4 - Admin History Main Inventory
-#
-#   This is the admin hub for viewing a player's auction history.
-#   From here, admins can access all aspects of a player's auction activity.
-#
-#   FEATURES:
-#   - View target player's expired items
-#   - View target player's purchased items
-#   - View target player's selling items
-#   - Access action logs
-#   - Access transaction history
-#
-#   ACCESS:
-#   - /ah admin history <player>
-#   - Requires admin permission
-#
-#   Documentation: https://docs.groupez.dev/ravenauction/introduction
-#   Discord: https://discord.groupez.dev/
-#
-################################################################################################################################
-
-#=============================================================================
-# INVENTORY SETTINGS
-#=============================================================================
-
-# Inventory title with target player placeholder.
-# %target% = name of the player being viewed
-name: '#0c1719ᴀᴅᴍɪɴ ɢʟᴏʙᴀʟ ʜɪsᴛᴏʀʏ (%target%)'
-
-# Inventory size - 6 rows.
+name: '&8ADMIN GLOBAL HIsTORY (%target%)'
 size: 54
-
-#=============================================================================
-# ITEMS
-#=============================================================================
-
 items:
-
-  #---------------------------------------------------------------------------
-  # TARGET PLAYER HEAD
-  #---------------------------------------------------------------------------
-  # Shows the player head of the target being viewed.
-
   target:
-    # Button type - displays target player information.
     type: ZAUCTIONHOUSE_ADMIN_HISTORY_MAIN
-
-    # Slot position - top center.
     slot: 13
-
     item:
-      # Display the target player's head.
-      # %target% is replaced with the player name.
       player-head: '%target%'
-      name: '#B466DF<bold>%target%'
+      name: '&r&#FF1F1F%target%'
       lore:
-        - '&fAuction activity for this player.'
-        - ''
-        - '#B466DF★ #AAAAAAUse the buttons below to inspect it.'
-
-  #---------------------------------------------------------------------------
-  # EXPIRED ITEMS BUTTON
-  #---------------------------------------------------------------------------
-  # Opens the target player's expired items.
-
+      - ''
+      - '&r&fAuction Activity'
+      - '&r&fUse The Buttons Below To Inspect'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   expired:
-    # Button type - opens admin expired items view.
     type: ZAUCTIONHOUSE_ADMIN_HISTORY_EXPIRED
-
-    # Slot position.
     slot: 28
-
     item:
-      # Hourglass/clock texture.
-      url: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjdhYWRmZjlkZGM1NDZmZGNlYzZlZDU5MTljYzM5ZGZhOGQwYzA3ZmY0YmM2MTNhMTlmMmU2ZDdmMjU5MyJ9fX0="
-      name: '#FFAA00<bold>EXPIRED ITEMS'
+      url: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjdhYWRmZjlkZGM1NDZmZGNlYzZlZDU5MTljYzM5ZGZhOGQwYzA3ZmY0YmM2MTNhMTlmMmU2ZDdmMjU5MyJ9fX0=
+      name: '&r&#FF1F1FExpired Items'
       lore:
-        - '&fListings that ran out of time before selling.'
-        - ''
-        # %expired-items% = number of expired items for target
-        # %s% = pluralization suffix
-        - '#FFAA00◈ #AAAAAA%target% has #FFCC00%expired-items% #AAAAAAitem%s%'
-        - ''
-        - '#FFFF55▸ #FFFF55&nCLICK&r #FFAA00to Open'
-
-  #---------------------------------------------------------------------------
-  # PURCHASED ITEMS BUTTON
-  #---------------------------------------------------------------------------
-  # Opens the target player's purchased items.
-
+      - ''
+      - '&r&fItems: %expired-items%'
+      - '&r&fListings That Ran Out Of Time'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   purchased:
-    # Button type - opens admin purchased items view.
     type: ZAUCTIONHOUSE_ADMIN_HISTORY_PURCHASED
-
     slot: 29
-
     item:
-      # Chest texture.
-      url: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjM3Y2FlNWM1MWViMTU1OGVhODI4ZjU4ZTBkZmY4ZTZiN2IwYjFhMTgzZDczN2VlY2Y3MTQ2NjE3NjEifX19"
-      name: '#33FF66<bold>PURCHASED ITEMS'
+      url: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjM3Y2FlNWM1MWViMTU1OGVhODI4ZjU4ZTBkZmY4ZTZiN2IwYjFhMTgzZDczN2VlY2Y3MTQ2NjE3NjEifX19
+      name: '&r&#FF1F1FPurchased Items'
       lore:
-        - '&fItems bought but not yet collected.'
-        - ''
-        # %purchased-items% = number of purchased items
-        - '#55FF55✔ #AAAAAA%target% has #55FF55%purchased-items% #AAAAAAitem%s%'
-        - ''
-        - '#FFFF55▸ #FFFF55&nCLICK&r #55FF55to Open'
-
-  #---------------------------------------------------------------------------
-  # SELLING ITEMS BUTTON
-  #---------------------------------------------------------------------------
-  # Opens the target player's currently listed items.
-
+      - ''
+      - '&r&fItems: %purchased-items%'
+      - '&r&fBought But Not Yet Collected'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   selling:
-    # Button type - opens admin selling items view.
     type: ZAUCTIONHOUSE_ADMIN_HISTORY_SELLING
-
     slot: 30
-
     item:
-      # Player icon texture.
-      url: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjU4MDdjYzRjM2I2OTU4YWVhNjE1NmU4NDUxOGQ5MWE0OWM1ZjMyOTcxZTZlYjI2OWEyM2EyNWEyNzE0NSJ9fX0="
-      name: '#00FFFF<bold>SALE ITEMS'
+      url: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjU4MDdjYzRjM2I2OTU4YWVhNjE1NmU4NDUxOGQ5MWE0OWM1ZjMyOTcxZTZlYjI2OWEyM2EyNWEyNzE0NSJ9fX0=
+      name: '&r&#FF1F1FSale Items'
       lore:
-        - '&fItems this player currently has listed.'
-        - ''
-        # %selling-items% = number of items on sale
-        - '#00FFFF✦ #AAAAAA%target% has #00FFFF%selling-items% #AAAAAAitem%s% on sale'
-        - ''
-        - '#FFFF55▸ #FFFF55&nCLICK&r #00FFFFto Open'
-
-  #---------------------------------------------------------------------------
-  # LOGS BUTTON
-  #---------------------------------------------------------------------------
-  # Opens the action logs for the target player.
-  # Logs show all auction actions: listings, purchases, removals.
-
+      - ''
+      - '&r&fItems: %selling-items%'
+      - '&r&fCurrently Listed For Sale'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   logs:
-    # Button type - opens admin logs view.
     type: ZAUCTIONHOUSE_ADMIN_HISTORY_LOGS
-
     slot: 33
-
     item:
       material: SUNFLOWER
-      name: '#FFAA00<bold>LOGS'
+      name: '&r&#FF1F1FLogs'
       lore:
-        - '&fEvery auction action recorded for this player.'
-        - ''
-        - '#FFFF55▸ #FFFF55&nCLICK&r #FFAA00to Open'
-
-  #---------------------------------------------------------------------------
-  # TRANSACTIONS BUTTON
-  #---------------------------------------------------------------------------
-  # Opens the transaction history for the target player.
-  # Transactions show completed sales with financial details.
-
+      - ''
+      - '&r&fEvery Recorded Action'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   transactions:
-    # Button type - opens admin transactions view.
     type: ZAUCTIONHOUSE_ADMIN_HISTORY_TRANSACTIONS
-
     slot: 34
-
     item:
       material: NETHER_STAR
-      name: '#33FF66<bold>TRANSACTIONS'
+      name: '&r&#FF1F1FTransactions'
       lore:
-        - '&fCompleted sales and their payouts.'
-        - ''
-        - '#FFFF55▸ #FFFF55&nCLICK&r #55FF55to Open'
+      - ''
+      - '&r&fCompleted Sales And Payouts'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35

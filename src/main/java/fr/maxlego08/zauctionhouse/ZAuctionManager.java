@@ -916,8 +916,9 @@ public class ZAuctionManager extends ZUtils implements AuctionManager {
 
             var itemStacks = auctionItem.getItemStacks();
             for (ItemStack itemStack : itemStacks) {
-                player.getInventory().addItem(itemStack).forEach((slot, dropItemStack) -> player.getWorld().dropItem(player.getLocation(), dropItemStack));
+                player.getInventory().addItem(itemStack.clone()).forEach((slot, dropItemStack) -> player.getWorld().dropItem(player.getLocation(), dropItemStack));
             }
+            player.playSound(player.getLocation(), "minecraft:entity.experience_orb.pickup", 0.35f, 1.15f);
 
         } else plugin.getLogger().severe("give item not implemented");
     }
@@ -941,7 +942,7 @@ public class ZAuctionManager extends ZUtils implements AuctionManager {
         this.sortedItemsCache.ensureCacheValidAsync().thenRun(() -> {
             for (Player onlinePlayer : this.plugin.getServer().getOnlinePlayers()) {
 
-                if (onlinePlayer == ignoredPlayer) return;
+                if (onlinePlayer == ignoredPlayer) continue;
 
                 this.plugin.getScheduler().runAtEntity(onlinePlayer, w -> {
 

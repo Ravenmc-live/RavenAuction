@@ -87,6 +87,8 @@ public class SortButton extends Button {
             cache.set(PlayerCacheKey.ITEM_SORT, nextSort);
 
             cache.remove(PlayerCacheKey.ITEMS_LISTED);
+
+            cache.remove(PlayerCacheKey.ITEMS_SEARCH);
             this.plugin.getAuctionManager().getItemsListedForSale(player);
 
             this.plugin.getScheduler().runAtEntity(player, w -> {

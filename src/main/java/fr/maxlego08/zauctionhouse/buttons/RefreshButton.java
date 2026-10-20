@@ -56,6 +56,8 @@ public class RefreshButton extends Button {
         this.plugin.getScheduler().runAsync(wrappedTask -> {
 
             cache.remove(PlayerCacheKey.ITEMS_LISTED);
+
+            cache.remove(PlayerCacheKey.ITEMS_SEARCH);
             this.plugin.getAuctionManager().getItemsListedForSale(player);
 
             this.plugin.getScheduler().runAtEntity(player, w -> {

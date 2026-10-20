@@ -1,199 +1,105 @@
-################################################################################################################################
-#
-#   RavenAuction V4 - Admin Logs Inventory
-#
-#   This inventory displays all action logs for a player.
-#   Logs record every auction action: listing, purchasing, and removing items.
-#
-#   LOG TYPES:
-#   - SALE: Item was listed for sale
-#   - PURCHASE: Item was purchased
-#   - REMOVE_LISTED: Item was removed from active listing
-#   - REMOVE_SELLING: Item was retrieved from selling inventory
-#   - REMOVE_EXPIRED: Item was retrieved from expired inventory
-#   - REMOVE_PURCHASED: Item was retrieved from purchased inventory
-#
-#   FEATURES:
-#   - Filter by log type
-#   - Filter by date range
-#   - Retrieve items from log entries (admin recovery)
-#
-#   ACCESS:
-#   - From admin history main menu → Logs button
-#
-#   Documentation: https://docs.groupez.dev/ravenauction/introduction
-#   Discord: https://discord.groupez.dev/
-#
-################################################################################################################################
-
-#=============================================================================
-# INVENTORY SETTINGS
-#=============================================================================
-
-# Inventory title with pagination placeholders.
-name: '#0c1719ᴀᴅᴍɪɴ ʟᴏɢs (%page%/%max-page%)'
-
-# Inventory size - 6 rows.
+name: '&8ADMIN LOGs (%page%/%max-page%)'
 size: 54
-
-#=============================================================================
-# PATTERNS
-#=============================================================================
-
 patterns:
-  # Decorative glass pane borders.
-  - 'ravenauction-decoration'
-  # Previous/next page buttons.
-  - 'ravenauction-pagination'
-  # Back button to return to admin history main.
-  - 'ravenauction-back'
-
-#=============================================================================
-# ITEMS
-#=============================================================================
-
+- ravenauction-decoration
+- ravenauction-pagination
+- ravenauction-back
 items:
-
-  #---------------------------------------------------------------------------
-  # LOG ENTRIES DISPLAY
-  #---------------------------------------------------------------------------
-  # Shows all log entries for the target player.
-  # Each entry shows the action type, item, and timestamp.
-
   items:
-    # Button type - displays log entries.
     type: ZAUCTIONHOUSE_ADMIN_LOGS
-
-    # Slot for loading indicator.
     loading-slot: 22
-
-    # Slots for displaying log entries (4 rows × 9 columns = 36 slots).
     slots:
-      - 9-17    # Row 2
-      - 18-26   # Row 3
-      - 27-35   # Row 4
-      - 36-44   # Row 5
-
-    # Item shown while loading logs.
+    - 9-17
+    - 18-26
+    - 27-35
+    - 36-44
     item:
       material: BARRIER
-      name: "#FFAA00<bold>LOADING..."
+      name: '&r&#FF1F1FLoading'
       lore:
-        - "&fFetching the action logs."
-        - ""
-        - "#FFAA00◈ #AAAAAAPlease wait a moment."
-
-    # Item shown when no logs exist.
+      - ''
+      - '&r&fFetching The Action Logs'
+      - '&r&fPlease Wait A Moment'
     else:
       slots:
-        - 22
+      - 22
       item:
         material: BARRIER
-        name: "#FF4D4D<bold>NO LOGS FOUND"
+        name: '&r&#FF1F1FNo Logs Found'
         lore:
-          - "&fThis player has no recorded auction activity."
-          - ""
-          - "#FF4D4D✕ #AAAAAATry widening the type or date filter."
-
-  #---------------------------------------------------------------------------
-  # FILTER BY TYPE BUTTON
-  #---------------------------------------------------------------------------
-  # Cycles through log type filters.
-
+        - ''
+        - '&r&fNo Recorded Activity'
+        - '&r&fTry Widening The Type Or Date Filter'
+      sound: UI_BUTTON_CLICK
+      pitch: 1.05
+      volume: 0.35
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   filter-type:
-    # Button type - handles type filtering.
     type: ZAUCTIONHOUSE_ADMIN_LOGS_FILTER_TYPE
-
-    # Slot position.
     slot: 47
-
-    # Format for currently selected type.
-    enable-text: ' #FFAA00◈ #FFCC00%type%'
-
-    # Format for unselected types.
-    disable-text: ' #AAAAAA◈ &f%type%'
-
-    # Display name for "all types" option.
-    all-types-name: "All"
-
-    # Available log types to filter by.
+    enable-text: ' #FF1F1F◈ #FF1F1F%type%'
+    disable-text: ' #FF1F1F◈ &7%type%'
+    all-types-name: All
     types:
-      - SALE              # Items listed for sale
-      - PURCHASE          # Items purchased
-      - REMOVE_LISTED     # Items removed from active listings
-      - REMOVE_SELLING    # Items retrieved from selling inventory
-      - REMOVE_EXPIRED    # Items retrieved from expired inventory
-      - REMOVE_PURCHASED  # Items retrieved from purchased inventory
-
-    # Display names for each type.
+    - SALE
+    - PURCHASE
+    - REMOVE_LISTED
+    - REMOVE_SELLING
+    - REMOVE_EXPIRED
+    - REMOVE_PURCHASED
     type-names:
-      SALE: "Sale"
-      PURCHASE: "Purchase"
-      REMOVE_LISTED: "Remove Listed"
-      REMOVE_SELLING: "Remove Owned"
-      REMOVE_EXPIRED: "Remove Expired"
-      REMOVE_PURCHASED: "Remove Purchased"
-
+      SALE: Sale
+      PURCHASE: Purchase
+      REMOVE_LISTED: Remove Listed
+      REMOVE_SELLING: Remove Owned
+      REMOVE_EXPIRED: Remove Expired
+      REMOVE_PURCHASED: Remove Purchased
     item:
       material: HOPPER
-      name: '#FFAA00<bold>FILTER BY TYPE'
+      name: '&r&#FF1F1FFilter By Type'
       lore:
-        - '&fShow only one kind of auction action.'
-        - ''
-        # Placeholders for each type (formatted by enable/disable-text).
-        - '%ALL%'
-        - '%SALE%'
-        - '%PURCHASE%'
-        - '%REMOVE_LISTED%'
-        - '%REMOVE_SELLING%'
-        - '%REMOVE_EXPIRED%'
-        - '%REMOVE_PURCHASED%'
-        - ''
-        - '#FFFF55▸ #FFFF55&nCLICK&r #FFAA00to Change Filter'
-
-  #---------------------------------------------------------------------------
-  # FILTER BY DATE BUTTON
-  #---------------------------------------------------------------------------
-  # Cycles through date range filters.
-
+      - ''
+      - '&r&fShow Only One Kind Of Action'
+      - '&r&f%ALL%'
+      - '&r&f%SALE%'
+      - '&r&f%PURCHASE%'
+      - '&r&f%REMOVE_LISTED%'
+      - '&r&f%REMOVE_SELLING%'
+      - '&r&f%REMOVE_EXPIRED%'
+      - '&r&f%REMOVE_PURCHASED%'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   filter-date:
-    # Button type - handles date filtering.
     type: ZAUCTIONHOUSE_ADMIN_LOGS_FILTER_DATE
-
     slot: 51
-
-    # Format for currently selected date range.
-    enable-text: ' #FFAA00◈ #FFCC00%date%'
-
-    # Format for unselected date ranges.
-    disable-text: ' #AAAAAA◈ &f%date%'
-
-    # Available date filters.
+    enable-text: ' #FF1F1F◈ #FF1F1F%date%'
+    disable-text: ' #FF1F1F◈ &7%date%'
     filters:
-      - ALL         # All time
-      - TODAY       # Today only
-      - THIS_WEEK   # Last 7 days
-      - THIS_MONTH  # Last 30 days
-      - THIS_YEAR   # Last 365 days
-
-    # Display names for each date filter.
+    - ALL
+    - TODAY
+    - THIS_WEEK
+    - THIS_MONTH
+    - THIS_YEAR
     filter-names:
-      ALL: "All Time"
-      TODAY: "Today"
-      THIS_WEEK: "This Week"
-      THIS_MONTH: "This Month"
-      THIS_YEAR: "This Year"
-
+      ALL: All Time
+      TODAY: Today
+      THIS_WEEK: This Week
+      THIS_MONTH: This Month
+      THIS_YEAR: This Year
     item:
       material: CLOCK
-      name: '#FFAA00<bold>FILTER BY DATE'
+      name: '&r&#FF1F1FFilter By Date'
       lore:
-        - '&fLimit the results to a time range.'
-        - ''
-        - '%ALL%'
-        - '%TODAY%'
-        - '%THIS_WEEK%'
-        - '%THIS_MONTH%'
-        - '%THIS_YEAR%'
-        - ''
-        - '#FFFF55▸ #FFFF55&nCLICK&r #FFAA00to Change Filter'
+      - ''
+      - '&r&fLimit The Results To A Time Range'
+      - '&r&f%ALL%'
+      - '&r&f%TODAY%'
+      - '&r&f%THIS_WEEK%'
+      - '&r&f%THIS_MONTH%'
+      - '&r&f%THIS_YEAR%'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35

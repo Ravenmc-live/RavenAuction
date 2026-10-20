@@ -150,8 +150,7 @@ public class ListedItemsButton extends PaginateButton {
     /**
      * Process the purchase of an item.
      * This method will first check if the player has enough money to purchase the item.
-     * If the player does not have enough money, it will send a message to the player and
-     * temporarily replace the item in the inventory with a "no money" item.
+     * If the player does not have enough money, only the denial sound is played.
      * If the player has enough money, it will update the status of the item to "is purchase confirm"
      * and open the purchase confirm inventory.
      * The method will also use the cache to prevent the player from purchasing the item multiple times.
@@ -164,8 +163,6 @@ public class ListedItemsButton extends PaginateButton {
      */
     private void processPurchase(Player player, InventoryEngine inventoryEngine, int slot, Item item, ItemStack itemStack, Inventories inventories) {
 
-        var configuration = this.plugin.getConfiguration();
-        var actionConfiguration = configuration.getActions().purchased();
         var manager = this.plugin.getAuctionManager();
         var cache = manager.getCache(player);
 
@@ -200,22 +197,7 @@ public class ListedItemsButton extends PaginateButton {
 
             if (!hasMoney) {
 
-                if (actionConfiguration.sendNoMoneyMessage()) {
-                    manager.message(player, Message.NOT_ENOUGH_MONEY);
-                }
-
-                actionConfiguration.noMoneySound().play(player);
-
-                if (actionConfiguration.noMoney().enable()) {
-                    var spigotInventory = inventoryEngine.getSpigotInventory();
-                    spigotInventory.setItem(slot, actionConfiguration.noMoney().menuItemStack().build(player));
-                    this.plugin.getScheduler().runLater(() -> {
-
-                        if (inventoryEngine.isClose()) return;
-                        spigotInventory.setItem(slot, itemStack);
-
-                    }, actionConfiguration.noMoney().duration());
-                }
+                fr.maxlego08.zauctionhouse.utils.PurchaseFeedback.insufficientFunds(this.plugin, player);
 
                 cache.set(PlayerCacheKey.PURCHASE_ITEM, false);
                 return;

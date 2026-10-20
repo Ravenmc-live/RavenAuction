@@ -233,3 +233,15 @@ deployServerNames.forEach { name ->
     }
     sftpDeployAll.configure { dependsOn(serverTask) }
 }
+
+
+dependencies {
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
+    testImplementation("org.mockito:mockito-core:5.14.2")
+    testImplementation("io.papermc.paper:paper-api:1.21.10-R0.1-SNAPSHOT")
+    testImplementation("fr.maxlego08.menu:zmenu-api:1.1.1.6")
+}
+
+tasks.test {
+    useJUnitPlatform()
+}

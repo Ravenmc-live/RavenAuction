@@ -1,147 +1,63 @@
-################################################################################################################################
-#
-#   RavenAuction V4 - Shulker Content Inventory
-#
-#   This inventory displays the contents of shulker boxes being sold.
-#   Allows buyers to preview what's inside before purchasing.
-#
-#   FEATURES:
-#   - Preview all items inside shulker boxes
-#   - Navigate between multiple shulkers (bulk sales)
-#   - View-only mode - items cannot be taken
-#
-#   ACCESS:
-#   - Click "View Shulker Content" button in purchase/remove confirmations
-#   - Only appears when the item being sold contains shulker boxes
-#
-#   Documentation: https://docs.groupez.dev/ravenauction/introduction
-#   Discord: https://discord.groupez.dev/
-#
-################################################################################################################################
-
-#=============================================================================
-# INVENTORY SETTINGS
-#=============================================================================
-
-# Inventory title with shulker navigation placeholders.
-# %shulker-current% = currently viewing shulker number (1-based)
-# %shulker-total% = total number of shulkers in the sale
-name: "#0c1719sʜᴜʟᴋᴇʀ ᴄᴏɴᴛᴇɴᴛ (%shulker-current%/%shulker-total%)"
-
-# Inventory size - 6 rows.
+name: '&8sHULKER CONTENT (%shulker-current%/%shulker-total%)'
 size: 54
-
-#=============================================================================
-# PATTERNS
-#=============================================================================
-
 patterns:
-  # Decorative glass pane borders.
-  - 'ravenauction-decoration'
-  # Back button to return to confirmation screen.
-  - 'ravenauction-back'
-
-#=============================================================================
-# ITEMS
-#=============================================================================
-
+- ravenauction-decoration
+- ravenauction-back
 items:
-
-  #---------------------------------------------------------------------------
-  # SHULKER CONTENT DISPLAY
-  #---------------------------------------------------------------------------
-  # Shows the contents of the currently selected shulker box.
-  # Items are displayed in a 7×4 grid to mimic shulker storage.
-
   content:
-    # Button type - displays shulker contents.
     type: ZAUCTIONHOUSE_SHULKER_CONTENT
-
-    # Slots for displaying shulker contents.
-    # 4 rows × 7 columns = 28 slots (shulkers hold 27 items).
     slots:
-      - 9-17    # Row 2
-      - 18-26   # Row 3
-      - 27-35   # Row 4
-      - 36-44   # Row 5
-
-    # Slot where the empty indicator is shown when the shulker has no items.
+    - 9-17
+    - 18-26
+    - 27-35
+    - 36-44
     empty-slot: 22
-
-    # Item displayed when the shulker box is empty.
     item:
       material: BARRIER
-      name: "#FF4D4D<bold>EMPTY SHULKER"
+      name: '&r&#FF1F1FEmpty Shulker'
       lore:
-        - "&fThis shulker box does not contain any items."
-        - ""
-        - "#FF4D4D✕ #AAAAAANothing to preview here."
-
-  #---------------------------------------------------------------------------
-  # SHULKER INFO DISPLAY
-  #---------------------------------------------------------------------------
-  # Shows information about the current shulker being viewed.
-
+      - ''
+      - '&r&fThis Shulker Is Empty'
+      - '&r&fNothing To Preview Here.'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   shulker-info:
-    # Button type - displays current shulker info.
     type: ZAUCTIONHOUSE_SHULKER_INFO
-
-    # Slot position - center of top row.
     slot: 4
-
     item:
       material: SHULKER_BOX
-      name: "#00FFFF<bold>SHULKER BOX"
+      name: '&r&#FF1F1FShulker Box'
       lore:
-        - "&fPreview of the contents included in this sale."
-        - ""
-        # Shows current position in the shulker list.
-        - "#00FFFF✦ #AAAAAAViewing: #00FFFF%shulker_current% #AAAAAAof #00FFFF%shulker_total%"
-        - ""
-        - "#00FFFF✦ #AAAAAAUse the arrows below to switch."
-
-  #---------------------------------------------------------------------------
-  # PREVIOUS SHULKER BUTTON
-  #---------------------------------------------------------------------------
-  # Navigates to the previous shulker in bulk sales.
-
+      - ''
+      - '&r&fShulker: %shulker-current% /%shulker-total%'
+      - '&r&fUse The Arrows To Switch Boxes'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   previous:
-    # Button type - handles shulker navigation.
     type: ZAUCTIONHOUSE_SHULKER_NAVIGATION
-
-    # Direction to navigate.
     direction: previous
-
-    # Slot position - left of center in bottom row.
     slot: 48
-
     item:
       material: ARROW
-      name: "#00FFFF<bold>PREVIOUS SHULKER"
+      name: '&r&#FF1F1FPrevious Shulker'
       lore:
-        - "&fStep back to the previous shulker box."
-        - ""
-        - "#FFFF55▸ #FFFF55&nCLICK&r #00FFFFto Go Back"
-
-  #---------------------------------------------------------------------------
-  # NEXT SHULKER BUTTON
-  #---------------------------------------------------------------------------
-  # Navigates to the next shulker in bulk sales.
-
+      - ''
+      - '&r&fGo To The Previous Box'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   next:
-    # Button type - handles shulker navigation.
     type: ZAUCTIONHOUSE_SHULKER_NAVIGATION
-
-    # Direction to navigate.
     direction: next
-
-    # Slot position - right of center in bottom row.
     slot: 50
-
     item:
       material: ARROW
-      name: "#00FFFF<bold>NEXT SHULKER"
+      name: '&r&#FF1F1FNext Shulker'
       lore:
-        - "&fMove on to the next shulker box."
-        - ""
-        - "#FFFF55▸ #FFFF55&nCLICK&r #00FFFFto Continue"
+      - ''
+      - '&r&fGo To The Next Box'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35

@@ -52,6 +52,9 @@ public class PlayerPlaceholders implements PlaceholderRegister {
             return "main";
         }, "Returns the id of the current category for the player (main for auction house)");
 
+        placeholder.register("buying_item_name", player -> fr.maxlego08.zauctionhouse.buttons.PurchasePreviewButton.titleName(
+                manager.getCache(player).get(PlayerCacheKey.ITEM_SHOW)), "Returns the selected purchase item's material name");
+
         // Pending money placeholders
         placeholder.register("pending_money", player -> {
             var cache = manager.getCache(player);

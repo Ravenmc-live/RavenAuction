@@ -57,7 +57,8 @@ public class CategorySwitcherButton extends Button {
 
         var categoryManager = this.plugin.getCategoryManager();
         this.categories.forEach(categoryId -> {
-            String displayName = categoryManager.getCategory(categoryId).map(Category::getDisplayName).orElse(this.plugin.getCategoryManager().getAllCategoryName());
+            String displayName = categoryId.equalsIgnoreCase("main") ? "All"
+                    : categoryManager.getCategory(categoryId).map(Category::getDisplayName).orElse(categoryId);
             String text = (categoryId.equalsIgnoreCase(currentId) ? this.enableText : this.disableText).replace("%category%", displayName);
             placeholders.register(categoryId, text);
         });
@@ -103,6 +104,8 @@ public class CategorySwitcherButton extends Button {
         }
 
         cache.remove(PlayerCacheKey.ITEMS_LISTED);
+
+        cache.remove(PlayerCacheKey.ITEMS_SEARCH);
         this.plugin.getInventoriesLoader().openInventory(player, Inventories.AUCTION);
     }
 }

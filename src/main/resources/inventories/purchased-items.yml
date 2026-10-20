@@ -1,96 +1,39 @@
-################################################################################################################################
-#
-#   RavenAuction V4 - Purchased Items Inventory
-#
-#   This inventory displays items the player has bought from the auction house.
-#   Players can retrieve purchased items to their inventory from here.
-#
-#   ITEM DELIVERY:
-#   - If 'give-item' is false in config.yml, items come here after purchase
-#   - If 'give-item' is true, items go directly to inventory (if space available)
-#   - Items here have an expiration (default: 1 week) before permanent deletion
-#
-#   ACCESS:
-#   - /ah purchased
-#   - Click the "Purchased Items" button in the main auction house
-#
-#   Documentation: https://docs.groupez.dev/ravenauction/introduction
-#   Discord: https://discord.groupez.dev/
-#
-################################################################################################################################
-
-#=============================================================================
-# INVENTORY SETTINGS
-#=============================================================================
-
-# Inventory title with pagination placeholders.
-name: '#0c1719ᴘᴜʀᴄʜᴀsᴇᴅ ɪᴛᴇᴍs (%page%/%max-page%)'
-
-# Inventory size - 6 rows.
+name: '&8PURCHAsED ITEMs (%page%/%max-page%)'
 size: 54
-
-#=============================================================================
-# PATTERNS
-#=============================================================================
-
 patterns:
-  # Decorative glass pane borders.
-  - 'ravenauction-decoration'
-  # Previous/next page buttons.
-  - 'ravenauction-pagination'
-  # Back button to return to auction house.
-  - 'ravenauction-back'
-
-#=============================================================================
-# ITEMS
-#=============================================================================
-
+- ravenauction-decoration
+- ravenauction-pagination
+- ravenauction-back
 items:
-
-  #---------------------------------------------------------------------------
-  # PURCHASED ITEMS DISPLAY
-  #---------------------------------------------------------------------------
-  # Shows all items purchased by the viewing player.
-  # Click items to retrieve them.
-
   items:
-    # Button type - displays and handles purchased items.
     type: ZAUCTIONHOUSE_PURCHASED_ITEMS
-
-    # Slot for empty state placeholder.
     empty-slot: 22
-
-    # Slots for displaying purchased items (4 rows × 9 columns = 36 slots).
     slots:
-      - 9-17    # Row 2
-      - 18-26   # Row 3
-      - 27-35   # Row 4
-      - 36-44   # Row 5
-
-    # Placeholder item when no purchased items exist.
+    - 9-17
+    - 18-26
+    - 27-35
+    - 36-44
     item:
       material: BARRIER
-      name: "#FF4D4D<bold>NO ITEMS FOUND"
+      name: '&r&#FF1F1FNo Items Found'
       lore:
-        - "&fYou have no purchases waiting to be collected."
-        - ""
-        - "#FF4D4D✕ #AAAAAANothing to claim here."
-
-  #---------------------------------------------------------------------------
-  # REMOVE ALL BUTTON
-  #---------------------------------------------------------------------------
-  # Retrieves all purchased items at once (if inventory space allows).
-
+      - ''
+      - '&r&fNothing To Collect'
+      - '&r&fYou Have No Purchases Waiting.'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   remove-all:
     type: ZAUCTIONHOUSE_REMOVE_ALL_PURCHASED
     is-permanent: true
     slot: 47
     item:
       material: CHEST
-      name: "#33FF66<bold>RETRIEVE ALL"
+      name: '&r&#FF1F1FRetrieve All'
       lore:
-        - "&fCollect every purchased item at once."
-        - ""
-        - "#55FF55✔ #AAAAAANeeds enough free inventory space."
-        - ""
-        - "#FFFF55▸ #FFFF55&nCLICK&r #55FF55to Retrieve All"
+      - ''
+      - '&r&fCollect Every Purchase'
+      - '&r&fNeeds Enough Free Inventory Space'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35

@@ -1,97 +1,39 @@
-################################################################################################################################
-#
-#   RavenAuction V4 - Selling Items Inventory (Your Items)
-#
-#   This inventory displays items the player currently has listed for sale.
-#   Players can remove listings here to cancel sales and retrieve items.
-#
-#   FEATURES:
-#   - View all your active listings
-#   - See remaining time until expiration
-#   - Remove items from sale (cancel listing)
-#   - Items are not purchasable from this view (they're your own items)
-#
-#   ACCESS:
-#   - /ah selling
-#   - Click the "Your Items" button in the main auction house
-#
-#   Documentation: https://docs.groupez.dev/ravenauction/introduction
-#   Discord: https://discord.groupez.dev/
-#
-################################################################################################################################
-
-#=============================================================================
-# INVENTORY SETTINGS
-#=============================================================================
-
-# Inventory title with pagination placeholders.
-name: '#0c1719sᴇʟʟɪɴɢ ɪᴛᴇᴍs (%page%/%max-page%)'
-
-# Inventory size - 6 rows.
+name: '&8sELLING ITEMs (%page%/%max-page%)'
 size: 54
-
-#=============================================================================
-# PATTERNS
-#=============================================================================
-
 patterns:
-  # Decorative glass pane borders.
-  - 'ravenauction-decoration'
-  # Previous/next page buttons.
-  - 'ravenauction-pagination'
-  # Back button to return to auction house.
-  - 'ravenauction-back'
-
-#=============================================================================
-# ITEMS
-#=============================================================================
-
+- ravenauction-decoration
+- ravenauction-pagination
+- ravenauction-back
 items:
-
-  #---------------------------------------------------------------------------
-  # SELLING ITEMS DISPLAY
-  #---------------------------------------------------------------------------
-  # Shows all items currently listed for sale by the viewing player.
-  # Click items to remove them from sale.
-
   items:
-    # Button type - displays and handles the player's selling items.
     type: ZAUCTIONHOUSE_SELLING_ITEMS
-
-    # Slot for empty state placeholder.
     empty-slot: 22
-
-    # Slots for displaying selling items (4 rows × 9 columns = 36 slots).
     slots:
-      - 9-17    # Row 2
-      - 18-26   # Row 3
-      - 27-35   # Row 4
-      - 36-44   # Row 5
-
-    # Placeholder item when no items are listed.
+    - 9-17
+    - 18-26
+    - 27-35
+    - 36-44
     item:
       material: BARRIER
-      name: "#FF4D4D<bold>NO ITEMS FOUND"
+      name: '&r&#FF1F1FNo Items Found'
       lore:
-        - "&fYou have nothing listed for sale."
-        - ""
-        - "#FF4D4D✕ #AAAAAAUse &f/ah sell #AAAAAAto list an item."
-
-  #---------------------------------------------------------------------------
-  # REMOVE ALL BUTTON
-  #---------------------------------------------------------------------------
-  # Retrieves all selling items at once (if inventory space allows).
-
+      - ''
+      - '&r&fNothing Listed For Sale'
+      - '&r&fUse /ah sell To List An Item.'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   remove-all:
     type: ZAUCTIONHOUSE_REMOVE_ALL_SELLING
     is-permanent: true
     slot: 47
     item:
-      material: CHEST
-      name: "#33FF66<bold>RETRIEVE ALL"
+      material: HOPPER
+      name: '&r&#FF1F1FRemove All'
       lore:
-        - "&fCancel every listing and take the items back."
-        - ""
-        - "#55FF55✔ #AAAAAANeeds enough free inventory space."
-        - ""
-        - "#FFFF55▸ #FFFF55&nCLICK&r #55FF55to Retrieve All"
+      - ''
+      - '&r&fCancel Every Listing'
+      - '&r&fItems Return To Your Inventory'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35

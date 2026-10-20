@@ -80,13 +80,20 @@ public class SellService extends ZUtils implements AuctionSellService {
             }
 
             // Return to entity thread to verify items and remove them
-            this.plugin.getScheduler().runAtEntity(player, task -> {
+            this.plugin.getScheduler().runAtEntityWithFallback(player, task -> {
 
                 if (!player.isOnline()) {
                     if (taxResult.hasTax()) {
                         auctionEconomy.deposit(player.getUniqueId(), taxResult.taxAmount(), "Refund sell tax (items changed)");
                     }
                     resultFuture.complete(SellResult.failure("Player disconnected", SellFailReason.PLAYER_DISCONNECTED));
+                    return;
+                }
+
+                if (resultFuture.isDone()) {
+                    if (taxResult.hasTax()) {
+                        auctionEconomy.deposit(player.getUniqueId(), taxResult.taxAmount(), "Refund sell tax (operation timed out)");
+                    }
                     return;
                 }
 
@@ -101,33 +108,43 @@ public class SellService extends ZUtils implements AuctionSellService {
                     return;
                 }
 
-                // Remove items from their slots
+                var returnLocation = player.getLocation().clone();
                 removeItemsFromSlots(player, validSlotItems);
 
                 var storageManager = this.plugin.getStorageManager();
-                storageManager.createAuctionItem(player, price, expiredAt, itemsToSell, auctionEconomy).thenAccept(auctionItem -> {
-                    this.postSell(player, auctionItem, auctionEconomy, taxResult);
-                    resultFuture.complete(SellResult.success("Item listed successfully", auctionItem));
-                }).exceptionally(throwable -> {
+                CompletableFuture<AuctionItem> creation;
+                try {
+                    creation = storageManager.createAuctionItem(player, price, expiredAt, itemsToSell, auctionEconomy);
+                } catch (RuntimeException ex) {
+                    creation = CompletableFuture.failedFuture(ex);
+                }
+                creation.whenComplete((auctionItem, throwable) -> {
+                    if (throwable == null) {
+                        try {
+                            this.postSell(player, auctionItem, auctionEconomy, taxResult);
+                        } catch (RuntimeException ex) {
+                            this.plugin.getLogger().severe("Listing was saved, but post-sale notification failed: " + ex.getMessage());
+                        } finally {
+                            resultFuture.complete(SellResult.success("Item listed successfully", auctionItem));
+                        }
+                        return;
+                    }
                     this.plugin.getLogger().severe("Unable to sell item: " + throwable.getMessage());
                     if (throwable.getCause() != null) {
                         this.plugin.getLogger().severe("Caused by: " + throwable.getCause().getMessage());
                     }
-                    // Return items to player safely
-                    if (player.isOnline() && itemsToSell != null) {
-                        itemsToSell.forEach(itemStack -> {
-                            if (itemStack != null) {
-                                player.getInventory().addItem(itemStack);
-                            }
-                        });
-                    }
+                    SaleItemRecovery.returnItems(this.plugin, player, returnLocation, itemsToSell);
                     // Refund the tax if the sale failed
                     if (taxResult.hasTax()) {
                         auctionEconomy.deposit(player.getUniqueId(), taxResult.taxAmount(), "Refund sell tax (sale failed)");
                     }
                     resultFuture.complete(SellResult.failure("Database error", SellFailReason.DATABASE_ERROR));
-                    return null;
                 });
+            }, () -> {
+                if (taxResult.hasTax()) {
+                    auctionEconomy.deposit(player.getUniqueId(), taxResult.taxAmount(), "Refund sell tax (player disconnected)");
+                }
+                resultFuture.complete(SellResult.failure("Player disconnected", SellFailReason.PLAYER_DISCONNECTED));
             });
         }).exceptionally(throwable -> {
             this.plugin.getLogger().severe("Unable to check tax for sell: " + throwable.getMessage());
@@ -373,7 +390,11 @@ public class SellService extends ZUtils implements AuctionSellService {
 
         this.manager.updateListedItems(auctionItem, true, player);
 
-        message(this.plugin, player, Message.ITEM_SOLD, "%price%", auctionItem.getFormattedPrice(), "%items%", auctionItem.getItemDisplay());
+        this.plugin.getScheduler().runAtEntity(player, task -> {
+            if (!player.isOnline()) return;
+            message(this.plugin, player, Message.ITEM_SOLD, "%price%", auctionItem.getFormattedPrice(), "%items%", auctionItem.getItemDisplay());
+            player.playSound(player.getLocation(), "minecraft:entity.experience_orb.pickup", 0.35f, 1.15f);
+        });
 
         String encodedItemStack = auctionItem.getItemStacks().stream().map(Base64ItemStack::encode).collect(Collectors.joining(";"));
         String additionalData = "added_auction_item_to_listed";
@@ -382,9 +403,7 @@ public class SellService extends ZUtils implements AuctionSellService {
         }
         this.plugin.getStorageManager().log(LogType.SALE, auctionItem.getId(), player, null, encodedItemStack, auctionItem.getPrice(), auctionEconomy.getName(), additionalData, null);
 
-        this.plugin.getAuctionClusterBridge().notifyItemListed(auctionItem).thenAccept(v -> {
-            this.plugin.getLogger().info("Cluster notify item sold");
-        }).exceptionally(throwable -> {
+        this.plugin.getAuctionClusterBridge().notifyItemListed(auctionItem).exceptionally(throwable -> {
             this.plugin.getLogger().severe("Unable to notify item sold: " + throwable.getMessage());
             return null;
         });

@@ -1,134 +1,29 @@
-################################################################################################################################
-#
-#   RavenAuction V4 - Purchase Confirmation Inventory
-#
-#   This inventory asks players to confirm their purchase before completing it.
-#   Shows the item being purchased with confirm/cancel options.
-#
-#   FEATURES:
-#   - Preview the item before buying
-#   - View shulker contents (if applicable)
-#   - Confirm or cancel the purchase
-#
-#   ACCESS:
-#   - Automatically opens when clicking an item to buy in the auction house
-#
-#   Documentation: https://docs.groupez.dev/ravenauction/introduction
-#   Discord: https://discord.groupez.dev/
-#
-################################################################################################################################
-
-#=============================================================================
-# INVENTORY SETTINGS
-#=============================================================================
-
-# Inventory title - question format for clarity.
-name: "#0c1719ᴘᴜʀᴄʜᴀsᴇ ᴛʜɪs ɪᴛᴇᴍ?"
-
-# Inventory size - 3 rows (27 slots) for compact confirmation dialog.
+name: '&8Buying %ravenauction_buying_item_name%'
 size: 27
-
-#=============================================================================
-# ITEMS
-#=============================================================================
-
 items:
-
-  #---------------------------------------------------------------------------
-  # CONFIRM BUTTON
-  #---------------------------------------------------------------------------
-  # Completes the purchase and transfers money/item.
-
   confirm:
-    # Button type - handles purchase confirmation.
+    slot: 11
     type: ZAUCTIONHOUSE_CONFIRM_PURCHASE
-
     item:
-      # Green glass pane for confirm action.
-      material: GREEN_STAINED_GLASS_PANE
-      name: "#33FF66<bold>PURCHASE"
+      material: LIME_STAINED_GLASS_PANE
+      name: '&r&#FF1F1FConfirm'
       lore:
-        - "&fBuy this item and pay the seller."
-        - ""
-        - "#FFFF55▸ #FFFF55&nCLICK&r #55FF55to Confirm"
-
-    # Multiple slots for larger click area.
-    # Left side of the inventory (3×3 grid).
-    slots:
-      - 0-2     # Top-left row
-      - 9-11    # Middle-left row
-      - 18-20   # Bottom-left row
-
-  #---------------------------------------------------------------------------
-  # CANCEL/BACK BUTTON
-  #---------------------------------------------------------------------------
-  # Cancels the purchase and returns to the auction house.
-
-  deny:
-    # Button type - returns to previous inventory.
-    type: BACK
-
-    item:
-      # Red glass pane for cancel action.
-      material: RED_STAINED_GLASS_PANE
-      name: "#FF4D4D<bold>CANCEL"
-      lore:
-        - "&fLeave without buying anything."
-        - ""
-        - "#FFFF55▸ #FFFF55&nCLICK&r #FF4D4Dto Go Back"
-
-    # Right side of the inventory (3×3 grid).
-    slots:
-      - 6-8     # Top-right row
-      - 15-17   # Middle-right row
-      - 24-26   # Bottom-right row
-
-  #---------------------------------------------------------------------------
-  # DECORATION
-  #---------------------------------------------------------------------------
-  # Fills the middle column with glass panes.
-
-  decoration:
-    item:
-      material: LIGHT_BLUE_STAINED_GLASS_PANE
-      name: "<white>"
-
-    # Middle column and surrounding slots.
-    slots:
-      - 3-5     # Top center
-      - 12      # Middle-left of center
-      - 14      # Middle-right of center
-      - 21-23   # Bottom center
-
-  #---------------------------------------------------------------------------
-  # ITEM PREVIEW
-  #---------------------------------------------------------------------------
-  # Shows the item being purchased in the center.
-
+      - ''
+      - '&r&fAre you sure you want to'
+      - '&r&fpurchase this specific item?'
   show:
-    # Button type - displays the auction item.
-    type: ZAUCTIONHOUSE_SHOW
-
-    # Center slot.
     slot: 13
-
-  #---------------------------------------------------------------------------
-  # SHULKER CONTENT BUTTON
-  #---------------------------------------------------------------------------
-  # Opens the shulker content viewer (only shown for shulker items).
-
-  shulker:
-    # Button type - opens shulker content preview.
-    # Only visible when the item contains shulker boxes.
-    type: ZAUCTIONHOUSE_SHULKER_OPEN
-
-    # Slot position.
-    slot: 4
-
+    type: RAVENAUCTION_PURCHASE_PREVIEW
+  deny:
+    slot: 15
+    type: BACK
     item:
-      material: SHULKER_BOX
-      name: "#00FFFF<bold>VIEW SHULKER CONTENT"
+      material: RED_STAINED_GLASS_PANE
+      name: '&r&#FF1F1FCancel'
       lore:
-        - "&fInspect what is packed inside before you buy."
-        - ""
-        - "#FFFF55▸ #FFFF55&nCLICK&r #00FFFFto Preview"
+      - ''
+      - '&r&fReturn to the main menu'
+      - '&r&fwithout buying anything.'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35

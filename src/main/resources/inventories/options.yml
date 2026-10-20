@@ -1,76 +1,38 @@
-################################################################################################################################
-#
-#   RavenAuction V4 - Player Options Inventory
-#
-#   This inventory allows players to toggle their personal preferences.
-#   Currently supports broadcast notification opt-in/opt-out.
-#
-#   ACCESS:
-#   - /ah option
-#   - /ah options
-#
-#   Documentation: https://docs.groupez.dev/ravenauction/introduction
-#   Discord: https://discord.groupez.dev/
-#
-################################################################################################################################
-
-#=============================================================================
-# INVENTORY SETTINGS
-#=============================================================================
-
-name: '#0c1719ᴏᴘᴛɪᴏɴs'
+name: '&8OPTIONs'
 size: 27
-
-#=============================================================================
-# PATTERNS
-#=============================================================================
-
 patterns:
-  - 'ravenauction-decoration'
-  - 'ravenauction-back'
-
-#=============================================================================
-# ITEMS
-#=============================================================================
-
+- ravenauction-decoration
+- ravenauction-back
 items:
-
-  #---------------------------------------------------------------------------
-  # BROADCAST SELL TOGGLE
-  #---------------------------------------------------------------------------
-
   broadcast-sell:
     type: ZAUCTIONHOUSE_OPTION_TOGGLE
     slot: 11
     option-name: broadcast_sell
-    enable-text: '#55FF55ENABLED'
-    disable-text: '#FF4D4DDISABLED'
+    enable-text: '#FF1F1FEnabled'
+    disable-text: '#FF1F1FDisabled'
     item:
-      material: OAK_SIGN
-      name: '#33FF66<bold>SELL BROADCASTS'
+      material: PAPER
+      name: '&r&#FF1F1FSell Broadcasts'
       lore:
-        - '&fAnnouncements shown when players list items.'
-        - ''
-        - '#55FF55✔ #AAAAAAStatus: %option_status%'
-        - ''
-        - '#FFFF55▸ #FFFF55&nCLICK&r #55FF55to Toggle'
-
-  #---------------------------------------------------------------------------
-  # BROADCAST PURCHASE TOGGLE
-  #---------------------------------------------------------------------------
-
+      - ''
+      - '&r&fStatus: %option_status%'
+      - '&r&fGet Notified When Items Are Listed'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   broadcast-purchase:
     type: ZAUCTIONHOUSE_OPTION_TOGGLE
     slot: 15
     option-name: broadcast_purchase
-    enable-text: '#55FF55ENABLED'
-    disable-text: '#FF4D4DDISABLED'
+    enable-text: '#FF1F1FEnabled'
+    disable-text: '#FF1F1FDisabled'
     item:
-      material: GOLD_INGOT
-      name: '#33FF66<bold>PURCHASE BROADCASTS'
+      material: EMERALD
+      name: '&r&#FF1F1FPurchase Broadcasts'
       lore:
-        - '&fAnnouncements shown when players buy items.'
-        - ''
-        - '#55FF55✔ #AAAAAAStatus: %option_status%'
-        - ''
-        - '#FFFF55▸ #FFFF55&nCLICK&r #55FF55to Toggle'
+      - ''
+      - '&r&fStatus: %option_status%'
+      - '&r&fGet Notified When Items Are Bought'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35

@@ -1,353 +1,130 @@
-################################################################################################################################
-#
-#   RavenAuction V4 - Main Auction Inventory
-#
-#   This is the main auction house inventory that displays all items for sale.
-#   Players access this via /ah or by clicking the auction house NPC.
-#
-#   This inventory shows:
-#   - All items currently listed for sale
-#   - Navigation to categories, expired items, purchased items
-#   - Sorting options
-#   - Pagination for browsing multiple pages
-#
-#   Documentation: https://docs.groupez.dev/ravenauction/introduction
-#   Discord: https://discord.groupez.dev/
-#
-################################################################################################################################
-
-#=============================================================================
-# INVENTORY SETTINGS
-#=============================================================================
-
-# Inventory title displayed at the top of the GUI.
-# Supports placeholders and MiniMessage formatting.
-# Available placeholders:
-#   %page%                        - Current page number
-#   %max-page%                    - Total number of pages
-#   %ravenauction_category_name% - Current category name
-name: "%ravenauction_category_name% (%page%/%max-page%)"
-
-# Inventory size in slots (must be multiple of 9).
-# Options: 9, 18, 27, 36, 45, 54 (1-6 rows)
-# 54 slots (6 rows) is recommended for auction house.
+name: '&8Auction (%page%/%max-page%)'
 size: 54
-
-#=============================================================================
-# PATTERNS
-#=============================================================================
-# Patterns are reusable templates that add common elements.
-# They are applied in order; later patterns can override earlier ones.
-
 patterns:
-  # Adds decorative glass pane borders (top and bottom rows)
-  - 'ravenauction-decoration'
-  # Adds pagination buttons (previous/next page)
-  - 'ravenauction-pagination'
-
-#=============================================================================
-# ITEMS
-#=============================================================================
-# Items define the buttons and displays in this inventory.
-# Each item has a unique key (e.g., 'display-items', 'categories').
-
+- ravenauction-pagination
 items:
-
-  #---------------------------------------------------------------------------
-  # MAIN AUCTION ITEMS DISPLAY
-  #---------------------------------------------------------------------------
-  # This is the core display showing all items for sale.
-  # Items are paginated and can be filtered by category.
-
   display-items:
-    # Button type - ZAUCTIONHOUSE_LISTED_ITEMS is a plugin-specific type.
-    # It automatically handles:
-    # - Loading and displaying auction items
-    # - Category filtering
-    # - Sorting
-    # - Click actions (buy/remove)
     type: ZAUCTIONHOUSE_LISTED_ITEMS
-
-    # Slot to display the "empty" item when no items are found.
-    # This slot is used when the auction house has no items.
     empty-slot: 22
-
-    # Slots where auction items are displayed.
-    # These should be the middle rows (leaving top/bottom for UI).
-    # Slot ranges: '9-17' means slots 9 through 17 (9 items per row).
-    # Total: 36 item slots (4 rows × 9 columns)
     slots:
-      - 9-17    # Row 2
-      - 18-26   # Row 3
-      - 27-35   # Row 4
-      - 36-44   # Row 5
-
-    # Item shown when no items are listed (empty auction house).
+    - 0-44
     item:
       material: BARRIER
-      name: "#FF4D4D<bold>NO ITEMS FOUND"
+      name: '&r&#FF1F1FNo Items Found'
       lore:
-        - "&fThere is nothing for sale right now."
-        - ""
-        - "#FF4D4D✕ #AAAAAACheck back later or try another category."
-
-  #---------------------------------------------------------------------------
-  # CATEGORIES BUTTON
-  #---------------------------------------------------------------------------
-  # Opens the category selection inventory for filtering items.
-
-  categories:
-    # Slot position - center of top row.
-    slot: 4
-
-    # Button type - 'inventory' opens another zMenu inventory.
-    type: inventory
-
-    # Plugin that owns the target inventory.
-    plugin: "RavenAuction"
-
-    # Inventory file to open (inventories/categories.yml).
-    inventory: "categories"
+      - ''
+      - '&r&fThere are no listings matching'
+      - '&r&fyour search right now.'
+  sort:
+    slot: 51
+    type: ZAUCTIONHOUSE_CHANGE_SORT
+    enable-text: '&r&#FF1F1F▪ %sorting%'
+    disable-text: '&f▪ %sorting%'
+    sorts:
+    - DECREASING_DATE
+    - ASCENDING_DATE
+    - DECREASING_PRICE
+    - ASCENDING_PRICE
+    loading-item:
+      material: CAULDRON
+      name: '&r&#FF1F1FSort'
+      lore:
+      - ''
+      - '&r&fUpdating auction listings.'
+    item:
+      material: CAULDRON
+      name: '&r&#FF1F1FSort'
+      lore:
+      - ''
+      - '&r&f%DECREASING_DATE%'
+      - '&r&f%ASCENDING_DATE%'
+      - '&r&f%DECREASING_PRICE%'
+      - '&r&f%ASCENDING_PRICE%'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
+  your-items:
+    slot: 46
+    type: INVENTORY
+    plugin: RavenAuction
+    inventory: combined-items
     is-permanent: true
-
-    # Button appearance
     item:
       material: CHEST
-      name: "#00FFFF<bold>CATEGORIES"
+      name: '&r&#FF1F1FYour Items'
       lore:
-        - "&fBrowse the auction house by item type."
-        - ""
-        - "#FFFF55▸ #FFFF55&nCLICK&r #00FFFFto Open"
-
-  #---------------------------------------------------------------------------
-  # EXPIRED ITEMS BUTTON
-  #---------------------------------------------------------------------------
-  # Shows the player's items that have expired (not sold in time).
-  # Button changes appearance based on whether items exist.
-
-  expired-items:
-    # Button type - opens the expired items inventory if items exist.
-    type: ZAUCTIONHOUSE_EXPIRED_INVENTORY
-
-    # Slot position - far left of bottom row.
-    slot: 45
-
-    # Item shown when player HAS expired items.
-    item:
-      # Custom player head texture (hourglass/clock icon).
-      url: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjdhYWRmZjlkZGM1NDZmZGNlYzZlZDU5MTljYzM5ZGZhOGQwYzA3ZmY0YmM2MTNhMTlmMmU2ZDdmMjU5MyJ9fX0="
-      name: "#FFAA00<bold>EXPIRED ITEMS"
-      lore:
-        - "&fListings that ran out of time before selling."
-        - ""
-        # %expired-items% = number of expired items
-        # %s% = pluralization suffix ("" for 1, "s" for 2+)
-        - "#FFAA00◈ #AAAAAAWaiting for you: #FFCC00%expired-items% #AAAAAAitem%s%"
-        - ""
-        - "#FFFF55▸ #FFFF55&nCLICK&r #FFAA00to Open"
-
-    # Item shown when player has NO expired items.
-    else:
-      item:
-        url: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjdhYWRmZjlkZGM1NDZmZGNlYzZlZDU5MTljYzM5ZGZhOGQwYzA3ZmY0YmM2MTNhMTlmMmU2ZDdmMjU5MyJ9fX0="
-        name: "#FF4D4D<bold>EXPIRED ITEMS"
-        lore:
-          - "&fNone of your listings have expired."
-          - ""
-          - "#FF4D4D✕ #AAAAAANothing to claim here."
-
-  #---------------------------------------------------------------------------
-  # PURCHASED ITEMS BUTTON
-  #---------------------------------------------------------------------------
-  # Shows items the player has bought but not yet retrieved.
-
-  purchased-items:
-    # Button type - opens the purchased items inventory if items exist.
-    type: ZAUCTIONHOUSE_PURCHASED_INVENTORY
-
-    # Slot position - second from left in bottom row.
-    slot: 46
-
-    # Item shown when player HAS purchased items to retrieve.
-    item:
-      # Chest icon texture.
-      url: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjM3Y2FlNWM1MWViMTU1OGVhODI4ZjU4ZTBkZmY4ZTZiN2IwYjFhMTgzZDczN2VlY2Y3MTQ2NjE3NjEifX19"
-      name: "#33FF66<bold>PURCHASED ITEMS"
-      lore:
-        - "&fItems you bought and have not collected yet."
-        - ""
-        - "#55FF55✔ #AAAAAAReady to claim: #55FF55%purchased-items% #AAAAAAitem%s%"
-        - ""
-        - "#FFFF55▸ #FFFF55&nCLICK&r #55FF55to Open"
-
-    # Item shown when player has NO purchased items.
-    else:
-      item:
-        url: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjM3Y2FlNWM1MWViMTU1OGVhODI4ZjU4ZTBkZmY4ZTZiN2IwYjFhMTgzZDczN2VlY2Y3MTQ2NjE3NjEifX19"
-        name: "#FF4D4D<bold>PURCHASED ITEMS"
-        lore:
-          - "&fYou have not bought anything yet."
-          - ""
-          - "#FF4D4D✕ #AAAAAANothing to claim here."
-
-  #---------------------------------------------------------------------------
-  # YOUR ITEMS (SELLING) BUTTON
-  #---------------------------------------------------------------------------
-  # Shows items the player currently has listed for sale.
-
-  selling-items:
-    # Button type - opens the selling items inventory if items exist.
-    type: ZAUCTIONHOUSE_SELLING_INVENTORY
-
-    # Slot position - far right of bottom row.
-    slot: 53
-
-    # Item shown when player HAS items listed for sale.
-    item:
-      # Player icon texture.
-      url: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjU4MDdjYzRjM2I2OTU4YWVhNjE1NmU4NDUxOGQ5MWE0OWM1ZjMyOTcxZTZlYjI2OWEyM2EyNWEyNzE0NSJ9fX0="
-      name: "#B466DF<bold>YOUR ITEMS"
-      lore:
-        - "&fEverything you currently have listed for sale."
-        - ""
-        - "#B466DF★ #AAAAAAActive listings: #B466DF%selling-items% #AAAAAAitem%s%"
-        - ""
-        - "#FFFF55▸ #FFFF55&nCLICK&r #B466DFto Open"
-
-    # Item shown when player has NO items listed.
-    else:
-      item:
-        url: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjU4MDdjYzRjM2I2OTU4YWVhNjE1NmU4NDUxOGQ5MWE0OWM1ZjMyOTcxZTZlYjI2OWEyM2EyNWEyNzE0NSJ9fX0="
-        name: "#FF4D4D<bold>YOUR ITEMS"
-        lore:
-          - "&fYou have nothing listed for sale."
-          - ""
-          - "#FF4D4D✕ #AAAAAAUse &f/ah sell #AAAAAAto list an item."
-
-  #---------------------------------------------------------------------------
-  # SEARCH BUTTON
-  #---------------------------------------------------------------------------
-  # Opens the chat search input for filtering items.
-
+      - ''
+      - '&r&fView, manage, and collect items'
+      - '&r&ffrom your auction listings.'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   search:
-    type: ZAUCTIONHOUSE_SEARCH
     slot: 47
+    type: ZAUCTIONHOUSE_SEARCH
     is-permanent: true
-    # Value shown in %search_query% when no search is active.
-    none-value: "None"
-    # Value shown in %search_active% when a search is active.
-    active-value: "true"
-    # Value shown in %search_active% when no search is active.
-    inactive-value: "false"
+    none-value: None
+    active-value: 'true'
+    inactive-value: 'false'
     item:
-      material: COMPASS
-      name: "#00FFFF<bold>SEARCH"
+      material: OAK_SIGN
+      name: '&r&#FF1F1FSearch'
       lore:
-        - "&fNarrow the listings down to what you want."
-        - ""
-        - "#00FFFF✦ #AAAAAAActive query: #00FFFF%search_query%"
-        - ""
-        - "#00FFFFOperators"
-        - "&f  name #00FFFF~ &fvalue    #AAAAAA(contains)"
-        - "&f  name #00FFFF= &fvalue    #AAAAAA(exact)"
-        - "&f  name #00FFFF~= &fvalue   #AAAAAA(contains, ignore case)"
-        - "&f  name #00FFFF== &fvalue   #AAAAAA(exact, ignore case)"
-        - ""
-        - "#00FFFFFields"
-        - "&f  name#AAAAAA, &fmaterial#AAAAAA, &flore#AAAAAA, &fseller"
-        - ""
-        - "#00FFFFExamples"
-        - "&f  seller #00FFFF= &fNotch"
-        - "&f  name #00FFFF~ &fDiamond"
-        - ""
-        - "#FFFF55▸ #FFFF55&nLEFT-CLICK&r #00FFFFto Search"
-        - "#FFFF55▸ #FFFF55&nRIGHT-CLICK&r #00FFFFto Reset"
-  #---------------------------------------------------------------------------
-  # REFRESH BUTTON
-  #---------------------------------------------------------------------------
-  # Displays auction house information and refreshes the item list.
-
+      - ''
+      - '&r&fSearch listings by item name'
+      - '&r&for material type.'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   refresh:
-    # Button type - ZAUCTIONHOUSE_REFRESH handles async refresh.
-    type: ZAUCTIONHOUSE_REFRESH
-
-    # Slot position - center of bottom row.
     slot: 49
-
-    # Item shown while loading/refreshing (prevents spam clicks).
-    loading-item:
-      material: CLOCK
-      name: "#FFAA00<bold>REFRESHING..."
-      lore:
-        - "&fFetching the latest listings."
-        - ""
-        - "#FFAA00◈ #AAAAAAPlease wait a moment."
-
-    # Normal refresh button display.
+    type: ZAUCTIONHOUSE_REFRESH
     item:
-      material: BELL
-      name: "#FFAA00<bold>AUCTION INFORMATION"
+      material: ANVIL
+      name: '&r&#FF1F1FRefresh'
       lore:
-        - "&fWelcome to the auction house."
-        - "&fTrade items freely with other players."
-        - ""
-        - "#FFAA00Information"
-        # PlaceholderAPI placeholders for dynamic stats.
-        - "#FFAA00◈ #AAAAAAItems listed: #FFCC00%ravenauction_listed_items%"
-        - "#FFAA00◈ #AAAAAASort type: #FFCC00%ravenauction_sorting_name%"
-        - ""
-        - "#FFAA00Usage"
-        - "#FFAA00▌ &f/ah sell <price> [<amount>]"
-        - ""
-        - "#FFFF55▸ #FFFF55&nCLICK&r #FFAA00to Refresh"
-
-  #---------------------------------------------------------------------------
-  # SORT TYPE BUTTON
-  #---------------------------------------------------------------------------
-  # Changes the sort order of displayed items.
-
-  change-sort:
-    # Button type - handles sort cycling.
-    type: ZAUCTIONHOUSE_CHANGE_SORT
-
-    # Available sort options (cycled in this order).
-    # Options: DECREASING_DATE, DECREASING_PRICE, ASCENDING_DATE, ASCENDING_PRICE
-    sorts:
-      - DECREASING_DATE   # Newest first (default)
-      - DECREASING_PRICE  # Most expensive first
-      - ASCENDING_DATE    # Oldest first
-      - ASCENDING_PRICE   # Cheapest first
-
-    # Format for currently SELECTED sort option in lore.
-    # %sorting% is replaced with the sort name from config.yml.
-    enable-text: '#00FFFF✦ %sorting%'
-
-    # Format for NOT selected sort options in lore.
-    disable-text: '#AAAAAA○ %sorting%'
-
-    # Item shown while loading/sorting (prevents spam clicks).
+      - ''
+      - '&r&fRefresh the marketplace to view'
+      - '&r&fthe latest available listings.'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
     loading-item:
-      material: HOPPER
-      name: "#FFAA00<bold>SORT TYPE"
+      material: ANVIL
+      name: '&r&#FF1F1FRefresh'
       lore:
-        - "&fApplying the new sort order."
-        - ""
-        - "#FFAA00◈ #AAAAAAPlease wait a moment."
-
-    # Slot position - right side of bottom row.
+      - ''
+      - '&r&fUpdating auction listings.'
+  filter:
     slot: 52
-
-    # Normal sort button display.
+    type: ZAUCTIONHOUSE_CATEGORY_SWITCHER
+    is-permanent: true
+    enable-text: '&r&#FF1F1F▪ %category%'
+    disable-text: '&f▪ %category%'
+    categories:
+    - main
+    - raven-filter-blocks
+    - raven-filter-tools
+    - raven-filter-food
+    - raven-filter-combat
+    - raven-filter-potions
+    - raven-filter-books
+    - raven-filter-ingredients
+    - raven-filter-utilities
     item:
       material: HOPPER
-      name: "#FFAA00<bold>SORT TYPE"
+      name: '&r&#FF1F1FFilter'
       lore:
-        - "&fChoose how listings are ordered."
-        - ""
-        # Placeholders for each sort option (formatted by enable/disable-text).
-        - "%DECREASING_DATE%"
-        - "%DECREASING_PRICE%"
-        - "%ASCENDING_DATE%"
-        - "%ASCENDING_PRICE%"
-        - ""
-        - "#FFFF55▸ #FFFF55&nCLICK&r #FFAA00to Change Sort"
+      - ''
+      - '%main%'
+      - '%raven-filter-blocks%'
+      - '%raven-filter-tools%'
+      - '%raven-filter-food%'
+      - '%raven-filter-combat%'
+      - '%raven-filter-potions%'
+      - '%raven-filter-books%'
+      - '%raven-filter-ingredients%'
+      - '%raven-filter-utilities%'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35

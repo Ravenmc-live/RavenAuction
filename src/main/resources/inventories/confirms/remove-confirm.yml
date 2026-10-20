@@ -1,132 +1,62 @@
-################################################################################################################################
-#
-#   RavenAuction V4 - Remove Listing Confirmation Inventory
-#
-#   This inventory asks sellers to confirm removing their item from sale.
-#   The item will be returned to the player's expired items section.
-#
-#   FEATURES:
-#   - Preview the item before removing
-#   - View shulker contents (if applicable)
-#   - Confirm or cancel the removal
-#
-#   ACCESS:
-#   - Automatically opens when a seller clicks their own listed item
-#   - Only shown if open-confirm-inventory is true in config.yml
-#
-#   Documentation: https://docs.groupez.dev/ravenauction/introduction
-#   Discord: https://discord.groupez.dev/
-#
-################################################################################################################################
-
-#=============================================================================
-# INVENTORY SETTINGS
-#=============================================================================
-
-# Inventory title - question format for clarity.
-name: "#0c1719ʀᴇᴍᴏᴠᴇ ᴛʜɪs ɪᴛᴇᴍ?"
-
-# Inventory size - 3 rows (27 slots) for compact confirmation dialog.
+name: '&8REMOVE THIs ITEM?'
 size: 27
-
-#=============================================================================
-# ITEMS
-#=============================================================================
-
 items:
-
-  #---------------------------------------------------------------------------
-  # CONFIRM REMOVE BUTTON
-  #---------------------------------------------------------------------------
-  # Removes the item from sale and moves it to expired items.
-
   remove:
-    # Button type - handles listing removal.
     type: ZAUCTIONHOUSE_CONFIRM_REMOVE_LISTED
-
     item:
-      # Green glass pane for confirm action.
       material: GREEN_STAINED_GLASS_PANE
-      name: "#33FF66<bold>REMOVE"
+      name: '&r&#FF1F1FRemove'
       lore:
-        - "&fCancel this listing and take the item back."
-        - ""
-        - "#FFFF55▸ #FFFF55&nCLICK&r #55FF55to Confirm"
-
-    # Left side of the inventory (3×3 grid).
+      - ''
+      - '&r&fCancel This Listing'
+      - '&r&fTake The Item Back'
     slots:
-      - 0-2     # Top-left row
-      - 9-11    # Middle-left row
-      - 18-20   # Bottom-left row
-
-  #---------------------------------------------------------------------------
-  # CANCEL/BACK BUTTON
-  #---------------------------------------------------------------------------
-  # Cancels the removal and returns to the auction house.
-
+    - 0-2
+    - 9-11
+    - 18-20
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   deny:
-    # Button type - returns to previous inventory.
     type: BACK
-
     item:
-      # Red glass pane for cancel action.
       material: RED_STAINED_GLASS_PANE
-      name: "#FF4D4D<bold>CANCEL"
+      name: '&r&#FF1F1FCancel'
       lore:
-        - "&fLeave the listing exactly as it is."
-        - ""
-        - "#FFFF55▸ #FFFF55&nCLICK&r #FF4D4Dto Go Back"
-
-    # Right side of the inventory (3×3 grid).
+      - ''
+      - '&r&fKeep The Listing'
+      - '&r&fLeave It Exactly As It Is'
     slots:
-      - 6-8     # Top-right row
-      - 15-17   # Middle-right row
-      - 24-26   # Bottom-right row
-
-  #---------------------------------------------------------------------------
-  # DECORATION
-  #---------------------------------------------------------------------------
-  # Fills the middle column with glass panes.
-
+    - 6-8
+    - 15-17
+    - 24-26
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   decoration:
     item:
-      material: LIGHT_BLUE_STAINED_GLASS_PANE
-      name: "<white>"
-
-    # Middle column and surrounding slots.
+      material: BLACK_STAINED_GLASS_PANE
+      name: ''
     slots:
-      - 3-5     # Top center
-      - 12      # Middle-left of center
-      - 14      # Middle-right of center
-      - 21-23   # Bottom center
-
-  #---------------------------------------------------------------------------
-  # ITEM PREVIEW
-  #---------------------------------------------------------------------------
-  # Shows the item being removed in the center.
-
+    - 3-5
+    - 12
+    - 14
+    - 21-23
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
   show:
-    # Button type - displays the auction item.
     type: ZAUCTIONHOUSE_SHOW
-
-    # Center slot.
     slot: 13
-
-  #---------------------------------------------------------------------------
-  # SHULKER CONTENT BUTTON
-  #---------------------------------------------------------------------------
-  # Opens the shulker content viewer (only shown for shulker items).
-
   shulker:
-    # Button type - opens shulker content preview.
     type: ZAUCTIONHOUSE_SHULKER_OPEN
-
     slot: 4
-
     item:
-      material: SHULKER_BOX
-      name: "#00FFFF<bold>VIEW SHULKER CONTENT"
+      material: CHEST
+      name: '&r&#FF1F1FView Shulker Content'
       lore:
-        - "&fInspect what is packed inside this listing."
-        - ""
-        - "#FFFF55▸ #FFFF55&nCLICK&r #00FFFFto Preview"
+      - ''
+      - '&r&fInspect This Listing'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
