@@ -1,116 +1,158 @@
 package fr.maxlego08.zauctionhouse.cluster.redis;
 
 import fr.maxlego08.zauctionhouse.api.AuctionPlugin;
-import fr.maxlego08.zauctionhouse.api.cluster.RedisMode;
+import fr.maxlego08.zauctionhouse.api.configuration.records.RedisConfiguration;
 import fr.maxlego08.zauctionhouse.cluster.LocalAuctionClusterBridge;
-
+import fr.maxlego08.zauctionhouse.cluster.UnavailableAuctionClusterBridge;
 import java.util.UUID;
-import java.util.logging.Level;
+import java.util.concurrent.*;
 
-/**
- * Owns the lifecycle of the Redis-backed multi-server synchronization.
- * <p>
- * When {@code redis.enabled} is off, or when the connection cannot be established, the plugin keeps
- * running on the in-memory {@link LocalAuctionClusterBridge}: a Redis outage degrades the auction
- * house to single-server behaviour instead of breaking it.
- */
 public class RedisClusterService {
-
     private final AuctionPlugin plugin;
-
-    /**
-     * Identifies this JVM for the lifetime of the process. Two servers sharing the same configured
-     * {@code server-name} would otherwise discard each other's messages as their own.
-     */
     private final String instanceId = UUID.randomUUID().toString();
-
-    private RedisConnection connection;
-    private RedisSubscriber subscriber;
-    private boolean active;
+    private volatile Session session;
+    private final java.util.function.Function<RedisConfiguration, RedisConnection> connections;
+    private final java.util.function.Supplier<ScheduledExecutorService> workers;
 
     public RedisClusterService(AuctionPlugin plugin) {
+        this(plugin, RedisConnection::new, () -> Executors.newSingleThreadScheduledExecutor(task -> {
+            Thread thread = new Thread(task, "RavenAuction-Redis-Recovery");
+            thread.setDaemon(true);
+            return thread;
+        }));
+    }
+
+    RedisClusterService(AuctionPlugin plugin, java.util.function.Function<RedisConfiguration, RedisConnection> connections,
+                        java.util.function.Supplier<ScheduledExecutorService> workers) {
         this.plugin = plugin;
+        this.connections = connections;
+        this.workers = workers;
     }
 
-    /**
-     * Connects to Redis and installs the cluster bridge.
-     *
-     * @return {@code true} when multi-server synchronization is now active
-     */
-    public boolean start() {
-
-        var configuration = this.plugin.getConfiguration().getRedis();
-        if (!configuration.enabled()) return false;
-
-        var logger = this.plugin.getLogger();
-
-        // Every server must read and write the same rows for cross-server sync to mean anything;
-        // with a local SQLite file each server would broadcast about items the others cannot see.
-        String storageType = this.plugin.getConfig().getString("storage-type", "SQLITE");
-        if (storageType != null && storageType.equalsIgnoreCase("SQLITE")) {
-            logger.severe("Redis synchronization is enabled but storage-type is SQLITE, which is a local file.");
-            logger.severe("Switch storage-type to MYSQL or MARIADB and point every server at the same database.");
-            logger.severe("Multi-server synchronization stays disabled.");
-            return false;
-        }
-
-        try {
-
-            this.connection = new RedisConnection(configuration);
-            this.connection.ping();
-
-            var handler = new ClusterMessageHandler(this.plugin, this.instanceId);
-            this.subscriber = new RedisSubscriber(this.connection, logger, handler);
-            this.subscriber.start();
-
-            this.plugin.setAuctionClusterBridge(new RedisAuctionClusterBridge(this.plugin, this.connection, this.instanceId));
-            this.active = true;
-
-            String target = configuration.mode() == RedisMode.SENTINEL
-                    ? "sentinel master '" + configuration.sentinelMasterName() + "' via " + configuration.sentinelNodes()
-                    : configuration.host() + ":" + configuration.port();
-            logger.info("Multi-server synchronization enabled as '" + this.plugin.getConfiguration().getServerName() + "' (Redis: " + target + ").");
-
-            return true;
-
-        } catch (Exception exception) {
-
-            logger.log(Level.SEVERE, "Could not connect to Redis, multi-server synchronization is disabled. The auction house keeps running on this server only.", exception);
-            stop();
-            return false;
-        }
-    }
-
-    /**
-     * Tears the synchronization down and restores single-server behaviour.
-     */
-    public void stop() {
-
-        if (this.subscriber != null) {
-            this.subscriber.stop();
-            this.subscriber = null;
-        }
-
-        if (this.connection != null) {
-            try {
-                this.connection.close();
-            } catch (Exception exception) {
-                this.plugin.getLogger().log(Level.WARNING, "Failed to close the Redis connection pool cleanly.", exception);
-            }
-            this.connection = null;
-        }
-
-        if (this.active) {
-            // Anything still holding the plugin instance must stop believing it is clustered.
+    public synchronized boolean start() {
+        stop();
+        RedisConfiguration configuration = this.plugin.getConfiguration().getRedis();
+        if (!configuration.enabled()) {
             this.plugin.setAuctionClusterBridge(new LocalAuctionClusterBridge());
-            this.active = false;
+            return false;
         }
+        this.plugin.setAuctionClusterBridge(new UnavailableAuctionClusterBridge());
+        String storage = this.plugin.getConfig().getString("storage-type", "SQLITE");
+        if (!"MYSQL".equalsIgnoreCase(storage) && !"MARIADB".equalsIgnoreCase(storage)) {
+            this.plugin.getLogger().severe("Redis requires shared MYSQL or MARIADB storage; clustered purchases are unavailable.");
+            return false;
+        }
+        Session next = new Session(configuration);
+        this.session = next;
+        next.worker.scheduleWithFixedDelay(next, 0, 5, TimeUnit.SECONDS);
+        this.plugin.getLogger().info("Redis synchronization starting for " + configuration.host() + ":" + configuration.port()
+                + "; connection retries and cache recovery are automatic.");
+        return true;
     }
 
-    /**
-     * @return {@code true} while multi-server synchronization is running
-     */
+    public synchronized void stop() {
+        Session previous = this.session;
+        this.session = null;
+        this.plugin.setAuctionClusterBridge(new UnavailableAuctionClusterBridge());
+        if (previous != null) previous.stop();
+    }
+
     public boolean isActive() {
-        return this.active;
+        Session current = this.session;
+        return current != null && current.ready;
+    }
+
+    private final class Session implements Runnable {
+        final RedisConfiguration configuration;
+        final ScheduledExecutorService worker = RedisClusterService.this.workers.get();
+        volatile boolean stopped;
+        volatile boolean ready;
+        volatile RedisConnection connection;
+        volatile RedisSubscriber subscriber;
+        volatile ClusterCacheReconciler reconciler;
+        volatile long lastRecovery;
+        boolean failureReported;
+        boolean enabledReported;
+
+        Session(RedisConfiguration configuration) { this.configuration = configuration; }
+        boolean current() { return !this.stopped && RedisClusterService.this.session == this; }
+
+        @Override public void run() {
+            if (!current()) return;
+            try {
+                if (this.connection == null) connect();
+                else this.connection.ping();
+                if (this.subscriber != null && this.subscriber.isSubscribed()
+                        && System.nanoTime() - this.lastRecovery > TimeUnit.SECONDS.toNanos(30)) recover();
+            } catch (Exception failure) {
+                if (!this.failureReported && current()) {
+                    this.failureReported = true;
+                    RedisClusterService.this.plugin.getLogger().warning("Redis is unavailable (" + failure.getClass().getSimpleName()
+                            + "); coordinated purchases are paused while the connection retries automatically.");
+                }
+                unavailable();
+                closeConnection();
+            }
+        }
+
+        void connect() {
+            RedisConnection opened = RedisClusterService.this.connections.apply(this.configuration);
+            this.connection = opened;
+            opened.ping();
+            this.reconciler = new ClusterCacheReconciler(RedisClusterService.this.plugin, opened,
+                    () -> current() && this.connection == opened);
+            var handler = new ClusterMessageHandler(RedisClusterService.this.plugin, RedisClusterService.this.instanceId,
+                    () -> current() && this.connection == opened);
+            this.subscriber = new RedisSubscriber(opened, RedisClusterService.this.plugin.getLogger(), handler,
+                    () -> { if (current() && this.connection == opened) recover(); },
+                    () -> { if (current() && this.connection == opened) unavailable(); });
+            if (!current()) { closeConnection(); return; }
+            this.subscriber.start();
+        }
+
+        void recover() {
+            RedisConnection opened = this.connection;
+            ClusterCacheReconciler recovery = this.reconciler;
+            if (!current() || opened == null || recovery == null) return;
+            this.lastRecovery = System.nanoTime();
+            recovery.reconcile().whenComplete((result, error) -> {
+                synchronized (RedisClusterService.this) {
+                    if (!current() || this.connection != opened || this.subscriber == null || !this.subscriber.isSubscribed()) return;
+                    if (error == null) {
+                        RedisClusterService.this.plugin.setAuctionClusterBridge(new RedisAuctionClusterBridge(
+                                RedisClusterService.this.plugin, opened, RedisClusterService.this.instanceId));
+                        this.ready = true;
+                        if (!this.enabledReported) {
+                            this.enabledReported = true;
+                            RedisClusterService.this.plugin.getLogger().info("Redis synchronization enabled; auction caches recovered from shared storage.");
+                        }
+                    }
+                }
+            });
+        }
+
+        void unavailable() {
+            synchronized (RedisClusterService.this) {
+                this.ready = false;
+                if (current()) RedisClusterService.this.plugin.setAuctionClusterBridge(new UnavailableAuctionClusterBridge());
+            }
+        }
+
+        void closeConnection() {
+            RedisSubscriber listener = this.subscriber;
+            RedisConnection opened = this.connection;
+            this.subscriber = null;
+            this.connection = null;
+            this.reconciler = null;
+            if (listener != null) listener.stop();
+            if (opened != null) try { opened.close(); } catch (Exception ignored) {}
+        }
+
+        void stop() {
+            this.stopped = true;
+            this.ready = false;
+            this.worker.execute(this::closeConnection);
+            this.worker.shutdown();
+        }
     }
 }

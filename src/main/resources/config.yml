@@ -15,8 +15,8 @@ database-configuration:
   table-prefix: ravenauctionv4_
   host: 172.18.0.1
   port: 3306
-  user: u10_VR6YJtZYrc
-  password: 4X+IJialcdd4qpq6bKn!bwPs
+  user: u10_4RXUKnF6oS
+  password: 'GTtVevN@7=G+spAwE3ajrCKx'
   database: s10_SMP_PLAYERS
   debug: false
 message-colors:
@@ -386,10 +386,10 @@ performance:
 redis:
   enabled: true
   mode: standalone
-  host: 172.18.0.2
+  host: '432913cb-af8a-4269-9bea-a96500473d69'
   port: 6379
   username: ''
-  password: v9OvHKGQ3EXLqE0F
+  password: 'v9OvHKGQ3EXLqE0F'
   database: 0
   ssl: false
   timeout-ms: 2000

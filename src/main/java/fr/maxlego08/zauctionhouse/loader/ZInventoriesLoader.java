@@ -83,10 +83,8 @@ public class ZInventoriesLoader extends ZUtils implements InventoriesLoader {
     public void loadInventories() {
 
         File folder = new File(this.plugin.getDataFolder(), "inventories");
-        if (!folder.exists()) {
-            folder.mkdir();
-            createInventoriesFile();
-        }
+        if (!folder.exists()) folder.mkdirs();
+        createInventoriesFile();
 
         copyFiles("inventories", "shulker-preview", "confirms/shulker-purchase-confirm");
         files(folder, this::loadInventory);

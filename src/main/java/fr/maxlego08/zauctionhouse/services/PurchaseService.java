@@ -133,9 +133,11 @@ public class PurchaseService extends AuctionService implements AuctionPurchaseSe
                     if (hasMoney) {
                         return auctionManager.purchaseItem(player, item)
                                 .thenCompose(v -> clusterBridge.notifyItemBought(player, item)
-                                        .orTimeout(performanceConfig.notifyItemActionTimeoutMs(), TimeUnit.MILLISECONDS))
+                                        .orTimeout(performanceConfig.notifyItemActionTimeoutMs(), TimeUnit.MILLISECONDS)
+                                        .exceptionally(error -> null))
                                 .thenCompose(v -> clusterBridge.unlockItem(item, token, StorageType.LISTED)
-                                        .orTimeout(performanceConfig.unlockItemTimeoutMs(), TimeUnit.MILLISECONDS))
+                                        .orTimeout(performanceConfig.unlockItemTimeoutMs(), TimeUnit.MILLISECONDS)
+                                        .exceptionally(error -> null))
                                 .thenApply(v -> {
                                     resultHolder.set(PurchaseResult.success("Purchase successful", true));
                                     return resultHolder.get();

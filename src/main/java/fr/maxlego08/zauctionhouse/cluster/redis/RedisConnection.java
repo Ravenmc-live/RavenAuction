@@ -34,6 +34,7 @@ public class RedisConnection {
         poolConfig.setMaxTotal(configuration.maxTotal());
         poolConfig.setMaxIdle(configuration.maxIdle());
         poolConfig.setMinIdle(configuration.minIdle());
+        poolConfig.setMaxWait(java.time.Duration.ofMillis(configuration.timeoutMs()));
         poolConfig.setTestWhileIdle(true);
 
         var clientConfig = clientConfig(configuration, configuration.database());

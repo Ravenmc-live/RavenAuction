@@ -100,7 +100,7 @@ public class ZAuctionPlugin extends JavaPlugin implements AuctionPlugin {
     private DiscordWebhookService discordWebhookService;
     private boolean isEnabled = false;
     private PlatformScheduler platformScheduler;
-    private AuctionClusterBridge auctionClusterBridge = new LocalAuctionClusterBridge();
+    private volatile AuctionClusterBridge auctionClusterBridge = new LocalAuctionClusterBridge();
     private OfflinePermission offlinePermission = new EmptyOfflinePermission();
     private final RedisClusterService redisClusterService = new RedisClusterService(this);
 
@@ -119,6 +119,8 @@ public class ZAuctionPlugin extends JavaPlugin implements AuctionPlugin {
 
         // Now save config.yml with the correct language
         this.saveFile("config.yml", true);
+        this.applyInstalledUpdate();
+        this.reloadConfig();
 
         FoliaLib foliaLib = new FoliaLib(this);
         this.platformScheduler = foliaLib.getScheduler();
@@ -242,6 +244,7 @@ public class ZAuctionPlugin extends JavaPlugin implements AuctionPlugin {
             this.saveFile("config.yml", true);
         }
 
+        this.applyInstalledUpdate();
         this.reloadConfig();
 
         // Re-initialize locale helper with configured language from language.yml
@@ -254,6 +257,15 @@ public class ZAuctionPlugin extends JavaPlugin implements AuctionPlugin {
 
         // Update economy references for all items after reload
         this.auctionManager.updateItemEconomies();
+        this.redisClusterService.start();
+    }
+
+    private void applyInstalledUpdate() {
+        try {
+            fr.maxlego08.zauctionhouse.utils.InstalledConfigurationUpdate.apply(this);
+        } catch (IOException exception) {
+            throw new IllegalStateException("Could not apply purchase/Redis update; original files are backed up", exception);
+        }
     }
 
     private void loadFiles() {

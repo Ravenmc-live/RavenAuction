@@ -27,9 +27,20 @@ public class RedisSubscriber {
     private volatile boolean running;
     private volatile Thread thread;
     private volatile JedisPubSub pubSub;
+    private volatile redis.clients.jedis.Jedis socket;
+    private volatile boolean subscribed;
+    private final Runnable onSubscribed;
+    private final Runnable onDisconnected;
 
     public RedisSubscriber(RedisConnection connection, Logger logger, Consumer<ClusterMessage> handler) {
+        this(connection, logger, handler, () -> {}, () -> {});
+    }
+
+    public RedisSubscriber(RedisConnection connection, Logger logger, Consumer<ClusterMessage> handler,
+                           Runnable onSubscribed, Runnable onDisconnected) {
         this.connection = connection;
+        this.onSubscribed = onSubscribed;
+        this.onDisconnected = onDisconnected;
         this.logger = logger;
         this.handler = handler;
         this.channel = connection.getConfiguration().channel();
@@ -54,17 +65,12 @@ public class RedisSubscriber {
         while (this.running) {
             try (var jedis = this.connection.getResource()) {
 
+                this.socket = jedis;
                 this.pubSub = new ChannelListener();
-
-                // Reaching this point means the connection is healthy, so the next failure starts
-                // over from the shortest delay instead of inheriting an old long one.
-                backoff = INITIAL_BACKOFF_MS;
 
                 // Borrowing a connection can take a moment; a stop() that landed in the meantime
                 // must not be followed by a subscription nobody is going to cancel.
                 if (!this.running) break;
-
-                this.logger.info("Redis cluster listener subscribed to '" + this.channel + "'.");
 
                 // Blocks until unsubscribed or the connection fails.
                 jedis.subscribe(this.pubSub, this.channel);
@@ -73,7 +79,9 @@ public class RedisSubscriber {
 
                 if (!this.running) break;
 
-                this.logger.warning("Redis cluster listener lost its connection (" + exception.getMessage() + "), reconnecting in " + (backoff / 1000) + "s.");
+                if (this.subscribed) backoff = INITIAL_BACKOFF_MS;
+                this.subscribed = false;
+                this.onDisconnected.run();
 
                 try {
                     Thread.sleep(backoff);
@@ -85,10 +93,14 @@ public class RedisSubscriber {
                 backoff = Math.min(backoff * 2, MAX_BACKOFF_MS);
 
             } finally {
+                this.subscribed = false;
+                this.socket = null;
                 this.pubSub = null;
             }
         }
     }
+
+    public boolean isSubscribed() { return this.subscribed; }
 
     /**
      * Stops listening and releases the subscription connection.
@@ -96,6 +108,11 @@ public class RedisSubscriber {
     public void stop() {
 
         this.running = false;
+        this.subscribed = false;
+        var currentSocket = this.socket;
+        if (currentSocket != null) {
+            try { currentSocket.getClient().disconnect(); } catch (Exception ignored) {}
+        }
 
         var currentPubSub = this.pubSub;
         if (currentPubSub != null) {
@@ -125,6 +142,13 @@ public class RedisSubscriber {
     }
 
     private class ChannelListener extends JedisPubSub {
+
+        @Override
+        public void onSubscribe(String channel, int count) {
+            if (!RedisSubscriber.this.running) { unsubscribe(); return; }
+            RedisSubscriber.this.subscribed = true;
+            RedisSubscriber.this.onSubscribed.run();
+        }
 
         @Override
         public void onMessage(String channel, String payload) {
