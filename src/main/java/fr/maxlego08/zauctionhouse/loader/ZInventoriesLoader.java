@@ -7,9 +7,16 @@ import fr.maxlego08.menu.api.loader.NoneLoader;
 import fr.maxlego08.menu.api.pattern.PatternManager;
 import fr.maxlego08.zauctionhouse.api.AuctionPlugin;
 import fr.maxlego08.zauctionhouse.api.InventoriesLoader;
+import fr.maxlego08.zauctionhouse.api.cache.PlayerCacheKey;
 import fr.maxlego08.zauctionhouse.api.inventories.Inventories;
 import fr.maxlego08.zauctionhouse.api.messages.Message;
+import fr.maxlego08.zauctionhouse.buttons.ClaimButton;
+import fr.maxlego08.zauctionhouse.buttons.ClearSearchButton;
 import fr.maxlego08.zauctionhouse.buttons.ItemContentButton;
+import fr.maxlego08.zauctionhouse.buttons.PurchasePreviewButton;
+import fr.maxlego08.zauctionhouse.buttons.RemoveAllExpiredButton;
+import fr.maxlego08.zauctionhouse.buttons.RemoveAllPurchasedButton;
+import fr.maxlego08.zauctionhouse.buttons.RemoveAllSellingButton;
 import fr.maxlego08.zauctionhouse.buttons.ShowButton;
 import fr.maxlego08.zauctionhouse.buttons.admin.*;
 import fr.maxlego08.zauctionhouse.buttons.admin.history.*;
@@ -28,20 +35,19 @@ import fr.maxlego08.zauctionhouse.buttons.list.SellingItemsButton;
 import fr.maxlego08.zauctionhouse.buttons.sell.SellCancelButton;
 import fr.maxlego08.zauctionhouse.buttons.sell.SellConfirmButton;
 import fr.maxlego08.zauctionhouse.buttons.sell.SellEconomyButton;
-import fr.maxlego08.zauctionhouse.buttons.ClearSearchButton;
-import fr.maxlego08.zauctionhouse.buttons.RemoveAllExpiredButton;
-import fr.maxlego08.zauctionhouse.buttons.RemoveAllPurchasedButton;
-import fr.maxlego08.zauctionhouse.buttons.RemoveAllSellingButton;
 import fr.maxlego08.zauctionhouse.buttons.shulker.ShulkerInfoButton;
-import fr.maxlego08.zauctionhouse.buttons.ClaimButton;
 import fr.maxlego08.zauctionhouse.buttons.shulker.ShulkerOpenButton;
-import fr.maxlego08.zauctionhouse.loader.buttons.CombinedItemsLoader;
+import fr.maxlego08.zauctionhouse.buttons.shulker.ShulkerPreviewContentsButton;
+import fr.maxlego08.zauctionhouse.buttons.shulker.ShulkerPurchaseContentsButton;
 import fr.maxlego08.zauctionhouse.loader.buttons.*;
+import fr.maxlego08.zauctionhouse.loader.buttons.CombinedItemsLoader;
 import fr.maxlego08.zauctionhouse.loader.permissibles.CategoryPermissibleLoader;
-import fr.maxlego08.zauctionhouse.utils.PerformanceDebug;
 import fr.maxlego08.zauctionhouse.utils.LegacyPlaceholderMigrator;
+import fr.maxlego08.zauctionhouse.utils.PerformanceDebug;
+import fr.maxlego08.zauctionhouse.utils.ShulkerHelper;
 import fr.maxlego08.zauctionhouse.utils.ZUtils;
 import org.bukkit.entity.Player;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
 import java.io.File;
@@ -82,6 +88,7 @@ public class ZInventoriesLoader extends ZUtils implements InventoriesLoader {
             createInventoriesFile();
         }
 
+        copyFiles("inventories", "shulker-preview", "confirms/shulker-purchase-confirm");
         files(folder, this::loadInventory);
     }
 
@@ -148,8 +155,10 @@ public class ZInventoriesLoader extends ZUtils implements InventoriesLoader {
         this.buttonManager.register(new NoneLoader(this.plugin, PurchasedInventoryButton.class, "ZAUCTIONHOUSE_PURCHASED_INVENTORY"));
         this.buttonManager.register(new NoneLoader(this.plugin, HistoryInventoryButton.class, "ZAUCTIONHOUSE_HISTORY_INVENTORY"));
 
+        this.buttonManager.register(new NoneLoader(this.plugin, ShulkerPreviewContentsButton.class, "RAVENAUCTION_SHULKER_PREVIEW_CONTENTS"));
+        this.buttonManager.register(new NoneLoader(this.plugin, ShulkerPurchaseContentsButton.class, "RAVENAUCTION_SHULKER_PURCHASE_CONTENTS"));
         this.buttonManager.register(new NoneLoader(this.plugin, ShowButton.class, "ZAUCTIONHOUSE_SHOW"));
-        this.buttonManager.register(new NoneLoader(this.plugin, fr.maxlego08.zauctionhouse.buttons.PurchasePreviewButton.class, "RAVENAUCTION_PURCHASE_PREVIEW"));
+        this.buttonManager.register(new NoneLoader(this.plugin, PurchasePreviewButton.class, "RAVENAUCTION_PURCHASE_PREVIEW"));
         this.buttonManager.register(new NoneLoader(this.plugin, ConfirmRemoveListedButton.class, "ZAUCTIONHOUSE_CONFIRM_REMOVE_LISTED"));
         this.buttonManager.register(new NoneLoader(this.plugin, ConfirmPurchaseButton.class, "ZAUCTIONHOUSE_CONFIRM_PURCHASE"));
         this.buttonManager.register(new NoneLoader(this.plugin, SellCancelButton.class, "ZAUCTIONHOUSE_SELL_CANCEL"));
@@ -247,7 +256,10 @@ public class ZInventoriesLoader extends ZUtils implements InventoriesLoader {
 
     private void copyFiles(String path, String... files) {
         for (String fileName : files) {
-            this.plugin.saveFile(path + "/" + fileName + ".yml", false);
+            String resource = path + "/" + fileName + ".yml";
+            if (!new File(this.plugin.getDataFolder(), resource).exists()) {
+                this.plugin.saveFile(resource, false);
+            }
         }
     }
 
@@ -270,7 +282,11 @@ public class ZInventoriesLoader extends ZUtils implements InventoriesLoader {
     public void openInventory(Player player, Inventories inventories, int page) {
         long start = this.performanceDebug.start();
 
-        var optional = this.inventoryManager.getInventory(this.plugin, inventories.getFileName());
+        String fileName = inventories == Inventories.PURCHASE_CONFIRM
+                && ShulkerHelper.singleShulker(
+                        this.plugin.getAuctionManager().getCache(player).get(PlayerCacheKey.ITEM_SHOW)) != null
+                ? "shulker-purchase-confirm" : inventories.getFileName();
+        var optional = this.inventoryManager.getInventory(this.plugin, fileName);
         if (optional.isEmpty()) {
             this.plugin.getLogger().severe("Unable to open inventory " + inventories.getFileName() + ", inventory not found");
             message(this.plugin, player, Message.INVENTORY_NOT_FOUND, "%inventory-name%", inventories.getFileName());
@@ -278,7 +294,11 @@ public class ZInventoriesLoader extends ZUtils implements InventoriesLoader {
         }
 
         var inventory = optional.get();
-        this.plugin.getScheduler().runAtEntity(player, w -> this.inventoryManager.openInventoryWithOldInventories(player, inventory, page));
+        Runnable open = () -> {
+            if (player.isOnline()) this.inventoryManager.openInventoryWithOldInventories(player, inventory, page);
+        };
+        if (Bukkit.isOwnedByCurrentRegion(player)) open.run();
+        else this.plugin.getScheduler().runAtEntity(player, task -> open.run());
 
         this.performanceDebug.end("openInventory." + inventories.getFileName(), start, "for=" + player.getName() + ", page=" + page);
     }

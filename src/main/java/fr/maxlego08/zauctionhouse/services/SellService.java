@@ -393,7 +393,7 @@ public class SellService extends ZUtils implements AuctionSellService {
         this.plugin.getScheduler().runAtEntity(player, task -> {
             if (!player.isOnline()) return;
             message(this.plugin, player, Message.ITEM_SOLD, "%price%", auctionItem.getFormattedPrice(), "%items%", auctionItem.getItemDisplay());
-            player.playSound(player.getLocation(), "minecraft:entity.experience_orb.pickup", 0.35f, 1.15f);
+            player.playSound(player.getLocation(), "minecraft:entity.minecart.riding", 0.35f, 1.0f);
         });
 
         String encodedItemStack = auctionItem.getItemStacks().stream().map(Base64ItemStack::encode).collect(Collectors.joining(";"));

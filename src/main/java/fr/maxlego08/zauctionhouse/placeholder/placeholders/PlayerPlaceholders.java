@@ -1,5 +1,6 @@
 package fr.maxlego08.zauctionhouse.placeholder.placeholders;
 
+import fr.maxlego08.zauctionhouse.ZAuctionPlugin;
 import fr.maxlego08.zauctionhouse.api.AuctionPlugin;
 import fr.maxlego08.zauctionhouse.api.cache.PlayerCacheKey;
 import fr.maxlego08.zauctionhouse.api.category.Category;
@@ -51,6 +52,9 @@ public class PlayerPlaceholders implements PlaceholderRegister {
 
             return "main";
         }, "Returns the id of the current category for the player (main for auction house)");
+
+        placeholder.register("shulker_preview_name", player -> plugin instanceof ZAuctionPlugin auctionPlugin
+                ? auctionPlugin.getShulkerViews().title(player) : "Shulker Box", "Returns the previewed shulker's name");
 
         placeholder.register("buying_item_name", player -> fr.maxlego08.zauctionhouse.buttons.PurchasePreviewButton.titleName(
                 manager.getCache(player).get(PlayerCacheKey.ITEM_SHOW)), "Returns the selected purchase item's material name");

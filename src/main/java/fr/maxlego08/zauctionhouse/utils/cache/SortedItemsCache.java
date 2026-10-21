@@ -46,9 +46,7 @@ public class SortedItemsCache {
 
     // Flag indicating the cache needs to be rebuilt
     private final AtomicBoolean dirty = new AtomicBoolean(true);
-
-    // Flag indicating a rebuild is currently in progress
-    private final AtomicBoolean rebuildInProgress = new AtomicBoolean(false);
+    private final Object rebuildState = new Object();
 
     // Reference to ongoing async rebuild (null if none in progress)
     private final AtomicReference<CompletableFuture<Void>> ongoingRebuild = new AtomicReference<>(null);
@@ -128,16 +126,7 @@ public class SortedItemsCache {
      * This method is non-blocking and returns immediately.
      */
     private void triggerRebuildIfNeeded() {
-        if (dirty.get() && rebuildInProgress.compareAndSet(false, true)) {
-            // We won the race, trigger async rebuild
-            plugin.getScheduler().runAsync(w -> {
-                try {
-                    rebuildCache();
-                } finally {
-                    rebuildInProgress.set(false);
-                }
-            });
-        }
+        if (dirty.get()) ensureCacheValidAsync();
     }
 
     /**
@@ -149,7 +138,8 @@ public class SortedItemsCache {
      * @return sublist of item IDs
      */
     public IntList getPage(SortItem sortItem, int offset, int limit) {
-        IntList allIds = getSortedIds(sortItem);
+        triggerRebuildIfNeeded();
+        IntList allIds = sortedAllItems.get().get(sortItem);
         return getSubList(allIds, offset, limit);
     }
 
@@ -163,7 +153,9 @@ public class SortedItemsCache {
      * @return sublist of item IDs
      */
     public IntList getPage(Category category, SortItem sortItem, int offset, int limit) {
-        IntList allIds = getSortedIds(category, sortItem);
+        triggerRebuildIfNeeded();
+        IntList allIds = category == null ? sortedAllItems.get().get(sortItem)
+                : sortedByCategoryItems.get().get(buildCacheKey(category.getId(), sortItem));
         return getSubList(allIds, offset, limit);
     }
 
@@ -171,7 +163,9 @@ public class SortedItemsCache {
      * Invalidates the entire cache. The cache will be rebuilt on next access.
      */
     public void invalidate() {
-        dirty.set(true);
+        synchronized (rebuildState) {
+            dirty.set(true);
+        }
     }
 
     /**
@@ -186,7 +180,7 @@ public class SortedItemsCache {
      * Schedules an asynchronous cache rebuild.
      */
     public void rebuildAsync() {
-        plugin.getScheduler().runAsync(w -> rebuildCache());
+        ensureCacheValidAsync();
     }
 
     /**
@@ -228,7 +222,7 @@ public class SortedItemsCache {
      * Returns whether the cache is currently dirty (needs rebuild).
      */
     public boolean isDirty() {
-        return dirty.get();
+        return dirty.get() || ongoingRebuild.get() != null || lock.isWriteLocked();
     }
 
     /**
@@ -240,38 +234,34 @@ public class SortedItemsCache {
      * @return CompletableFuture that completes when cache is valid
      */
     public CompletableFuture<Void> ensureCacheValidAsync() {
-        // If cache is already valid, return completed future
-        if (!dirty.get()) {
-            return CompletableFuture.completedFuture(null);
-        }
-
-        // Check if there's already a rebuild in progress
-        CompletableFuture<Void> existing = ongoingRebuild.get();
-        if (existing != null && !existing.isDone()) {
-            return existing;
-        }
-
-        // Create new rebuild future
-        CompletableFuture<Void> newFuture = new CompletableFuture<>();
-
-        // Try to set as the ongoing rebuild (atomic)
-        if (ongoingRebuild.compareAndSet(existing, newFuture)) {
-            // We won the race, start the async rebuild
-            plugin.getScheduler().runAsync(w -> {
-                try {
-                    rebuildCache();
-                    newFuture.complete(null);
-                } catch (Exception e) {
-                    newFuture.completeExceptionally(e);
-                } finally {
-                    ongoingRebuild.compareAndSet(newFuture, null);
-                }
-            });
-            return newFuture;
-        } else {
-            // Another thread started rebuild, use their future
-            CompletableFuture<Void> otherFuture = ongoingRebuild.get();
-            return otherFuture != null ? otherFuture : CompletableFuture.completedFuture(null);
+        while (true) {
+            CompletableFuture<Void> existing = ongoingRebuild.get();
+            if (existing != null) return existing;
+            if (!dirty.get() && !lock.isWriteLocked()) return CompletableFuture.completedFuture(null);
+            CompletableFuture<Void> future = new CompletableFuture<>();
+            if (!ongoingRebuild.compareAndSet(null, future)) continue;
+            try {
+                plugin.getScheduler().runAsync(task -> {
+                    try {
+                        while (true) {
+                            rebuildCache();
+                            synchronized (rebuildState) {
+                                if (dirty.get()) continue;
+                                ongoingRebuild.compareAndSet(future, null);
+                                break;
+                            }
+                        }
+                        future.complete(null);
+                    } catch (Throwable throwable) {
+                        ongoingRebuild.compareAndSet(future, null);
+                        future.completeExceptionally(throwable);
+                    }
+                });
+            } catch (RuntimeException exception) {
+                ongoingRebuild.compareAndSet(future, null);
+                future.completeExceptionally(exception);
+            }
+            return future;
         }
     }
 
@@ -287,7 +277,7 @@ public class SortedItemsCache {
         lock.writeLock().lock();
         try {
             // Double-check after acquiring lock
-            if (!dirty.get()) {
+            if (!dirty.getAndSet(false)) {
                 performanceDebug.end("SortedItemsCache.rebuild", startTime, "skipped (already rebuilt)");
                 return;
             }
@@ -327,7 +317,6 @@ public class SortedItemsCache {
                 // No items, publish empty maps and mark as clean
                 sortedAllItems.set(newSortedAllItems);
                 sortedByCategoryItems.set(newSortedByCategoryItems);
-                dirty.set(false);
                 lastRebuildTime = System.currentTimeMillis();
                 performanceDebug.end("SortedItemsCache.rebuild", startTime, "items=0");
                 return;
@@ -386,12 +375,14 @@ public class SortedItemsCache {
             sortedAllItems.set(newSortedAllItems);
             sortedByCategoryItems.set(newSortedByCategoryItems);
 
-            dirty.set(false);
             lastRebuildTime = System.currentTimeMillis();
 
             performanceDebug.end("SortedItemsCache.rebuild", startTime,
                     "items=" + itemCount + ", categories=" + categoryCount);
 
+        } catch (RuntimeException | Error exception) {
+            dirty.set(true);
+            throw exception;
         } finally {
             lock.writeLock().unlock();
         }
@@ -478,7 +469,7 @@ public class SortedItemsCache {
     }
 
     private IntList getSubList(IntList source, int offset, int limit) {
-        if (source == null || source.isEmpty()) {
+        if (source == null || source.isEmpty() || limit <= 0) {
             return new IntArrayList();
         }
 
@@ -488,7 +479,7 @@ public class SortedItemsCache {
         }
 
         int fromIndex = Math.max(0, offset);
-        int toIndex = Math.min(size, offset + limit);
+        int toIndex = (int) Math.min(size, (long) fromIndex + limit);
 
         IntList result = new IntArrayList(toIndex - fromIndex);
         for (int i = fromIndex; i < toIndex; i++) {

@@ -21,6 +21,7 @@ import fr.maxlego08.zauctionhouse.api.rules.ItemRuleManager;
 import fr.maxlego08.zauctionhouse.api.rules.loader.RuleLoaderRegistry;
 import fr.maxlego08.zauctionhouse.api.storage.StorageManager;
 import fr.maxlego08.zauctionhouse.api.utils.Plugins;
+import fr.maxlego08.zauctionhouse.buttons.YourItemsFooter;
 import fr.maxlego08.zauctionhouse.category.ZCategoryManager;
 import fr.maxlego08.zauctionhouse.cluster.LocalAuctionClusterBridge;
 import fr.maxlego08.zauctionhouse.cluster.redis.RedisClusterService;
@@ -44,10 +45,12 @@ import fr.maxlego08.zauctionhouse.placeholder.LocalPlaceholder;
 import fr.maxlego08.zauctionhouse.placeholder.placeholders.GlobalPlaceholders;
 import fr.maxlego08.zauctionhouse.placeholder.placeholders.OptionPlaceholders;
 import fr.maxlego08.zauctionhouse.placeholder.placeholders.PlayerPlaceholders;
-import fr.maxlego08.zauctionhouse.services.BroadcastService;
 import fr.maxlego08.zauctionhouse.rule.ZItemRuleManager;
 import fr.maxlego08.zauctionhouse.rule.ZRuleLoaderRegistry;
 import fr.maxlego08.zauctionhouse.search.ChatSearchListener;
+import fr.maxlego08.zauctionhouse.services.BroadcastService;
+import fr.maxlego08.zauctionhouse.services.ShulkerViewService;
+import fr.maxlego08.zauctionhouse.services.AuctionMenuService;
 import fr.maxlego08.zauctionhouse.storage.ZStorageManager;
 import fr.maxlego08.zauctionhouse.utils.LocaleHelper;
 import fr.maxlego08.zauctionhouse.utils.Metrics;
@@ -90,6 +93,9 @@ public class ZAuctionPlugin extends JavaPlugin implements AuctionPlugin {
     private LocaleHelper localeHelper;
     private InventoriesLoader inventoriesLoader;
     private ChatSearchListener chatSearchListener;
+    private ShulkerViewService shulkerViews;
+    private YourItemsFooter yourItemsFooter;
+    private AuctionMenuService menuService;
     private BroadcastService broadcastService;
     private DiscordWebhookService discordWebhookService;
     private boolean isEnabled = false;
@@ -105,11 +111,6 @@ public class ZAuctionPlugin extends JavaPlugin implements AuctionPlugin {
         if (!dataFolder.exists()) dataFolder.mkdirs();
 
         // Load language.yml first (not localized, always from root resources)
-        try {
-            fr.maxlego08.zauctionhouse.utils.StyleMigration.apply(dataFolder.toPath(), this::getResource);
-        } catch (IOException ex) {
-            throw new IllegalStateException("Could not apply the one-time auction style. Check backups/red-gui-ff1f1f-v3.", ex);
-        }
         this.saveLanguageFile();
         String configuredLanguage = this.loadLanguageConfiguration();
 
@@ -140,6 +141,14 @@ public class ZAuctionPlugin extends JavaPlugin implements AuctionPlugin {
 
         this.broadcastService = new BroadcastService(this);
         this.discordWebhookService = new DiscordWebhookService(this);
+
+        this.menuService = new AuctionMenuService(this);
+        this.inventoriesLoader.getInventoryManager().registerInventoryListener(this.menuService);
+        this.addListener(this.menuService);
+        this.shulkerViews = new ShulkerViewService(this);
+        this.yourItemsFooter = new YourItemsFooter(this);
+        this.inventoriesLoader.getInventoryManager().registerInventoryListener(this.yourItemsFooter);
+        this.addListener(this.shulkerViews);
 
         this.chatSearchListener = new ChatSearchListener(this);
         this.addListener(new PlayerListener(this));
@@ -177,9 +186,29 @@ public class ZAuctionPlugin extends JavaPlugin implements AuctionPlugin {
         this.getLogger().info("RavenAuction has just been loaded successfully!");
     }
 
+    public ShulkerViewService getShulkerViews() {
+        return this.shulkerViews;
+    }
+
+    public AuctionMenuService getMenuService() {
+        return this.menuService;
+    }
+
+    public YourItemsFooter getYourItemsFooter() {
+        return this.yourItemsFooter;
+    }
+
     @Override
     public void onDisable() {
 
+        if (this.menuService != null) {
+            this.menuService.close();
+            this.inventoriesLoader.getInventoryManager().unregisterInventoryListener(this.menuService);
+        }
+        if (this.shulkerViews != null) this.shulkerViews.close();
+        if (this.yourItemsFooter != null && this.inventoriesLoader != null) {
+            this.inventoriesLoader.getInventoryManager().unregisterInventoryListener(this.yourItemsFooter);
+        }
         if (this.chatSearchListener != null) this.chatSearchListener.close();
         if (!this.isEnabled) return;
 

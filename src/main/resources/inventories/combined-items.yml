@@ -6,19 +6,12 @@ patterns:
 items:
   items:
     type: ZAUCTIONHOUSE_COMBINED_ITEMS
-    empty-slot: 22
+    empty-slot: -1
     include-selling: true
     include-expired: true
     include-purchased: true
     slots:
     - 0-44
-    item:
-      material: BARRIER
-      name: '&r&#FF1F1FNo Items Found'
-      lore:
-      - ''
-      - '&r&fYour listings and collected'
-      - '&r&fpurchases will appear here.'
     sound: UI_BUTTON_CLICK
     pitch: 1.05
     volume: 0.35

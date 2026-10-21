@@ -6,6 +6,8 @@ import fr.maxlego08.menu.api.engine.InventoryEngine;
 import fr.maxlego08.menu.api.utils.Placeholders;
 import fr.maxlego08.zauctionhouse.api.AuctionPlugin;
 import fr.maxlego08.zauctionhouse.api.cache.PlayerCacheKey;
+import fr.maxlego08.zauctionhouse.ZAuctionPlugin;
+import fr.maxlego08.zauctionhouse.services.AuctionMenuService;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
@@ -48,22 +50,32 @@ public class RefreshButton extends Button {
 
         cache.set(PlayerCacheKey.REFRESH_LOADING, true);
 
-        var itemStack = this.loadingItemStack.build(player);
-        for (Integer newSlot : getSlots()) {
-            inventory.getSpigotInventory().setItem(newSlot, itemStack);
+        event.setCancelled(true);
+        cache.remove(PlayerCacheKey.ITEMS_LISTED);
+        cache.remove(PlayerCacheKey.ITEMS_SEARCH);
+        if (this.plugin instanceof ZAuctionPlugin auctionPlugin) {
+            auctionPlugin.getMenuService().getIcons().clear(player.getUniqueId());
         }
-
-        this.plugin.getScheduler().runAsync(wrappedTask -> {
-
-            cache.remove(PlayerCacheKey.ITEMS_LISTED);
-
-            cache.remove(PlayerCacheKey.ITEMS_SEARCH);
-            this.plugin.getAuctionManager().getItemsListedForSale(player);
-
-            this.plugin.getScheduler().runAtEntity(player, w -> {
-                cache.set(PlayerCacheKey.REFRESH_LOADING, false);
-                this.plugin.getInventoriesLoader().getInventoryManager().updateInventory(player);
+        String query = cache.get(PlayerCacheKey.SEARCH_QUERY);
+        boolean searching = query != null && !query.isBlank();
+        Runnable refresh = () -> {
+            cache.set(PlayerCacheKey.REFRESH_LOADING, false);
+            AuctionMenuService.refreshListings(this.plugin, player, inventory, this);
+        };
+        if (!searching) {
+            refresh.run();
+        } else {
+            var itemStack = this.loadingItemStack.build(player);
+            for (Integer newSlot : getSlots()) inventory.getSpigotInventory().setItem(newSlot, itemStack);
+            this.plugin.getScheduler().runAsync(task -> {
+                try {
+                    this.plugin.getAuctionManager().getItemIdsListedForSale(player);
+                    this.plugin.getScheduler().runAtEntity(player, entityTask -> refresh.run());
+                } catch (RuntimeException exception) {
+                    cache.set(PlayerCacheKey.REFRESH_LOADING, false);
+                    this.plugin.getLogger().log(java.util.logging.Level.WARNING, "Unable to refresh auction search results", exception);
+                }
             });
-        });
+        }
     }
 }

@@ -3,6 +3,7 @@ package fr.maxlego08.zauctionhouse.buttons.list;
 import fr.maxlego08.menu.api.button.PaginateButton;
 import fr.maxlego08.menu.api.engine.InventoryEngine;
 import fr.maxlego08.menu.api.utils.Placeholders;
+import fr.maxlego08.zauctionhouse.ZAuctionPlugin;
 import fr.maxlego08.zauctionhouse.api.AuctionManager;
 import fr.maxlego08.zauctionhouse.api.AuctionPlugin;
 import fr.maxlego08.zauctionhouse.api.cache.PlayerCacheKey;
@@ -15,6 +16,7 @@ import fr.maxlego08.zauctionhouse.api.messages.Message;
 import fr.maxlego08.zauctionhouse.api.tax.TaxType;
 import fr.maxlego08.zauctionhouse.api.utils.IntList;
 import fr.maxlego08.zauctionhouse.api.utils.Permission;
+import fr.maxlego08.zauctionhouse.utils.ShulkerHelper;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -62,7 +64,9 @@ public class ListedItemsButton extends PaginateButton {
         for (Item item : pageItems) {
             if (!item.isActivelyListed()) continue;
             int slot = slots.get(slotIndex++);
-            var itemStack = item.buildItemStack(player);
+            var itemStack = this.plugin instanceof ZAuctionPlugin auctionPlugin
+                    ? auctionPlugin.getMenuService().getIcons().get(player, item, this.plugin.getConfiguration().getItemLore())
+                    : item.buildItemStack(player);
             var button = inventoryEngine.addItem(isPlayerInventory(), slot, itemStack);
             if (button != null) {
                 button.setClick(createClick(player, inventoryEngine, slot, item, itemStack));
@@ -104,6 +108,14 @@ public class ListedItemsButton extends PaginateButton {
                 }
                 manager.clearPlayerCache(player, PlayerCacheKey.ITEMS_SELLING, PlayerCacheKey.ITEMS_LISTED);
                 manager.updateInventory(player);
+                return;
+            }
+
+            if (event.isRightClick() && item instanceof AuctionItem auctionItem
+                    && !auctionItem.getItemStacks().isEmpty()
+                    && ShulkerHelper.isShulkerBox(auctionItem.getItemStacks().getFirst())
+                    && this.plugin instanceof ZAuctionPlugin auctionPlugin) {
+                auctionPlugin.getShulkerViews().open(player, auctionItem.getItemStacks().getFirst(), inventoryEngine);
                 return;
             }
 

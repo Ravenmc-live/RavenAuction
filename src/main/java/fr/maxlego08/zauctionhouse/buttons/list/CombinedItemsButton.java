@@ -2,7 +2,7 @@ package fr.maxlego08.zauctionhouse.buttons.list;
 
 import fr.maxlego08.menu.api.button.PaginateButton;
 import fr.maxlego08.menu.api.engine.InventoryEngine;
-import fr.maxlego08.menu.api.utils.Placeholders;
+import fr.maxlego08.zauctionhouse.ZAuctionPlugin;
 import fr.maxlego08.zauctionhouse.api.AuctionPlugin;
 import fr.maxlego08.zauctionhouse.api.item.Item;
 import fr.maxlego08.zauctionhouse.api.item.ItemPlaceholder;
@@ -24,14 +24,12 @@ import java.util.Set;
 public class CombinedItemsButton extends PaginateButton {
 
     private final AuctionPlugin plugin;
-    private final int emptySlot;
     private final boolean includeSelling;
     private final boolean includeExpired;
     private final boolean includePurchased;
 
     public CombinedItemsButton(AuctionPlugin plugin, int emptySlot, boolean includeSelling, boolean includeExpired, boolean includePurchased) {
         this.plugin = plugin;
-        this.emptySlot = emptySlot;
         this.includeSelling = includeSelling;
         this.includeExpired = includeExpired;
         this.includePurchased = includePurchased;
@@ -40,38 +38,43 @@ public class CombinedItemsButton extends PaginateButton {
     @Override
     public void onRender(Player player, InventoryEngine inventoryEngine) {
 
-        var items = getCombinedItems(player);
+        try {
+            var items = getCombinedItems(player);
 
-        if (items.isEmpty()) {
-            if (this.emptySlot == -1) return;
-            inventoryEngine.addItem(isPlayerInventory(), this.emptySlot, getCustomItemStack(player, false, new Placeholders()));
-            return;
-        }
+            if (items.isEmpty()) return;
 
-        var configuration = this.plugin.getConfiguration().getItemLore();
-        var manager = this.plugin.getAuctionManager();
-        var removeService = manager.getRemoveService();
+            var configuration = this.plugin.getConfiguration().getItemLore();
+            var manager = this.plugin.getAuctionManager();
+            var removeService = manager.getRemoveService();
 
-        paginate(items, inventoryEngine, (slot, item) -> {
+            paginate(items, inventoryEngine, (slot, item) -> {
 
-            StorageType storageType = getItemStorageType(item, player);
-            List<String> lore = getLoreForStorageType(configuration, item, storageType);
-            Set<ItemPlaceholder> needed = getPlaceholdersForStorageType(configuration, item, storageType);
+                StorageType storageType = getItemStorageType(item, player);
+                List<String> lore = getLoreForStorageType(configuration, item, storageType);
+                Set<ItemPlaceholder> needed = getPlaceholdersForStorageType(configuration, item, storageType);
 
-            inventoryEngine.addItem(isPlayerInventory(), slot, item.buildItemStack(player, lore, needed)).setClick(event -> {
-                switch (storageType) {
-                    case LISTED -> removeService.removeSellingItem(player, item);
-                    case EXPIRED -> removeService.removeExpiredItem(player, item);
-                    case PURCHASED -> removeService.removePurchasedItem(player, item);
-                    default -> { }
-                }
+                inventoryEngine.addItem(isPlayerInventory(), slot, item.buildItemStack(player, lore, needed)).setClick(event -> {
+                    switch (storageType) {
+                        case LISTED -> removeService.removeSellingItem(player, item);
+                        case EXPIRED -> removeService.removeExpiredItem(player, item);
+                        case PURCHASED -> removeService.removePurchasedItem(player, item);
+                        default -> { }
+                    }
+                });
             });
-        });
+        } finally {
+            if (this.plugin instanceof ZAuctionPlugin auctionPlugin) {
+                auctionPlugin.getYourItemsFooter().apply(player, inventoryEngine);
+            }
+        }
     }
 
     @Override
     public int getPaginationSize(@NonNull Player player) {
-        return getCombinedItems(player).size();
+        var manager = this.plugin.getAuctionManager();
+        return (this.includeSelling ? manager.getPlayerSellingItems(player).size() : 0)
+                + (this.includeExpired ? manager.getExpiredItems(player).size() : 0)
+                + (this.includePurchased ? manager.getPurchasedItems(player).size() : 0);
     }
 
     private List<Item> getCombinedItems(Player player) {

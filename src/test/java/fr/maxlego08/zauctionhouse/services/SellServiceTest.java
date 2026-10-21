@@ -111,4 +111,33 @@ class SellServiceTest {
         assertEquals(SellFailReason.DATABASE_ERROR, result.join().failReason());
         verify(inventory).addItem(item);
     }
+    @Test
+    void minecartSoundPlaysOnlyAfterTheListingHasBeenSaved() {
+        when(scheduler.runAtEntity(eq(player), any())).thenAnswer(call -> {
+            ((Consumer<WrappedTask>) call.getArgument(1)).accept(null);
+            return CompletableFuture.completedFuture(null);
+        });
+        service = new SellService(plugin, manager) {
+            @Override
+            protected void message(AuctionPlugin plugin, org.bukkit.command.CommandSender sender,
+                                   fr.maxlego08.zauctionhouse.api.messages.Message message, Object... arguments) {
+            }
+        };
+        AuctionItem saved = mock(AuctionItem.class);
+        when(saved.getItemStacks()).thenReturn(List.of());
+        var result = service.sellAuctionItems(player, BigDecimal.TEN, 0, Map.of(0, item), economy);
+        assertFalse(result.isDone());
+        verify(player, never()).playSound(any(Location.class), anyString(), anyFloat(), anyFloat());
+        creation.complete(saved);
+        assertTrue(result.join().success());
+        verify(player).playSound(location, "minecraft:entity.minecart.riding", 0.35f, 1.0f);
+    }
+
+    @Test
+    void failedSaveNeverPlaysTheSuccessfulListingSound() {
+        var result = service.sellAuctionItems(player, BigDecimal.TEN, 0, Map.of(0, item), economy);
+        creation.completeExceptionally(new IllegalStateException("database unavailable"));
+        assertFalse(result.join().success());
+        verify(player, never()).playSound(any(Location.class), anyString(), anyFloat(), anyFloat());
+    }
 }

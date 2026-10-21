@@ -64,4 +64,24 @@ class FooterPurchaseTest {
         assertFalse(config.getBoolean("action.purchased-item.money-message"));
         assertEquals("minecraft:entity.villager.no", config.getString("action.purchased-item.money-sound.sound"));
     }
+    @Test
+    void onlyTheShulkerPurchaseMenuAddsThreeContentRowsAndPreviewHasNoControls() {
+        var normal = load("inventories/confirms/purchase-confirm.yml");
+        var shulker = load("inventories/confirms/shulker-purchase-confirm.yml");
+        assertEquals(27, normal.getInt("size"));
+        assertEquals(54, shulker.getInt("size"));
+        for (String key : List.of("confirm", "show", "deny")) {
+            for (String path : normal.getConfigurationSection("items." + key).getKeys(true)) {
+                String full = "items." + key + "." + path;
+                if (!normal.isConfigurationSection(full)) assertEquals(normal.get(full), shulker.get(full), full);
+            }
+        }
+        assertEquals(27, shulker.getInt("items.contents.slot"));
+        assertEquals("RAVENAUCTION_SHULKER_PURCHASE_CONTENTS", shulker.getString("items.contents.type"));
+        var preview = load("inventories/shulker-preview.yml");
+        assertEquals(27, preview.getInt("size"));
+        assertEquals(1, preview.getConfigurationSection("items").getKeys(false).size());
+        assertEquals("%ravenauction_shulker_preview_name%", preview.getString("name"));
+        assertFalse(preview.contains("patterns"));
+    }
 }

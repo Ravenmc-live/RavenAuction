@@ -124,13 +124,7 @@ public class ZAuctionManager extends ZUtils implements AuctionManager {
             inventoriesLoader.openInventory(player, Inventories.AUCTION, page);
         } else {
             // Cache needs preparation - do it async then open on the entity thread
-            prepareCacheAsync(player).thenRun(() -> {
-                this.plugin.getScheduler().runAtEntity(player, w -> {
-                    if (player.isOnline()) {
-                        inventoriesLoader.openInventory(player, Inventories.AUCTION, page);
-                    }
-                });
-            });
+            prepareCacheAsync(player).thenRun(() -> inventoriesLoader.openInventory(player, Inventories.AUCTION, page));
         }
     }
 

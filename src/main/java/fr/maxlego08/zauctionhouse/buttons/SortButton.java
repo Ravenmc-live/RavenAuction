@@ -7,6 +7,7 @@ import fr.maxlego08.menu.api.utils.Placeholders;
 import fr.maxlego08.zauctionhouse.api.AuctionPlugin;
 import fr.maxlego08.zauctionhouse.api.cache.PlayerCacheKey;
 import fr.maxlego08.zauctionhouse.api.item.SortItem;
+import fr.maxlego08.zauctionhouse.services.AuctionMenuService;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
@@ -77,25 +78,38 @@ public class SortButton extends Button {
         int nextIndex = (index + direction + size) % size;
         SortItem nextSort = this.sortItems.get(nextIndex);
 
-        var itemStack = this.loadingItemStack.build(player);
-        for (Integer newSlot : getSlots()) {
-            inventory.getSpigotInventory().setItem(newSlot, itemStack);
+        event.setCancelled(true);
+        String query = cache.get(PlayerCacheKey.SEARCH_QUERY);
+        boolean searching = query != null && !query.isBlank();
+        if (searching) {
+            var itemStack = this.loadingItemStack.build(player);
+            for (Integer newSlot : getSlots()) inventory.getSpigotInventory().setItem(newSlot, itemStack);
         }
 
-        this.plugin.getScheduler().runAsync(wrappedTask -> {
+        cache.set(PlayerCacheKey.ITEM_SORT, nextSort);
+        cache.remove(PlayerCacheKey.ITEMS_LISTED);
+        cache.remove(PlayerCacheKey.ITEMS_SEARCH);
 
-            cache.set(PlayerCacheKey.ITEM_SORT, nextSort);
-
-            cache.remove(PlayerCacheKey.ITEMS_LISTED);
-
-            cache.remove(PlayerCacheKey.ITEMS_SEARCH);
-            this.plugin.getAuctionManager().getItemsListedForSale(player);
-
-            this.plugin.getScheduler().runAtEntity(player, w -> {
+        Runnable refresh = () -> {
+            try {
+                AuctionMenuService.refreshListings(this.plugin, player, inventory, this);
+            } finally {
                 cache.set(PlayerCacheKey.ITEM_SORT_LOADING, false);
-                this.plugin.getInventoriesLoader().getInventoryManager().updateInventory(player);
+            }
+        };
+        if (!searching) {
+            refresh.run();
+        } else {
+            this.plugin.getScheduler().runAsync(task -> {
+                try {
+                    this.plugin.getAuctionManager().getItemIdsListedForSale(player);
+                    this.plugin.getScheduler().runAtEntity(player, entityTask -> refresh.run());
+                } catch (RuntimeException exception) {
+                    cache.set(PlayerCacheKey.ITEM_SORT_LOADING, false);
+                    this.plugin.getLogger().log(java.util.logging.Level.WARNING, "Unable to sort auction search results", exception);
+                }
             });
-        });
+        }
     }
 
 }

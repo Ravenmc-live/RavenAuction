@@ -1,0 +1,32 @@
+name: '&8Buying %ravenauction_buying_item_name%'
+size: 54
+items:
+  confirm:
+    slot: 11
+    type: ZAUCTIONHOUSE_CONFIRM_PURCHASE
+    item:
+      material: LIME_STAINED_GLASS_PANE
+      name: '&r&#FF1F1FConfirm'
+      lore:
+      - ''
+      - '&r&fAre you sure you want to'
+      - '&r&fpurchase this specific item?'
+  show:
+    slot: 13
+    type: RAVENAUCTION_PURCHASE_PREVIEW
+  deny:
+    slot: 15
+    type: BACK
+    item:
+      material: RED_STAINED_GLASS_PANE
+      name: '&r&#FF1F1FCancel'
+      lore:
+      - ''
+      - '&r&fReturn to the main menu'
+      - '&r&fwithout buying anything.'
+    sound: UI_BUTTON_CLICK
+    pitch: 1.05
+    volume: 0.35
+  contents:
+    slot: 27
+    type: RAVENAUCTION_SHULKER_PURCHASE_CONTENTS

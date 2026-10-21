@@ -12,7 +12,7 @@ items:
       - ''
       - '&r&fReturn to the previous page'
       - '&r&fof available listings.'
-    sound: UI_BUTTON_CLICK
+    sound: ITEM_BOOK_PAGE_TURN
     pitch: 1.05
     volume: 0.35
     else:
@@ -29,7 +29,7 @@ items:
       - ''
       - '&r&fContinue to the next page'
       - '&r&fof available listings.'
-    sound: UI_BUTTON_CLICK
+    sound: ITEM_BOOK_PAGE_TURN
     pitch: 1.05
     volume: 0.35
     else:

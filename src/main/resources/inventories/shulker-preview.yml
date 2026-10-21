@@ -1,0 +1,6 @@
+name: '%ravenauction_shulker_preview_name%'
+size: 27
+items:
+  contents:
+    slot: 0
+    type: RAVENAUCTION_SHULKER_PREVIEW_CONTENTS
