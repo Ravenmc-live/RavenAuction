@@ -147,6 +147,26 @@ public interface StorageManager {
     void createTransaction(Item item, UUID playerUniqueId, String economyName, BigDecimal before, BigDecimal after, BigDecimal value, TransactionStatus status);
 
     /**
+     * Creates a transaction record and completes once it is written.
+     * <p>
+     * Sellers are paid from these rows when the payout is deferred: a fire-and-forget insert that
+     * fails (or that is still queued when the server stops) is money the seller never sees.
+     *
+     * @param item           item involved in the transaction
+     * @param playerUniqueId player's UUID
+     * @param economyName    economy used for the transaction
+     * @param before         balance before the transaction
+     * @param after          balance after the transaction
+     * @param value          amount changed
+     * @param status         initial transaction status
+     * @return future completing when the row has been written
+     */
+    default CompletableFuture<Void> recordTransaction(Item item, UUID playerUniqueId, String economyName, BigDecimal before, BigDecimal after, BigDecimal value, TransactionStatus status) {
+        createTransaction(item, playerUniqueId, economyName, before, after, value, status);
+        return CompletableFuture.completedFuture(null);
+    }
+
+    /**
      * Retrieves a single item from storage by its identifier.
      *
      * @param id item identifier

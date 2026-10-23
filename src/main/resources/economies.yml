@@ -67,8 +67,8 @@ economies:
     symbol: "v"
 
     # If true, money from sales is deposited immediately to the seller.
-    # If false, sellers must use /ah claim to receive their pending money.
-    # Recommended: true for simple setups, false if using cross-server economy.
+    # Kept for backward compatibility only: sellers are now paid the moment an item is
+    # bought, so there is no pending payout and no claim command or button.
     auto-claim: true
 
     # If true, money is only deposited when the seller is online.

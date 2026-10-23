@@ -169,7 +169,14 @@ public class ZStorageManager extends ItemLoaderUtils implements StorageManager {
 
     @Override
     public void createTransaction(Item item, UUID playerUniqueId, String economyName, BigDecimal before, BigDecimal after, BigDecimal value, TransactionStatus status) {
-        async(() -> with(TransactionRepository.class).create(item, playerUniqueId, economyName, before, after, value, status));
+        recordTransaction(item, playerUniqueId, economyName, before, after, value, status);
+    }
+
+    @Override
+    public CompletableFuture<Void> recordTransaction(Item item, UUID playerUniqueId, String economyName, BigDecimal before, BigDecimal after, BigDecimal value, TransactionStatus status) {
+        return CompletableFuture.runAsync(
+                () -> with(TransactionRepository.class).create(item, playerUniqueId, economyName, before, after, value, status),
+                this.plugin.getExecutorService());
     }
 
     @Override

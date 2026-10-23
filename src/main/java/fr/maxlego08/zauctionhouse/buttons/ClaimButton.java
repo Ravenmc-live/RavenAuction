@@ -62,6 +62,11 @@ public class ClaimButton extends Button {
                     inventory.getSpigotInventory().setItem(getSlot(), this.getCustomItemStack(player, false, new Placeholders()));
                 }
             });
+        }).exceptionally(throwable -> {
+            // Without this the button kept its loading item forever.
+            cache.set(PlayerCacheKey.PENDING_MONEY_LOADING, false);
+            this.plugin.getLogger().warning("Could not load pending money for " + player.getName() + ": " + throwable.getMessage());
+            return null;
         });
     }
 
@@ -106,12 +111,11 @@ public class ClaimButton extends Button {
         var cache = this.plugin.getAuctionManager().getCache(player);
         Map<String, BigDecimal> pendingData = cache.get(PlayerCacheKey.PENDING_MONEY_DATA);
 
-        if (pendingData == null || pendingData.isEmpty()) {
-            return;
-        }
-
-        BigDecimal total = pendingData.values().stream().reduce(BigDecimal.ZERO, BigDecimal::add);
-        if (total.compareTo(BigDecimal.ZERO) <= 0) {
+        // The amounts are loaded asynchronously: a click before they arrive used to do nothing
+        // at all, which players read as "the claim button is broken".
+        BigDecimal total = pendingData == null ? BigDecimal.ZERO
+                : pendingData.values().stream().reduce(BigDecimal.ZERO, BigDecimal::add);
+        if (total.compareTo(BigDecimal.ZERO) <= 0 && cache.get(PlayerCacheKey.PENDING_MONEY_LOADING, false)) {
             return;
         }
 

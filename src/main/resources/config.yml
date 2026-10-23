@@ -60,11 +60,6 @@ commands:
       required: false
       auto-completion:
       - vault
-  claim:
-    aliases:
-    - claim
-    - c
-    - recuperer
   search:
     aliases:
     - search
